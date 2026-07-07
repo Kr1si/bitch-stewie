@@ -102,3 +102,36 @@ def hybrid_search(query: str, project: str | None = None, limit: int = 5) -> lis
     )
     return [{"text": p.payload["text"], "source": p.payload["source"],
              "kind": p.payload.get("kind"), "score": p.score} for p in result.points]
+
+
+def list_collections() -> list[str]:
+    """All knowledge-base collections (kb_*), sorted."""
+    names = [c.name for c in get_client().get_collections().collections
+             if c.name.startswith("kb_")]
+    return sorted(names)
+
+
+def collection_stats(name: str) -> dict:
+    """{points, sources} for a collection. Points via count; distinct sources
+    via a capped scroll (knowledge collections are small)."""
+    client = get_client()
+    if not client.collection_exists(name):
+        return {"points": 0, "sources": []}
+    points = client.count(collection_name=name, exact=True).count
+    sources: dict[str, int] = {}
+    if points:
+        seen_ids: set[str] = set()
+        offset = None
+        for _ in range(50):  # cap at ~50 * 256 = 12.8k points
+            rec, offset = client.scroll(collection_name=name, limit=256,
+                                         with_payload=True, with_vectors=False,
+                                         offset=offset)
+            for p in rec:
+                src = (p.payload or {}).get("source", "")
+                sources[src] = sources.get(src, 0) + 1
+            if offset is None:
+                break
+    return {"points": points,
+            "sources": [{"source": s, "chunks": n}
+                         for s, n in sorted(sources.items(),
+                                            key=lambda kv: kv[1], reverse=True)]}

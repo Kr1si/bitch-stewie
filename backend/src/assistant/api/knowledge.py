@@ -5,7 +5,7 @@ from pydantic import BaseModel
 from starlette.concurrency import run_in_threadpool
 
 from assistant.rag.ingest import ingest_path, ingest_text
-from assistant.rag.store import hybrid_search
+from assistant.rag.store import collection_stats, hybrid_search, list_collections
 
 router = APIRouter(prefix="/api/knowledge")
 
@@ -25,6 +25,20 @@ class IngestTextIn(BaseModel):
 class IngestPathIn(BaseModel):
     path: str
     project: str | None = None
+
+
+@router.get("/collections")
+async def collections():
+    """All kb_* collections with point + source counts for the Knowledge overview."""
+    def _gather():
+        return [{"name": n, **collection_stats(n)} for n in list_collections()]
+    return await run_in_threadpool(_gather)
+
+
+@router.get("/collections/{name}/sources")
+async def collection_sources(name: str):
+    """Distinct sources + per-source chunk counts for one collection."""
+    return await run_in_threadpool(collection_stats, name)
 
 
 @router.post("/search")

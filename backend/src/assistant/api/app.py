@@ -31,9 +31,11 @@ def create_app() -> FastAPI:
     from fastapi.middleware.cors import CORSMiddleware
 
     from assistant.api.chat import router as chat_router
+    from assistant.api.diagrams import router as diagrams_router
     from assistant.api.examples import router as examples_router
     from assistant.api.knowledge import router as knowledge_router
     from assistant.api.routers import router
+    from assistant.api.stats import router as stats_router
     from assistant.api.util import router as util_router
 
     app = FastAPI(title="Personal AI Project Assistant", lifespan=lifespan)
@@ -44,8 +46,10 @@ def create_app() -> FastAPI:
     )
     app.include_router(router)
     app.include_router(chat_router)
+    app.include_router(diagrams_router)
     app.include_router(knowledge_router)
     app.include_router(examples_router)
+    app.include_router(stats_router)
     app.include_router(util_router)
 
     @app.get("/health")
