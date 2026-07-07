@@ -5,6 +5,7 @@ import {
 } from "@mui/material";
 import DarkModeIcon from "@mui/icons-material/DarkMode";
 import LightModeIcon from "@mui/icons-material/LightMode";
+import InsightsIcon from "@mui/icons-material/Insights";
 import ChatIcon from "@mui/icons-material/Chat";
 import DashboardIcon from "@mui/icons-material/Dashboard";
 import PlayCircleIcon from "@mui/icons-material/PlayCircle";
@@ -13,7 +14,7 @@ import AccountTreeIcon from "@mui/icons-material/AccountTree";
 import ExtensionIcon from "@mui/icons-material/Extension";
 import { BrowserRouter, NavLink, Route, Routes } from "react-router-dom";
 import { getTheme, type Mode } from "./theme";
-import { ThemeProvider, CssBaseline } from "@mui/material";
+import { ThemeProvider, Chip, CssBaseline, Link } from "@mui/material";
 import Chat from "./pages/Chat";
 import Dashboard from "./pages/Dashboard";
 import Runs from "./pages/Runs";
@@ -21,6 +22,10 @@ import Knowledge from "./pages/Knowledge";
 import Diagrams from "./pages/Diagrams";
 import Examples from "./pages/Examples";
 import { apiGet } from "./lib/api";
+
+type Health = { status: string; default_model: string; langsmith: {
+  tracing: boolean; project: string; endpoint: string;
+} };
 
 const NAV = [
   { path: "/dashboard", label: "Dashboard", icon: <DashboardIcon /> },
@@ -36,10 +41,11 @@ const DRAWER_W = 230;
 export default function App({ initialMode = "dark" as Mode }) {
   const [mode, setMode] = useState<Mode>(initialMode);
   const [model, setModel] = useState<string>("");
+  const [ls, setLs] = useState<Health["langsmith"] | null>(null);
 
   useEffect(() => {
-    apiGet<{ status: string; default_model: string }>("/health")
-      .then((h) => setModel(h.default_model))
+    apiGet<Health>("/health")
+      .then((h) => { setModel(h.default_model); setLs(h.langsmith); })
       .catch(() => {});
   }, []);
 
@@ -72,6 +78,28 @@ export default function App({ initialMode = "dark" as Mode }) {
                     bgcolor: "rgba(255,255,255,.1)", borderRadius: 1, fontFamily: "monospace" }}>
                     {model}
                   </Typography>
+                </Tooltip>
+              )}
+              {ls && (
+                <Tooltip title={
+                  ls.tracing
+                    ? `LangSmith tracing ON · project "${ls.project}" · ${ls.endpoint}`
+                    : "LangSmith tracing OFF (set LANGSMITH_API_KEY + LANGSMITH_TRACING=true in backend/.env)"
+                }>
+                  {ls.tracing ? (
+                    <Chip icon={<InsightsIcon />} size="small"
+                      label={`LangSmith · ${ls.project}`}
+                      component={Link} href="https://smith.langchain.com" target="_blank" rel="noreferrer"
+                      clickable
+                      sx={{
+                        mr: 1.5, color: "inherit", textDecoration: "none",
+                        bgcolor: "rgba(124,92,255,.35)",
+                        "& .MuiChip-icon": { color: "inherit" },
+                      }} />
+                  ) : (
+                    <Chip size="small" label="LangSmith off"
+                      sx={{ mr: 1.5, bgcolor: "rgba(255,255,255,.08)", color: "inherit", opacity: 0.6 }} />
+                  )}
                 </Tooltip>
               )}
               <IconButton color="inherit" onClick={toggle}>

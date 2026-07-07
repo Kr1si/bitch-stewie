@@ -9,10 +9,14 @@ from contextlib import asynccontextmanager
 if sys.platform == "win32":
     asyncio.set_event_loop_policy(asyncio.WindowsSelectorEventLoopPolicy())
 
+# Push LANGSMITH_* into os.environ BEFORE langchain/langgraph are imported,
+# so the LangSmith tracer picks up tracing + the API key at configure time.
+from assistant.config import apply_langsmith_env, get_settings, langsmith_enabled
+
+LS_TRACING = apply_langsmith_env()
+
 from fastapi import FastAPI
 from langgraph.checkpoint.postgres.aio import AsyncPostgresSaver
-
-from assistant.config import get_settings
 
 
 @asynccontextmanager
@@ -41,7 +45,9 @@ def create_app() -> FastAPI:
     app = FastAPI(title="Personal AI Project Assistant", lifespan=lifespan)
     app.add_middleware(
         CORSMiddleware,
-        allow_origins=["http://localhost:5173", "http://127.0.0.1:5173"],
+        # vite may fall back to 5174+ when 5173 is held by a stale dev server
+        allow_origins=[f"http://localhost:{p}" for p in range(5173, 5180)]
+                   + [f"http://127.0.0.1:{p}" for p in range(5173, 5180)],
         allow_methods=["*"], allow_headers=["*"],
     )
     app.include_router(router)
@@ -55,7 +61,15 @@ def create_app() -> FastAPI:
     @app.get("/health")
     async def health() -> dict:
         settings = get_settings()
-        return {"status": "ok", "default_model": settings.default_model}
+        return {
+            "status": "ok",
+            "default_model": settings.default_model,
+            "langsmith": {
+                "tracing": langsmith_enabled(),
+                "project": settings.langsmith_project,
+                "endpoint": settings.langsmith_endpoint,
+            },
+        }
 
     return app
 

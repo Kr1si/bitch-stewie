@@ -2,6 +2,7 @@
 
 from functools import lru_cache
 
+from pydantic import AliasChoices, Field
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
 
@@ -33,7 +34,45 @@ class Settings(BaseSettings):
     api_host: str = "127.0.0.1"
     api_port: int = 8000
 
+    # --- LangSmith tracing (bare LANGSMITH_* names, read from .env / env) ---
+    # The tracer itself reads these from os.environ; we push them there at startup.
+    langsmith_api_key: str = Field(
+        default="",
+        validation_alias=AliasChoices("ASSISTANT_LANGSMITH_API_KEY", "LANGSMITH_API_KEY"))
+    langsmith_tracing: str = Field(
+        default="false",
+        validation_alias=AliasChoices("ASSISTANT_LANGSMITH_TRACING", "LANGSMITH_TRACING"))
+    langsmith_project: str = Field(
+        default="bitch-stewie",
+        validation_alias=AliasChoices("ASSISTANT_LANGSMITH_PROJECT", "LANGSMITH_PROJECT"))
+    langsmith_endpoint: str = Field(
+        default="https://api.smith.langchain.com",
+        validation_alias=AliasChoices("ASSISTANT_LANGSMITH_ENDPOINT", "LANGSMITH_ENDPOINT"))
+
 
 @lru_cache
 def get_settings() -> Settings:
     return Settings()
+
+
+def langsmith_enabled() -> bool:
+    s = get_settings()
+    return bool(s.langsmith_api_key) and s.langsmith_tracing.lower() == "true"
+
+
+def apply_langsmith_env() -> bool:
+    """Push LANGSMITH_* into os.environ before langchain/langgraph import tracing.
+
+    Returns True if tracing is enabled. Idempotent.
+    """
+    import os
+    s = get_settings()
+    if not langsmith_enabled():
+        # Ensure a stale env var can't silently enable tracing
+        os.environ.pop("LANGSMITH_TRACING", None)
+        return False
+    os.environ["LANGSMITH_API_KEY"] = s.langsmith_api_key
+    os.environ["LANGSMITH_TRACING"] = "true"
+    os.environ["LANGSMITH_PROJECT"] = s.langsmith_project
+    os.environ.setdefault("LANGSMITH_ENDPOINT", s.langsmith_endpoint)
+    return True
