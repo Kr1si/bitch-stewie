@@ -1,0 +1,6 @@
+{
+  "name": "assistant-cc-skills",
+  "description": "Thin contract skills for Claude Code instances delegated to by the personal assistant orchestrator",
+  "version": "0.1.0",
+  "author": { "name": "Martin Krisko" }
+}
