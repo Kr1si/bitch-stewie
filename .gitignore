@@ -1,0 +1,39 @@
+# --- Python (backend) ---
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+*.egg-info/
+
+# --- Node (frontend) ---
+node_modules/
+dist/
+dist-ssr/
+.vite/
+
+# --- local secrets / env ---
+.env
+.env.*.local
+*.local
+
+# --- runtime data ---
+# uploaded reference examples + vault content are user data, not source
+examples/
+vault/*
+!vault/README.md
+
+# --- Claude Code local ---
+.claude/settings.local.json
+
+# --- OS / editor ---
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/*
+!.vscode/extensions.json
+*.sw?
+
+# --- misc ---
+*.log
