@@ -1,10 +1,16 @@
-import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
-import './index.css'
-import App from './App.tsx'
+import { StrictMode } from "react";
+import { createRoot } from "react-dom/client";
+import { CssBaseline, ThemeProvider } from "@mui/material";
+import { getTheme, type Mode } from "./theme";
+import App from "./App.tsx";
 
-createRoot(document.getElementById('root')!).render(
+const stored = (localStorage.getItem("mode") as Mode) || "dark";
+
+createRoot(document.getElementById("root")!).render(
   <StrictMode>
-    <App />
+    <ThemeProvider theme={getTheme(stored)}>
+      <CssBaseline />
+      <App initialMode={stored} />
+    </ThemeProvider>
   </StrictMode>,
-)
+);

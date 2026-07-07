@@ -62,7 +62,7 @@ async def _resolve_project_id(name: str) -> uuid.UUID | None:
 @router.post("")
 async def upload(
     file: UploadFile = File(...),
-    project: str = Form("global"),
+    project_id: str = Form(""),
     kind: str = Form(...),
     note: str = Form(""),
 ):
@@ -70,33 +70,47 @@ async def upload(
     import os
     if kind not in _KNOWN_KINDS:
         raise HTTPException(400, f"kind must be one of {sorted(_KNOWN_KINDS)}")
-    project_id = await _resolve_project_id(project)
+    pid = _parse_project_id(project_id)
+    project_name = "global"
+    if pid is not None:
+        async with get_session_factory() as s:
+            proj = (await s.execute(select(Project).where(Project.id == pid))).scalar_one_or_none()
+        if proj is None:
+            raise HTTPException(404, "project not found")
+        project_name = proj.name
     filename = os.path.basename(file.filename or "example")
     filename = _SAFE_RE.sub("_", filename) or f"example_{uuid.uuid4().hex[:8]}"
-    dest_dir = _storage_dir(project, kind)
+    dest_dir = _storage_dir(project_name, kind)
     dest = os.path.join(dest_dir, filename)
     with open(dest, "wb") as fh:
         fh.write(await file.read())
     async with get_session_factory()() as s:
-        row = Example(project_id=project_id, kind=kind, filename=filename,
+        row = Example(project_id=pid, kind=kind, filename=filename,
                       storage_path=dest, mime=file.content_type or "", note=note)
         s.add(row)
         await s.commit()
         return _to_dict(row)
 
 
+def _parse_project_id(raw: str) -> uuid.UUID | None:
+    if not raw or raw == "global":
+        return None
+    try:
+        return uuid.UUID(raw)
+    except (ValueError, AttributeError):
+        raise HTTPException(400, "project_id must be a UUID")
+
+
 @router.get("")
-async def list_examples(project: str = "", kind: str = ""):
+async def list_examples(project_id: str = "", kind: str = ""):
     async with get_session_factory()() as s:
         q = select(Example).order_by(Example.created_at.desc())
         if kind:
             q = q.where(Example.kind == kind)
-        if project and project != "global":
-            proj = (await s.execute(select(Project).where(Project.name == project))).scalar_one_or_none()
-            if proj is None:
-                return []
-            q = q.where(Example.project_id == proj.id)
-        elif project == "global":
+        pid = _parse_project_id(project_id)
+        if pid is not None:
+            q = q.where(Example.project_id == pid)
+        elif project_id == "global":
             q = q.where(Example.project_id.is_(None))
         rows = (await s.execute(q)).scalars().all()
     return [_to_dict(e) for e in rows]

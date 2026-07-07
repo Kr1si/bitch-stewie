@@ -10,10 +10,16 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@emotion/react": "^11.14.0",
+    "@emotion/styled": "^11.14.1",
+    "@mui/icons-material": "^7.3.11",
+    "@mui/material": "^7.3.11",
+    "@mui/x-data-grid": "^7.29.13",
     "react": "^19.2.7",
     "react-dom": "^19.2.7",
     "react-drawio": "^1.0.7",
-    "react-router-dom": "^7.18.1"
+    "react-router-dom": "^7.18.1",
+    "recharts": "^3.9.2"
   },
   "devDependencies": {
     "@types/node": "^24.13.2",
