@@ -16,6 +16,7 @@ from claude_agent_sdk import (
     ClaudeAgentOptions,
     ClaudeSDKClient,
     ResultMessage,
+    SdkPluginConfig,
     TextBlock,
     ToolUseBlock,
 )
@@ -154,6 +155,27 @@ class DelegationRunner:
             logger.warning("output-style staging failed: %r", exc)
             return None  # read-only repo: run without the style
 
+    def _plugins(self) -> list[SdkPluginConfig]:
+        """Local plugins for delegated sessions (ecc, frontend-design, ...).
+
+        setting_sources=["project"] excludes user-scope config, so plugins
+        installed via `claude plugin install` would never load — they must be
+        passed explicitly. cc_plugins_dir subdirs with a plugin manifest are
+        provisioned into the image by cc-setup.sh.
+        """
+        root = self._settings.cc_plugins_dir
+        if not root:
+            return []
+        base = Path(root)
+        if not base.is_dir():
+            logger.warning("cc_plugins_dir %s does not exist; running without plugins", root)
+            return []
+        return [
+            SdkPluginConfig(type="local", path=str(p))
+            for p in sorted(base.iterdir())
+            if (p / ".claude-plugin" / "plugin.json").is_file()
+        ]
+
     def _options(
         self,
         brief: Brief,
@@ -182,6 +204,7 @@ class DelegationRunner:
             settings=self._stage_output_style(brief),
             env=env,
             mcp_servers={"assistant-memory": build_memory_server()},
+            plugins=self._plugins(),
             agents=build_subagents(),
             skills=skill_names or None,  # NAMES, staged into the target repo
             hooks=build_lifecycle_hooks(run_id, project_id=project_id),

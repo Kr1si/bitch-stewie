@@ -20,6 +20,10 @@ class Settings(BaseSettings):
     cc_model: str = "glm-5.2:cloud"
     cc_max_review_iterations: int = 3
     cc_hooks_webhook_path: str = "/api/cc-runs/hooks"
+    # Directory of local CC plugins passed to delegated sessions via the SDK
+    # (user-scope plugin installs are invisible with setting_sources=["project"]).
+    # Each subdir with .claude-plugin/plugin.json is loaded. "" = no plugins.
+    cc_plugins_dir: str = ""
 
     # --- Persistence ---
     # Host port 5433: 5432 is occupied by the local langfuse stack's Postgres.

@@ -5,8 +5,6 @@ relative paths). The web UI's "Browse..." button calls this endpoint."""
 
 import asyncio
 import threading
-import tkinter as tk
-from tkinter import filedialog
 
 from fastapi import APIRouter
 
@@ -21,7 +19,16 @@ def _pick_folder_sync(title: str = "Select project repository",
     so we run the whole create/pick/destroy sequence on its own short-lived
     thread. askdirectory runs its own modal loop and returns without needing
     root.mainloop().
+
+    Headless deployments (docker) have no display or Tk at all — there the
+    import fails and the endpoint just returns null, same as a cancel.
     """
+    try:
+        import tkinter as tk
+        from tkinter import filedialog
+    except ImportError:
+        return None
+
     box: list[str | None] = []
 
     def _run() -> None:

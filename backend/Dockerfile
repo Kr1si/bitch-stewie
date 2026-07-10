@@ -13,6 +13,11 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 
 COPY --from=ghcr.io/astral-sh/uv:0.7.13 /uv /uvx /usr/local/bin/
 
+# CC runtime provisioning: git identity for delegated commits + local plugin
+# clones under /opt/cc-plugins/enabled (see ASSISTANT_CC_PLUGINS_DIR)
+COPY cc-setup.sh /tmp/cc-setup.sh
+RUN sh /tmp/cc-setup.sh && rm /tmp/cc-setup.sh
+
 WORKDIR /app
 
 # Dependency layer first so code edits don't re-resolve the lockfile
