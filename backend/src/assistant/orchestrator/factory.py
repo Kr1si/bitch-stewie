@@ -7,7 +7,7 @@ from deepagents import create_deep_agent
 SKILLS_DIR = Path(__file__).resolve().parents[3] / "skills" / "orchestrator"
 
 from assistant.config import get_settings
-from assistant.orchestrator.artifact_tools import ARCHITECT_TOOLS, DOC_TOOLS
+from assistant.orchestrator.artifact_tools import ARCHITECT_TOOLS, DOC_TOOLS, PLANS_TOOLS
 from assistant.orchestrator.example_tools import EXAMPLE_TOOLS
 from assistant.orchestrator.research_tools import RESEARCH_TOOLS
 from assistant.orchestrator.tools import DELEGATION_TOOLS, REGISTRY_TOOLS
@@ -22,6 +22,11 @@ research, and code delegation. Principles:
 - Record significant architecture decisions with record_decision as they happen.
 - Never write application code yourself: delegate coding work to Claude Code
   via delegate_coding_task (it implements, tests, and self-reviews on a branch).
+- Record future improvements as dated plan files: when you devise an
+  improvement (especially a self-improvement to this orchestrator), write it to
+  the project's plans/ folder with write_plan so later iterations can discover
+  and act on it. Start any improvement session with list_plans to pick up
+  existing plans instead of starting from scratch. See the plan-improvement skill.
 - Use subagents for focused work; keep your own context high-level.
 - Ask before irreversible or expensive actions; delegation is milestone-gated.
 """
@@ -76,13 +81,13 @@ def build_orchestrator(checkpointer=None):
             "name": "architect",
             "description": "Architecture questions, decision log, C4 model planning.",
             "system_prompt": ARCHITECT_PROMPT,
-            "tools": REGISTRY_TOOLS + ARCHITECT_TOOLS + EXAMPLE_TOOLS,
+            "tools": REGISTRY_TOOLS + ARCHITECT_TOOLS + EXAMPLE_TOOLS + PLANS_TOOLS,
         },
         {
             "name": "doc-writer",
             "description": "Drafts Markdown documentation from registry and decisions.",
             "system_prompt": DOC_WRITER_PROMPT,
-            "tools": REGISTRY_TOOLS + DOC_TOOLS + EXAMPLE_TOOLS,
+            "tools": REGISTRY_TOOLS + DOC_TOOLS + EXAMPLE_TOOLS + PLANS_TOOLS,
         },
         {
             "name": "researcher",
@@ -102,7 +107,7 @@ def build_orchestrator(checkpointer=None):
         model=model,
         system_prompt=SYSTEM_PROMPT,
         tools=REGISTRY_TOOLS + DELEGATION_TOOLS + RESEARCH_TOOLS
-        + ARCHITECT_TOOLS + DOC_TOOLS + EXAMPLE_TOOLS,
+        + ARCHITECT_TOOLS + DOC_TOOLS + EXAMPLE_TOOLS + PLANS_TOOLS,
         subagents=subagents,
         skills=[str(SKILLS_DIR)] if SKILLS_DIR.is_dir() else None,
         # Milestone gate: delegating to Claude Code pauses for human approval.
