@@ -40,6 +40,7 @@ def create_app() -> FastAPI:
     from assistant.api.knowledge import router as knowledge_router
     from assistant.api.routers import router
     from assistant.api.stats import router as stats_router
+    from assistant.api.statusline import router as statusline_router
     from assistant.api.util import router as util_router
 
     app = FastAPI(title="Personal AI Project Assistant", lifespan=lifespan)
@@ -56,6 +57,7 @@ def create_app() -> FastAPI:
     app.include_router(knowledge_router)
     app.include_router(examples_router)
     app.include_router(stats_router)
+    app.include_router(statusline_router)
     app.include_router(util_router)
 
     @app.get("/health")

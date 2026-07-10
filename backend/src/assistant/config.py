@@ -34,6 +34,11 @@ class Settings(BaseSettings):
     api_host: str = "127.0.0.1"
     api_port: int = 8000
 
+    # --- Native CC memory bridge ---
+    # When true, record_decision/write_convention also append to the target
+    # repo's .claude/rules/*.md so CC sessions see them natively next run.
+    write_project_rules: bool = True
+
     # --- LangSmith tracing (bare LANGSMITH_* names, read from .env / env) ---
     # The tracer itself reads these from os.environ; we push them there at startup.
     langsmith_api_key: str = Field(

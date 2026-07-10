@@ -1,0 +1,99 @@
+# Production stack for krisiserver. Everything binds 127.0.0.1 — access via
+# SSH tunnel only (see docs/krisiserver.md). Dev infra stays in docker-compose.yml.
+#
+#   sudo docker compose -f docker-compose.prod.yml up -d --build
+#
+# One-time after first start (Ollama cloud sign-in, key on hand with the owner):
+#   sudo docker exec -it assistant-ollama ollama signin
+
+name: assistant-prod
+
+services:
+  postgres:
+    image: postgres:17
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: assistant
+      POSTGRES_PASSWORD: assistant
+      POSTGRES_DB: assistant
+    volumes:
+      - pg_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U assistant"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+
+  qdrant:
+    image: qdrant/qdrant:latest
+    restart: unless-stopped
+    volumes:
+      - qdrant_data:/qdrant/storage
+
+  drawio:
+    image: jgraph/drawio:latest
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:8080:8080"   # frontend embeds http://localhost:8080 (tunnel it too)
+    environment:
+      DRAWIO_SERVER_URL: "http://localhost:8080/"
+
+  ollama:
+    image: ollama/ollama:latest
+    container_name: assistant-ollama
+    restart: unless-stopped
+    volumes:
+      - ollama_data:/root/.ollama   # holds the cloud sign-in credentials
+
+  backend:
+    build: ../backend
+    restart: unless-stopped
+    depends_on:
+      postgres:
+        condition: service_healthy
+      qdrant:
+        condition: service_started
+      ollama:
+        condition: service_started
+    environment:
+      ASSISTANT_DATABASE_URL: postgresql://assistant:assistant@postgres:5432/assistant
+      ASSISTANT_QDRANT_URL: http://qdrant:6333
+      ASSISTANT_OLLAMA_BASE_URL: http://ollama:11434
+      ASSISTANT_CC_ANTHROPIC_BASE_URL: http://ollama:11434
+      ASSISTANT_API_HOST: 0.0.0.0
+    ports:
+      - "127.0.0.1:8000:8000"   # direct API access for debugging; UI goes via nginx
+    volumes:
+      - ${PROJECTS_PATH:-/home/deploy/projects}:/projects   # repos CC works on
+      - model_cache:/root/.cache                            # fastembed bge-m3 download
+
+  worker:
+    build: ../backend
+    restart: unless-stopped
+    command: ["uv", "run", "assistant", "worker"]
+    depends_on:
+      backend:
+        condition: service_started   # backend runs the migrations
+    environment:
+      ASSISTANT_DATABASE_URL: postgresql://assistant:assistant@postgres:5432/assistant
+      ASSISTANT_QDRANT_URL: http://qdrant:6333
+      ASSISTANT_OLLAMA_BASE_URL: http://ollama:11434
+      ASSISTANT_CC_ANTHROPIC_BASE_URL: http://ollama:11434
+    volumes:
+      - ${PROJECTS_PATH:-/home/deploy/projects}:/projects
+      - model_cache:/root/.cache
+
+  frontend:
+    build: ../frontend
+    restart: unless-stopped
+    depends_on:
+      backend:
+        condition: service_started
+    ports:
+      - "127.0.0.1:3000:80"     # the page: tunnel 3000 and open http://localhost:3000
+
+volumes:
+  pg_data:
+  qdrant_data:
+  ollama_data:
+  model_cache:

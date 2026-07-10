@@ -100,7 +100,8 @@ def delegate_coding_task(goal: str, repo_path: str, constraints: list[str] | Non
     """
     brief = Brief(goal=goal, repo_path=repo_path, constraints=constraints or [],
                   acceptance_criteria=acceptance_criteria or [],
-                  examples=examples or [])
+                  examples=examples or [],
+                  skills=["delegate-coding-task"])
     outcome = get_worker().delegate(brief, agent_teams=parallel)
     r = outcome.result
     return (

@@ -41,6 +41,13 @@ uv run uvicorn assistant.api.app:app --port 8000 --loop asyncio:SelectorEventLoo
 cd frontend && npm run dev                  # http://localhost:5173
 ```
 
+## Remote server (krisiserver)
+
+Personal VPS at `194.182.86.101` — the deployment target for this stack
+(docker compose, SSH-tunnel-only access). Connect as `deploy` (key-only).
+Server setup, hardening, deployment plan, and gotchas:
+[`docs/krisiserver.md`](docs/krisiserver.md).
+
 ## Model configuration
 
 Default model is `ollama:glm-5.2:cloud` everywhere (orchestrator via LangChain,

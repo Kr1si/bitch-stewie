@@ -13,7 +13,9 @@ description: How to turn user intent into a high-quality brief and delegate it t
    - **Acceptance criteria**: verifiable statements (tests pass, endpoint returns X).
 3. Call `delegate_coding_task`. Set `parallel=True` ONLY when the work splits into
    independent parts that touch different files.
-4. The delegation is milestone-gated: the user approves before it starts. After it
-   returns, report the outcome faithfully — branch, commits, tests, review verdict.
-   Never claim success when status is failed.
-5. If the result matters architecturally, record it with `record_decision`.
+4. The delegation is milestone-gated: the user approves before it starts. The
+   delegated session receives its working agreement and delivery format from the
+   `delegate-coding-task` skill staged into its repo — do not restate them in the brief.
+5. After it returns, report the outcome faithfully — branch, commits, tests,
+   review verdict. Never claim success when status is failed.
+6. If the result matters architecturally, record it with `record_decision`.

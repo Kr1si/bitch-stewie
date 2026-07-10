@@ -87,6 +87,28 @@ frontend-build:  ## production build the frontend
 test:  ## backend pytest suite
 	cd $(BACKEND_DIR) && $(UV) run pytest -q
 
+# --- deployment (krisiserver, see docs/krisiserver.md) ---
+SERVER      ?= deploy@194.182.86.101
+REMOTE_DIR  ?= bitch-stewie
+REPO_URL    ?= https://github.com/Kr1si/bitch-stewie.git
+
+deploy:  ## push main and (re)deploy the prod stack on krisiserver
+	git push origin main
+	ssh $(SERVER) 'set -e; \
+	  if [ ! -d $(REMOTE_DIR)/.git ]; then git clone $(REPO_URL) $(REMOTE_DIR); fi; \
+	  cd $(REMOTE_DIR) && git fetch origin && git reset --hard origin/main; \
+	  mkdir -p $$HOME/projects; \
+	  cd docker && sudo docker compose -f docker-compose.prod.yml up -d --build'
+
+deploy-logs:  ## tail prod stack logs on krisiserver
+	ssh $(SERVER) 'cd $(REMOTE_DIR)/docker && sudo docker compose -f docker-compose.prod.yml logs -f --tail=100'
+
+deploy-ps:  ## prod stack status on krisiserver
+	ssh $(SERVER) 'cd $(REMOTE_DIR)/docker && sudo docker compose -f docker-compose.prod.yml ps'
+
+tunnel:  ## open the SSH tunnel for the web UI (3000) + draw.io (8080)
+	ssh -L 3000:localhost:3000 -L 8080:localhost:8080 $(SERVER)
+
 # --- teardown ---
 clean:  ## stop containers and remove their volumes (DESTRUCTIVE)
 	cd $(DOCKER_DIR) && $(COMPOSE) down -v

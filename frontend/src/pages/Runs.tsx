@@ -24,12 +24,24 @@ export default function Runs() {
   const [open, setOpen] = useState(false);
   const [sel, setSel] = useState<Run | null>(null);
 
+  // lifecycle hooks write events near-real-time now: poll fast while a run is
+  // active, ease off when everything is terminal
+  const anyActive = runs.some((r) => r.status === "running" || r.status === "reviewing");
   const load = () => apiGet<Run[]>("/api/cc-runs").then(setRuns).catch(() => {});
-  usePoll(load, 10000);
+  usePoll(load, anyActive ? 2000 : 15000, [anyActive]);
+
+  const loadEvents = (id: string) =>
+    apiGet<Event[]>(`/api/cc-runs/${id}/events`).then(setEvents).catch(() => setEvents([]));
+
+  // keep the open events dialog live while its run is active
+  usePoll(
+    async () => { if (open && sel && anyActive) await loadEvents(sel.id); },
+    2000, [open, sel?.id, anyActive],
+  );
 
   const show = async (r: Run) => {
     setSel(r); setOpen(true);
-    setEvents(await apiGet<Event[]>(`/api/cc-runs/${r.id}/events`).catch(() => []));
+    await loadEvents(r.id);
   };
 
   const cols: GridColDef<Run>[] = [
