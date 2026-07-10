@@ -27,10 +27,27 @@ jobs:
       - name: Pull and rebuild stack
         run: |
           ssh deploy@194.182.86.101 'set -e
-            cd bitch-stewie
+            # Build context: pristine checkout used by `docker compose --build`.
+            # CC must never edit here or it dirties the image build.
+            cd /home/deploy/bitch-stewie
             git fetch origin
             git reset --hard origin/main
-            cd docker
+
+            # Self-rewrite target: a SEPARATE checkout that CC edits, snapped to
+            # latest main on every deploy. Mounted into the containers at
+            # /projects/bitch-stewie. In the serial human-gated loop a deploy only
+            # fires after a merge, so the session is already finished and this
+            # reset is safe. `checkout -B main origin/main` lands on main whatever
+            # branch CC left checked out; `clean -fd` drops stray untracked files.
+            if [ ! -d /home/deploy/projects/bitch-stewie/.git ]; then
+              git clone https://github.com/Kr1si/bitch-stewie.git /home/deploy/projects/bitch-stewie
+            fi
+            cd /home/deploy/projects/bitch-stewie
+            git fetch origin
+            git checkout -B main origin/main
+            git clean -fd
+
+            cd /home/deploy/bitch-stewie/docker
             sudo docker compose -f docker-compose.prod.yml up -d --build
             sudo docker image prune -f'
 

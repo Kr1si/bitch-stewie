@@ -30,5 +30,7 @@ RUN uv sync --frozen --no-dev
 ENV ASSISTANT_API_HOST=0.0.0.0
 EXPOSE 8000
 
-# Migrations run here (the worker container skips them and just waits on the API)
-CMD ["sh", "-c", "uv run alembic upgrade head && uv run uvicorn assistant.api.app:app --host 0.0.0.0 --port 8000"]
+# Migrations run here (the worker container skips them and just waits on the API).
+# `assistant seed` (idempotent) ensures built-in project presets exist, e.g. the
+# bitch-stewie self-rewrite target at /projects/bitch-stewie.
+CMD ["sh", "-c", "uv run alembic upgrade head && uv run assistant seed && uv run uvicorn assistant.api.app:app --host 0.0.0.0 --port 8000"]

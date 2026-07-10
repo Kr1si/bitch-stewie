@@ -27,6 +27,48 @@ def version() -> None:
     console.print(f"assistant {pkg_version('assistant')}")
 
 
+# Built-in project presets seeded on every backend boot (idempotent). Add a row
+# here when a project should always exist with a fixed repo_path, e.g. the
+# orchestrator's own repo so CC can self-rewrite it. Keep names unique — the
+# Project.name column is unique and create_project rejects duplicates.
+SEED_PROJECTS = [
+    {
+        "name": "bitch-stewie",
+        "description": (
+            "Self-improvement target — the orchestrator's own repo. CC edits here "
+            "on a feature branch; merge the PR -> CI redeploys -> the running "
+            "orchestrator restarts with the upgraded code."
+        ),
+        "repo_path": "/projects/bitch-stewie",
+    },
+]
+
+
+@app.command()
+def seed() -> None:
+    """Idempotently seed built-in project presets (run by the backend on boot)."""
+    from sqlalchemy import select
+
+    from assistant.memory.models import Project
+    from assistant.memory.sync_db import get_sync_session_factory
+
+    created, updated = 0, 0
+    with get_sync_session_factory()() as s:
+        for preset in SEED_PROJECTS:
+            row = s.execute(
+                select(Project).where(Project.name == preset["name"])
+            ).scalar_one_or_none()
+            if row is None:
+                s.add(Project(**preset))
+                created += 1
+            elif row.repo_path != preset["repo_path"]:
+                # Re-sync repo_path if a preset changed (e.g. mount path moved).
+                row.repo_path = preset["repo_path"]
+                updated += 1
+        s.commit()
+    console.print(f"[green]Seeded[/green] project presets: {created} new, {updated} updated.")
+
+
 @app.command()
 def delegate(
     task: str,
