@@ -30,7 +30,14 @@ Full stack runs as docker compose from `docker/docker-compose.prod.yml`
 code pulled from `https://github.com/Kr1si/bitch-stewie` (public repo).
 All published ports bind `127.0.0.1`.
 
-From the local repo:
+**CI/CD**: every push/merge to `main` auto-deploys via GitHub Actions
+(`.github/workflows/deploy.yml`) — it SSHes in as `deploy` using a dedicated
+CI keypair (`~/.ssh/krisiserver_ci` locally; private key in the
+`KRISISERVER_SSH_KEY` repo secret), pulls `origin/main`, rebuilds the stack,
+prunes dangling images, and smoke-tests `GET /api/projects` through nginx.
+Manual runs: Actions tab → "Deploy to krisiserver" → Run workflow.
+
+Manual fallbacks from the local repo:
 
 ```bash
 make deploy        # push main + git pull & compose up -d --build on the server

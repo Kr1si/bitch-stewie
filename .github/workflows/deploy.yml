@@ -1,0 +1,43 @@
+name: Deploy to krisiserver
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch: {}   # manual re-deploy from the Actions tab
+
+# Never run two deploys at once; a push during a deploy queues (not cancels)
+# so the newest commit still lands last.
+concurrency:
+  group: deploy-krisiserver
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment: krisiserver
+    steps:
+      - name: Set up SSH
+        run: |
+          mkdir -p ~/.ssh
+          printf '%s\n' "${{ secrets.KRISISERVER_SSH_KEY }}" > ~/.ssh/id_ed25519
+          chmod 600 ~/.ssh/id_ed25519
+          # Host key pinned (public info) - no TOFU against a fresh runner
+          echo "194.182.86.101 ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINfhTLkzrU1RYka6A5waaIpqITDbmirtImMcNIaH6PQW" >> ~/.ssh/known_hosts
+
+      - name: Pull and rebuild stack
+        run: |
+          ssh deploy@194.182.86.101 'set -e
+            cd bitch-stewie
+            git fetch origin
+            git reset --hard origin/main
+            cd docker
+            sudo docker compose -f docker-compose.prod.yml up -d --build
+            sudo docker image prune -f'
+
+      - name: Verify
+        run: |
+          ssh deploy@194.182.86.101 '
+            sleep 10
+            code=$(curl -sS -o /dev/null -w "%{http_code}" http://127.0.0.1:3000/api/projects)
+            echo "API through nginx: HTTP $code"
+            test "$code" = "200"'
