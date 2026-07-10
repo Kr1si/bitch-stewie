@@ -59,7 +59,12 @@ services:
       ASSISTANT_DATABASE_URL: postgresql://assistant:assistant@postgres:5432/assistant
       ASSISTANT_QDRANT_URL: http://qdrant:6333
       ASSISTANT_OLLAMA_BASE_URL: http://ollama:11434
-      ASSISTANT_CC_ANTHROPIC_BASE_URL: http://ollama:11434
+      # Claude Code provider — defaults to local Ollama. Override in docker/.env
+      # to use Z.ai or another Anthropic-compatible endpoint (see docker/.env.example).
+      ASSISTANT_CC_ANTHROPIC_BASE_URL: ${ASSISTANT_CC_ANTHROPIC_BASE_URL:-http://ollama:11434}
+      ASSISTANT_CC_ANTHROPIC_AUTH_TOKEN: ${ASSISTANT_CC_ANTHROPIC_AUTH_TOKEN:-ollama}
+      ASSISTANT_CC_MODEL: ${ASSISTANT_CC_MODEL:-glm-5.2:cloud}
+      ASSISTANT_CC_API_TIMEOUT_MS: ${ASSISTANT_CC_API_TIMEOUT_MS:-3000000}
       ASSISTANT_CC_PLUGINS_DIR: /opt/cc-plugins/enabled
       ASSISTANT_API_HOST: 0.0.0.0
     ports:
@@ -83,7 +88,10 @@ services:
       ASSISTANT_DATABASE_URL: postgresql://assistant:assistant@postgres:5432/assistant
       ASSISTANT_QDRANT_URL: http://qdrant:6333
       ASSISTANT_OLLAMA_BASE_URL: http://ollama:11434
-      ASSISTANT_CC_ANTHROPIC_BASE_URL: http://ollama:11434
+      ASSISTANT_CC_ANTHROPIC_BASE_URL: ${ASSISTANT_CC_ANTHROPIC_BASE_URL:-http://ollama:11434}
+      ASSISTANT_CC_ANTHROPIC_AUTH_TOKEN: ${ASSISTANT_CC_ANTHROPIC_AUTH_TOKEN:-ollama}
+      ASSISTANT_CC_MODEL: ${ASSISTANT_CC_MODEL:-glm-5.2:cloud}
+      ASSISTANT_CC_API_TIMEOUT_MS: ${ASSISTANT_CC_API_TIMEOUT_MS:-3000000}
       ASSISTANT_CC_PLUGINS_DIR: /opt/cc-plugins/enabled
     volumes:
       - ${PROJECTS_PATH:-/home/deploy/projects}:/projects

@@ -15,9 +15,19 @@ class Settings(BaseSettings):
     embedding_model: str = "bge-m3"
 
     # --- Claude Code bridge ---
-    # CC instances talk to Ollama's Anthropic-compatible endpoint, not Anthropic.
+    # CC instances talk to any Anthropic-Messages-compatible endpoint. Default is
+    # Ollama's; swap to Z.ai (https://api.z.ai/api/anthropic) or another provider
+    # via env without code changes. See docker/.env.example.
     cc_anthropic_base_url: str = "http://localhost:11434"
+    # Auth token sent as ANTHROPIC_AUTH_TOKEN. "ollama" for local Ollama; your
+    # provider API key (e.g. Z.ai key) otherwise.
+    cc_anthropic_auth_token: str = "ollama"
+    # Model id CC requests. For Z.ai use a Claude name (auto-mapped to GLM), e.g.
+    # "claude-sonnet-4-5"; for Ollama use the pulled tag, e.g. "glm-5.2:cloud".
     cc_model: str = "glm-5.2:cloud"
+    # Request timeout (ms). Z.ai/GLM is slower than local Ollama — 3000000 (3000s)
+    # per the Z.ai Claude Code docs; harmless as a ceiling for Ollama.
+    cc_api_timeout_ms: str = "3000000"
     cc_max_review_iterations: int = 3
     cc_hooks_webhook_path: str = "/api/cc-runs/hooks"
     # Directory of local CC plugins passed to delegated sessions via the SDK

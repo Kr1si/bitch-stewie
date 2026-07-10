@@ -186,7 +186,8 @@ class DelegationRunner:
     ) -> ClaudeAgentOptions:
         env = {
             "ANTHROPIC_BASE_URL": self._settings.cc_anthropic_base_url,
-            "ANTHROPIC_AUTH_TOKEN": "ollama",
+            "ANTHROPIC_AUTH_TOKEN": self._settings.cc_anthropic_auth_token,
+            "API_TIMEOUT_MS": self._settings.cc_api_timeout_ms,
             "CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC": "1",
         }
         if agent_teams:
