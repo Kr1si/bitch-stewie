@@ -23,12 +23,15 @@ def search_knowledge(query: str, project: str = "") -> str:
     )
 
 
-@tool
-def deep_research(question: str, project: str = "") -> str:
-    """Run deep web research with citations via Claude Code's native /deep-research skill.
+def run_deep_research(question: str, project: str = "") -> str:
+    """Run deep web research via Claude Code's native /deep-research skill.
 
-    Long-running (minutes). The resulting report is ingested into the knowledge
-    base automatically so future questions can reuse it.
+    Synchronous and long-running (minutes): the CC worker blocks the calling
+    thread, so callers on an event loop must dispatch this to a threadpool
+    (e.g. ``asyncio.to_thread``). The resulting report is ingested into the
+    knowledge base automatically so future questions can reuse it.
+
+    Returns the full Markdown report (empty string if CC produced nothing).
     """
     workdir = tempfile.mkdtemp(prefix="deep-research-")
     prompt = (
@@ -40,6 +43,17 @@ def deep_research(question: str, project: str = "") -> str:
     if report.strip():
         ingest_text(report, source=f"deep-research:{question[:80]}",
                     project=project or None, kind="research")
+    return report
+
+
+@tool
+def deep_research(question: str, project: str = "") -> str:
+    """Run deep web research with citations via Claude Code's native /deep-research skill.
+
+    Long-running (minutes). The resulting report is ingested into the knowledge
+    base automatically so future questions can reuse it.
+    """
+    report = run_deep_research(question, project=project)
     return report[:6000] if report.strip() else "Research returned no content."
 
 

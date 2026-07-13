@@ -122,3 +122,66 @@ export async function streamChat(
   }
   if (buffer.trim()) dispatch();
 }
+
+export type ResearchHandlers = {
+  onStart?: (goal: string) => void;
+  onDone?: (report: string) => void;
+  onError?: (error: string) => void;
+};
+
+/**
+ * POST an SSE stream for the /api/research/deep/stream endpoint. Parses the
+ * text/event-stream body and dispatches start/done/error events.
+ */
+export async function streamResearch(
+  url: string,
+  body: unknown,
+  handlers: ResearchHandlers,
+  signal?: AbortSignal,
+): Promise<void> {
+  const resp = await fetch(`${API_BASE}${url}`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json", Accept: "text/event-stream" },
+    body: JSON.stringify(body),
+    signal,
+  });
+  if (!resp.ok || !resp.body) throw await parseErr(resp, "POST", url);
+
+  const reader = resp.body.getReader();
+  const decoder = new TextDecoder();
+  let buffer = "";
+  let event = "message";
+
+  const handleEvent = (ev: string, data: string) => {
+    let payload: any = {};
+    try { payload = JSON.parse(data); } catch { payload = { raw: data }; }
+    if (ev === "start") handlers.onStart?.(payload.goal ?? "");
+    else if (ev === "done") handlers.onDone?.(payload.report ?? "");
+    else if (ev === "error") handlers.onError?.(payload.error ?? "research failed");
+  };
+
+  const dispatch = () => {
+    const lines = buffer.split("\n");
+    buffer = "";
+    let dataLines: string[] = [];
+    for (const line of lines) {
+      if (line.startsWith("event:")) event = line.slice(6).trim();
+      else if (line.startsWith("data:")) dataLines.push(line.slice(5).trim());
+      else if (line === "") {
+        if (dataLines.length) {
+          handleEvent(event, dataLines.join("\n"));
+          dataLines = [];
+          event = "message";
+        }
+      }
+    }
+  };
+
+  while (true) {
+    const { done, value } = await reader.read();
+    if (done) break;
+    buffer += decoder.decode(value, { stream: true });
+    if (buffer.includes("\n\n")) dispatch();
+  }
+  if (buffer.trim()) dispatch();
+}
