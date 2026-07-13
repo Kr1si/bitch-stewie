@@ -1,5 +1,6 @@
 """Researcher tools: local knowledge base + native /deep-research via Claude Code."""
 
+import shutil
 import tempfile
 
 from langchain_core.tools import tool
@@ -34,16 +35,20 @@ def run_deep_research(question: str, project: str = "") -> str:
     Returns the full Markdown report (empty string if CC produced nothing).
     """
     workdir = tempfile.mkdtemp(prefix="deep-research-")
-    prompt = (
-        f"/deep-research {question}\n\n"
-        "Produce a concise, well-cited report in Markdown. Do not ask clarifying "
-        "questions - make reasonable assumptions and state them."
-    )
-    report = get_worker().run_prompt(prompt, cwd=workdir)
-    if report.strip():
-        ingest_text(report, source=f"deep-research:{question[:80]}",
-                    project=project or None, kind="research")
-    return report
+    try:
+        prompt = (
+            f"/deep-research {question}\n\n"
+            "Produce a concise, well-cited report in Markdown. Do not ask clarifying "
+            "questions - make reasonable assumptions and state them."
+        )
+        report = get_worker().run_prompt(prompt, cwd=workdir)
+        if report.strip():
+            ingest_text(report, source=f"deep-research:{question[:80]}",
+                        project=project or None, kind="research")
+        return report
+    finally:
+        # the CC session is done once run_prompt returns; free the scratch dir
+        shutil.rmtree(workdir, ignore_errors=True)
 
 
 @tool
