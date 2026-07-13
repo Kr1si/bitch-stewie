@@ -32,7 +32,8 @@ RUN uv sync --frozen --no-dev
 # writes into the bind-mounted /projects on the host. UID/GID 1001 matches
 # `deploy` on krisiserver so bind-mount ownership lines up either way.
 RUN groupadd -g 1001 assistant && useradd -m -u 1001 -g 1001 assistant \
-    && chown -R assistant:assistant /app /opt/cc-plugins
+    && chown -R assistant:assistant /app /opt/cc-plugins \
+    && mkdir -p /home/assistant/.cache && chown -R assistant:assistant /home/assistant/.cache
 USER assistant
 
 ENV ASSISTANT_API_HOST=0.0.0.0
