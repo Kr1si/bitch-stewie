@@ -43,9 +43,9 @@ jobs:
               git clone https://github.com/Kr1si/bitch-stewie.git /home/deploy/projects/bitch-stewie
             fi
             # The worker container runs CC sessions as root, so files it writes
-            # into this bind mount are root-owned on the host and `deploy` can't
+            # into this bind mount are root-owned on the host and deploy cannot
             # git-clean them - reclaim ownership first or the reset silently
-            # aborts the whole deploy under `set -e`.
+            # aborts the whole deploy under set -e.
             sudo chown -R deploy:deploy /home/deploy/projects/bitch-stewie
             cd /home/deploy/projects/bitch-stewie
             git fetch origin
