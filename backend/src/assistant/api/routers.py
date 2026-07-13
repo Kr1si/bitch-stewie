@@ -12,6 +12,34 @@ from assistant.memory.models import Approval, CCRun, CCRunEvent, Decision, Proje
 router = APIRouter(prefix="/api")
 
 
+class RunIn(BaseModel):
+    goal: str
+    project_id: uuid.UUID
+    constraints: list[str] = []
+    acceptance_criteria: list[str] = []
+    parallel: bool = False
+
+
+@router.post("/cc-runs", status_code=202)
+async def start_run(body: RunIn):
+    """Enqueue a delegation on the worker queue; the Runs UI picks it up by polling."""
+    from assistant.jobs.queue import delegate_brief
+
+    async with get_session_factory()() as s:
+        project = await s.get(Project, body.project_id)
+        if project is None:
+            raise HTTPException(404, "project not found")
+        if not project.repo_path:
+            raise HTTPException(422, f"project '{project.name}' has no repo_path configured")
+
+    job = delegate_brief.defer(
+        goal=body.goal, repo_path=project.repo_path,
+        constraints=body.constraints, acceptance_criteria=body.acceptance_criteria,
+        parallel=body.parallel,
+    )
+    return {"job_id": job.id}
+
+
 class ProjectIn(BaseModel):
     name: str
     description: str = ""

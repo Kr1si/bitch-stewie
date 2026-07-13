@@ -49,7 +49,10 @@ jobs:
 
             cd /home/deploy/bitch-stewie/docker
             sudo docker compose -f docker-compose.prod.yml up -d --build
-            sudo docker image prune -f'
+            sudo docker image prune -f
+            # idempotent: (re)syncs the built-in Project presets (bitch-stewie
+            # self-improvement target etc.) after every deploy
+            sudo docker compose -f docker-compose.prod.yml exec -T backend uv run assistant seed'
 
       - name: Verify
         run: |

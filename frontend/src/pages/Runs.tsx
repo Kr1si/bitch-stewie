@@ -1,10 +1,11 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
-  Box, Button, Chip, Dialog, DialogContent, DialogTitle, IconButton, Stack, Typography,
+  Alert, Box, Button, Chip, Dialog, DialogContent, DialogTitle, IconButton,
+  MenuItem, Paper, Stack, TextField, Typography,
 } from "@mui/material";
 import { DataGrid, type GridColDef } from "@mui/x-data-grid";
 import CloseIcon from "@mui/icons-material/Close";
-import { apiGet } from "../lib/api";
+import { apiGet, apiPost } from "../lib/api";
 import { usePoll } from "../hooks/usePoll";
 
 type Run = {
@@ -12,11 +13,72 @@ type Run = {
   review_iterations: number; result: Record<string, unknown>; created_at: string;
 };
 type Event = { type: string; payload: Record<string, unknown>; at: string };
+type ProjectOpt = { id: string; name: string; repo_path: string | null };
 
 const STATUS_COLOR: Record<string, "warning" | "info" | "success" | "error" | "default"> = {
   queued: "default", running: "info", reviewing: "warning",
   succeeded: "success", failed: "error", aborted: "error",
 };
+
+function StartRunForm({ onStarted }: { onStarted: () => void }) {
+  const [projects, setProjects] = useState<ProjectOpt[]>([]);
+  const [projectId, setProjectId] = useState("");
+  const [goal, setGoal] = useState("");
+  const [busy, setBusy] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    apiGet<ProjectOpt[]>("/api/projects").then((rows) => {
+      setProjects(rows);
+      // bitch-stewie is seeded as a project preset so self-improvement runs
+      // are the default target; fall back to the first project otherwise.
+      const stewie = rows.find((p) => p.name === "bitch-stewie");
+      setProjectId((stewie ?? rows[0])?.id ?? "");
+    }).catch(() => {});
+  }, []);
+
+  const start = async () => {
+    if (!projectId || !goal.trim()) return;
+    setBusy(true); setError(null);
+    try {
+      await apiPost("/api/cc-runs", { project_id: projectId, goal: goal.trim() });
+      setGoal("");
+      onStarted();
+    } catch (e) {
+      setError(e instanceof Error ? e.message : String(e));
+    } finally {
+      setBusy(false);
+    }
+  };
+
+  return (
+    <Paper sx={{ p: 2, mb: 2 }}>
+      <Stack direction={{ xs: "column", sm: "row" }} spacing={2} alignItems={{ sm: "flex-start" }}>
+        <TextField
+          select label="Project" value={projectId} onChange={(e) => setProjectId(e.target.value)}
+          sx={{ minWidth: 220 }} size="small"
+        >
+          {projects.map((p) => (
+            <MenuItem key={p.id} value={p.id} disabled={!p.repo_path}>
+              {p.name}{!p.repo_path ? " (no repo_path)" : ""}
+            </MenuItem>
+          ))}
+        </TextField>
+        <TextField
+          label="Goal" placeholder="e.g. add a dark mode toggle to the settings page"
+          value={goal} onChange={(e) => setGoal(e.target.value)}
+          fullWidth multiline minRows={1} size="small"
+          onKeyDown={(e) => { if (e.key === "Enter" && !e.shiftKey) { e.preventDefault(); start(); } }}
+        />
+        <Button variant="contained" onClick={start} disabled={busy || !projectId || !goal.trim()}
+          sx={{ whiteSpace: "nowrap" }}>
+          {busy ? "Starting..." : "Run"}
+        </Button>
+      </Stack>
+      {error && <Alert severity="error" sx={{ mt: 1 }}>{error}</Alert>}
+    </Paper>
+  );
+}
 
 export default function Runs() {
   const [runs, setRuns] = useState<Run[]>([]);
@@ -62,6 +124,7 @@ export default function Runs() {
   return (
     <Box>
       <Typography variant="h5" sx={{ mb: 2, fontWeight: 700 }}>Claude Code Runs</Typography>
+      <StartRunForm onStarted={load} />
       <Box sx={{ height: 560, width: "100%", bgcolor: "background.paper" }}>
         <DataGrid
           rows={runs} columns={cols} getRowId={(r) => r.id}

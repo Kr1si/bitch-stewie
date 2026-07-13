@@ -98,7 +98,9 @@ deploy:  ## push main and (re)deploy the prod stack on krisiserver
 	  if [ ! -d $(REMOTE_DIR)/.git ]; then git clone $(REPO_URL) $(REMOTE_DIR); fi; \
 	  cd $(REMOTE_DIR) && git fetch origin && git reset --hard origin/main; \
 	  mkdir -p $$HOME/projects; \
-	  cd docker && sudo docker compose -f docker-compose.prod.yml up -d --build'
+	  if [ ! -d $$HOME/projects/bitch-stewie/.git ]; then git clone $(REPO_URL) $$HOME/projects/bitch-stewie; fi; \
+	  cd docker && sudo docker compose -f docker-compose.prod.yml up -d --build; \
+	  sudo docker compose -f docker-compose.prod.yml exec -T backend uv run assistant seed'
 
 deploy-logs:  ## tail prod stack logs on krisiserver
 	ssh $(SERVER) 'cd $(REMOTE_DIR)/docker && sudo docker compose -f docker-compose.prod.yml logs -f --tail=100'
