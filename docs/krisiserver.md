@@ -57,7 +57,12 @@ make tunnel        # SSH tunnel: UI on http://localhost:3000, draw.io on 8080
   (`glm-5.2:cloud` relays through it):
   `sudo docker exec -it assistant-ollama ollama signin`
 - Delegated repos live in `/home/deploy/projects` on the host, mounted at
-  `/projects` in the backend and worker containers.
+  `/projects` in the backend and worker containers. **CC sessions run as
+  root inside the worker container**, so files they write land root-owned on
+  the host — `deploy`'s `git clean -fd` on `~/projects/bitch-stewie` fails on
+  those and (under `set -e`) silently aborts the whole deploy. Both `make
+  deploy` and the CI workflow `chown -R deploy:deploy` that checkout before
+  touching it; do the same manually if you ever run `git clean` there by hand.
 - Fresh databases — nothing migrated from the local dev machine.
 - OpenHands was trialled here and **removed** (2026-07-10) — it couldn't act
   as the Flow Manager because it can't spawn real Claude Code instances; our

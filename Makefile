@@ -99,6 +99,7 @@ deploy:  ## push main and (re)deploy the prod stack on krisiserver
 	  cd $(REMOTE_DIR) && git fetch origin && git reset --hard origin/main; \
 	  mkdir -p $$HOME/projects; \
 	  if [ ! -d $$HOME/projects/bitch-stewie/.git ]; then git clone $(REPO_URL) $$HOME/projects/bitch-stewie; fi; \
+	  sudo chown -R deploy:deploy $$HOME/projects/bitch-stewie; \
 	  cd docker && sudo docker compose -f docker-compose.prod.yml up -d --build; \
 	  sudo docker compose -f docker-compose.prod.yml exec -T backend uv run assistant seed'
 
