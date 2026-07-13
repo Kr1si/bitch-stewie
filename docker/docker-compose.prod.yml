@@ -71,7 +71,7 @@ services:
       - "127.0.0.1:8000:8000"   # direct API access for debugging; UI goes via nginx
     volumes:
       - ${PROJECTS_PATH:-/home/deploy/projects}:/projects   # repos CC works on
-      - model_cache:/root/.cache                            # fastembed bge-m3 download
+      - model_cache:/home/assistant/.cache                            # fastembed bge-m3 download
 
   worker:
     build: ../backend
@@ -95,7 +95,7 @@ services:
       ASSISTANT_CC_PLUGINS_DIR: /opt/cc-plugins/enabled
     volumes:
       - ${PROJECTS_PATH:-/home/deploy/projects}:/projects
-      - model_cache:/root/.cache
+      - model_cache:/home/assistant/.cache
 
   frontend:
     build: ../frontend

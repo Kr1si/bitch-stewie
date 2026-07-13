@@ -4,11 +4,13 @@
 set -eu
 
 # Commits CC makes in delegated repos need an identity; mounted repos are
-# owned by the host user, so trust all paths.
-git config --global user.name  "bitch-stewie"
-git config --global user.email "assistant@krisiserver"
-git config --global --add safe.directory '*'
-git config --global init.defaultBranch main
+# owned by the host user, so trust all paths. System-wide (not --global):
+# this script runs as root at build time, before the non-root runtime user
+# is created and its $HOME exists.
+git config --system user.name  "bitch-stewie"
+git config --system user.email "assistant@krisiserver"
+git config --system --add safe.directory '*'
+git config --system init.defaultBranch main
 
 # Plugins for delegated sessions. The runner passes every subdir of $ENABLED
 # that has a .claude-plugin/plugin.json via the SDK plugins= option — plugin
