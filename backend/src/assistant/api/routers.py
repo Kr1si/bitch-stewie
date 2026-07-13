@@ -32,12 +32,12 @@ async def start_run(body: RunIn):
         if not project.repo_path:
             raise HTTPException(422, f"project '{project.name}' has no repo_path configured")
 
-    job = delegate_brief.defer(
+    job_id = delegate_brief.defer(
         goal=body.goal, repo_path=project.repo_path,
         constraints=body.constraints, acceptance_criteria=body.acceptance_criteria,
         parallel=body.parallel,
     )
-    return {"job_id": job.id}
+    return {"job_id": job_id}
 
 
 class ProjectIn(BaseModel):
