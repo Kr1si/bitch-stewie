@@ -21,6 +21,7 @@ from langgraph.checkpoint.postgres.aio import AsyncPostgresSaver
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
+    from assistant.jobs.queue import app as job_app
     from assistant.orchestrator.factory import build_orchestrator
 
     settings = get_settings()
@@ -28,7 +29,10 @@ async def lifespan(app: FastAPI):
         await checkpointer.setup()
         app.state.checkpointer = checkpointer
         app.state.orchestrator = build_orchestrator(checkpointer=checkpointer)
-        yield
+        # .defer() needs the connector pool open; the API only enqueues jobs,
+        # the separate worker container is what runs() them.
+        with job_app.open():
+            yield
 
 
 def create_app() -> FastAPI:
