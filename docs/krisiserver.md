@@ -63,6 +63,15 @@ make tunnel        # SSH tunnel: UI on http://localhost:3000, draw.io on 8080
   those and (under `set -e`) silently aborts the whole deploy. Both `make
   deploy` and the CI workflow `chown -R deploy:deploy` that checkout before
   touching it; do the same manually if you ever run `git clean` there by hand.
+- The worker container has no SSH client/key by default, so delegated `git
+  push` from inside a CC session used to fail (`cannot run ssh`, then the
+  HTTPS fallback fails with no stored credentials) even though `deploy`'s own
+  `git push` on the host works fine — the container is a separate filesystem
+  namespace from the host shell and doesn't inherit `deploy`'s
+  `~/.ssh/id_ed25519` or agent. Fixed by installing `openssh-client` in the
+  backend image and bind-mounting `deploy`'s key read-only into the worker
+  service (`GIT_SSH_COMMAND` + `DEPLOY_SSH_KEY` in docker-compose.prod.yml /
+  docker/.env.example).
 - Fresh databases — nothing migrated from the local dev machine.
 - OpenHands was trialled here and **removed** (2026-07-10) — it couldn't act
   as the Flow Manager because it can't spawn real Claude Code instances; our

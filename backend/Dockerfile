@@ -3,9 +3,11 @@
 
 FROM python:3.12-slim
 
-# git: CC sessions commit in delegated repos. Node 22: runtime for the CC CLI.
+# git: CC sessions commit in delegated repos. openssh-client: git push over
+# SSH to github.com (worker mounts deploy's key, see docker-compose.prod.yml).
+# Node 22: runtime for the CC CLI.
 RUN apt-get update && apt-get install -y --no-install-recommends \
-        ca-certificates curl git \
+        ca-certificates curl git openssh-client \
     && curl -fsSL https://deb.nodesource.com/setup_22.x | bash - \
     && apt-get install -y --no-install-recommends nodejs \
     && npm install -g @anthropic-ai/claude-code \
