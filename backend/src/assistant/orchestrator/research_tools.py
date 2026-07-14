@@ -1,5 +1,6 @@
 """Researcher tools: local knowledge base + native /deep-research via Claude Code."""
 
+import shutil
 import tempfile
 
 from langchain_core.tools import tool
@@ -23,6 +24,33 @@ def search_knowledge(query: str, project: str = "") -> str:
     )
 
 
+def run_deep_research(question: str, project: str = "") -> str:
+    """Run deep web research via Claude Code's native /deep-research skill.
+
+    Synchronous and long-running (minutes): the CC worker blocks the calling
+    thread, so callers on an event loop must dispatch this to a threadpool
+    (e.g. ``asyncio.to_thread``). The resulting report is ingested into the
+    knowledge base automatically so future questions can reuse it.
+
+    Returns the full Markdown report (empty string if CC produced nothing).
+    """
+    workdir = tempfile.mkdtemp(prefix="deep-research-")
+    try:
+        prompt = (
+            f"/deep-research {question}\n\n"
+            "Produce a concise, well-cited report in Markdown. Do not ask clarifying "
+            "questions - make reasonable assumptions and state them."
+        )
+        report = get_worker().run_prompt(prompt, cwd=workdir)
+        if report.strip():
+            ingest_text(report, source=f"deep-research:{question[:80]}",
+                        project=project or None, kind="research")
+        return report
+    finally:
+        # the CC session is done once run_prompt returns; free the scratch dir
+        shutil.rmtree(workdir, ignore_errors=True)
+
+
 @tool
 def deep_research(question: str, project: str = "") -> str:
     """Run deep web research with citations via Claude Code's native /deep-research skill.
@@ -30,16 +58,7 @@ def deep_research(question: str, project: str = "") -> str:
     Long-running (minutes). The resulting report is ingested into the knowledge
     base automatically so future questions can reuse it.
     """
-    workdir = tempfile.mkdtemp(prefix="deep-research-")
-    prompt = (
-        f"/deep-research {question}\n\n"
-        "Produce a concise, well-cited report in Markdown. Do not ask clarifying "
-        "questions - make reasonable assumptions and state them."
-    )
-    report = get_worker().run_prompt(prompt, cwd=workdir)
-    if report.strip():
-        ingest_text(report, source=f"deep-research:{question[:80]}",
-                    project=project or None, kind="research")
+    report = run_deep_research(question, project=project)
     return report[:6000] if report.strip() else "Research returned no content."
 
 

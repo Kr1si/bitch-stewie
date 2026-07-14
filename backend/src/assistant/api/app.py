@@ -42,6 +42,7 @@ def create_app() -> FastAPI:
     from assistant.api.diagrams import router as diagrams_router
     from assistant.api.examples import router as examples_router
     from assistant.api.knowledge import router as knowledge_router
+    from assistant.api.research import router as research_router
     from assistant.api.routers import router
     from assistant.api.stats import router as stats_router
     from assistant.api.statusline import router as statusline_router
@@ -59,6 +60,7 @@ def create_app() -> FastAPI:
     app.include_router(chat_router)
     app.include_router(diagrams_router)
     app.include_router(knowledge_router)
+    app.include_router(research_router)
     app.include_router(examples_router)
     app.include_router(stats_router)
     app.include_router(statusline_router)
