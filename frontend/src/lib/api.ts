@@ -54,6 +54,7 @@ export type StreamHandlers = {
   onTool?: (calls: { name: string }[]) => void;
   onInterrupt?: (interrupt: { requests: unknown[] } | null) => void;
   onDone?: (reply: string) => void;
+  onError?: (error: string) => void;
 };
 
 /**
@@ -111,6 +112,8 @@ export async function streamChat(
       if (payload.reply) fullText = payload.reply;
       handlers.onInterrupt?.(null);
       handlers.onDone?.(fullText);
+    } else if (ev === "error") {
+      handlers.onError?.(payload.error || "Something went wrong.");
     }
   };
 

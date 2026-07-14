@@ -59,6 +59,12 @@ services:
       ASSISTANT_DATABASE_URL: postgresql://assistant:assistant@postgres:5432/assistant
       ASSISTANT_QDRANT_URL: http://qdrant:6333
       ASSISTANT_OLLAMA_BASE_URL: http://ollama:11434
+      # The orchestrator/planner's chat model (ChatOllama, resolved via
+      # init_chat_model("ollama:...")) reads OLLAMA_HOST directly, not
+      # ASSISTANT_OLLAMA_BASE_URL - without this it defaults to
+      # 127.0.0.1:11434 inside the container and every chat call fails with
+      # "All connection attempts failed".
+      OLLAMA_HOST: http://ollama:11434
       # Claude Code provider — defaults to local Ollama. Override in docker/.env
       # to use Z.ai or another Anthropic-compatible endpoint (see docker/.env.example).
       ASSISTANT_CC_ANTHROPIC_BASE_URL: ${ASSISTANT_CC_ANTHROPIC_BASE_URL:-http://ollama:11434}
@@ -88,6 +94,9 @@ services:
       ASSISTANT_DATABASE_URL: postgresql://assistant:assistant@postgres:5432/assistant
       ASSISTANT_QDRANT_URL: http://qdrant:6333
       ASSISTANT_OLLAMA_BASE_URL: http://ollama:11434
+      # see the backend service's comment above: ChatOllama reads this env
+      # var directly, not ASSISTANT_OLLAMA_BASE_URL.
+      OLLAMA_HOST: http://ollama:11434
       ASSISTANT_CC_ANTHROPIC_BASE_URL: ${ASSISTANT_CC_ANTHROPIC_BASE_URL:-http://ollama:11434}
       ASSISTANT_CC_ANTHROPIC_AUTH_TOKEN: ${ASSISTANT_CC_ANTHROPIC_AUTH_TOKEN:-ollama}
       ASSISTANT_CC_MODEL: ${ASSISTANT_CC_MODEL:-glm-5.2:cloud}

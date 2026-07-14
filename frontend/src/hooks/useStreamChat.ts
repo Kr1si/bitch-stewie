@@ -28,12 +28,21 @@ export function useStreamChat() {
         onTool: (calls) => { setTools((prev) => [...prev, ...calls]); handlers.onTool?.(calls); },
         onInterrupt: (i) => { if (i) setGate(i); handlers.onInterrupt?.(i); },
         onDone: (reply) => { setGate(null); setBusy(false); handlers.onDone?.(reply); },
+        onError: (error) => { setGate(null); setBusy(false); handlers.onError?.(error); },
       };
-      // busy is cleared in onDone; on error, clear it here
+      // Network-level failure (fetch rejected or reader threw mid-stream): route
+      // it through onError too so there's one consistent error surface, instead
+      // of the old onDone("") fallback that left an empty assistant bubble next
+      // to the caller's own Error bubble. Only re-throw if the caller didn't
+      // wire onError, preserving the pre-refactor contract for them.
       return streamChat(url, body, wrapped).catch((e) => {
         setBusy(false);
-        handlers.onDone?.("");
-        throw e;
+        if (handlers.onError) {
+          handlers.onError(String(e));
+        } else {
+          handlers.onDone?.("");
+          throw e;
+        }
       });
     },
     [],

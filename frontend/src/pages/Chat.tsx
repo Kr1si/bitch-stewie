@@ -60,6 +60,10 @@ export default function Chat() {
         // capture the thread id for subsequent turns via a re-fetch of sessions
         apiGet<Session[]>("/api/chat/sessions").then(setSessions).catch(() => {});
       },
+      onError: (error) => {
+        setMessages((p) => [...p, { role: "assistant", text: `Error: ${error}` }]);
+        setDraftText("");
+      },
     }).catch((e) => {
       setMessages((p) => [...p, { role: "assistant", text: `Error: ${String(e)}` }]);
       setDraftText("");
