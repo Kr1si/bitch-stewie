@@ -4,30 +4,28 @@ import re
 from datetime import datetime
 from pathlib import Path
 
+from langchain_core.runnables import RunnableConfig
 from langchain_core.tools import tool
-from sqlalchemy import select
 
 from assistant.diagrams.likec4 import export_drawio, find_model_dir
 from assistant.docs_gen.pandoc import export_markdown
-from assistant.memory.models import Project
-from assistant.memory.sync_db import get_sync_session_factory
+from assistant.orchestrator.context import current_project
 
 
-def _project_repo(project: str) -> str | None:
-    with get_sync_session_factory()() as s:
-        row = s.execute(select(Project).where(Project.name == project)).scalar_one_or_none()
-        return row.repo_path if row else None
+def _project(config: RunnableConfig):
+    return current_project(config)
 
 
 @tool
-def update_diagrams(project: str) -> str:
+def update_diagrams(*, config: RunnableConfig) -> str:
     """Regenerate draw.io diagrams from the project's LikeC4 model (source of truth).
 
     Exports every LikeC4 view to .drawio files under <repo>/diagrams/.
     """
-    repo = _project_repo(project)
+    proj = _project(config)
+    repo = proj.repo_path
     if not repo:
-        return f"Project '{project}' has no registered repo path."
+        return f"Project '{proj.name}' has no registered repo path."
     model_dir = find_model_dir(repo)
     if model_dir is None:
         return (f"No .likec4/.c4 model found in {repo}. Create the model first "
@@ -39,15 +37,15 @@ def update_diagrams(project: str) -> str:
 
 
 @tool
-def export_document(markdown: str, filename: str, project: str = "", title: str = "") -> str:
+def export_document(markdown: str, filename: str, title: str = "", *, config: RunnableConfig) -> str:
     """Export markdown content as a .docx or .pdf deliverable.
 
     filename must end with .docx or .pdf; the file lands in the project repo's
-    docs/ folder (or the current directory if no project repo is registered).
+    docs/ folder (or the current directory if the project has no repo path).
     """
     if not filename.endswith((".docx", ".pdf", ".html")):
         return "filename must end with .docx, .pdf or .html"
-    base = _project_repo(project) if project else None
+    base = _project(config).repo_path
     out = (Path(base) / "docs" / filename) if base else Path("docs") / filename
     result = export_markdown(markdown, out, title=title)
     return f"Written: {result['path']}" if result["ok"] else f"Export failed: {result['stderr']}"
@@ -69,7 +67,7 @@ def _plan_status(path: Path) -> str:
 
 
 @tool
-def write_plan(project: str, slug: str, markdown: str, status: str = "proposed") -> str:
+def write_plan(slug: str, markdown: str, status: str = "proposed", *, config: RunnableConfig) -> str:
     """Write a future-improvement plan as a dated markdown file in the project's plans/ folder.
 
     Use this whenever you devise a plan for a future improvement — especially
@@ -81,9 +79,10 @@ def write_plan(project: str, slug: str, markdown: str, status: str = "proposed")
 
     status is one of: proposed | in_progress | done | dropped.
     """
-    repo = _project_repo(project)
+    proj = _project(config)
+    repo = proj.repo_path
     if not repo:
-        return f"Project '{project}' has no registered repo path."
+        return f"Project '{proj.name}' has no registered repo path."
     if status not in {"proposed", "in_progress", "done", "dropped"}:
         return f"invalid status '{status}' (use proposed|in_progress|done|dropped)"
     plans_dir = Path(repo) / "plans"
@@ -95,7 +94,7 @@ def write_plan(project: str, slug: str, markdown: str, status: str = "proposed")
         "---\n"
         f"status: {status}\n"
         f"created: {date}\n"
-        f"project: {project}\n"
+        f"project: {proj.name}\n"
         "---\n\n"
     )
     path.write_text(header + markdown, encoding="utf-8")
@@ -103,16 +102,17 @@ def write_plan(project: str, slug: str, markdown: str, status: str = "proposed")
 
 
 @tool
-def list_plans(project: str) -> str:
+def list_plans(*, config: RunnableConfig) -> str:
     """List future-improvement plans in the project's plans/ folder with their status.
 
     Call this at the start of an improvement session to discover plans already
     recorded so you can iterate on them. Plans are dated markdown files; the
     status comes from each file's frontmatter (proposed|in_progress|done|dropped).
     """
-    repo = _project_repo(project)
+    proj = _project(config)
+    repo = proj.repo_path
     if not repo:
-        return f"Project '{project}' has no registered repo path."
+        return f"Project '{proj.name}' has no registered repo path."
     plans_dir = Path(repo) / "plans"
     if not plans_dir.is_dir():
         return f"No plans/ folder in {repo}."

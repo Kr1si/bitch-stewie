@@ -42,13 +42,13 @@ export default function Chat() {
   };
 
   const send = async () => {
-    if (!input.trim() || busy) return;
+    if (!input.trim() || busy || !projectId) return;
     const text = input.trim();
     setInput("");
     setMessages((p) => [...p, { role: "user", text }]);
     setDraftText("");
 
-    await run("/api/chat/stream", { message: text, thread_id: threadId }, {
+    await run("/api/chat/stream", { message: text, project_id: projectId, thread_id: threadId }, {
       onToken: (t) => setDraftText((p) => p + t),
       onDone: (reply) => {
         setMessages((p) => [...p, { role: "assistant", text: reply }]);
@@ -100,10 +100,9 @@ export default function Chat() {
 
       <Stack direction="column" spacing={1} sx={{ flex: 1, minWidth: 0 }}>
         <Stack direction="row" spacing={1} alignItems="center">
-          <FormControl size="small" sx={{ minWidth: 200 }}>
-            <InputLabel>Project (optional)</InputLabel>
-            <Select value={projectId} label="Project (optional)" onChange={(e) => setProjectId(e.target.value)}>
-              <MenuItem value=""><em>none</em></MenuItem>
+          <FormControl size="small" sx={{ minWidth: 200 }} required error={!projectId}>
+            <InputLabel>Project</InputLabel>
+            <Select value={projectId} label="Project" onChange={(e) => setProjectId(e.target.value)}>
               {projects.map((p) => <MenuItem key={p.id} value={p.id}>{p.name}</MenuItem>)}
             </Select>
           </FormControl>
@@ -142,13 +141,14 @@ export default function Chat() {
 
         <Stack direction="row" spacing={1}>
           <TextField
-            fullWidth size="small" placeholder="Ask the orchestrator…"
+            fullWidth size="small"
+            placeholder={projectId ? "Ask the orchestrator…" : "Pick a project first"}
             value={input}
             onChange={(e) => setInput(e.target.value)}
             onKeyDown={(e) => e.key === "Enter" && send()}
-            disabled={busy}
+            disabled={busy || !projectId}
           />
-          <Button variant="contained" onClick={send} disabled={busy || !input.trim()}>Send</Button>
+          <Button variant="contained" onClick={send} disabled={busy || !input.trim() || !projectId}>Send</Button>
         </Stack>
       </Stack>
     </Box>

@@ -3,20 +3,21 @@
 import shutil
 import tempfile
 
+from langchain_core.runnables import RunnableConfig
 from langchain_core.tools import tool
 
 from assistant.cc_bridge.worker import get_worker
+from assistant.orchestrator.context import current_project
 from assistant.rag.ingest import ingest_text
 from assistant.rag.store import hybrid_search
 
 
 @tool
-def search_knowledge(query: str, project: str = "") -> str:
-    """Search the ingested knowledge base (vault docs, standards, past research).
-
-    Searches the project's collection if given, otherwise the global one.
-    """
-    hits = hybrid_search(query, project=project or None, limit=5)
+def search_knowledge(query: str, *, config: RunnableConfig) -> str:
+    """Search the ingested knowledge base (vault docs, standards, past research)
+    scoped to the current project."""
+    proj = current_project(config)
+    hits = hybrid_search(query, project=proj.name, limit=5)
     if not hits:
         return "No results in the knowledge base for that query."
     return "\n\n".join(
@@ -52,13 +53,15 @@ def run_deep_research(question: str, project: str = "") -> str:
 
 
 @tool
-def deep_research(question: str, project: str = "") -> str:
-    """Run deep web research with citations via Claude Code's native /deep-research skill.
+def deep_research(question: str, *, config: RunnableConfig) -> str:
+    """Run deep web research with citations via Claude Code's native /deep-research skill,
+    scoped to the current project.
 
     Long-running (minutes). The resulting report is ingested into the knowledge
     base automatically so future questions can reuse it.
     """
-    report = run_deep_research(question, project=project)
+    proj = current_project(config)
+    report = run_deep_research(question, project=proj.name)
     return report[:6000] if report.strip() else "Research returned no content."
 
 

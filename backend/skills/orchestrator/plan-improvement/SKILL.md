@@ -29,7 +29,7 @@ it (`write_plan` with the same date+slug overwrites; a new date appends history)
 
 ## Plan file format
 
-`write_plan(project, slug, markdown, status)` writes
+`write_plan(slug, markdown, status)` writes
 `<repo>/plans/YYYY-MM-DD-<slug>.md` with frontmatter:
 
 ```

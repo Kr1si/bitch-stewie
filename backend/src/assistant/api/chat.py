@@ -17,6 +17,7 @@ router = APIRouter(prefix="/api/chat")
 
 class ChatIn(BaseModel):
     message: str
+    project_id: uuid.UUID
     thread_id: str | None = None
 
 
@@ -43,7 +44,9 @@ def _interrupt_payload(result: dict):
     return {"requests": value if isinstance(value, list) else [value]}
 
 
-async def _ensure_session(thread_id: str | None, title: str, channel: str = "web") -> tuple[str, uuid.UUID]:
+async def _ensure_session(
+    thread_id: str | None, title: str, project_id: uuid.UUID | None = None, channel: str = "web"
+) -> tuple[str, uuid.UUID, uuid.UUID | None]:
     async with get_session_factory()() as s:
         row = None
         if thread_id:
@@ -51,10 +54,10 @@ async def _ensure_session(thread_id: str | None, title: str, channel: str = "web
                 select(Session).where(Session.thread_id == thread_id))).scalar_one_or_none()
         if row is None:
             row = Session(thread_id=thread_id or f"{channel}-{uuid.uuid4().hex[:12]}",
-                          title=title[:80], channel=channel)
+                          title=title[:80], channel=channel, project_id=project_id)
             s.add(row)
             await s.commit()
-        return row.thread_id, row.id
+        return row.thread_id, row.id, row.project_id
 
 
 async def _persist(session_id: uuid.UUID, role: str, content: str) -> None:
@@ -123,9 +126,10 @@ async def _stream(agent, invoke_input, config):
 @router.post("/stream")
 async def chat_stream(body: ChatIn, request: Request):
     agent = request.app.state.orchestrator
-    thread_id, session_id = await _ensure_session(body.thread_id, body.message)
+    thread_id, session_id, project_id = await _ensure_session(
+        body.thread_id, body.message, project_id=body.project_id)
     await _persist(session_id, "user", body.message)
-    config = {"configurable": {"thread_id": thread_id}}
+    config = {"configurable": {"thread_id": thread_id, "project_id": str(project_id)}}
     invoke_input = {"messages": [{"role": "user", "content": body.message}]}
 
     async def event_gen():
@@ -148,7 +152,7 @@ async def chat_stream(body: ChatIn, request: Request):
 @router.post("/resume/stream")
 async def resume_stream(body: ResumeIn, request: Request):
     agent = request.app.state.orchestrator
-    thread_id, session_id = await _ensure_session(body.thread_id, "resume")
+    thread_id, session_id, project_id = await _ensure_session(body.thread_id, "resume")
     decision = ({"type": "approve"} if body.approved
                 else {"type": "reject", "message": body.note or "rejected"})
     async with get_session_factory()() as s:
@@ -156,7 +160,7 @@ async def resume_stream(body: ResumeIn, request: Request):
                        payload={"via": "web", "note": body.note},
                        status=ApprovalStatus.approved if body.approved else ApprovalStatus.rejected))
         await s.commit()
-    config = {"configurable": {"thread_id": thread_id}}
+    config = {"configurable": {"thread_id": thread_id, "project_id": str(project_id)}}
     invoke_input = Command(resume={"decisions": [decision]})
 
     async def event_gen():
@@ -179,11 +183,12 @@ async def resume_stream(body: ResumeIn, request: Request):
 @router.post("")
 async def chat(body: ChatIn, request: Request):
     agent = request.app.state.orchestrator
-    thread_id, session_id = await _ensure_session(body.thread_id, body.message)
+    thread_id, session_id, project_id = await _ensure_session(
+        body.thread_id, body.message, project_id=body.project_id)
     await _persist(session_id, "user", body.message)
     result = await agent.ainvoke(
         {"messages": [{"role": "user", "content": body.message}]},
-        {"configurable": {"thread_id": thread_id}},
+        {"configurable": {"thread_id": thread_id, "project_id": str(project_id)}},
     )
     if "__interrupt__" not in result:
         await _persist(session_id, "assistant", _extract_text(result))
@@ -193,7 +198,7 @@ async def chat(body: ChatIn, request: Request):
 @router.post("/resume")
 async def resume(body: ResumeIn, request: Request):
     agent = request.app.state.orchestrator
-    thread_id, session_id = await _ensure_session(body.thread_id, "resume")
+    thread_id, session_id, project_id = await _ensure_session(body.thread_id, "resume")
     decision = ({"type": "approve"} if body.approved
                 else {"type": "reject", "message": body.note or "rejected"})
     async with get_session_factory()() as s:
@@ -203,7 +208,7 @@ async def resume(body: ResumeIn, request: Request):
         await s.commit()
     result = await agent.ainvoke(
         Command(resume={"decisions": [decision]}),
-        {"configurable": {"thread_id": thread_id}},
+        {"configurable": {"thread_id": thread_id, "project_id": str(project_id)}},
     )
     if "__interrupt__" not in result:
         await _persist(session_id, "assistant", _extract_text(result))

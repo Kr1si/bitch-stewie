@@ -4,6 +4,7 @@ All tools are sync (LangGraph runs them in a threadpool) and persist through
 the sync engine, so they work regardless of the host event loop.
 """
 
+from langchain_core.runnables import RunnableConfig
 from langchain_core.tools import tool
 from sqlalchemy import select
 
@@ -11,6 +12,7 @@ from assistant.cc_bridge.brief import Brief
 from assistant.cc_bridge.worker import get_worker
 from assistant.memory.models import Decision, Preference, Project
 from assistant.memory.sync_db import get_sync_session_factory
+from assistant.orchestrator.context import current_project
 
 
 @tool
@@ -36,30 +38,26 @@ def list_projects() -> str:
 
 
 @tool
-def record_decision(project: str, title: str, decision: str, context: str = "",
-                    consequences: str = "") -> str:
-    """Record an ADR-style architecture decision for a project."""
+def record_decision(title: str, decision: str, context: str = "",
+                    consequences: str = "", *, config: RunnableConfig) -> str:
+    """Record an ADR-style architecture decision for the current project."""
+    proj = current_project(config)
     with get_sync_session_factory()() as s:
-        proj = s.execute(select(Project).where(Project.name == project)).scalar_one_or_none()
-        if proj is None:
-            return f"Unknown project '{project}'. Register it first with register_project."
         s.add(Decision(project_id=proj.id, title=title, decision=decision,
                        context=context, consequences=consequences))
         s.commit()
-    return f"Decision '{title}' recorded for {project}."
+    return f"Decision '{title}' recorded for {proj.name}."
 
 
 @tool
-def list_decisions(project: str) -> str:
-    """List recorded decisions for a project."""
+def list_decisions(*, config: RunnableConfig) -> str:
+    """List recorded decisions for the current project."""
+    proj = current_project(config)
     with get_sync_session_factory()() as s:
-        proj = s.execute(select(Project).where(Project.name == project)).scalar_one_or_none()
-        if proj is None:
-            return f"Unknown project '{project}'."
         rows = s.execute(select(Decision).where(Decision.project_id == proj.id)
                          .order_by(Decision.created_at)).scalars().all()
     if not rows:
-        return f"No decisions recorded for {project}."
+        return f"No decisions recorded for {proj.name}."
     return "\n".join(f"- [{d.status}] {d.title}: {d.decision[:200]}" for d in rows)
 
 
@@ -85,11 +83,11 @@ def list_preferences() -> str:
 
 
 @tool
-def delegate_coding_task(goal: str, repo_path: str, constraints: list[str] | None = None,
+def delegate_coding_task(goal: str, constraints: list[str] | None = None,
                          acceptance_criteria: list[str] | None = None,
                          examples: list[str] | None = None,
-                         parallel: bool = False) -> str:
-    """Delegate a coding task to a Claude Code instance working in the given repository.
+                         parallel: bool = False, *, config: RunnableConfig) -> str:
+    """Delegate a coding task to a Claude Code instance working in the project's repository.
 
     The instance implements on a feature branch, self-reviews with /code-review,
     and returns a structured result. Use parallel=True only for tasks that split
@@ -98,6 +96,10 @@ def delegate_coding_task(goal: str, repo_path: str, constraints: list[str] | Non
     Pass absolute file paths in 'examples' to give the instance reference files
     (e.g. example diagrams/docs) to read on the host for style/layout.
     """
+    proj = current_project(config)
+    repo_path = proj.repo_path
+    if not repo_path:
+        return f"Project '{proj.name}' has no registered repo path."
     brief = Brief(goal=goal, repo_path=repo_path, constraints=constraints or [],
                   acceptance_criteria=acceptance_criteria or [],
                   examples=examples or [],

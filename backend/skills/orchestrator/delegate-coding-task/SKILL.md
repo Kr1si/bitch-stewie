@@ -5,8 +5,8 @@ description: How to turn user intent into a high-quality brief and delegate it t
 
 # Delegating a coding task
 
-1. Resolve the project: `list_projects` — use its registered `repo_path`. If the
-   project is missing, register it first (ask the user for the repo path).
+1. The project (and its `repo_path`) is already fixed for this session and
+   resolved automatically — no need to look it up.
 2. Compose the brief before calling the tool:
    - **Goal**: one paragraph, outcome-oriented, no implementation dictation.
    - **Constraints**: hard rules only (frameworks, style, files not to touch).

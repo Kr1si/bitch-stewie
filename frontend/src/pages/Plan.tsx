@@ -61,7 +61,7 @@ export default function Plan() {
     setMessages((p) => [...p, { role: "user", text }]);
     setDraftText("");
 
-    await run("/api/plan/stream", { message: text, thread_id: threadId }, {
+    await run("/api/plan/stream", { message: text, project_id: projectId, thread_id: threadId }, {
       onToken: (t) => setDraftText((p) => p + t),
       onDone: (reply) => {
         setMessages((p) => [...p, { role: "assistant", text: reply }]);
