@@ -25,7 +25,11 @@ export default function Chat() {
   const { busy, run, gate } = useStreamChat();
 
   useEffect(() => {
-    apiGet<Project[]>("/api/projects").then(setProjects).catch(() => {});
+    apiGet<Project[]>("/api/projects").then((rows) => {
+      setProjects(rows);
+      const stewie = rows.find((p) => p.name === "bitch-stewie");
+      setProjectId((prev) => prev || (stewie ?? rows[0])?.id || "");
+    }).catch(() => {});
   }, []);
   useEffect(() => {
     apiGet<Session[]>("/api/chat/sessions").then(setSessions).catch(() => {});
