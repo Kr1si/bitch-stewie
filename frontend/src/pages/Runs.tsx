@@ -1,18 +1,26 @@
 import { useEffect, useState } from "react";
 import {
-  Alert, Box, Button, Chip, Dialog, DialogContent, DialogTitle, IconButton,
-  MenuItem, Paper, Stack, TextField, Typography,
+  Alert, Box, Button, Chip, Collapse, Dialog, DialogContent, DialogTitle,
+  IconButton, MenuItem, Paper, Stack, TextField, Typography,
 } from "@mui/material";
 import { DataGrid, type GridColDef } from "@mui/x-data-grid";
 import CloseIcon from "@mui/icons-material/Close";
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import ExpandLessIcon from "@mui/icons-material/ExpandLess";
+import PlayCircleOutlineIcon from "@mui/icons-material/PlayCircleOutline";
+import CheckCircleIcon from "@mui/icons-material/CheckCircle";
+import BoltOutlinedIcon from "@mui/icons-material/BoltOutlined";
 import { apiGet, apiPost } from "../lib/api";
 import { usePoll } from "../hooks/usePoll";
+import {
+  groupEvents, laneDuration, timeLabel,
+  type Lane, type LaneItem, type RunEvent,
+} from "../lib/eventsGrouping";
 
 type Run = {
   id: string; status: string; model: string; repo_path: string;
   review_iterations: number; result: Record<string, unknown>; created_at: string;
 };
-type Event = { type: string; payload: Record<string, unknown>; at: string };
 type ProjectOpt = { id: string; name: string; repo_path: string | null };
 
 const STATUS_COLOR: Record<string, "warning" | "info" | "success" | "error" | "default"> = {
@@ -80,9 +88,199 @@ function StartRunForm({ onStarted }: { onStarted: () => void }) {
   );
 }
 
+// --- Events dialog: per-agent lanes ---------------------------------------
+
+// Accent colors for subagent lanes; main orchestrator uses the theme primary.
+const LANE_COLORS = [
+  "#7c5cff", "#2f7d32", "#c06000", "#0277bd",
+  "#ad1457", "#6a1b9a", "#00838f", "#5d4037",
+];
+const colorCache = new Map<string, string>();
+function laneAccent(key: string, isMain: boolean): string {
+  if (isMain) return "#7c5cff";
+  const hit = colorCache.get(key);
+  if (hit) return hit;
+  let h = 0;
+  for (let i = 0; i < key.length; i++) h = (h * 31 + key.charCodeAt(i)) >>> 0;
+  const c = LANE_COLORS[h % LANE_COLORS.length];
+  colorCache.set(key, c);
+  return c;
+}
+
+const NOTE_COLOR: Record<string, "info" | "warning" | "success" | "default"> = {
+  stop: "success",
+  notification: "info",
+  permission: "warning",
+};
+
+/** One paired pre_tool/post_tool block: tool name + args summary, output collapsed. */
+function ToolBlock({ item }: { item: Extract<LaneItem, { kind: "tool" }> }) {
+  const [open, setOpen] = useState(false);
+  const running = item.output === null;
+  return (
+    <Box sx={{ mb: 0.5 }}>
+      <Stack
+        direction="row" spacing={1} alignItems="center"
+        onClick={() => setOpen((o) => !o)}
+        sx={{ cursor: "pointer", "&:hover": { opacity: 0.85 } }}
+      >
+        {running
+          ? <PlayCircleOutlineIcon fontSize="small" color="action" />
+          : <CheckCircleIcon fontSize="small" color="success" />}
+        <Chip label={item.tool} size="small" variant="outlined" />
+        <Typography
+          variant="caption" noWrap sx={{ flex: 1, fontFamily: "monospace", color: "text.secondary" }}
+        >
+          {item.input || "(no args)"}
+        </Typography>
+        {running
+          ? <Chip label="running" size="small" color="info" variant="outlined" />
+          : (item.input || item.output ? (open ? <ExpandLessIcon fontSize="small" /> : <ExpandMoreIcon fontSize="small" />) : null)}
+      </Stack>
+      <Collapse in={open} sx={{ pl: 4 }}>
+        {item.input && (
+          <Typography variant="caption" component="pre" sx={{ m: 0, mt: 0.5, whiteSpace: "pre-wrap", wordBreak: "break-word", fontFamily: "monospace" }}>
+            <Box component="span" sx={{ color: "text.secondary" }}>args: </Box>{item.input}
+          </Typography>
+        )}
+        {item.output != null && (
+          <Typography variant="caption" component="pre" sx={{ m: 0, mt: 0.5, whiteSpace: "pre-wrap", wordBreak: "break-word", fontFamily: "monospace" }}>
+            <Box component="span" sx={{ color: "text.secondary" }}>out: </Box>{item.output}
+          </Typography>
+        )}
+      </Collapse>
+    </Box>
+  );
+}
+
+/** A single lane (main orchestrator, or one subagent instance). */
+function LaneView({ lane }: { lane: Lane }) {
+  const [open, setOpen] = useState(!lane.isMain ? false : true);
+  const accent = laneAccent(lane.key, lane.isMain);
+  const dur = laneDuration(lane);
+  const subId = lane.agentId ? lane.agentId.slice(0, 8) : "";
+
+  const header = (
+    <Stack
+      direction="row" spacing={1} alignItems="center"
+      onClick={() => setOpen((o) => !o)}
+      sx={{ cursor: "pointer", py: 0.5 }}
+    >
+      {!lane.isMain && (open ? <ExpandLessIcon fontSize="small" /> : <ExpandMoreIcon fontSize="small" />)}
+      <Chip
+        label={lane.isMain ? lane.label : `${lane.label}${subId ? ` · ${subId}` : ""}`}
+        size="small"
+        sx={{ bgcolor: accent, color: "#fff", fontWeight: 600 }}
+      />
+      {lane.isMain && <Typography variant="caption" sx={{ color: "text.secondary" }}>main orchestrator</Typography>}
+      {!lane.isMain && dur && (
+        <Typography variant="caption" sx={{ color: "text.secondary" }}>⏱ {dur}</Typography>
+      )}
+      {!lane.isMain && lane.running && (
+        <Chip label="still running" size="small" color="warning" variant="outlined" />
+      )}
+      <Typography variant="caption" sx={{ color: "text.secondary", ml: "auto" }}>
+        {lane.items.length} item{lane.items.length === 1 ? "" : "s"}
+      </Typography>
+    </Stack>
+  );
+
+  if (lane.isMain) {
+    // main lane: always-expanded section, no collapse toggle
+    return (
+      <Box sx={{ borderLeft: 3, borderColor: accent, pl: 1.5, mb: 1.5 }}>
+        <Stack direction="row" spacing={1} alignItems="center" sx={{ py: 0.5 }}>
+          <Chip label={lane.label} size="small" sx={{ bgcolor: accent, color: "#fff", fontWeight: 600 }} />
+          <Typography variant="caption" sx={{ color: "text.secondary" }}>main orchestrator</Typography>
+          <Typography variant="caption" sx={{ color: "text.secondary", ml: "auto" }}>
+            {lane.items.length} item{lane.items.length === 1 ? "" : "s"}
+          </Typography>
+        </Stack>
+        <LaneItems lane={lane} />
+      </Box>
+    );
+  }
+
+  // subagent lane: collapsible, collapsed by default; activity nested/indented
+  return (
+    <Box sx={{ borderLeft: 3, borderColor: accent, pl: 1.5, mb: 1.5 }}>
+      {header}
+      <Collapse in={open}>
+        <Box sx={{ pl: 1, pt: 0.5 }}>
+          <LaneItems lane={lane} />
+        </Box>
+      </Collapse>
+    </Box>
+  );
+}
+
+function LaneItems({ lane }: { lane: Lane }) {
+  if (!lane.items.length) {
+    return <Typography variant="caption" sx={{ color: "text.secondary", pl: 1 }}>no activity</Typography>;
+  }
+  return (
+    <Stack spacing={0.5} sx={{ pt: 0.5 }}>
+      {lane.items.map((it) => <LaneItemView key={it.id} item={it} />)}
+    </Stack>
+  );
+}
+
+function LaneItemView({ item }: { item: LaneItem }) {
+  if (item.kind === "tool") return <ToolBlock item={item} />;
+  if (item.kind === "text") {
+    return (
+      <Typography variant="body2" sx={{ fontStyle: "italic", color: "text.secondary", pl: 1 }}>
+        {item.text}
+      </Typography>
+    );
+  }
+  // note
+  return (
+    <Stack direction="row" spacing={1} alignItems="center" sx={{ pl: 1 }}>
+      <BoltOutlinedIcon fontSize="small" color="action" />
+      <Chip label={item.noteType} size="small" color={NOTE_COLOR[item.noteType] ?? "default"} variant="outlined" />
+      <Typography variant="caption" sx={{ color: "text.secondary", fontFamily: "monospace" }}>
+        {item.text}
+      </Typography>
+    </Stack>
+  );
+}
+
+function EventsDialog({
+  open, runId, events, onClose,
+}: {
+  open: boolean; runId?: string; events: RunEvent[] | null; onClose: () => void;
+}) {
+  const lanes = events ? groupEvents(events) : [];
+
+  return (
+    <Dialog open={open} onClose={onClose} fullWidth maxWidth="md">
+      <DialogTitle>
+        <Stack direction="row" alignItems="center" justifyContent="space-between">
+          <span>Events — {runId?.slice(0, 8)}</span>
+          <IconButton onClick={onClose}><CloseIcon /></IconButton>
+        </Stack>
+      </DialogTitle>
+      <DialogContent dividers>
+        <Box sx={{ maxHeight: 520, overflow: "auto", fontSize: 12 }}>
+          {lanes.map((lane) => <LaneView key={lane.key} lane={lane} />)}
+          {events && !events.length && (
+            <Typography sx={{ color: "text.secondary" }}>No events.</Typography>
+          )}
+          {events && events.length > 0 && (
+            <Typography variant="caption" sx={{ color: "text.secondary", display: "block", mt: 1 }}>
+              {events.length} events · subagent lanes collapsed by default · {timeLabel(events[0].at)} → {timeLabel(events[events.length - 1].at)}
+            </Typography>
+          )}
+        </Box>
+      </DialogContent>
+    </Dialog>
+  );
+}
+
 export default function Runs() {
   const [runs, setRuns] = useState<Run[]>([]);
-  const [events, setEvents] = useState<Event[] | null>(null);
+  const [events, setEvents] = useState<RunEvent[] | null>(null);
   const [open, setOpen] = useState(false);
   const [sel, setSel] = useState<Run | null>(null);
 
@@ -93,7 +291,7 @@ export default function Runs() {
   usePoll(load, anyActive ? 2000 : 15000, [anyActive]);
 
   const loadEvents = (id: string) =>
-    apiGet<Event[]>(`/api/cc-runs/${id}/events`).then(setEvents).catch(() => setEvents([]));
+    apiGet<RunEvent[]>(`/api/cc-runs/${id}/events`).then(setEvents).catch(() => setEvents([]));
 
   // keep the open events dialog live while its run is active
   usePoll(
@@ -134,26 +332,9 @@ export default function Runs() {
         />
       </Box>
 
-      <Dialog open={open} onClose={() => setOpen(false)} fullWidth maxWidth="md">
-        <DialogTitle>
-          <Stack direction="row" alignItems="center" justifyContent="space-between">
-            <span>Events — {sel?.id.slice(0, 8)}</span>
-            <IconButton onClick={() => setOpen(false)}><CloseIcon /></IconButton>
-          </Stack>
-        </DialogTitle>
-        <DialogContent dividers>
-          <Box sx={{ maxHeight: 500, overflow: "auto", fontFamily: "monospace", fontSize: 12 }}>
-            {(events ?? []).map((e, i) => (
-              <Box key={i} sx={{ py: 0.3, borderBottom: (t) => `1px solid ${t.palette.divider}` }}>
-                <span style={{ opacity: 0.6 }}>{e.at.slice(11, 19)}</span>{" "}
-                <span style={{ color: "#7c5cff" }}>[{e.type}]</span>{" "}
-                {JSON.stringify(e.payload).slice(0, 200)}
-              </Box>
-            ))}
-            {events && !events.length && <Typography sx={{ color: "text.secondary" }}>No events.</Typography>}
-          </Box>
-        </DialogContent>
-      </Dialog>
+      <EventsDialog
+        open={open} runId={sel?.id} events={events} onClose={() => setOpen(false)}
+      />
     </Box>
   );
 }
