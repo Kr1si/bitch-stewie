@@ -133,9 +133,10 @@ function ToolBlock({ item }: { item: Extract<LaneItem, { kind: "tool" }> }) {
         >
           {item.input || "(no args)"}
         </Typography>
-        {running
-          ? <Chip label="running" size="small" color="info" variant="outlined" />
-          : (item.input || item.output ? (open ? <ExpandLessIcon fontSize="small" /> : <ExpandMoreIcon fontSize="small" />) : null)}
+        {running && <Chip label="running" size="small" color="info" variant="outlined" />}
+        {(item.input || item.output != null)
+          ? (open ? <ExpandLessIcon fontSize="small" /> : <ExpandMoreIcon fontSize="small" />)
+          : null}
       </Stack>
       <Collapse in={open} sx={{ pl: 4 }}>
         {item.input && (

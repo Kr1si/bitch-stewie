@@ -165,10 +165,11 @@ export function groupEvents(events: RunEvent[]): Lane[] {
         const lane = laneForAgent(agent);
         const tool = str(p.tool) || "?";
         const output = str(p.output);
-        // pair with the most recent pending (output===null) pre_tool of the same
-        // tool name in this lane
+        // pair with the OLDEST pending (output===null) pre_tool of the same tool
+        // name in this lane (FIFO). LIFO would mis-pair when two same-named tools
+        // interleave (pre_A, pre_B, post_A, post_B): post_A would attach to pre_B.
         let matched = false;
-        for (let i = lane.items.length - 1; i >= 0; i--) {
+        for (let i = 0; i < lane.items.length; i++) {
           const it = lane.items[i];
           if (it.kind === "tool" && it.output === null && it.tool === tool) {
             it.output = output;
