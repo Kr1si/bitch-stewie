@@ -43,15 +43,15 @@ def _interrupt_payload(result: dict):
     return {"requests": value if isinstance(value, list) else [value]}
 
 
-async def _ensure_session(thread_id: str | None, title: str) -> tuple[str, uuid.UUID]:
+async def _ensure_session(thread_id: str | None, title: str, channel: str = "web") -> tuple[str, uuid.UUID]:
     async with get_session_factory()() as s:
         row = None
         if thread_id:
             row = (await s.execute(
                 select(Session).where(Session.thread_id == thread_id))).scalar_one_or_none()
         if row is None:
-            row = Session(thread_id=thread_id or f"web-{uuid.uuid4().hex[:12]}",
-                          title=title[:80], channel="web")
+            row = Session(thread_id=thread_id or f"{channel}-{uuid.uuid4().hex[:12]}",
+                          title=title[:80], channel=channel)
             s.add(row)
             await s.commit()
         return row.thread_id, row.id

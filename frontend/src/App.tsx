@@ -13,10 +13,12 @@ import LibraryBooksIcon from "@mui/icons-material/LibraryBooks";
 import AccountTreeIcon from "@mui/icons-material/AccountTree";
 import ExtensionIcon from "@mui/icons-material/Extension";
 import TravelExploreIcon from "@mui/icons-material/TravelExplore";
+import AutoAwesomeIcon from "@mui/icons-material/AutoAwesome";
 import { BrowserRouter, NavLink, Route, Routes } from "react-router-dom";
 import { getTheme, type Mode } from "./theme";
 import { ThemeProvider, Chip, CssBaseline, Link } from "@mui/material";
 import Chat from "./pages/Chat";
+import Plan from "./pages/Plan";
 import Dashboard from "./pages/Dashboard";
 import Runs from "./pages/Runs";
 import Knowledge from "./pages/Knowledge";
@@ -31,7 +33,8 @@ type Health = { status: string; default_model: string; langsmith: {
 
 const NAV = [
   { path: "/dashboard", label: "Dashboard", icon: <DashboardIcon /> },
-  { path: "/", label: "Chat", icon: <ChatIcon /> },
+  { path: "/", label: "Plan", icon: <AutoAwesomeIcon /> },
+  { path: "/chat", label: "Chat", icon: <ChatIcon /> },
   { path: "/diagrams", label: "Diagrams", icon: <AccountTreeIcon /> },
   { path: "/knowledge", label: "Knowledge", icon: <LibraryBooksIcon /> },
   { path: "/research", label: "Deep Research", icon: <TravelExploreIcon /> },
@@ -136,7 +139,8 @@ export default function App({ initialMode = "dark" as Mode }) {
 
           <Box component="main" sx={{ flexGrow: 1, p: 3, minWidth: 0, mt: "64px" }}>
             <Routes>
-              <Route path="/" element={<Chat />} />
+              <Route path="/" element={<Plan />} />
+              <Route path="/chat" element={<Chat />} />
               <Route path="/dashboard" element={<Dashboard />} />
               <Route path="/runs" element={<Runs />} />
               <Route path="/knowledge" element={<Knowledge />} />
