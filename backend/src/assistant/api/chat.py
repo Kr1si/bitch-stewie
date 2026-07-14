@@ -99,26 +99,38 @@ async def _stream(agent, invoke_input, config):
 
     Streaming is best-effort over astream(stream_mode='messages'); the gate is
     detected from the post-stream state (robust to the deep-agent stream shape).
+    An unhandled failure mid-stream (e.g. the model backend is unreachable, or
+    the checkpoint store can't be read afterward) would otherwise abort the SSE
+    connection with no payload - the browser just reports a bare NetworkError.
+    Catch it and emit a proper `error` event instead so the UI can show
+    something readable.
     """
     full_text = []
-    async for chunk, metadata in agent.astream(invoke_input, config, stream_mode="messages"):
-        # Only stream the top-level assistant tokens, not subagent tool messages.
-        if getattr(chunk, "type", "") in ("AIMessageChunk", "ai"):
-            text = _chunk_text(chunk)
-            if text:
-                full_text.append(text)
-                yield {"event": "token", "data": json.dumps({"text": text})}
-            calls = _tool_calls(chunk)
-            if calls:
-                yield {"event": "tool", "data": json.dumps({"calls": calls})}
-    state = await agent.aget_state(config)
-    interrupt = None
-    if state and state.tasks:
-        for task in state.tasks:
-            if getattr(task, "interrupts", None):
-                value = task.interrupts[0].value
-                interrupt = {"requests": value if isinstance(value, list) else [value]}
-                break
+    try:
+        async for chunk, metadata in agent.astream(invoke_input, config, stream_mode="messages"):
+            # Only stream the top-level assistant tokens, not subagent tool messages.
+            if getattr(chunk, "type", "") in ("AIMessageChunk", "ai"):
+                text = _chunk_text(chunk)
+                if text:
+                    full_text.append(text)
+                    yield {"event": "token", "data": json.dumps({"text": text})}
+                calls = _tool_calls(chunk)
+                if calls:
+                    yield {"event": "tool", "data": json.dumps({"calls": calls})}
+
+        # The gate is detected from the post-stream state; this read can also
+        # fail (checkpoint store down), so it stays inside the guard.
+        state = await agent.aget_state(config)
+        interrupt = None
+        if state and state.tasks:
+            for task in state.tasks:
+                if getattr(task, "interrupts", None):
+                    value = task.interrupts[0].value
+                    interrupt = {"requests": value if isinstance(value, list) else [value]}
+                    break
+    except Exception as exc:  # noqa: BLE001 - surface any failure to the UI, not just known ones
+        yield {"event": "error", "data": json.dumps({"error": str(exc) or type(exc).__name__})}
+        return
     yield {"event": "interrupt" if interrupt else "done",
            "data": json.dumps({"interrupt": interrupt, "reply": "".join(full_text)})}
 

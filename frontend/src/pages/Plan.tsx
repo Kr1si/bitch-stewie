@@ -72,6 +72,10 @@ export default function Plan() {
         setDraftText("");
         apiGet<Session[]>("/api/plan/sessions").then(setSessions).catch(() => {});
       },
+      onError: (error) => {
+        setMessages((p) => [...p, { role: "assistant", text: `Error: ${error}` }]);
+        setDraftText("");
+      },
     }).catch((e) => {
       setMessages((p) => [...p, { role: "assistant", text: `Error: ${String(e)}` }]);
       setDraftText("");
