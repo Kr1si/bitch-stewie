@@ -100,8 +100,9 @@ deploy:  ## push main and (re)deploy the prod stack on krisiserver
 	  mkdir -p $$HOME/projects; \
 	  if [ ! -d $$HOME/projects/bitch-stewie/.git ]; then git clone $(REPO_URL) $$HOME/projects/bitch-stewie; fi; \
 	  sudo chown -R deploy:deploy $$HOME/projects/bitch-stewie; \
-	  cd docker && sudo docker compose -f docker-compose.prod.yml up -d --build; \
-	  sudo docker compose -f docker-compose.prod.yml exec -T backend uv run assistant seed'
+	  cd docker && sudo docker compose -f docker-compose.prod.yml up -d --build'
+	# no separate "assistant seed" step: backend Dockerfile CMD already runs
+	# it (idempotent) on every container start, including this recreate
 
 deploy-logs:  ## tail prod stack logs on krisiserver
 	ssh $(SERVER) 'cd $(REMOTE_DIR)/docker && sudo docker compose -f docker-compose.prod.yml logs -f --tail=100'
