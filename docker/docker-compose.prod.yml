@@ -93,9 +93,14 @@ services:
       ASSISTANT_CC_MODEL: ${ASSISTANT_CC_MODEL:-glm-5.2:cloud}
       ASSISTANT_CC_API_TIMEOUT_MS: ${ASSISTANT_CC_API_TIMEOUT_MS:-3000000}
       ASSISTANT_CC_PLUGINS_DIR: /opt/cc-plugins/enabled
+      # git push over SSH from delegated CC sessions (see docs/krisiserver.md).
+      # -i deploy's own key (already trusted by GitHub); StrictHostKeyChecking
+      # accept-new since the container has no pre-seeded known_hosts.
+      GIT_SSH_COMMAND: ssh -i /home/assistant/.ssh/deploy_key -o StrictHostKeyChecking=accept-new
     volumes:
       - ${PROJECTS_PATH:-/home/deploy/projects}:/projects
       - model_cache:/home/assistant/.cache
+      - ${DEPLOY_SSH_KEY:-/home/deploy/.ssh/id_ed25519}:/home/assistant/.ssh/deploy_key:ro
 
   frontend:
     build: ../frontend
