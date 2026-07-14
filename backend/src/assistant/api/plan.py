@@ -18,6 +18,7 @@ router = APIRouter(prefix="/api/plan")
 
 class PlanChatIn(BaseModel):
     message: str
+    project_id: uuid.UUID
     thread_id: str | None = None
 
 
@@ -37,9 +38,10 @@ def _plan_title(content: str, fallback: str) -> str:
 @router.post("/stream")
 async def plan_stream(body: PlanChatIn, request: Request):
     agent = request.app.state.planner
-    thread_id, session_id = await _ensure_session(body.thread_id, body.message, channel="plan")
+    thread_id, session_id, project_id = await _ensure_session(
+        body.thread_id, body.message, project_id=body.project_id, channel="plan")
     await _persist(session_id, "user", body.message)
-    config = {"configurable": {"thread_id": thread_id}}
+    config = {"configurable": {"thread_id": thread_id, "project_id": str(project_id)}}
     invoke_input = {"messages": [{"role": "user", "content": body.message}]}
 
     async def event_gen():
@@ -106,13 +108,14 @@ async def handoff(body: HandoffIn, request: Request):
 
     title = _plan_title(plan_content, plan_path.stem)
     orch_thread_id = f"web-{uuid.uuid4().hex[:12]}"
-    orch_thread_id, orch_session_id = await _ensure_session(orch_thread_id, title, channel="web")
+    orch_thread_id, orch_session_id, _ = await _ensure_session(
+        orch_thread_id, title, project_id=body.project_id, channel="web")
 
     initial_message = f"Implement the following plan:\n\n{plan_content}"
     await _persist(orch_session_id, "user", initial_message)
 
     agent = request.app.state.orchestrator
-    config = {"configurable": {"thread_id": orch_thread_id}}
+    config = {"configurable": {"thread_id": orch_thread_id, "project_id": str(body.project_id)}}
     result = await agent.ainvoke(
         {"messages": [{"role": "user", "content": initial_message}]}, config,
     )

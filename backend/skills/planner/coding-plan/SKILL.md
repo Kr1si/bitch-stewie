@@ -20,8 +20,8 @@ API change, infra/config changes tracked in a repo.
 
 - **Goal**: one paragraph, outcome-oriented. Describe the result, not the
   implementation — leave *how* to the delegated coding session.
-- **Project / repo**: the registered project name and repo_path
-  (`list_projects` to resolve or confirm; register the project first if new).
+- **Project / repo**: already fixed for this session (resolved automatically
+  from the project registry) — no need to look it up or confirm it.
 - **Constraints**: hard rules only — frameworks to use, files or areas not to
   touch, style/conventions to follow, things that must NOT change.
 - **Acceptance criteria**: verifiable statements. "Tests pass", "endpoint
