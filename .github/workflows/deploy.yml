@@ -55,9 +55,11 @@ jobs:
             cd /home/deploy/bitch-stewie/docker
             sudo docker compose -f docker-compose.prod.yml up -d --build
             sudo docker image prune -f
-            # idempotent: (re)syncs the built-in Project presets (bitch-stewie
-            # self-improvement target etc.) after every deploy
-            sudo docker compose -f docker-compose.prod.yml exec -T backend uv run assistant seed'
+            # No separate assistant seed step here: the backend containers
+            # own CMD already runs it (idempotent) on every start, including
+            # this recreate. A redundant second exec here OOM-killed deploys
+            # (exit 137) by piling onto the highest memory-pressure moment
+            # right after a 3-image rebuild.'
 
       - name: Verify
         run: |
