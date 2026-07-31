@@ -2,7 +2,7 @@ import uuid
 
 from fastapi.testclient import TestClient
 
-from assistant.api.app import create_app
+from assistant.interface.api.app import create_app
 
 
 def test_projects_api_roundtrip() -> None:
@@ -32,24 +32,23 @@ def test_deep_research_stream(monkeypatch) -> None:
     """
     import json as _json
 
-    import assistant.api.research as research_api
+    import assistant.interface.api.research as research_api
 
     monkeypatch.setattr(
         research_api, "run_deep_research",
         lambda question, project="": f"# Report\n\nResearch on: {question}",
     )
 
-    with TestClient(create_app()) as client:
-        with client.stream("POST", "/api/research/deep/stream",
-                           json={"goal": "compare A and B"}) as resp:
-            assert resp.status_code == 200
-            events: dict[str, object] = {}
-            for line in resp.iter_lines():
-                if line.startswith("event:"):
-                    events["event"] = line.split(":", 1)[1].strip()
-                elif line.startswith("data:") and events.get("event"):
-                    events["data"] = _json.loads(line.split(":", 1)[1].strip())
-                    if events["event"] in ("done", "error"):
-                        break
-            assert events["event"] == "done"
-            assert "Research on: compare A and B" in events["data"]["report"]  # type: ignore[index]
+    with TestClient(create_app()) as client, client.stream("POST", "/api/research/deep/stream",
+                       json={"goal": "compare A and B"}) as resp:
+        assert resp.status_code == 200
+        events: dict[str, object] = {}
+        for line in resp.iter_lines():
+            if line.startswith("event:"):
+                events["event"] = line.split(":", 1)[1].strip()
+            elif line.startswith("data:") and events.get("event"):
+                events["data"] = _json.loads(line.split(":", 1)[1].strip())
+                if events["event"] in ("done", "error"):
+                    break
+        assert events["event"] == "done"
+        assert "Research on: compare A and B" in events["data"]["report"]  # type: ignore[index]

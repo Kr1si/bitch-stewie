@@ -12,6 +12,15 @@ adversarial critique).
 > restart is required** for them to appear in-session. Until you restart,
 > the built-in skills + `general-purpose`/`Explore` agents + `graphify` CLI
 > are the live surface; ecc items are marked **[ecc]** below.
+>
+> **Update (2026-08-01)**: the restart has happened — all `ecc:*` agents,
+> commands, and skills listed here are now live in-session, no fallback
+> needed. One caveat found by actually checking: `ecc:deep-research`
+> (§4, §8C) depends on firecrawl+exa MCP servers per its own description,
+> and neither is connected (`claude mcp list` shows only Google
+> Drive/Calendar/Gmail + `chrome-devtools`). Until those MCPs are wired
+> up, use the **built-in `deep-research` skill** (§5, WebSearch/WebFetch-based)
+> for Chain C — it's the one that actually runs.
 
 ---
 

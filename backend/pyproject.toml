@@ -46,6 +46,8 @@ dev = [
     "pytest",
     "pytest-asyncio",
     "ruff",
+    "mypy",
+    "import-linter",
 ]
 
 [build-system]
@@ -61,4 +63,69 @@ testpaths = ["tests"]
 
 [tool.ruff]
 line-length = 100
+target-version = "py312"
 src = ["src", "tests"]
+
+[tool.ruff.lint]
+select = ["E", "W", "F", "I", "UP", "B", "SIM", "PGH", "ANN", "C4", "RUF", "ASYNC"]
+ignore = [
+    "ANN401",  # explicit Any in annotations -- banned, but mypy disallow_any_explicit
+               # reports it with better context; keep a single source of truth
+]
+
+[tool.ruff.lint.per-file-ignores]
+"tests/**" = ["ANN"]  # test fns don't need return annotations; fixtures stay readable
+
+[tool.ruff.lint.isort]
+known-first-party = ["assistant"]
+
+[tool.mypy]
+python_version = "3.12"
+strict = true
+disallow_any_explicit = true
+disallow_any_generics = true
+warn_return_any = true
+warn_unused_ignores = true
+enable_error_code = ["ignore-without-code", "redundant-expr", "truthy-bool"]
+plugins = ["pydantic.mypy"]
+mypy_path = "src"
+packages = ["assistant"]
+
+[[tool.mypy.overrides]]
+module = ["deepagents.*", "procrastinate.*", "fastembed.*"]
+ignore_missing_imports = true
+
+[[tool.mypy.overrides]]
+# Tests: strict minus explicit-Any ban (fixtures/parametrize interop needs it).
+module = ["tests.*"]
+disallow_any_explicit = false
+
+[tool.pydantic-mypy]
+init_forbid_extra = true
+init_typed = true
+warn_required_dynamic_aliases = true
+
+[tool.importlinter]
+root_package = "assistant"
+include_external_packages = true
+
+# Layer boundary contracts (RULES_AND_GUIDELINES §7), adapted to this project's
+# 3-layer + shared-kernel layout (no framework-independent domain layer exists).
+# Uses import-linter's `layers` contract: higher layers may depend on lower layers,
+# never the reverse. Order is high -> low.
+#   interface -> application -> infrastructure -> shared
+# The interface layer reaches infrastructure only through the application
+# services, which are the documented seam.
+
+[[tool.importlinter.contracts]]
+name = "layered architecture"
+type = "layers"
+containers = [
+    "assistant",
+]
+layers = [
+    "interface",
+    "application",
+    "infrastructure",
+    "shared",
+]
