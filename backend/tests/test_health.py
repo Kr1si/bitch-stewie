@@ -1,6 +1,6 @@
 from fastapi.testclient import TestClient
 
-from assistant.api.app import create_app
+from assistant.interface.api.app import create_app
 
 
 def test_health() -> None:

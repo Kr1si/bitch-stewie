@@ -1,7 +1,7 @@
 """Integration test: requires dockerized Qdrant + host Ollama with bge-m3."""
 
-from assistant.rag.ingest import ingest_text
-from assistant.rag.store import collection_name, get_client, hybrid_search
+from assistant.infrastructure.rag.ingest import ingest_text
+from assistant.infrastructure.rag.store import collection_name, get_client, hybrid_search
 
 
 def test_ingest_and_hybrid_search() -> None:
