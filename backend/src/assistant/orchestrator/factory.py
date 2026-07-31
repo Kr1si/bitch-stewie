@@ -1,16 +1,17 @@
 """Build the orchestrator deep agent with its four subagents."""
 
 from pathlib import Path
+from typing import Any
 
 from deepagents import create_deep_agent
-
-SKILLS_DIR = Path(__file__).resolve().parents[3] / "skills" / "orchestrator"
 
 from assistant.config import get_settings
 from assistant.orchestrator.artifact_tools import ARCHITECT_TOOLS, DOC_TOOLS, PLANS_TOOLS
 from assistant.orchestrator.example_tools import EXAMPLE_TOOLS
 from assistant.orchestrator.research_tools import RESEARCH_TOOLS
 from assistant.orchestrator.tools import DELEGATION_TOOLS, REGISTRY_TOOLS
+
+SKILLS_DIR = Path(__file__).resolve().parents[3] / "skills" / "orchestrator"
 
 SYSTEM_PROMPT = """\
 You are the orchestrator of a personal assistant for a System Architect.
@@ -76,7 +77,7 @@ structured outcome faithfully, including failures.
 """
 
 
-def build_orchestrator(checkpointer=None):
+def build_orchestrator(checkpointer: Any = None) -> Any:
     settings = get_settings()
     model = settings.default_model
 

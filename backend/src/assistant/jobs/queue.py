@@ -1,5 +1,7 @@
 """Procrastinate job queue (Postgres-native) for long-running work with retries."""
 
+from datetime import UTC
+
 from procrastinate import App, PsycopgConnector
 
 from assistant.config import get_settings
@@ -38,7 +40,7 @@ def ingest_path_job(path: str, project: str | None = None) -> dict:
 @app.task(name="summarize_conversations", queue="ingestion")
 def summarize_conversations(timestamp: int) -> dict:
     """Nightly: ingest yesterday's conversation messages into the KB."""
-    from datetime import datetime, timedelta, timezone
+    from datetime import datetime, timedelta
 
     from sqlalchemy import select
 
@@ -46,7 +48,7 @@ def summarize_conversations(timestamp: int) -> dict:
     from assistant.memory.sync_db import get_sync_session_factory
     from assistant.rag.ingest import ingest_text
 
-    cutoff = datetime.now(timezone.utc) - timedelta(days=1)
+    cutoff = datetime.now(UTC) - timedelta(days=1)
     total = 0
     with get_sync_session_factory()() as s:
         sessions = s.execute(select(Session)).scalars().all()
@@ -59,6 +61,9 @@ def summarize_conversations(timestamp: int) -> dict:
             if not msgs:
                 continue
             transcript = "\n".join(f"{m.role}: {m.content}" for m in msgs)
-            total += ingest_text(transcript, source=f"conversation:{sess.thread_id}:{cutoff:%Y%m%d}",
-                                 kind="conversation")
+            total += ingest_text(
+                transcript,
+                source=f"conversation:{sess.thread_id}:{cutoff:%Y%m%d}",
+                kind="conversation",
+            )
     return {"chunks": total}

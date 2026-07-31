@@ -8,7 +8,7 @@ def find_model_dir(repo_path: str) -> Path | None:
     """Locate the directory containing .likec4/.c4 model files in a repo."""
     root = Path(repo_path)
     for candidate in (root / "likec4", root / "architecture", root):
-        if candidate.is_dir() and any(candidate.glob("*.likec4")) or any(candidate.glob("*.c4")):
+        if (candidate.is_dir() and any(candidate.glob("*.likec4"))) or any(candidate.glob("*.c4")):
             return candidate
     hits = list(root.rglob("*.likec4"))[:1] or list(root.rglob("*.c4"))[:1]
     return hits[0].parent if hits else None
@@ -21,7 +21,7 @@ def export_drawio(model_dir: str | Path, out_dir: str | Path) -> dict:
     proc = subprocess.run(
         ["npx", "--yes", "likec4", "export", "drawio", "--uncompressed",
          "--outdir", str(out), str(model_dir)],
-        capture_output=True, text=True, timeout=600, shell=(True if _needs_shell() else False),
+        capture_output=True, text=True, timeout=600, shell=_needs_shell(),
     )
     files = sorted(str(p) for p in out.glob("*.drawio"))
     return {

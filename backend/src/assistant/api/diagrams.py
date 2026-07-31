@@ -2,6 +2,7 @@
 
 import uuid
 from pathlib import Path
+from typing import Any
 
 from fastapi import APIRouter, HTTPException
 from fastapi.responses import FileResponse
@@ -25,7 +26,7 @@ async def _project_repo(project_id: uuid.UUID) -> str:
 
 
 @router.get("")
-async def list_diagrams(project_id: uuid.UUID):
+async def list_diagrams(project_id: uuid.UUID) -> list[dict[str, Any]]:
     """List generated .drawio files (basename + modified time) under <repo>/diagrams."""
     repo = await _project_repo(project_id)
     diagrams_dir = Path(repo) / "diagrams"
@@ -37,7 +38,7 @@ async def list_diagrams(project_id: uuid.UUID):
 
 
 @router.get("/{name}")
-async def get_diagram(project_id: uuid.UUID, name: str):
+async def get_diagram(project_id: uuid.UUID, name: str) -> FileResponse:
     """Return the raw .drawio XML for the embed's `xml` prop."""
     repo = await _project_repo(project_id)
     # basename only — never escape the diagrams dir

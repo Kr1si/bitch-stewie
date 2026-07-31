@@ -73,10 +73,14 @@ def seed() -> None:
 def delegate(
     task: str,
     repo: str = typer.Option(..., "--repo", help="Path to the target repository"),
-    constraint: list[str] = typer.Option([], "--constraint", "-c"),
-    criteria: list[str] = typer.Option([], "--criteria", "-a"),
-    verbose: bool = typer.Option(False, "--verbose", "-v", help="Stream session events"),
-    teams: bool = typer.Option(False, "--teams", help="Enable experimental Agent Teams parallelism"),
+    constraint: list[str] = typer.Option([], "--constraint", "-c"),  # noqa: B008  # typer API pattern
+    criteria: list[str] = typer.Option([], "--criteria", "-a"),  # noqa: B008  # typer API pattern
+    verbose: bool = typer.Option(
+        False, "--verbose", "-v", help="Stream session events",
+    ),
+    teams: bool = typer.Option(
+        False, "--teams", help="Enable experimental Agent Teams parallelism",
+    ),
 ) -> None:
     """Delegate a coding task to a Claude Code instance (GLM 5.2 via Ollama)."""
     from assistant.cc_bridge.brief import Brief
@@ -93,8 +97,10 @@ def delegate(
     runner = DelegationRunner(on_event=console.log if verbose else None)
     outcome = asyncio.run(runner.run(brief, agent_teams=teams))
 
-    console.print(f"\nRun [bold]{outcome.run_id}[/bold] finished: [bold]{outcome.status.value}[/bold] "
-                  f"after {outcome.review_iterations} review iteration(s)")
+    console.print(
+        f"\nRun [bold]{outcome.run_id}[/bold] finished: [bold]{outcome.status.value}[/bold] "
+        f"after {outcome.review_iterations} review iteration(s)"
+    )
     if outcome.result:
         for key, value in outcome.result.items():
             console.print(f"  {key}: {value}")

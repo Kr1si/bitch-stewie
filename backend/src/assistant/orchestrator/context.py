@@ -30,7 +30,9 @@ def current_project(config: RunnableConfig) -> Project:
             "No project_id in config['configurable'] — every session must be "
             "project-scoped; this is a config-plumbing bug, not a runtime error."
         )
-    project_id = raw_project_id if isinstance(raw_project_id, uuid.UUID) else uuid.UUID(str(raw_project_id))
+    project_id = (
+        raw_project_id if isinstance(raw_project_id, uuid.UUID)
+        else uuid.UUID(str(raw_project_id)))
 
     with get_sync_session_factory()() as s:
         proj = s.execute(select(Project).where(Project.id == project_id)).scalar_one_or_none()

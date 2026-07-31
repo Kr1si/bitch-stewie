@@ -16,13 +16,15 @@ from pathlib import Path
 from typing import Any
 
 from claude_agent_sdk import create_sdk_mcp_server, tool
+from claude_agent_sdk.types import McpSdkServerConfig
 from sqlalchemy import select
-
-logger = logging.getLogger(__name__)
+from sqlalchemy.orm import Session
 
 from assistant.config import get_settings
 from assistant.memory.models import Decision, Example, Preference, Project
 from assistant.memory.sync_db import get_sync_session_factory
+
+logger = logging.getLogger(__name__)
 
 _TEXT_SUFFIXES = {".md", ".markdown", ".txt", ".rst", ".drawio", ".xml", ".svg"}
 
@@ -31,7 +33,7 @@ def _text(payload: str) -> dict[str, Any]:
     return {"content": [{"type": "text", "text": payload}]}
 
 
-def _project_by_name(session, name: str) -> Project | None:
+def _project_by_name(session: Session, name: str) -> Project | None:
     return session.execute(
         select(Project).where(Project.name == name)
     ).scalar_one_or_none()
@@ -72,13 +74,16 @@ async def list_projects(args: dict[str, Any]) -> dict[str, Any]:
         rows = session.execute(select(Project)).scalars().all()
         if not rows:
             return _text("No projects registered yet.")
-        lines = [f"- {p.name} [{p.status}] repo={p.repo_path or '-'} :: {p.description}" for p in rows]
+        lines = [
+            f"- {p.name} [{p.status}] repo={p.repo_path or '-'} :: {p.description}" for p in rows
+        ]
         return _text("\n".join(lines))
 
 
 @tool(
     "get_preferences",
-    "Get the user's stored conventions and preferences (coding style, doc style, recurring instructions).",
+    "Get the user's stored conventions and preferences "
+    "(coding style, doc style, recurring instructions).",
     {},
 )
 async def get_preferences(args: dict[str, Any]) -> dict[str, Any]:
@@ -94,7 +99,8 @@ async def get_preferences(args: dict[str, Any]) -> dict[str, Any]:
 
 @tool(
     "record_decision",
-    "Record an ADR-style decision made during this task (title, decision, optional context/consequences, project name).",
+    "Record an ADR-style decision made during this task "
+    "(title, decision, optional context/consequences, project name).",
     {"title": str, "decision": str, "context": str, "project": str},
 )
 async def record_decision(args: dict[str, Any]) -> dict[str, Any]:
@@ -169,7 +175,7 @@ async def write_convention(args: dict[str, Any]) -> dict[str, Any]:
 # -- reference examples ---------------------------------------------------------
 
 
-def _example_rows(session, project_name: str, kind: str = ""):
+def _example_rows(session: Session, project_name: str, kind: str = "") -> list[Example] | None:
     q = select(Example).order_by(Example.created_at.desc())
     if kind:
         q = q.where(Example.kind == kind)
@@ -219,7 +225,11 @@ async def read_example(args: dict[str, Any]) -> dict[str, Any]:
     suffix = Path(match.filename).suffix.lower()
     if suffix in _TEXT_SUFFIXES:
         try:
-            return _text(Path(match.storage_path).read_text(encoding="utf-8", errors="replace"))
+            return _text(
+                Path(match.storage_path).read_text(  # noqa: ASYNC240  # sync path read; no async path API
+                    encoding="utf-8", errors="replace",
+                )
+            )
         except OSError as exc:
             return _text(f"Could not read {match.storage_path}: {exc}")
     return _text(
@@ -248,7 +258,7 @@ async def search_knowledge(args: dict[str, Any]) -> dict[str, Any]:
         hits = await to_thread.run_sync(
             lambda: hybrid_search(args["query"], project=project, limit=limit)
         )
-    except Exception as exc:  # noqa: BLE001 - qdrant down must not kill the session
+    except Exception as exc:
         return _text(f"Knowledge search unavailable: {exc}")
     if not hits:
         return _text("No knowledge-base hits.")
@@ -261,7 +271,7 @@ async def search_knowledge(args: dict[str, Any]) -> dict[str, Any]:
     return _text("\n".join(lines))
 
 
-def build_memory_server():
+def build_memory_server() -> McpSdkServerConfig:
     return create_sdk_mcp_server(
         name="assistant-memory",
         version="0.2.0",

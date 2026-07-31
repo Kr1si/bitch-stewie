@@ -8,6 +8,7 @@ import json
 import logging
 import re
 import uuid
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from pathlib import Path
 
@@ -62,14 +63,14 @@ class DelegationOutcome:
 
 
 class DelegationRunner:
-    def __init__(self, on_event=None):
+    def __init__(self, on_event: Callable[[str], None] | None = None) -> None:
         self._settings = get_settings()
         self._factory = get_sync_session_factory()
         self._on_event = on_event  # optional callable(str) for live CLI output
 
     # -- persistence helpers -------------------------------------------------
 
-    def _create_run(self, brief: Brief, project_id) -> uuid.UUID:
+    def _create_run(self, brief: Brief, project_id: uuid.UUID | None) -> uuid.UUID:
         with self._factory() as s:
             run = CCRun(
                 project_id=project_id,
@@ -89,7 +90,9 @@ class DelegationRunner:
         if self._on_event:
             self._on_event(f"[{event_type}] {json.dumps(payload)[:200]}")
 
-    def _finish(self, run_id: uuid.UUID, status: CCRunStatus, result: dict, iterations: int) -> None:
+    def _finish(
+        self, run_id: uuid.UUID, status: CCRunStatus, result: dict, iterations: int,
+    ) -> None:
         with self._factory() as s:
             run = s.get(CCRun, run_id)
             run.status = status
@@ -181,7 +184,7 @@ class DelegationRunner:
         brief: Brief,
         run_id: uuid.UUID,
         skill_names: list[str],
-        project_id=None,
+        project_id: uuid.UUID | None = None,
         agent_teams: bool = False,
     ) -> ClaudeAgentOptions:
         env = {
@@ -244,7 +247,9 @@ class DelegationRunner:
                 )
         return "\n".join(text_parts)
 
-    async def run(self, brief: Brief, project_id=None, agent_teams: bool = False) -> DelegationOutcome:
+    async def run(
+        self, brief: Brief, project_id: uuid.UUID | None = None, agent_teams: bool = False,
+    ) -> DelegationOutcome:
         run_id = self._create_run(brief, project_id)
         iterations = 0
         try:
@@ -271,7 +276,7 @@ class DelegationRunner:
                     run_id=run_id, status=status, result=result,
                     review_iterations=iterations, transcript_tail=text[-1500:],
                 )
-        except Exception as exc:  # noqa: BLE001 - single failure boundary for the whole run
+        except Exception as exc:
             self._add_event(run_id, "error", {"error": repr(exc)[:1000]})
             self._finish(run_id, CCRunStatus.failed, {"error": repr(exc)[:1000]}, iterations)
             return DelegationOutcome(run_id=run_id, status=CCRunStatus.failed,
@@ -291,7 +296,7 @@ class DelegationRunner:
                 text = await self._drive(client, run_id, prompt)
             self._finish(run_id, CCRunStatus.succeeded, {"kind": "prompt"}, 0)
             return text
-        except Exception as exc:  # noqa: BLE001
+        except Exception as exc:
             self._add_event(run_id, "error", {"error": repr(exc)[:1000]})
             self._finish(run_id, CCRunStatus.failed, {"error": repr(exc)[:1000]}, 0)
             raise

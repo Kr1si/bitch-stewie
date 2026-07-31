@@ -11,6 +11,7 @@ hooks (#4); this closes the loop for the interactive terminal.
 """
 
 import uuid
+from typing import Any
 
 from fastapi import APIRouter, HTTPException
 from sqlalchemy import func, select
@@ -22,7 +23,7 @@ router = APIRouter(prefix="/api/runs")
 
 
 @router.get("/{run_id}/statusline")
-async def run_statusline(run_id: uuid.UUID):
+async def run_statusline(run_id: uuid.UUID) -> dict[str, Any]:
     async with get_session_factory()() as s:
         run = (await s.execute(select(CCRun).where(CCRun.id == run_id))).scalar_one_or_none()
         if run is None:
@@ -36,7 +37,7 @@ async def run_statusline(run_id: uuid.UUID):
                 .group_by(CCRunEvent.event_type)
             )
         ).all()
-        counts = {et: n for et, n in counts_rows}
+        counts = dict(counts_rows)
 
         last = (
             await s.execute(

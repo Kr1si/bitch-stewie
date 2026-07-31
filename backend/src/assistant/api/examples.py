@@ -7,8 +7,10 @@ host with file access) can read binary examples directly; only text examples
 are inlined into the orchestrator's own context via the example tools.
 """
 
+import contextlib
 import re
 import uuid
+from typing import Any
 
 from fastapi import APIRouter, File, Form, HTTPException, UploadFile
 from fastapi.responses import FileResponse
@@ -61,11 +63,11 @@ async def _resolve_project_id(name: str) -> uuid.UUID | None:
 
 @router.post("")
 async def upload(
-    file: UploadFile = File(...),
+    file: UploadFile = File(...),  # noqa: B008  # FastAPI File() default is intentional (sentinel for required upload)
     project_id: str = Form(""),
     kind: str = Form(...),
     note: str = Form(""),
-):
+) -> dict[str, Any]:
     """Upload a reference example (.drawio/.xml/.png for diagrams; .md/.docx/.pdf for docs)."""
     import os
     if kind not in _KNOWN_KINDS:
@@ -82,7 +84,7 @@ async def upload(
     filename = _SAFE_RE.sub("_", filename) or f"example_{uuid.uuid4().hex[:8]}"
     dest_dir = _storage_dir(project_name, kind)
     dest = os.path.join(dest_dir, filename)
-    with open(dest, "wb") as fh:
+    with open(dest, "wb") as fh:  # noqa: ASYNC230  # sync filesystem write; no async file API available
         fh.write(await file.read())
     async with get_session_factory()() as s:
         row = Example(project_id=pid, kind=kind, filename=filename,
@@ -98,11 +100,11 @@ def _parse_project_id(raw: str) -> uuid.UUID | None:
     try:
         return uuid.UUID(raw)
     except (ValueError, AttributeError):
-        raise HTTPException(400, "project_id must be a UUID")
+        raise HTTPException(400, "project_id must be a UUID") from None
 
 
 @router.get("")
-async def list_examples(project_id: str = "", kind: str = ""):
+async def list_examples(project_id: str = "", kind: str = "") -> list[dict[str, Any]]:
     async with get_session_factory()() as s:
         q = select(Example).order_by(Example.created_at.desc())
         if kind:
@@ -117,28 +119,33 @@ async def list_examples(project_id: str = "", kind: str = ""):
 
 
 @router.get("/{example_id}/content")
-async def example_content(example_id: uuid.UUID):
+async def example_content(example_id: uuid.UUID) -> FileResponse:
     async with get_session_factory()() as s:
-        row = (await s.execute(select(Example).where(Example.id == example_id))).scalar_one_or_none()
+        row = (
+            await s.execute(select(Example).where(Example.id == example_id))
+        ).scalar_one_or_none()
     if row is None:
         raise HTTPException(404, "example not found")
     import os
-    if not os.path.isfile(row.storage_path):
+    if not os.path.isfile(  # noqa: ASYNC240  # sync filesystem stat; no async path API
+        row.storage_path,
+    ):
         raise HTTPException(410, "example file missing on disk")
     return FileResponse(row.storage_path, filename=row.filename, media_type=row.mime or None)
 
 
 @router.delete("/{example_id}")
-async def delete_example(example_id: uuid.UUID):
+async def delete_example(example_id: uuid.UUID) -> dict[str, Any]:
     import os
     async with get_session_factory()() as s:
-        row = (await s.execute(select(Example).where(Example.id == example_id))).scalar_one_or_none()
+        row = (
+            await s.execute(select(Example).where(Example.id == example_id))
+        ).scalar_one_or_none()
         if row is None:
             raise HTTPException(404, "example not found")
-        try:
+        # Row is the source of truth; drop it even if the file is already gone.
+        with contextlib.suppress(OSError):
             os.remove(row.storage_path)
-        except OSError:
-            pass  # row is the source of truth; still drop it
         await s.delete(row)
         await s.commit()
     return {"deleted": str(example_id)}

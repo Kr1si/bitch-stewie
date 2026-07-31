@@ -2,6 +2,8 @@
 
 import json
 import uuid
+from collections.abc import AsyncIterator
+from typing import Any
 
 from fastapi import APIRouter, Request
 from langgraph.types import Command
@@ -37,7 +39,7 @@ def _extract_text(result: dict) -> str:
     return ""
 
 
-def _interrupt_payload(result: dict):
+def _interrupt_payload(result: dict[str, Any]) -> list[dict[str, Any]] | None:
     if "__interrupt__" not in result:
         return None
     value = result["__interrupt__"][0].value
@@ -72,7 +74,7 @@ def _respond(result: dict, thread_id: str) -> dict:
             "interrupt": interrupt, "pending": interrupt is not None}
 
 
-def _chunk_text(chunk) -> str:
+def _chunk_text(chunk: Any) -> str:
     """Pull incremental text from an astream(message) chunk."""
     content = getattr(chunk, "content", None)
     if isinstance(content, str):
@@ -82,7 +84,7 @@ def _chunk_text(chunk) -> str:
     return ""
 
 
-def _tool_calls(chunk) -> list[dict]:
+def _tool_calls(chunk: Any) -> list[dict[str, Any]]:
     tc = getattr(chunk, "tool_call_chunks", None) or getattr(chunk, "tool_calls", None)
     if not tc:
         return []
@@ -94,7 +96,9 @@ def _tool_calls(chunk) -> list[dict]:
     return out
 
 
-async def _stream(agent, invoke_input, config):
+async def _stream(
+    agent: Any, invoke_input: dict[str, Any], config: dict[str, Any],
+) -> AsyncIterator[dict[str, Any]]:
     """Yield SSE events: token, tool, then interrupt/done via aget_state.
 
     Streaming is best-effort over astream(stream_mode='messages'); the gate is
@@ -107,7 +111,7 @@ async def _stream(agent, invoke_input, config):
     """
     full_text = []
     try:
-        async for chunk, metadata in agent.astream(invoke_input, config, stream_mode="messages"):
+        async for chunk, _metadata in agent.astream(invoke_input, config, stream_mode="messages"):
             # Only stream the top-level assistant tokens, not subagent tool messages.
             if getattr(chunk, "type", "") in ("AIMessageChunk", "ai"):
                 text = _chunk_text(chunk)
@@ -128,7 +132,7 @@ async def _stream(agent, invoke_input, config):
                     value = task.interrupts[0].value
                     interrupt = {"requests": value if isinstance(value, list) else [value]}
                     break
-    except Exception as exc:  # noqa: BLE001 - surface any failure to the UI, not just known ones
+    except Exception as exc:
         yield {"event": "error", "data": json.dumps({"error": str(exc) or type(exc).__name__})}
         return
     yield {"event": "interrupt" if interrupt else "done",
@@ -136,7 +140,7 @@ async def _stream(agent, invoke_input, config):
 
 
 @router.post("/stream")
-async def chat_stream(body: ChatIn, request: Request):
+async def chat_stream(body: ChatIn, request: Request) -> EventSourceResponse:
     agent = request.app.state.orchestrator
     thread_id, session_id, project_id = await _ensure_session(
         body.thread_id, body.message, project_id=body.project_id)
@@ -144,7 +148,7 @@ async def chat_stream(body: ChatIn, request: Request):
     config = {"configurable": {"thread_id": thread_id, "project_id": str(project_id)}}
     invoke_input = {"messages": [{"role": "user", "content": body.message}]}
 
-    async def event_gen():
+    async def event_gen() -> AsyncIterator[dict[str, Any]]:
         final_text = ""
         interrupted = False
         try:
@@ -162,20 +166,22 @@ async def chat_stream(body: ChatIn, request: Request):
 
 
 @router.post("/resume/stream")
-async def resume_stream(body: ResumeIn, request: Request):
+async def resume_stream(body: ResumeIn, request: Request) -> EventSourceResponse:
     agent = request.app.state.orchestrator
     thread_id, session_id, project_id = await _ensure_session(body.thread_id, "resume")
     decision = ({"type": "approve"} if body.approved
                 else {"type": "reject", "message": body.note or "rejected"})
     async with get_session_factory()() as s:
-        s.add(Approval(session_id=session_id, thread_id=thread_id, kind="delegate",
-                       payload={"via": "web", "note": body.note},
-                       status=ApprovalStatus.approved if body.approved else ApprovalStatus.rejected))
+        s.add(Approval(
+            session_id=session_id, thread_id=thread_id, kind="delegate",
+            payload={"via": "web", "note": body.note},
+            status=ApprovalStatus.approved if body.approved else ApprovalStatus.rejected,
+        ))
         await s.commit()
     config = {"configurable": {"thread_id": thread_id, "project_id": str(project_id)}}
     invoke_input = Command(resume={"decisions": [decision]})
 
-    async def event_gen():
+    async def event_gen() -> AsyncIterator[dict[str, Any]]:
         final_text = ""
         interrupted = False
         try:
@@ -193,7 +199,7 @@ async def resume_stream(body: ResumeIn, request: Request):
 
 
 @router.post("")
-async def chat(body: ChatIn, request: Request):
+async def chat(body: ChatIn, request: Request) -> dict[str, Any]:
     agent = request.app.state.orchestrator
     thread_id, session_id, project_id = await _ensure_session(
         body.thread_id, body.message, project_id=body.project_id)
@@ -208,15 +214,17 @@ async def chat(body: ChatIn, request: Request):
 
 
 @router.post("/resume")
-async def resume(body: ResumeIn, request: Request):
+async def resume(body: ResumeIn, request: Request) -> dict[str, Any]:
     agent = request.app.state.orchestrator
     thread_id, session_id, project_id = await _ensure_session(body.thread_id, "resume")
     decision = ({"type": "approve"} if body.approved
                 else {"type": "reject", "message": body.note or "rejected"})
     async with get_session_factory()() as s:
-        s.add(Approval(session_id=session_id, thread_id=thread_id, kind="delegate",
-                       payload={"via": "web", "note": body.note},
-                       status=ApprovalStatus.approved if body.approved else ApprovalStatus.rejected))
+        s.add(Approval(
+            session_id=session_id, thread_id=thread_id, kind="delegate",
+            payload={"via": "web", "note": body.note},
+            status=ApprovalStatus.approved if body.approved else ApprovalStatus.rejected,
+        ))
         await s.commit()
     result = await agent.ainvoke(
         Command(resume={"decisions": [decision]}),
@@ -228,7 +236,9 @@ async def resume(body: ResumeIn, request: Request):
 
 
 @router.get("/sessions")
-async def list_sessions(project_id: uuid.UUID | None = None, limit: int = 30):
+async def list_sessions(
+    project_id: uuid.UUID | None = None, limit: int = 30,
+) -> list[dict[str, Any]]:
     """List recent threads so the Chat/Diagrams UI can switch conversations."""
     async with get_session_factory()() as s:
         q = select(Session).order_by(Session.updated_at.desc()).limit(limit)
@@ -242,7 +252,7 @@ async def list_sessions(project_id: uuid.UUID | None = None, limit: int = 30):
 
 
 @router.get("/sessions/{session_id}/messages")
-async def session_messages(session_id: uuid.UUID, limit: int = 200):
+async def session_messages(session_id: uuid.UUID, limit: int = 200) -> list[dict[str, Any]]:
     """Prior turns for a thread so the UI can render history."""
     async with get_session_factory()() as s:
         rows = (await s.execute(

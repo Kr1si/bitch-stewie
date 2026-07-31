@@ -9,6 +9,8 @@ base so later questions can reuse it.
 
 import asyncio
 import json
+from collections.abc import AsyncIterator
+from typing import Any
 
 from fastapi import APIRouter
 from pydantic import BaseModel, Field
@@ -25,7 +27,7 @@ class DeepResearchIn(BaseModel):
 
 
 @router.post("/deep/stream")
-async def deep_research_stream(body: DeepResearchIn):
+async def deep_research_stream(body: DeepResearchIn) -> EventSourceResponse:
     """Run /deep-research via Claude Code and stream the outcome as SSE.
 
     The CC worker blocks the calling thread for minutes, so the actual research
@@ -37,13 +39,13 @@ async def deep_research_stream(body: DeepResearchIn):
       - ``error``  {error}       -- research failed
     """
 
-    async def event_gen():
+    async def event_gen() -> AsyncIterator[dict[str, Any]]:
         yield {"event": "start", "data": json.dumps({"goal": body.goal})}
         try:
             report = await asyncio.to_thread(run_deep_research, body.goal, body.project)
             yield {"event": "done",
                    "data": json.dumps({"report": report})}
-        except Exception as exc:  # noqa: BLE001 - surface failure to the UI
+        except Exception as exc:
             yield {"event": "error", "data": json.dumps({"error": str(exc)})}
 
     return EventSourceResponse(event_gen())

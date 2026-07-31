@@ -1,16 +1,17 @@
 """Build the planning agent: an iterative conversation that produces a plan file."""
 
 from pathlib import Path
+from typing import Any
 
 from deepagents import create_deep_agent
-
-SKILLS_DIR = Path(__file__).resolve().parents[3] / "skills" / "planner"
 
 from assistant.config import get_settings
 from assistant.orchestrator.artifact_tools import PLANS_TOOLS
 from assistant.orchestrator.example_tools import EXAMPLE_TOOLS
 from assistant.orchestrator.research_tools import RESEARCH_TOOLS
 from assistant.orchestrator.tools import REGISTRY_TOOLS
+
+SKILLS_DIR = Path(__file__).resolve().parents[3] / "skills" / "planner"
 
 SYSTEM_PROMPT = """\
 You are the planning assistant for a System Architect. You have an iterative
@@ -44,7 +45,7 @@ Principles:
 """
 
 
-def build_planner(checkpointer=None):
+def build_planner(checkpointer: Any = None) -> Any:
     settings = get_settings()
     model = settings.default_model
 

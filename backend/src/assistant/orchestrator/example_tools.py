@@ -22,7 +22,7 @@ from assistant.orchestrator.context import current_project
 _TEXT_SUFFIXES = {".md", ".markdown", ".txt", ".rst", ".drawio", ".xml", ".svg"}
 
 
-def _rows(config: RunnableConfig, kind: str = ""):
+def _rows(config: RunnableConfig, kind: str = "") -> list[Example]:
     proj = current_project(config)
     with get_sync_session_factory()() as s:
         q = select(Example).where(Example.project_id == proj.id).order_by(Example.created_at.desc())

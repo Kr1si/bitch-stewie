@@ -1,4 +1,4 @@
-"""Interactive chat with the orchestrator (Selector loop; delegation runs on the CC worker thread)."""
+"""Interactive chat with the orchestrator (Selector loop; delegation runs on the worker thread)."""
 
 import uuid
 
@@ -19,9 +19,11 @@ def _extract_text(result: dict) -> str:
     return "(no reply)"
 
 
-def _resume_value(interrupt_value, approved: bool, note: str = ""):
+def _resume_value(interrupt_value: list | dict, approved: bool, note: str = "") -> dict:
     """Build the HITL resume payload for however many action requests were raised."""
-    decision = {"type": "approve"} if approved else {"type": "reject", "message": note or "rejected"}
+    decision = (
+        {"type": "approve"} if approved else {"type": "reject", "message": note or "rejected"}
+    )
     if isinstance(interrupt_value, list):
         return {"decisions": [dict(decision) for _ in interrupt_value]}
     return {"decisions": [decision]}

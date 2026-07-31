@@ -14,7 +14,7 @@ _engine = None
 _factory: sessionmaker[Session] | None = None
 
 
-def get_sync_engine():
+def get_sync_engine() -> object:
     global _engine
     if _engine is None:
         url = get_settings().database_url.replace("postgresql://", "postgresql+psycopg://", 1)

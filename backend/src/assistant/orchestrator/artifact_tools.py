@@ -9,10 +9,11 @@ from langchain_core.tools import tool
 
 from assistant.diagrams.likec4 import export_drawio, find_model_dir
 from assistant.docs_gen.pandoc import export_markdown
+from assistant.memory.models import Project
 from assistant.orchestrator.context import current_project
 
 
-def _project(config: RunnableConfig):
+def _project(config: RunnableConfig) -> Project:
     return current_project(config)
 
 
@@ -37,7 +38,9 @@ def update_diagrams(*, config: RunnableConfig) -> str:
 
 
 @tool
-def export_document(markdown: str, filename: str, title: str = "", *, config: RunnableConfig) -> str:
+def export_document(
+    markdown: str, filename: str, title: str = "", *, config: RunnableConfig,
+) -> str:
     """Export markdown content as a .docx or .pdf deliverable.
 
     filename must end with .docx or .pdf; the file lands in the project repo's
@@ -67,7 +70,9 @@ def _plan_status(path: Path) -> str:
 
 
 @tool
-def write_plan(slug: str, markdown: str, status: str = "proposed", *, config: RunnableConfig) -> str:
+def write_plan(
+    slug: str, markdown: str, status: str = "proposed", *, config: RunnableConfig,
+) -> str:
     """Write a future-improvement plan as a dated markdown file in the project's plans/ folder.
 
     Use this whenever you devise a plan for a future improvement — especially

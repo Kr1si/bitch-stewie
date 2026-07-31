@@ -69,7 +69,7 @@ def upsert_chunks(project: str | None, chunks: list[dict]) -> int:
     dense = embed_dense(texts)
     sparse = list(_sparse().embed(texts))
     points = []
-    for chunk, dv, sv in zip(chunks, dense, sparse):
+    for chunk, dv, sv in zip(chunks, dense, sparse, strict=True):
         # deterministic id: re-ingesting the same source+text overwrites, no dupes
         digest = hashlib.sha256((chunk["source"] + chunk["text"]).encode()).hexdigest()[:32]
         points.append(models.PointStruct(
@@ -120,7 +120,6 @@ def collection_stats(name: str) -> dict:
     points = client.count(collection_name=name, exact=True).count
     sources: dict[str, int] = {}
     if points:
-        seen_ids: set[str] = set()
         offset = None
         for _ in range(50):  # cap at ~50 * 256 = 12.8k points
             rec, offset = client.scroll(collection_name=name, limit=256,

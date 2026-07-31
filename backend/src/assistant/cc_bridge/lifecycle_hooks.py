@@ -31,11 +31,13 @@ def _persist_event(run_id: uuid.UUID, event_type: str, payload: dict) -> None:
             s.add(CCRunEvent(run_id=run_id, source="hook",
                              event_type=event_type, payload=payload))
             s.commit()
-    except Exception as exc:  # noqa: BLE001 - telemetry must never break the session
+    except Exception as exc:
         logger.warning("hook event persist failed (%s): %r", event_type, exc)
 
 
-def build_lifecycle_hooks(run_id: uuid.UUID, project_id=None) -> dict[str, list[HookMatcher]]:
+def build_lifecycle_hooks(
+    run_id: uuid.UUID, project_id: uuid.UUID | None = None,
+) -> dict[str, list[HookMatcher]]:
     """Hooks dict for ClaudeAgentOptions; closures bind this run's id."""
 
     async def on_pre_tool(input_data: dict, tool_use_id: str | None, context: Any) -> dict:
@@ -81,7 +83,9 @@ def build_lifecycle_hooks(run_id: uuid.UUID, project_id=None) -> dict[str, list[
         })
         return {}
 
-    async def on_permission_request(input_data: dict, tool_use_id: str | None, context: Any) -> dict:
+    async def on_permission_request(
+        input_data: dict, tool_use_id: str | None, context: Any,
+    ) -> dict:
         payload = {
             "run_id": str(run_id),
             "tool": input_data.get("tool_name", "?"),
@@ -96,7 +100,7 @@ def build_lifecycle_hooks(run_id: uuid.UUID, project_id=None) -> dict[str, list[
                                thread_id=f"cc-run:{run_id}:{uuid.uuid4().hex[:8]}",
                                payload=payload, status=ApprovalStatus.pending))
                 s.commit()
-        except Exception as exc:  # noqa: BLE001
+        except Exception as exc:
             logger.warning("cc_permission approval persist failed: %r", exc)
         # Defer to CC's own permission flow; we only mirror the request so the
         # UI's approvals list shows what the session asked for.

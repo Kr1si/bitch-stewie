@@ -1,6 +1,7 @@
 """Read/manage endpoints for the web UI (Phase 5 consumes these)."""
 
 import uuid
+from typing import Any
 
 from fastapi import APIRouter, HTTPException
 from pydantic import BaseModel
@@ -21,7 +22,7 @@ class RunIn(BaseModel):
 
 
 @router.post("/cc-runs", status_code=202)
-async def start_run(body: RunIn):
+async def start_run(body: RunIn) -> dict[str, Any]:
     """Enqueue a delegation on the worker queue; the Runs UI picks it up by polling."""
     from assistant.jobs.queue import delegate_brief
 
@@ -47,7 +48,7 @@ class ProjectIn(BaseModel):
 
 
 @router.get("/projects")
-async def list_projects():
+async def list_projects() -> list[dict[str, Any]]:
     async with get_session_factory()() as s:
         rows = (await s.execute(select(Project))).scalars().all()
     return [{"id": str(p.id), "name": p.name, "status": p.status,
@@ -55,9 +56,11 @@ async def list_projects():
 
 
 @router.post("/projects", status_code=201)
-async def create_project(body: ProjectIn):
+async def create_project(body: ProjectIn) -> dict[str, Any]:
     async with get_session_factory()() as s:
-        exists = (await s.execute(select(Project).where(Project.name == body.name))).scalar_one_or_none()
+        exists = (
+            await s.execute(select(Project).where(Project.name == body.name))
+        ).scalar_one_or_none()
         if exists:
             raise HTTPException(409, f"project '{body.name}' exists")
         p = Project(name=body.name, description=body.description, repo_path=body.repo_path)
@@ -67,7 +70,7 @@ async def create_project(body: ProjectIn):
 
 
 @router.get("/projects/{project_id}/decisions")
-async def list_decisions(project_id: uuid.UUID):
+async def list_decisions(project_id: uuid.UUID) -> list[dict[str, Any]]:
     async with get_session_factory()() as s:
         rows = (await s.execute(select(Decision).where(Decision.project_id == project_id)
                                 .order_by(Decision.created_at))).scalars().all()
@@ -76,7 +79,7 @@ async def list_decisions(project_id: uuid.UUID):
 
 
 @router.get("/approvals")
-async def list_approvals(status: str | None = None):
+async def list_approvals(status: str | None = None) -> list[dict[str, Any]]:
     async with get_session_factory()() as s:
         q = select(Approval).order_by(Approval.created_at.desc()).limit(50)
         if status:
@@ -88,7 +91,7 @@ async def list_approvals(status: str | None = None):
 
 
 @router.get("/cc-runs")
-async def list_runs(limit: int = 20):
+async def list_runs(limit: int = 20) -> list[dict[str, Any]]:
     async with get_session_factory()() as s:
         rows = (await s.execute(select(CCRun).order_by(CCRun.created_at.desc())
                                 .limit(limit))).scalars().all()
@@ -98,7 +101,7 @@ async def list_runs(limit: int = 20):
 
 
 @router.get("/cc-runs/{run_id}/events")
-async def run_events(run_id: uuid.UUID, limit: int = 200):
+async def run_events(run_id: uuid.UUID, limit: int = 200) -> list[dict[str, Any]]:
     async with get_session_factory()() as s:
         rows = (await s.execute(select(CCRunEvent).where(CCRunEvent.run_id == run_id)
                                 .order_by(CCRunEvent.created_at).limit(limit))).scalars().all()

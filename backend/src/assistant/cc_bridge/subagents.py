@@ -61,7 +61,10 @@ def build_subagents() -> dict[str, AgentDefinition]:
     """Return the CC subagent registry passed as `agents=` to ClaudeAgentOptions."""
     return {
         "researcher": AgentDefinition(
-            description="Investigate questions by reading code and the web; return cited summaries. No edits.",
+            description=(
+                "Investigate questions by reading code and the web; "
+                "return cited summaries. No edits."
+            ),
             prompt=_RESEARCHER_PROMPT,
             tools=_RESEARCHER_TOOLS,
             mcpServers=_MCP,
@@ -77,7 +80,10 @@ def build_subagents() -> dict[str, AgentDefinition]:
             effort="high",
         ),
         "doc-writer": AgentDefinition(
-            description="Write/update markdown docs and diagrams, following the architecture-doc output style.",
+            description=(
+                "Write/update markdown docs and diagrams, following "
+                "the architecture-doc output style."
+            ),
             prompt=_DOC_WRITER_PROMPT,
             tools=_DOC_WRITER_TOOLS,
             mcpServers=_MCP,
@@ -85,7 +91,10 @@ def build_subagents() -> dict[str, AgentDefinition]:
             effort="medium",
         ),
         "code-delegate": AgentDefinition(
-            description="Implement an assigned coding task in the target repo: branch, code, test, commit.",
+            description=(
+                "Implement an assigned coding task in the target repo: "
+                "branch, code, test, commit."
+            ),
             prompt=_CODE_DELEGATE_PROMPT,
             tools=_CODE_DELEGATE_TOOLS,
             mcpServers=_MCP,

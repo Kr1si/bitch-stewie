@@ -9,6 +9,7 @@ tool, API handler, CLI) submits briefs and blocks for the outcome.
 import asyncio
 import sys
 import threading
+import uuid
 
 from assistant.cc_bridge.brief import Brief
 from assistant.cc_bridge.runner import DelegationOutcome, DelegationRunner
@@ -30,7 +31,7 @@ class CCWorker:
         asyncio.set_event_loop(self._loop)
         self._loop.run_forever()
 
-    def delegate(self, brief: Brief, project_id=None, agent_teams: bool = False,
+    def delegate(self, brief: Brief, project_id: uuid.UUID | None = None, agent_teams: bool = False,
                  timeout: float = 3600) -> DelegationOutcome:
         """Run a delegation on the worker loop; blocks the calling thread."""
         runner = DelegationRunner()

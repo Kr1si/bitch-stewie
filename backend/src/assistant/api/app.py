@@ -2,25 +2,26 @@
 
 import asyncio
 import sys
+from collections.abc import AsyncIterator
 from contextlib import asynccontextmanager
+
+from fastapi import FastAPI
+from langgraph.checkpoint.postgres.aio import AsyncPostgresSaver
+
+from assistant.config import apply_langsmith_env, get_settings, langsmith_enabled
 
 # psycopg async cannot run on Windows' default ProactorEventLoop; the cc_bridge
 # runs claude-agent-sdk sessions on its own Proactor loop thread instead.
 if sys.platform == "win32":
     asyncio.set_event_loop_policy(asyncio.WindowsSelectorEventLoopPolicy())
 
-# Push LANGSMITH_* into os.environ BEFORE langchain/langgraph are imported,
-# so the LangSmith tracer picks up tracing + the API key at configure time.
-from assistant.config import apply_langsmith_env, get_settings, langsmith_enabled
-
+# Push LANGSMITH_* into os.environ so the LangSmith tracer picks up tracing
+# + the API key at configure time. Idempotent; safe at module load.
 LS_TRACING = apply_langsmith_env()
-
-from fastapi import FastAPI
-from langgraph.checkpoint.postgres.aio import AsyncPostgresSaver
 
 
 @asynccontextmanager
-async def lifespan(app: FastAPI):
+async def lifespan(app: FastAPI) -> AsyncIterator[None]:
     from assistant.jobs.queue import app as job_app
     from assistant.orchestrator.factory import build_orchestrator
     from assistant.orchestrator.planner import build_planner

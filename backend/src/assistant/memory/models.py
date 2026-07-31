@@ -109,7 +109,7 @@ class Message(Base):
     session: Mapped[Session] = relationship(back_populates="messages")
 
 
-class ApprovalStatus(str, enum.Enum):
+class ApprovalStatus(enum.StrEnum):
     pending = "pending"
     approved = "approved"
     rejected = "rejected"
@@ -132,7 +132,7 @@ class Approval(TimestampMixin, Base):
     resolution_note: Mapped[str] = mapped_column(Text, default="")
 
 
-class CCRunStatus(str, enum.Enum):
+class CCRunStatus(enum.StrEnum):
     queued = "queued"
     running = "running"
     reviewing = "reviewing"

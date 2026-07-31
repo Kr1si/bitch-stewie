@@ -4,7 +4,9 @@ file input is deliberately not allowed to do (it can only hand back sandboxed
 relative paths). The web UI's "Browse..." button calls this endpoint."""
 
 import asyncio
+import contextlib
 import threading
+from typing import Any
 
 from fastapi import APIRouter
 
@@ -34,10 +36,8 @@ def _pick_folder_sync(title: str = "Select project repository",
     def _run() -> None:
         root = tk.Tk()
         root.withdraw()
-        try:
-            root.attributes("-topmost", True)
-        except tk.TclError:
-            pass  # not every platform supports -topmost
+        with contextlib.suppress(tk.TclError):
+            root.attributes("-topmost", True)  # not every platform supports -topmost
         path = filedialog.askdirectory(title=title, initialdir=initialdir or None)
         box.append(path)
         root.destroy()
@@ -49,7 +49,7 @@ def _pick_folder_sync(title: str = "Select project repository",
 
 
 @router.get("/pick-folder")
-async def pick_folder(initialdir: str = ""):
+async def pick_folder(initialdir: str = "") -> dict[str, Any]:
     """Return the chosen absolute path, or null if the user cancelled."""
     path = await asyncio.to_thread(_pick_folder_sync, initialdir=initialdir)
     return {"path": path}

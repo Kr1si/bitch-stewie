@@ -20,7 +20,7 @@ COMPOSE      := docker compose
 
 .PHONY: help infra up down logs ps backend-setup migrate backend worker watch \
         chat delegate ingest search approvals runs frontend frontend-build \
-        test clean prune
+        test check typecheck lint clean prune
 
 help:  ## show this help
 	@echo "Personal AI Project Assistant — targets:"
@@ -83,9 +83,23 @@ frontend:  ## run the React dev server (http://localhost:5173)
 frontend-build:  ## production build the frontend
 	cd $(FRONTEND_DIR) && npm run build
 
-# --- quality ---
+# --- quality (RULES_AND_GUIDELINES §9/§10: lint + mypy strict + unit tests) ---
+lint:  ## ruff linter
+	cd $(BACKEND_DIR) && $(UV) run ruff check src tests
+
+typecheck:  ## mypy strict
+	cd $(BACKEND_DIR) && $(UV) run mypy
+
+sizes:  ## file-size cap check (src<=400, test<=600, md<=1000)
+	cd $(BACKEND_DIR) && $(UV) run python scripts/check_file_sizes.py
+
+import-linter:  ## DDD layer-boundary import checks (RULES_AND_GUIDELINES §7)
+	cd $(BACKEND_DIR) && $(UV) run import-linter
+
 test:  ## backend pytest suite
 	cd $(BACKEND_DIR) && $(UV) run pytest -q
+
+check: lint typecheck sizes test  ## full gate: lint + mypy + sizes + tests (stop on first failure)
 
 # --- deployment (krisiserver, see docs/krisiserver.md) ---
 SERVER      ?= deploy@194.182.86.101

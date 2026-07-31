@@ -14,7 +14,8 @@ _splitter = RecursiveCharacterTextSplitter(
 
 
 def ingest_text(text: str, source: str, project: str | None = None, kind: str = "doc") -> int:
-    chunks = [{"text": c, "source": source, "kind": kind} for c in _splitter.split_text(text) if c.strip()]
+    chunks = [{"text": c, "source": source, "kind": kind}
+             for c in _splitter.split_text(text) if c.strip()]
     return upsert_chunks(project, chunks)
 
 

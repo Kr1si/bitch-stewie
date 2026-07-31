@@ -1,19 +1,20 @@
 """Aggregated dashboard statistics: one round-trip for the whole dashboard."""
 
+from typing import Any
+
 from fastapi import APIRouter
 from sqlalchemy import func, select
 from starlette.concurrency import run_in_threadpool
 
 from assistant.memory.db import get_session_factory
-from assistant.memory.models import (Approval, ApprovalStatus, CCRun, Decision,
-                                     Project)
+from assistant.memory.models import Approval, ApprovalStatus, CCRun, Decision, Project
 from assistant.rag.store import collection_stats, list_collections
 
 router = APIRouter(prefix="/api/stats")
 
 
 @router.get("")
-async def stats():
+async def stats() -> dict[str, Any]:
     async with get_session_factory()() as s:
         projects = (await s.execute(select(func.count(Project.id)))).scalar_one()
 

@@ -2,7 +2,9 @@
 
 import json
 import uuid
+from collections.abc import AsyncIterator
 from pathlib import Path
+from typing import Any
 
 from fastapi import APIRouter, HTTPException, Request
 from pydantic import BaseModel
@@ -36,7 +38,7 @@ def _plan_title(content: str, fallback: str) -> str:
 
 
 @router.post("/stream")
-async def plan_stream(body: PlanChatIn, request: Request):
+async def plan_stream(body: PlanChatIn, request: Request) -> EventSourceResponse:
     agent = request.app.state.planner
     thread_id, session_id, project_id = await _ensure_session(
         body.thread_id, body.message, project_id=body.project_id, channel="plan")
@@ -44,7 +46,7 @@ async def plan_stream(body: PlanChatIn, request: Request):
     config = {"configurable": {"thread_id": thread_id, "project_id": str(project_id)}}
     invoke_input = {"messages": [{"role": "user", "content": body.message}]}
 
-    async def event_gen():
+    async def event_gen() -> AsyncIterator[dict[str, Any]]:
         final_text = ""
         interrupted = False
         try:
@@ -62,7 +64,9 @@ async def plan_stream(body: PlanChatIn, request: Request):
 
 
 @router.get("/sessions")
-async def list_sessions(project_id: uuid.UUID | None = None, limit: int = 30):
+async def list_sessions(
+    project_id: uuid.UUID | None = None, limit: int = 30,
+) -> list[dict[str, Any]]:
     async with get_session_factory()() as s:
         q = (select(Session).where(Session.channel == "plan")
              .order_by(Session.updated_at.desc()).limit(limit))
@@ -76,7 +80,7 @@ async def list_sessions(project_id: uuid.UUID | None = None, limit: int = 30):
 
 
 @router.get("/sessions/{session_id}/messages")
-async def session_messages(session_id: uuid.UUID, limit: int = 200):
+async def session_messages(session_id: uuid.UUID, limit: int = 200) -> list[dict[str, Any]]:
     async with get_session_factory()() as s:
         rows = (await s.execute(
             select(Message).where(Message.session_id == session_id)
@@ -87,7 +91,7 @@ async def session_messages(session_id: uuid.UUID, limit: int = 200):
 
 
 @router.post("/handoff")
-async def handoff(body: HandoffIn, request: Request):
+async def handoff(body: HandoffIn, request: Request) -> dict[str, Any]:
     """Take the newest plan file for a project and hand it to the orchestrator
     as a new session, so the user can find it in the Chat page's thread list.
     """
