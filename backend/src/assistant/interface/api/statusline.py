@@ -16,8 +16,7 @@ from typing import Any
 from fastapi import APIRouter, HTTPException
 from sqlalchemy import func, select
 
-from assistant.infrastructure.memory.db import get_session_factory
-from assistant.infrastructure.memory.models import CCRun, CCRunEvent
+from assistant.application.services.memory_service import CCRun, CCRunEvent, get_session_factory
 
 router = APIRouter(prefix="/api/runs")
 

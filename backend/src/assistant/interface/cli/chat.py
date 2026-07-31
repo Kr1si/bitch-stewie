@@ -33,9 +33,14 @@ async def run_chat(project: str, thread: str, once: str = "", auto_approve: bool
     from langgraph.checkpoint.postgres.aio import AsyncPostgresSaver
     from langgraph.types import Command
 
-    from assistant.application.orchestrator.factory import build_orchestrator
-    from assistant.infrastructure.memory.models import Approval, ApprovalStatus, Message, Session
-    from assistant.infrastructure.memory.sync_db import get_sync_session_factory
+    from assistant.application.services.memory_service import (
+        Approval,
+        ApprovalStatus,
+        Message,
+        Session,
+        get_sync_session_factory,
+    )
+    from assistant.application.services.orchestrator_service import build_orchestrator
     from assistant.shared.config import get_settings
 
     settings = get_settings()

@@ -6,15 +6,15 @@ from fastapi import APIRouter
 from sqlalchemy import func, select
 from starlette.concurrency import run_in_threadpool
 
-from assistant.infrastructure.memory.db import get_session_factory
-from assistant.infrastructure.memory.models import (
+from assistant.application.services.knowledge_service import collection_stats, list_collections
+from assistant.application.services.memory_service import (
     Approval,
     ApprovalStatus,
     CCRun,
     Decision,
     Project,
+    get_session_factory,
 )
-from assistant.infrastructure.rag.store import collection_stats, list_collections
 
 router = APIRouter(prefix="/api/stats")
 

@@ -6,8 +6,13 @@ from fastapi import APIRouter
 from pydantic import BaseModel
 from starlette.concurrency import run_in_threadpool
 
-from assistant.infrastructure.rag.ingest import ingest_path, ingest_text
-from assistant.infrastructure.rag.store import collection_stats, hybrid_search, list_collections
+from assistant.application.services.knowledge_service import (
+    collection_stats,
+    hybrid_search,
+    ingest_path,
+    ingest_text,
+    list_collections,
+)
 
 router = APIRouter(prefix="/api/knowledge")
 

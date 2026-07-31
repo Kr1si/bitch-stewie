@@ -20,8 +20,13 @@ from claude_agent_sdk.types import McpSdkServerConfig
 from sqlalchemy import select
 from sqlalchemy.orm import Session
 
-from assistant.infrastructure.memory.models import Decision, Example, Preference, Project
-from assistant.infrastructure.memory.sync_db import get_sync_session_factory
+from assistant.application.services.memory_service import (
+    Decision,
+    Example,
+    Preference,
+    Project,
+    get_sync_session_factory,
+)
 from assistant.shared.config import get_settings
 
 logger = logging.getLogger(__name__)
@@ -250,7 +255,7 @@ async def read_example(args: dict[str, Any]) -> dict[str, Any]:
 async def search_knowledge(args: dict[str, Any]) -> dict[str, Any]:
     from anyio import to_thread
 
-    from assistant.infrastructure.rag.store import hybrid_search
+    from assistant.application.services.knowledge_service import hybrid_search
 
     limit = min(int(args.get("limit") or 5), 10)
     project = args.get("project") or None

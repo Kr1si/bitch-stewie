@@ -11,8 +11,12 @@ from pydantic import BaseModel
 from sqlalchemy import select
 from sse_starlette.sse import EventSourceResponse
 
-from assistant.infrastructure.memory.db import get_session_factory
-from assistant.infrastructure.memory.models import Message, Project, Session
+from assistant.application.services.memory_service import (
+    Message,
+    Project,
+    Session,
+    get_session_factory,
+)
 from assistant.interface.api.chat import (
     _ensure_session,
     _extract_text,

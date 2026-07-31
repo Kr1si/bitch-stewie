@@ -16,8 +16,7 @@ from fastapi import APIRouter, File, Form, HTTPException, UploadFile
 from fastapi.responses import FileResponse
 from sqlalchemy import select
 
-from assistant.infrastructure.memory.db import get_session_factory
-from assistant.infrastructure.memory.models import Example, Project
+from assistant.application.services.memory_service import Example, Project, get_session_factory
 from assistant.shared.config import get_settings
 
 router = APIRouter(prefix="/api/examples")

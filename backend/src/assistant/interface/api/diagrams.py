@@ -8,8 +8,7 @@ from fastapi import APIRouter, HTTPException
 from fastapi.responses import FileResponse
 from sqlalchemy import select
 
-from assistant.infrastructure.memory.db import get_session_factory
-from assistant.infrastructure.memory.models import Project
+from assistant.application.services.memory_service import Project, get_session_factory
 
 router = APIRouter(prefix="/api/projects/{project_id}/diagrams")
 

@@ -7,8 +7,14 @@ from fastapi import APIRouter, HTTPException
 from pydantic import BaseModel
 from sqlalchemy import select
 
-from assistant.infrastructure.memory.db import get_session_factory
-from assistant.infrastructure.memory.models import Approval, CCRun, CCRunEvent, Decision, Project
+from assistant.application.services.memory_service import (
+    Approval,
+    CCRun,
+    CCRunEvent,
+    Decision,
+    Project,
+    get_session_factory,
+)
 
 router = APIRouter(prefix="/api")
 
@@ -24,7 +30,7 @@ class RunIn(BaseModel):
 @router.post("/cc-runs", status_code=202)
 async def start_run(body: RunIn) -> dict[str, Any]:
     """Enqueue a delegation on the worker queue; the Runs UI picks it up by polling."""
-    from assistant.infrastructure.jobs.queue import delegate_brief
+    from assistant.application.services.jobs_service import delegate_brief
 
     async with get_session_factory()() as s:
         project = await s.get(Project, body.project_id)

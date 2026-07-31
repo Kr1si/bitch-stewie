@@ -11,8 +11,13 @@ from pydantic import BaseModel
 from sqlalchemy import select
 from sse_starlette.sse import EventSourceResponse
 
-from assistant.infrastructure.memory.db import get_session_factory
-from assistant.infrastructure.memory.models import Approval, ApprovalStatus, Message, Session
+from assistant.application.services.memory_service import (
+    Approval,
+    ApprovalStatus,
+    Message,
+    Session,
+    get_session_factory,
+)
 
 router = APIRouter(prefix="/api/chat")
 

@@ -49,8 +49,7 @@ def seed() -> None:
     """Idempotently seed built-in project presets (run by the backend on boot)."""
     from sqlalchemy import select
 
-    from assistant.infrastructure.memory.models import Project
-    from assistant.infrastructure.memory.sync_db import get_sync_session_factory
+    from assistant.application.services.memory_service import Project, get_sync_session_factory
 
     created, updated = 0, 0
     with get_sync_session_factory()() as s:
@@ -83,10 +82,13 @@ def delegate(
     ),
 ) -> None:
     """Delegate a coding task to a Claude Code instance (GLM 5.2 via Ollama)."""
-    from assistant.infrastructure.cc_bridge.brief import Brief
-    from assistant.infrastructure.cc_bridge.runner import DelegationRunner
-    from assistant.infrastructure.memory.models import Approval, ApprovalStatus, CCRunStatus
-    from assistant.infrastructure.memory.sync_db import get_sync_session_factory
+    from assistant.application.services.jobs_service import Brief, DelegationRunner
+    from assistant.application.services.memory_service import (
+        Approval,
+        ApprovalStatus,
+        CCRunStatus,
+        get_sync_session_factory,
+    )
 
     # The Agent SDK spawns the claude CLI as a subprocess: needs the Proactor loop.
     if sys.platform == "win32":
@@ -142,7 +144,7 @@ def ingest(
     project: str = typer.Option("", "--project", help="Project collection (default: global)"),
 ) -> None:
     """Ingest a markdown/text file or directory into the knowledge base."""
-    from assistant.infrastructure.rag.ingest import ingest_path
+    from assistant.application.services.knowledge_service import ingest_path
 
     result = ingest_path(path, project=project or None)
     console.print(f"Ingested {result['files']} file(s), {result['chunks']} chunk(s): "
@@ -155,7 +157,7 @@ def search(
     project: str = typer.Option("", "--project", help="Project collection (default: global)"),
 ) -> None:
     """Hybrid search over the knowledge base."""
-    from assistant.infrastructure.rag.store import hybrid_search
+    from assistant.application.services.knowledge_service import hybrid_search
 
     for h in hybrid_search(query, project=project or None):
         console.print(f"[bold]{h['source']}[/bold] [dim]({h['kind']}, {h['score']:.3f})[/dim]")
@@ -165,7 +167,7 @@ def search(
 @app.command()
 def watch() -> None:
     """Watch the vault folder and auto-ingest changed markdown files."""
-    from assistant.infrastructure.jobs.watcher import watch_vault
+    from assistant.application.services.jobs_service import watch_vault
 
     watch_vault()
 
@@ -173,7 +175,7 @@ def watch() -> None:
 @app.command()
 def worker() -> None:
     """Run the Procrastinate job worker (delegation + ingestion queues)."""
-    from assistant.infrastructure.jobs.queue import app as job_app
+    from assistant.application.services.jobs_service import job_app
 
     with job_app.open():
         job_app.run_worker()
@@ -184,8 +186,7 @@ def approvals(limit: int = 20) -> None:
     """Show the milestone approval log."""
     from sqlalchemy import select
 
-    from assistant.infrastructure.memory.models import Approval
-    from assistant.infrastructure.memory.sync_db import get_sync_session_factory
+    from assistant.application.services.memory_service import Approval, get_sync_session_factory
 
     with get_sync_session_factory()() as s:
         rows = s.execute(select(Approval).order_by(Approval.created_at.desc())
@@ -202,8 +203,7 @@ def runs_list(limit: int = 10) -> None:
     """Show recent delegated runs."""
     from sqlalchemy import select
 
-    from assistant.infrastructure.memory.models import CCRun
-    from assistant.infrastructure.memory.sync_db import get_sync_session_factory
+    from assistant.application.services.memory_service import CCRun, get_sync_session_factory
 
     with get_sync_session_factory()() as s:
         rows = s.execute(
@@ -221,8 +221,7 @@ def runs_events(run_id: str, limit: int = 50) -> None:
     """Show events for one run."""
     from sqlalchemy import select
 
-    from assistant.infrastructure.memory.models import CCRunEvent
-    from assistant.infrastructure.memory.sync_db import get_sync_session_factory
+    from assistant.application.services.memory_service import CCRunEvent, get_sync_session_factory
 
     with get_sync_session_factory()() as s:
         rows = s.execute(

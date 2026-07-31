@@ -22,9 +22,11 @@ LS_TRACING = apply_langsmith_env()
 
 @asynccontextmanager
 async def lifespan(app: FastAPI) -> AsyncIterator[None]:
-    from assistant.application.orchestrator.factory import build_orchestrator
-    from assistant.application.orchestrator.planner import build_planner
-    from assistant.infrastructure.jobs.queue import app as job_app
+    from assistant.application.services.jobs_service import job_app
+    from assistant.application.services.orchestrator_service import (
+        build_orchestrator,
+        build_planner,
+    )
 
     settings = get_settings()
     async with AsyncPostgresSaver.from_conn_string(settings.database_url) as checkpointer:

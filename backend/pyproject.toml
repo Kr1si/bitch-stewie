@@ -108,3 +108,24 @@ warn_required_dynamic_aliases = true
 [tool.importlinter]
 root_package = "assistant"
 include_external_packages = true
+
+# Layer boundary contracts (RULES_AND_GUIDELINES §7), adapted to this project's
+# 3-layer + shared-kernel layout (no framework-independent domain layer exists).
+# Uses import-linter's `layers` contract: higher layers may depend on lower layers,
+# never the reverse. Order is high -> low.
+#   interface -> application -> infrastructure -> shared
+# The interface layer reaches infrastructure only through the application
+# services, which are the documented seam.
+
+[[tool.importlinter.contracts]]
+name = "layered architecture"
+type = "layers"
+containers = [
+    "assistant",
+]
+layers = [
+    "interface",
+    "application",
+    "infrastructure",
+    "shared",
+]
