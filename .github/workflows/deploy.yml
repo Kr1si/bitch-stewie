@@ -65,11 +65,15 @@ jobs:
         run: |
           ssh deploy@194.182.86.101 '
             # backend runs alembic migrations before starting uvicorn (~25s on
-            # a fresh boot), so poll until the API is up instead of a fixed sleep
+            # a fresh boot), so poll until the API is up instead of a fixed sleep.
+            # --max-time bounds each probe so a hung backend can't stall the step
+            # past the job timeout; 30 attempts x (15s timeout + 10s sleep) ≈ 12min max.
+            elapsed=0
             for i in $(seq 1 30); do
-              code=$(curl -sS -o /dev/null -w "%{http_code}" http://127.0.0.1:3000/api/projects || echo 000)
-              if [ "$code" = "200" ]; then echo "API through nginx: HTTP $code (after ${i}0s)"; exit 0; fi
+              code=$(curl -sS --max-time 15 -o /dev/null -w "%{http_code}" http://127.0.0.1:3000/api/projects || echo 000)
+              if [ "$code" = "200" ]; then echo "API through nginx: HTTP $code (after ${elapsed}s)"; exit 0; fi
               sleep 10
+              elapsed=$((elapsed + 25))
             done
             echo "API through nginx: HTTP $code (never came up)"
             sudo docker compose -f bitch-stewie/docker/docker-compose.prod.yml ps
