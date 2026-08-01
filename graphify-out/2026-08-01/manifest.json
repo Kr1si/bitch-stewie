@@ -465,9 +465,9 @@
     "semantic_hash": "b9ae30bac70be451071297a8c90111f0"
   },
   "/Users/martinkrisko/Documents/Projects/bitch-stewie/README.md": {
-    "mtime": 1785532615.7106,
-    "ast_hash": "35dd620db06f23c0d65700d8ba3612b6",
-    "semantic_hash": "35dd620db06f23c0d65700d8ba3612b6"
+    "mtime": 1785574040.4998388,
+    "ast_hash": "6a9d3b8e88c90bb1eff0092cde7b57da",
+    "semantic_hash": ""
   },
   "/Users/martinkrisko/Documents/Projects/bitch-stewie/PLAN.md": {
     "mtime": 1785532615.7104864,
@@ -485,8 +485,8 @@
     "semantic_hash": "1dca9922390bccfc2b0036e90d2d0f29"
   },
   "/Users/martinkrisko/Documents/Projects/bitch-stewie/docker/docker-compose.prod.yml": {
-    "mtime": 1785543070.054941,
-    "ast_hash": "03abc502dbafe5ca681dcf8e47fa0f41",
+    "mtime": 1785580625.8911629,
+    "ast_hash": "2ba035af91f94dbb33963c68d9a8c90f",
     "semantic_hash": ""
   },
   "/Users/martinkrisko/Documents/Projects/bitch-stewie/frontend/index.html": {
@@ -635,8 +635,8 @@
     "semantic_hash": "32dc930de576e1c7c60d6d50f31ca080"
   },
   "/Users/martinkrisko/Documents/Projects/bitch-stewie/.github/workflows/deploy.yml": {
-    "mtime": 1785573287.2503414,
-    "ast_hash": "5f3f3fd0051203e5f15615ddf0f67eee",
+    "mtime": 1785580654.17296,
+    "ast_hash": "a375368e12254b42fe8dac67ab8703aa",
     "semantic_hash": ""
   },
   "/Users/martinkrisko/Documents/Projects/bitch-stewie/research_subjects/ARCHITECTURE.md": {
