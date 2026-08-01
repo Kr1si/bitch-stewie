@@ -127,6 +127,15 @@ services:
         condition: service_started
     ports:
       - "127.0.0.1:3000:80"     # the page: tunnel 3000 and open http://localhost:3000
+    healthcheck:
+      # nginx is ready to serve once it responds 200 on the SPA root. Without this
+      # the deploy's Verify step races container recreation: it polls port 3000
+      # before nginx binds and gets connection-refused until it gives up.
+      test: ["CMD", "curl", "-f", "http://localhost/"]
+      interval: 5s
+      timeout: 3s
+      retries: 3
+      start_period: 5s
 
 volumes:
   pg_data:
