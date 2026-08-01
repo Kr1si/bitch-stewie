@@ -140,9 +140,9 @@
     "semantic_hash": "6bcb3b39f4ab9666867ec40b51619e18"
   },
   "/Users/martinkrisko/Documents/Projects/bitch-stewie/backend/migrations/env.py": {
-    "mtime": 1785532615.7123666,
-    "ast_hash": "7f52295238450f188e03998a4a8aaaed",
-    "semantic_hash": "7f52295238450f188e03998a4a8aaaed"
+    "mtime": 1785572667.4505155,
+    "ast_hash": "9b94b1b7f212277f80283e5cef50cc2c",
+    "semantic_hash": ""
   },
   "/Users/martinkrisko/Documents/Projects/bitch-stewie/backend/migrations/versions/ab09f49c0c04_initial_memory_schema.py": {
     "mtime": 1785532615.7125862,
@@ -635,9 +635,9 @@
     "semantic_hash": "32dc930de576e1c7c60d6d50f31ca080"
   },
   "/Users/martinkrisko/Documents/Projects/bitch-stewie/.github/workflows/deploy.yml": {
-    "mtime": 1785532615.710116,
-    "ast_hash": "7b92624d5e0cf6f2ef6ae365d8dcca9b",
-    "semantic_hash": "7b92624d5e0cf6f2ef6ae365d8dcca9b"
+    "mtime": 1785573287.2503414,
+    "ast_hash": "5f3f3fd0051203e5f15615ddf0f67eee",
+    "semantic_hash": ""
   },
   "/Users/martinkrisko/Documents/Projects/bitch-stewie/research_subjects/ARCHITECTURE.md": {
     "mtime": 1785536560.0185578,

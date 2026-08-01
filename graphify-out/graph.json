@@ -289,6 +289,60 @@
   },
   "nodes": [
     {
+      "label": "README.md",
+      "file_type": "document",
+      "source_file": "README.md",
+      "source_location": "L1",
+      "id": "readme_md",
+      "community": 126,
+      "norm_label": "readme.md"
+    },
+    {
+      "label": "Personal AI Project Assistant",
+      "file_type": "document",
+      "source_file": "README.md",
+      "source_location": "L1",
+      "id": "bitch_stewie_readme_personal_ai_project_assistant",
+      "community": 126,
+      "norm_label": "personal ai project assistant"
+    },
+    {
+      "label": "Layout",
+      "file_type": "document",
+      "source_file": "README.md",
+      "source_location": "L10",
+      "id": "bitch_stewie_readme_layout",
+      "community": 126,
+      "norm_label": "layout"
+    },
+    {
+      "label": "Running",
+      "file_type": "document",
+      "source_file": "README.md",
+      "source_location": "L20",
+      "id": "bitch_stewie_readme_running",
+      "community": 126,
+      "norm_label": "running"
+    },
+    {
+      "label": "Remote server (krisiserver)",
+      "file_type": "document",
+      "source_file": "README.md",
+      "source_location": "L44",
+      "id": "bitch_stewie_readme_remote_server_krisiserver",
+      "community": 126,
+      "norm_label": "remote server (krisiserver)"
+    },
+    {
+      "label": "Model configuration",
+      "file_type": "document",
+      "source_file": "README.md",
+      "source_location": "L51",
+      "id": "bitch_stewie_readme_model_configuration",
+      "community": 126,
+      "norm_label": "model configuration"
+    },
+    {
       "label": "tsconfig.app.json",
       "file_type": "code",
       "source_file": "frontend/tsconfig.app.json",
@@ -3110,7 +3164,7 @@
       "file_type": "rationale",
       "source_file": "backend/src/assistant/interface/api/knowledge.py",
       "source_location": "L1",
-      "community": 124,
+      "community": 5,
       "norm_label": "knowledge base endpoints: search and ingestion for the web ui.",
       "id": "api_knowledge_rationale_1"
     },
@@ -3281,7 +3335,7 @@
       "file_type": "code",
       "source_file": "backend/src/assistant/interface/api/routers.py",
       "source_location": "L1",
-      "community": 29,
+      "community": 2,
       "norm_label": "routers.py",
       "id": "backend_src_assistant_interface_api_routers_py"
     },
@@ -3290,7 +3344,7 @@
       "file_type": "code",
       "source_file": "backend/src/assistant/interface/api/routers.py",
       "source_location": "L22",
-      "community": 29,
+      "community": 2,
       "norm_label": "runin",
       "id": "api_routers_runin"
     },
@@ -3299,7 +3353,7 @@
       "file_type": "code",
       "source_file": "backend/src/assistant/interface/api/routers.py",
       "source_location": "L31",
-      "community": 29,
+      "community": 2,
       "norm_label": "start_run()",
       "id": "api_routers_start_run"
     },
@@ -3308,7 +3362,7 @@
       "file_type": "code",
       "source_file": "backend/src/assistant/interface/api/routers.py",
       "source_location": "L31",
-      "community": 29,
+      "community": 2,
       "norm_label": "str",
       "id": "backend_src_assistant_interface_api_routers_py_str"
     },
@@ -3317,7 +3371,7 @@
       "file_type": "code",
       "source_file": "backend/src/assistant/interface/api/routers.py",
       "source_location": "L31",
-      "community": 29,
+      "community": 2,
       "norm_label": "any",
       "id": "backend_src_assistant_interface_api_routers_py_any"
     },
@@ -3326,7 +3380,7 @@
       "file_type": "code",
       "source_file": "backend/src/assistant/interface/api/routers.py",
       "source_location": "L50",
-      "community": 29,
+      "community": 2,
       "norm_label": "projectin",
       "id": "api_routers_projectin"
     },
@@ -3335,7 +3389,7 @@
       "file_type": "code",
       "source_file": "backend/src/assistant/interface/api/routers.py",
       "source_location": "L57",
-      "community": 29,
+      "community": 2,
       "norm_label": "list_projects()",
       "id": "api_routers_list_projects"
     },
@@ -3344,7 +3398,7 @@
       "file_type": "code",
       "source_file": "backend/src/assistant/interface/api/routers.py",
       "source_location": "L65",
-      "community": 29,
+      "community": 2,
       "norm_label": "create_project()",
       "id": "api_routers_create_project"
     },
@@ -3353,7 +3407,7 @@
       "file_type": "code",
       "source_file": "backend/src/assistant/interface/api/routers.py",
       "source_location": "L79",
-      "community": 29,
+      "community": 2,
       "norm_label": "list_decisions()",
       "id": "api_routers_list_decisions"
     },
@@ -3362,7 +3416,7 @@
       "file_type": "code",
       "source_file": "backend/src/assistant/interface/api/routers.py",
       "source_location": "L79",
-      "community": 29,
+      "community": 2,
       "norm_label": "uuid",
       "id": "backend_src_assistant_interface_api_routers_py_uuid"
     },
@@ -3371,7 +3425,7 @@
       "file_type": "code",
       "source_file": "backend/src/assistant/interface/api/routers.py",
       "source_location": "L88",
-      "community": 29,
+      "community": 2,
       "norm_label": "list_approvals()",
       "id": "api_routers_list_approvals"
     },
@@ -3380,7 +3434,7 @@
       "file_type": "code",
       "source_file": "backend/src/assistant/interface/api/routers.py",
       "source_location": "L100",
-      "community": 29,
+      "community": 2,
       "norm_label": "list_runs()",
       "id": "api_routers_list_runs"
     },
@@ -3389,7 +3443,7 @@
       "file_type": "code",
       "source_file": "backend/src/assistant/interface/api/routers.py",
       "source_location": "L100",
-      "community": 29,
+      "community": 2,
       "norm_label": "int",
       "id": "backend_src_assistant_interface_api_routers_py_int"
     },
@@ -3398,7 +3452,7 @@
       "file_type": "code",
       "source_file": "backend/src/assistant/interface/api/routers.py",
       "source_location": "L110",
-      "community": 29,
+      "community": 2,
       "norm_label": "run_events()",
       "id": "api_routers_run_events"
     },
@@ -3407,7 +3461,7 @@
       "file_type": "rationale",
       "source_file": "backend/src/assistant/interface/api/routers.py",
       "source_location": "L1",
-      "community": 29,
+      "community": 2,
       "norm_label": "read/manage endpoints for the web ui (phase 5 consumes these).",
       "id": "api_routers_rationale_1"
     },
@@ -3416,7 +3470,7 @@
       "file_type": "rationale",
       "source_file": "backend/src/assistant/interface/api/routers.py",
       "source_location": "L32",
-      "community": 29,
+      "community": 2,
       "norm_label": "enqueue a delegation on the worker queue; the runs ui picks it up by polling.",
       "id": "api_routers_rationale_32"
     },
@@ -3434,7 +3488,7 @@
       "file_type": "code",
       "source_file": "backend/src/assistant/interface/api/stats.py",
       "source_location": "L23",
-      "community": 29,
+      "community": 2,
       "norm_label": "stats()",
       "id": "api_stats_stats"
     },
@@ -3443,7 +3497,7 @@
       "file_type": "code",
       "source_file": "backend/src/assistant/interface/api/stats.py",
       "source_location": "L23",
-      "community": 29,
+      "community": 2,
       "norm_label": "str",
       "id": "backend_src_assistant_interface_api_stats_py_str"
     },
@@ -3452,7 +3506,7 @@
       "file_type": "code",
       "source_file": "backend/src/assistant/interface/api/stats.py",
       "source_location": "L23",
-      "community": 29,
+      "community": 2,
       "norm_label": "any",
       "id": "backend_src_assistant_interface_api_stats_py_any"
     },
@@ -3533,7 +3587,7 @@
       "file_type": "code",
       "source_file": "backend/src/assistant/interface/cli/chat.py",
       "source_location": "L1",
-      "community": 2,
+      "community": 42,
       "norm_label": "chat.py",
       "id": "backend_src_assistant_interface_cli_chat_py"
     },
@@ -3542,7 +3596,7 @@
       "file_type": "code",
       "source_file": "backend/src/assistant/interface/cli/chat.py",
       "source_location": "L12",
-      "community": 2,
+      "community": 42,
       "norm_label": "_extract_text()",
       "id": "cli_chat_extract_text"
     },
@@ -3551,7 +3605,7 @@
       "file_type": "code",
       "source_file": "backend/src/assistant/interface/cli/chat.py",
       "source_location": "L12",
-      "community": 2,
+      "community": 42,
       "norm_label": "str",
       "id": "backend_src_assistant_interface_cli_chat_py_str"
     },
@@ -3560,7 +3614,7 @@
       "file_type": "code",
       "source_file": "backend/src/assistant/interface/cli/chat.py",
       "source_location": "L22",
-      "community": 2,
+      "community": 42,
       "norm_label": "_resume_value()",
       "id": "cli_chat_resume_value"
     },
@@ -3578,7 +3632,7 @@
       "file_type": "code",
       "source_file": "backend/src/assistant/interface/cli/chat.py",
       "source_location": "L32",
-      "community": 2,
+      "community": 42,
       "norm_label": "run_chat()",
       "id": "cli_chat_run_chat"
     },
@@ -3587,7 +3641,7 @@
       "file_type": "rationale",
       "source_file": "backend/src/assistant/interface/cli/chat.py",
       "source_location": "L1",
-      "community": 2,
+      "community": 42,
       "norm_label": "interactive chat with the orchestrator (selector loop; delegation runs on the wo",
       "id": "cli_chat_rationale_1"
     },
@@ -3596,7 +3650,7 @@
       "file_type": "rationale",
       "source_file": "backend/src/assistant/interface/cli/chat.py",
       "source_location": "L23",
-      "community": 2,
+      "community": 42,
       "norm_label": "build the hitl resume payload for however many action requests were raised.",
       "id": "cli_chat_rationale_23"
     },
@@ -3605,7 +3659,7 @@
       "file_type": "code",
       "source_file": "backend/src/assistant/interface/cli/main.py",
       "source_location": "L1",
-      "community": 1,
+      "community": 14,
       "norm_label": "main.py",
       "id": "backend_src_assistant_interface_cli_main_py"
     },
@@ -3614,7 +3668,7 @@
       "file_type": "code",
       "source_file": "backend/src/assistant/interface/cli/main.py",
       "source_location": "L23",
-      "community": 1,
+      "community": 14,
       "norm_label": "version()",
       "id": "cli_main_version"
     },
@@ -3668,7 +3722,7 @@
       "file_type": "code",
       "source_file": "backend/src/assistant/interface/cli/main.py",
       "source_location": "L142",
-      "community": 1,
+      "community": 14,
       "norm_label": "ingest()",
       "id": "cli_main_ingest"
     },
@@ -3677,7 +3731,7 @@
       "file_type": "code",
       "source_file": "backend/src/assistant/interface/cli/main.py",
       "source_location": "L155",
-      "community": 1,
+      "community": 14,
       "norm_label": "search()",
       "id": "cli_main_search"
     },
@@ -3686,7 +3740,7 @@
       "file_type": "code",
       "source_file": "backend/src/assistant/interface/cli/main.py",
       "source_location": "L168",
-      "community": 21,
+      "community": 14,
       "norm_label": "watch()",
       "id": "cli_main_watch"
     },
@@ -3695,7 +3749,7 @@
       "file_type": "code",
       "source_file": "backend/src/assistant/interface/cli/main.py",
       "source_location": "L176",
-      "community": 1,
+      "community": 14,
       "norm_label": "worker()",
       "id": "cli_main_worker"
     },
@@ -3704,7 +3758,7 @@
       "file_type": "code",
       "source_file": "backend/src/assistant/interface/cli/main.py",
       "source_location": "L185",
-      "community": 1,
+      "community": 14,
       "norm_label": "approvals()",
       "id": "cli_main_approvals"
     },
@@ -3713,7 +3767,7 @@
       "file_type": "code",
       "source_file": "backend/src/assistant/interface/cli/main.py",
       "source_location": "L185",
-      "community": 29,
+      "community": 14,
       "norm_label": "int",
       "id": "backend_src_assistant_interface_cli_main_py_int"
     },
@@ -3722,7 +3776,7 @@
       "file_type": "code",
       "source_file": "backend/src/assistant/interface/cli/main.py",
       "source_location": "L202",
-      "community": 1,
+      "community": 14,
       "norm_label": "runs_list()",
       "id": "cli_main_runs_list"
     },
@@ -3740,7 +3794,7 @@
       "file_type": "rationale",
       "source_file": "backend/src/assistant/interface/cli/main.py",
       "source_location": "L1",
-      "community": 1,
+      "community": 14,
       "norm_label": "assistant cli - phase 1 drives delegation directly; later phases go through the",
       "id": "cli_main_rationale_1"
     },
@@ -3776,7 +3830,7 @@
       "file_type": "rationale",
       "source_file": "backend/src/assistant/interface/cli/main.py",
       "source_location": "L146",
-      "community": 1,
+      "community": 14,
       "norm_label": "ingest a markdown/text file or directory into the knowledge base.",
       "id": "cli_main_rationale_146"
     },
@@ -3785,7 +3839,7 @@
       "file_type": "rationale",
       "source_file": "backend/src/assistant/interface/cli/main.py",
       "source_location": "L159",
-      "community": 1,
+      "community": 14,
       "norm_label": "hybrid search over the knowledge base.",
       "id": "cli_main_rationale_159"
     },
@@ -3794,7 +3848,7 @@
       "file_type": "rationale",
       "source_file": "backend/src/assistant/interface/cli/main.py",
       "source_location": "L169",
-      "community": 21,
+      "community": 14,
       "norm_label": "watch the vault folder and auto-ingest changed markdown files.",
       "id": "cli_main_rationale_169"
     },
@@ -3803,7 +3857,7 @@
       "file_type": "rationale",
       "source_file": "backend/src/assistant/interface/cli/main.py",
       "source_location": "L177",
-      "community": 1,
+      "community": 14,
       "norm_label": "run the procrastinate job worker (delegation + ingestion queues).",
       "id": "cli_main_rationale_177"
     },
@@ -3812,7 +3866,7 @@
       "file_type": "rationale",
       "source_file": "backend/src/assistant/interface/cli/main.py",
       "source_location": "L186",
-      "community": 1,
+      "community": 14,
       "norm_label": "show the milestone approval log.",
       "id": "cli_main_rationale_186"
     },
@@ -3821,7 +3875,7 @@
       "file_type": "rationale",
       "source_file": "backend/src/assistant/interface/cli/main.py",
       "source_location": "L203",
-      "community": 1,
+      "community": 14,
       "norm_label": "show recent delegated runs.",
       "id": "cli_main_rationale_203"
     },
@@ -4946,7 +5000,7 @@
       "file_type": "code",
       "source_file": "backend/src/assistant/application/orchestrator/context.py",
       "source_location": "L1",
-      "community": 9,
+      "community": 1,
       "norm_label": "context.py",
       "id": "backend_src_assistant_application_orchestrator_context_py"
     },
@@ -4955,7 +5009,7 @@
       "file_type": "code",
       "source_file": "backend/src/assistant/application/orchestrator/context.py",
       "source_location": "L19",
-      "community": 9,
+      "community": 1,
       "norm_label": "current_project()",
       "id": "orchestrator_context_current_project"
     },
@@ -4964,7 +5018,7 @@
       "file_type": "code",
       "source_file": "backend/src/assistant/application/orchestrator/context.py",
       "source_location": "L19",
-      "community": 9,
+      "community": 1,
       "norm_label": "runnableconfig",
       "id": "backend_src_assistant_application_orchestrator_context_py_runnableconfig"
     },
@@ -4973,7 +5027,7 @@
       "file_type": "code",
       "source_file": "backend/src/assistant/application/orchestrator/context.py",
       "source_location": "L19",
-      "community": 9,
+      "community": 1,
       "norm_label": "project",
       "id": "backend_src_assistant_application_orchestrator_context_py_project"
     },
@@ -4982,7 +5036,7 @@
       "file_type": "rationale",
       "source_file": "backend/src/assistant/application/orchestrator/context.py",
       "source_location": "L1",
-      "community": 9,
+      "community": 1,
       "norm_label": "shared helper for resolving the session's fixed project from runnableconfig.  th",
       "id": "orchestrator_context_rationale_1"
     },
@@ -4991,7 +5045,7 @@
       "file_type": "rationale",
       "source_file": "backend/src/assistant/application/orchestrator/context.py",
       "source_location": "L20",
-      "community": 9,
+      "community": 1,
       "norm_label": "resolve the ``project`` row for this session from ``config``.      raises ``valu",
       "id": "orchestrator_context_rationale_20"
     },
@@ -5090,7 +5144,7 @@
       "file_type": "code",
       "source_file": "backend/src/assistant/application/orchestrator/factory.py",
       "source_location": "L1",
-      "community": 82,
+      "community": 42,
       "norm_label": "factory.py",
       "id": "backend_src_assistant_application_orchestrator_factory_py"
     },
@@ -5099,7 +5153,7 @@
       "file_type": "code",
       "source_file": "backend/src/assistant/application/orchestrator/factory.py",
       "source_location": "L84",
-      "community": 82,
+      "community": 42,
       "norm_label": "build_orchestrator()",
       "id": "orchestrator_factory_build_orchestrator"
     },
@@ -5108,7 +5162,7 @@
       "file_type": "code",
       "source_file": "backend/src/assistant/application/orchestrator/factory.py",
       "source_location": "L84",
-      "community": 82,
+      "community": 42,
       "norm_label": "any",
       "id": "backend_src_assistant_application_orchestrator_factory_py_any"
     },
@@ -5117,7 +5171,7 @@
       "file_type": "rationale",
       "source_file": "backend/src/assistant/application/orchestrator/factory.py",
       "source_location": "L1",
-      "community": 82,
+      "community": 42,
       "norm_label": "build the orchestrator deep agent with its four subagents.",
       "id": "orchestrator_factory_rationale_1"
     },
@@ -5126,7 +5180,7 @@
       "file_type": "code",
       "source_file": "backend/src/assistant/application/orchestrator/planner.py",
       "source_location": "L1",
-      "community": 82,
+      "community": 127,
       "norm_label": "planner.py",
       "id": "backend_src_assistant_application_orchestrator_planner_py"
     },
@@ -5135,7 +5189,7 @@
       "file_type": "code",
       "source_file": "backend/src/assistant/application/orchestrator/planner.py",
       "source_location": "L48",
-      "community": 82,
+      "community": 127,
       "norm_label": "build_planner()",
       "id": "orchestrator_planner_build_planner"
     },
@@ -5144,7 +5198,7 @@
       "file_type": "code",
       "source_file": "backend/src/assistant/application/orchestrator/planner.py",
       "source_location": "L48",
-      "community": 82,
+      "community": 127,
       "norm_label": "any",
       "id": "backend_src_assistant_application_orchestrator_planner_py_any"
     },
@@ -5153,7 +5207,7 @@
       "file_type": "rationale",
       "source_file": "backend/src/assistant/application/orchestrator/planner.py",
       "source_location": "L1",
-      "community": 82,
+      "community": 127,
       "norm_label": "build the planning agent: an iterative conversation that produces a plan file.",
       "id": "orchestrator_planner_rationale_1"
     },
@@ -5162,7 +5216,7 @@
       "file_type": "code",
       "source_file": "backend/src/assistant/application/orchestrator/research_tools.py",
       "source_location": "L1",
-      "community": 9,
+      "community": 37,
       "norm_label": "research_tools.py",
       "id": "backend_src_assistant_application_orchestrator_research_tools_py"
     },
@@ -5171,7 +5225,7 @@
       "file_type": "code",
       "source_file": "backend/src/assistant/application/orchestrator/research_tools.py",
       "source_location": "L16",
-      "community": 9,
+      "community": 37,
       "norm_label": "search_knowledge()",
       "id": "orchestrator_research_tools_search_knowledge"
     },
@@ -5180,7 +5234,7 @@
       "file_type": "code",
       "source_file": "backend/src/assistant/application/orchestrator/research_tools.py",
       "source_location": "L16",
-      "community": 9,
+      "community": 37,
       "norm_label": "str",
       "id": "backend_src_assistant_application_orchestrator_research_tools_py_str"
     },
@@ -5189,7 +5243,7 @@
       "file_type": "code",
       "source_file": "backend/src/assistant/application/orchestrator/research_tools.py",
       "source_location": "L16",
-      "community": 9,
+      "community": 37,
       "norm_label": "runnableconfig",
       "id": "backend_src_assistant_application_orchestrator_research_tools_py_runnableconfig"
     },
@@ -5198,7 +5252,7 @@
       "file_type": "code",
       "source_file": "backend/src/assistant/application/orchestrator/research_tools.py",
       "source_location": "L28",
-      "community": 9,
+      "community": 37,
       "norm_label": "run_deep_research()",
       "id": "orchestrator_research_tools_run_deep_research"
     },
@@ -5207,7 +5261,7 @@
       "file_type": "rationale",
       "source_file": "backend/src/assistant/application/orchestrator/research_tools.py",
       "source_location": "L1",
-      "community": 9,
+      "community": 37,
       "norm_label": "researcher tools: local knowledge base + native /deep-research via claude code.",
       "id": "orchestrator_research_tools_rationale_1"
     },
@@ -5216,7 +5270,7 @@
       "file_type": "rationale",
       "source_file": "backend/src/assistant/application/orchestrator/research_tools.py",
       "source_location": "L17",
-      "community": 9,
+      "community": 37,
       "norm_label": "search the ingested knowledge base (vault docs, standards, past research)     sc",
       "id": "orchestrator_research_tools_rationale_17"
     },
@@ -5225,7 +5279,7 @@
       "file_type": "rationale",
       "source_file": "backend/src/assistant/application/orchestrator/research_tools.py",
       "source_location": "L29",
-      "community": 9,
+      "community": 37,
       "norm_label": "run deep web research via claude code's native /deep-research skill.      synchr",
       "id": "orchestrator_research_tools_rationale_29"
     },
@@ -5234,7 +5288,7 @@
       "file_type": "rationale",
       "source_file": "backend/src/assistant/application/orchestrator/research_tools.py",
       "source_location": "L57",
-      "community": 9,
+      "community": 37,
       "norm_label": "run deep web research with citations via claude code's native /deep-research ski",
       "id": "orchestrator_research_tools_rationale_57"
     },
@@ -5243,7 +5297,7 @@
       "file_type": "code",
       "source_file": "backend/src/assistant/application/orchestrator/tools.py",
       "source_location": "L1",
-      "community": 37,
+      "community": 1,
       "norm_label": "tools.py",
       "id": "backend_src_assistant_application_orchestrator_tools_py"
     },
@@ -5252,7 +5306,7 @@
       "file_type": "code",
       "source_file": "backend/src/assistant/application/orchestrator/tools.py",
       "source_location": "L19",
-      "community": 37,
+      "community": 1,
       "norm_label": "register_project()",
       "id": "orchestrator_tools_register_project"
     },
@@ -5261,7 +5315,7 @@
       "file_type": "code",
       "source_file": "backend/src/assistant/application/orchestrator/tools.py",
       "source_location": "L19",
-      "community": 37,
+      "community": 1,
       "norm_label": "str",
       "id": "backend_src_assistant_application_orchestrator_tools_py_str"
     },
@@ -5270,7 +5324,7 @@
       "file_type": "code",
       "source_file": "backend/src/assistant/application/orchestrator/tools.py",
       "source_location": "L30",
-      "community": 37,
+      "community": 1,
       "norm_label": "list_projects()",
       "id": "orchestrator_tools_list_projects"
     },
@@ -5279,7 +5333,7 @@
       "file_type": "code",
       "source_file": "backend/src/assistant/application/orchestrator/tools.py",
       "source_location": "L41",
-      "community": 37,
+      "community": 1,
       "norm_label": "record_decision()",
       "id": "orchestrator_tools_record_decision"
     },
@@ -5288,7 +5342,7 @@
       "file_type": "code",
       "source_file": "backend/src/assistant/application/orchestrator/tools.py",
       "source_location": "L41",
-      "community": 37,
+      "community": 1,
       "norm_label": "runnableconfig",
       "id": "backend_src_assistant_application_orchestrator_tools_py_runnableconfig"
     },
@@ -5297,7 +5351,7 @@
       "file_type": "code",
       "source_file": "backend/src/assistant/application/orchestrator/tools.py",
       "source_location": "L53",
-      "community": 37,
+      "community": 1,
       "norm_label": "list_decisions()",
       "id": "orchestrator_tools_list_decisions"
     },
@@ -5306,7 +5360,7 @@
       "file_type": "code",
       "source_file": "backend/src/assistant/application/orchestrator/tools.py",
       "source_location": "L78",
-      "community": 37,
+      "community": 1,
       "norm_label": "list_preferences()",
       "id": "orchestrator_tools_list_preferences"
     },
@@ -5315,7 +5369,7 @@
       "file_type": "code",
       "source_file": "backend/src/assistant/application/orchestrator/tools.py",
       "source_location": "L86",
-      "community": 37,
+      "community": 1,
       "norm_label": "delegate_coding_task()",
       "id": "orchestrator_tools_delegate_coding_task"
     },
@@ -5324,7 +5378,7 @@
       "file_type": "code",
       "source_file": "backend/src/assistant/application/orchestrator/tools.py",
       "source_location": "L86",
-      "community": 37,
+      "community": 1,
       "norm_label": "bool",
       "id": "backend_src_assistant_application_orchestrator_tools_py_bool"
     },
@@ -5333,7 +5387,7 @@
       "file_type": "rationale",
       "source_file": "backend/src/assistant/application/orchestrator/tools.py",
       "source_location": "L1",
-      "community": 37,
+      "community": 1,
       "norm_label": "langchain tools for the orchestrator and its subagents.  all tools are sync (lan",
       "id": "orchestrator_tools_rationale_1"
     },
@@ -5342,7 +5396,7 @@
       "file_type": "rationale",
       "source_file": "backend/src/assistant/application/orchestrator/tools.py",
       "source_location": "L20",
-      "community": 37,
+      "community": 1,
       "norm_label": "register a new project in the workspace registry (or report if it exists).",
       "id": "orchestrator_tools_rationale_20"
     },
@@ -5351,7 +5405,7 @@
       "file_type": "rationale",
       "source_file": "backend/src/assistant/application/orchestrator/tools.py",
       "source_location": "L31",
-      "community": 37,
+      "community": 1,
       "norm_label": "list all projects in the workspace registry.",
       "id": "orchestrator_tools_rationale_31"
     },
@@ -5360,7 +5414,7 @@
       "file_type": "rationale",
       "source_file": "backend/src/assistant/application/orchestrator/tools.py",
       "source_location": "L43",
-      "community": 37,
+      "community": 1,
       "norm_label": "record an adr-style architecture decision for the current project.",
       "id": "orchestrator_tools_rationale_43"
     },
@@ -5369,7 +5423,7 @@
       "file_type": "rationale",
       "source_file": "backend/src/assistant/application/orchestrator/tools.py",
       "source_location": "L54",
-      "community": 37,
+      "community": 1,
       "norm_label": "list recorded decisions for the current project.",
       "id": "orchestrator_tools_rationale_54"
     },
@@ -5387,7 +5441,7 @@
       "file_type": "rationale",
       "source_file": "backend/src/assistant/application/orchestrator/tools.py",
       "source_location": "L79",
-      "community": 37,
+      "community": 1,
       "norm_label": "list stored user preferences and conventions.",
       "id": "orchestrator_tools_rationale_79"
     },
@@ -5396,7 +5450,7 @@
       "file_type": "rationale",
       "source_file": "backend/src/assistant/application/orchestrator/tools.py",
       "source_location": "L90",
-      "community": 37,
+      "community": 1,
       "norm_label": "delegate a coding task to a claude code instance working in the project's reposi",
       "id": "orchestrator_tools_rationale_90"
     },
@@ -5459,7 +5513,7 @@
       "file_type": "code",
       "source_file": "backend/src/assistant/infrastructure/cc_bridge/lifecycle_hooks.py",
       "source_location": "L1",
-      "community": 15,
+      "community": 124,
       "norm_label": "lifecycle_hooks.py",
       "id": "backend_src_assistant_infrastructure_cc_bridge_lifecycle_hooks_py"
     },
@@ -5468,7 +5522,7 @@
       "file_type": "code",
       "source_file": "backend/src/assistant/infrastructure/cc_bridge/lifecycle_hooks.py",
       "source_location": "L28",
-      "community": 15,
+      "community": 124,
       "norm_label": "_persist_event()",
       "id": "cc_bridge_lifecycle_hooks_persist_event"
     },
@@ -5477,7 +5531,7 @@
       "file_type": "code",
       "source_file": "backend/src/assistant/infrastructure/cc_bridge/lifecycle_hooks.py",
       "source_location": "L28",
-      "community": 15,
+      "community": 124,
       "norm_label": "uuid",
       "id": "backend_src_assistant_infrastructure_cc_bridge_lifecycle_hooks_py_uuid"
     },
@@ -5486,7 +5540,7 @@
       "file_type": "code",
       "source_file": "backend/src/assistant/infrastructure/cc_bridge/lifecycle_hooks.py",
       "source_location": "L28",
-      "community": 15,
+      "community": 124,
       "norm_label": "str",
       "id": "backend_src_assistant_infrastructure_cc_bridge_lifecycle_hooks_py_str"
     },
@@ -5495,7 +5549,7 @@
       "file_type": "code",
       "source_file": "backend/src/assistant/infrastructure/cc_bridge/lifecycle_hooks.py",
       "source_location": "L38",
-      "community": 15,
+      "community": 124,
       "norm_label": "build_lifecycle_hooks()",
       "id": "cc_bridge_lifecycle_hooks_build_lifecycle_hooks"
     },
@@ -5504,7 +5558,7 @@
       "file_type": "code",
       "source_file": "backend/src/assistant/infrastructure/cc_bridge/lifecycle_hooks.py",
       "source_location": "L38",
-      "community": 15,
+      "community": 2,
       "norm_label": "hookmatcher",
       "id": "hookmatcher"
     },
@@ -5513,7 +5567,7 @@
       "file_type": "rationale",
       "source_file": "backend/src/assistant/infrastructure/cc_bridge/lifecycle_hooks.py",
       "source_location": "L1",
-      "community": 15,
+      "community": 124,
       "norm_label": "native cc lifecycle hooks -> ccrunevent rows (+ permissionrequest -> approval).",
       "id": "cc_bridge_lifecycle_hooks_rationale_1"
     },
@@ -5522,7 +5576,7 @@
       "file_type": "rationale",
       "source_file": "backend/src/assistant/infrastructure/cc_bridge/lifecycle_hooks.py",
       "source_location": "L41",
-      "community": 15,
+      "community": 124,
       "norm_label": "hooks dict for claudeagentoptions; closures bind this run's id.",
       "id": "cc_bridge_lifecycle_hooks_rationale_41"
     },
@@ -5531,7 +5585,7 @@
       "file_type": "code",
       "source_file": "backend/src/assistant/infrastructure/cc_bridge/runner.py",
       "source_location": "L1",
-      "community": 11,
+      "community": 17,
       "norm_label": "runner.py",
       "id": "backend_src_assistant_infrastructure_cc_bridge_runner_py"
     },
@@ -5549,7 +5603,7 @@
       "file_type": "code",
       "source_file": "backend/src/assistant/infrastructure/cc_bridge/runner.py",
       "source_location": "L70",
-      "community": 11,
+      "community": 20,
       "norm_label": ".__init__()",
       "id": "cc_bridge_runner_delegationrunner_init"
     },
@@ -5603,7 +5657,7 @@
       "file_type": "code",
       "source_file": "backend/src/assistant/infrastructure/cc_bridge/runner.py",
       "source_location": "L97",
-      "community": 11,
+      "community": 15,
       "norm_label": "._finish()",
       "id": "cc_bridge_runner_delegationrunner_finish"
     },
@@ -5612,7 +5666,7 @@
       "file_type": "code",
       "source_file": "backend/src/assistant/infrastructure/cc_bridge/runner.py",
       "source_location": "L97",
-      "community": 11,
+      "community": 15,
       "norm_label": "ccrunstatus",
       "id": "ccrunstatus"
     },
@@ -5621,7 +5675,7 @@
       "file_type": "code",
       "source_file": "backend/src/assistant/infrastructure/cc_bridge/runner.py",
       "source_location": "L97",
-      "community": 11,
+      "community": 15,
       "norm_label": "int",
       "id": "backend_src_assistant_infrastructure_cc_bridge_runner_py_int"
     },
@@ -5648,7 +5702,7 @@
       "file_type": "code",
       "source_file": "backend/src/assistant/infrastructure/cc_bridge/runner.py",
       "source_location": "L165",
-      "community": 11,
+      "community": 20,
       "norm_label": "._plugins()",
       "id": "cc_bridge_runner_delegationrunner_plugins"
     },
@@ -5657,7 +5711,7 @@
       "file_type": "code",
       "source_file": "backend/src/assistant/infrastructure/cc_bridge/runner.py",
       "source_location": "L165",
-      "community": 11,
+      "community": 15,
       "norm_label": "sdkpluginconfig",
       "id": "sdkpluginconfig"
     },
@@ -5684,7 +5738,7 @@
       "file_type": "code",
       "source_file": "backend/src/assistant/infrastructure/cc_bridge/runner.py",
       "source_location": "L186",
-      "community": 11,
+      "community": 15,
       "norm_label": "claudeagentoptions",
       "id": "claudeagentoptions"
     },
@@ -5747,7 +5801,7 @@
       "file_type": "rationale",
       "source_file": "backend/src/assistant/infrastructure/cc_bridge/runner.py",
       "source_location": "L1",
-      "community": 11,
+      "community": 17,
       "norm_label": "delegation runner: brief -> claude code session (on glm 5.2 via ollama) -> revie",
       "id": "cc_bridge_runner_rationale_1"
     },
@@ -5774,7 +5828,7 @@
       "file_type": "rationale",
       "source_file": "backend/src/assistant/infrastructure/cc_bridge/runner.py",
       "source_location": "L166",
-      "community": 11,
+      "community": 20,
       "norm_label": "local plugins for delegated sessions (ecc, frontend-design, ...).          setti",
       "id": "cc_bridge_runner_rationale_166"
     },
@@ -5954,7 +6008,7 @@
       "file_type": "code",
       "source_file": "backend/src/assistant/infrastructure/cc_bridge/worker.py",
       "source_location": "L44",
-      "community": 17,
+      "community": 20,
       "norm_label": ".run_prompt()",
       "id": "cc_bridge_worker_ccworker_run_prompt"
     },
@@ -5963,7 +6017,7 @@
       "file_type": "code",
       "source_file": "backend/src/assistant/infrastructure/cc_bridge/worker.py",
       "source_location": "L44",
-      "community": 17,
+      "community": 20,
       "norm_label": "str",
       "id": "backend_src_assistant_infrastructure_cc_bridge_worker_py_str"
     },
@@ -5999,7 +6053,7 @@
       "file_type": "rationale",
       "source_file": "backend/src/assistant/infrastructure/cc_bridge/worker.py",
       "source_location": "L45",
-      "community": 17,
+      "community": 20,
       "norm_label": "one-shot cc session (e.g. /deep-research); blocks the calling thread.",
       "id": "cc_bridge_worker_rationale_45"
     },
@@ -6305,7 +6359,7 @@
       "file_type": "code",
       "source_file": "backend/src/assistant/infrastructure/memory/db.py",
       "source_location": "L1",
-      "community": 42,
+      "community": 2,
       "norm_label": "db.py",
       "id": "backend_src_assistant_infrastructure_memory_db_py"
     },
@@ -6314,7 +6368,7 @@
       "file_type": "code",
       "source_file": "backend/src/assistant/infrastructure/memory/db.py",
       "source_location": "L13",
-      "community": 42,
+      "community": 2,
       "norm_label": "base",
       "id": "memory_db_base"
     },
@@ -6323,7 +6377,7 @@
       "file_type": "code",
       "source_file": "",
       "source_location": "",
-      "community": 42,
+      "community": 2,
       "norm_label": "declarativebase",
       "id": "declarativebase"
     },
@@ -6332,7 +6386,7 @@
       "file_type": "code",
       "source_file": "backend/src/assistant/infrastructure/memory/db.py",
       "source_location": "L17",
-      "community": 42,
+      "community": 2,
       "norm_label": "_async_url()",
       "id": "memory_db_async_url"
     },
@@ -6341,7 +6395,7 @@
       "file_type": "code",
       "source_file": "backend/src/assistant/infrastructure/memory/db.py",
       "source_location": "L17",
-      "community": 42,
+      "community": 2,
       "norm_label": "str",
       "id": "backend_src_assistant_infrastructure_memory_db_py_str"
     },
@@ -6350,7 +6404,7 @@
       "file_type": "code",
       "source_file": "backend/src/assistant/infrastructure/memory/db.py",
       "source_location": "L26",
-      "community": 42,
+      "community": 2,
       "norm_label": "get_engine()",
       "id": "memory_db_get_engine"
     },
@@ -6359,7 +6413,7 @@
       "file_type": "code",
       "source_file": "backend/src/assistant/infrastructure/memory/db.py",
       "source_location": "L26",
-      "community": 42,
+      "community": 2,
       "norm_label": "object",
       "id": "backend_src_assistant_infrastructure_memory_db_py_object"
     },
@@ -6368,7 +6422,7 @@
       "file_type": "code",
       "source_file": "backend/src/assistant/infrastructure/memory/db.py",
       "source_location": "L33",
-      "community": 29,
+      "community": 2,
       "norm_label": "get_session_factory()",
       "id": "memory_db_get_session_factory"
     },
@@ -6377,7 +6431,7 @@
       "file_type": "code",
       "source_file": "backend/src/assistant/infrastructure/memory/db.py",
       "source_location": "L33",
-      "community": 29,
+      "community": 2,
       "norm_label": "async_sessionmaker",
       "id": "async_sessionmaker"
     },
@@ -6386,7 +6440,7 @@
       "file_type": "code",
       "source_file": "backend/src/assistant/infrastructure/memory/db.py",
       "source_location": "L33",
-      "community": 29,
+      "community": 2,
       "norm_label": "asyncsession",
       "id": "asyncsession"
     },
@@ -6395,7 +6449,7 @@
       "file_type": "rationale",
       "source_file": "backend/src/assistant/infrastructure/memory/db.py",
       "source_location": "L1",
-      "community": 42,
+      "community": 2,
       "norm_label": "async sqlalchemy engine and session factory.",
       "id": "memory_db_rationale_1"
     },
@@ -6404,7 +6458,7 @@
       "file_type": "code",
       "source_file": "backend/src/assistant/infrastructure/memory/models.py",
       "source_location": "L1",
-      "community": 42,
+      "community": 2,
       "norm_label": "models.py",
       "id": "backend_src_assistant_infrastructure_memory_models_py"
     },
@@ -6413,7 +6467,7 @@
       "file_type": "code",
       "source_file": "backend/src/assistant/infrastructure/memory/models.py",
       "source_location": "L18",
-      "community": 42,
+      "community": 2,
       "norm_label": "_uuid_pk()",
       "id": "memory_models_uuid_pk"
     },
@@ -6422,7 +6476,7 @@
       "file_type": "code",
       "source_file": "backend/src/assistant/infrastructure/memory/models.py",
       "source_location": "L18",
-      "community": 42,
+      "community": 2,
       "norm_label": "mapped",
       "id": "mapped"
     },
@@ -6431,7 +6485,7 @@
       "file_type": "code",
       "source_file": "backend/src/assistant/infrastructure/memory/models.py",
       "source_location": "L18",
-      "community": 42,
+      "community": 2,
       "norm_label": "uuid",
       "id": "backend_src_assistant_infrastructure_memory_models_py_uuid"
     },
@@ -6440,7 +6494,7 @@
       "file_type": "code",
       "source_file": "backend/src/assistant/infrastructure/memory/models.py",
       "source_location": "L22",
-      "community": 42,
+      "community": 2,
       "norm_label": "timestampmixin",
       "id": "memory_models_timestampmixin"
     },
@@ -6449,7 +6503,7 @@
       "file_type": "code",
       "source_file": "backend/src/assistant/infrastructure/memory/models.py",
       "source_location": "L29",
-      "community": 29,
+      "community": 2,
       "norm_label": "project",
       "id": "memory_models_project"
     },
@@ -6458,7 +6512,7 @@
       "file_type": "code",
       "source_file": "backend/src/assistant/infrastructure/memory/models.py",
       "source_location": "L43",
-      "community": 42,
+      "community": 2,
       "norm_label": "workitem",
       "id": "memory_models_workitem"
     },
@@ -6467,7 +6521,7 @@
       "file_type": "code",
       "source_file": "backend/src/assistant/infrastructure/memory/models.py",
       "source_location": "L57",
-      "community": 29,
+      "community": 2,
       "norm_label": "decision",
       "id": "memory_models_decision"
     },
@@ -6512,7 +6566,7 @@
       "file_type": "code",
       "source_file": "backend/src/assistant/infrastructure/memory/models.py",
       "source_location": "L118",
-      "community": 29,
+      "community": 2,
       "norm_label": "approval",
       "id": "memory_models_approval"
     },
@@ -6521,7 +6575,7 @@
       "file_type": "code",
       "source_file": "backend/src/assistant/infrastructure/memory/models.py",
       "source_location": "L135",
-      "community": 11,
+      "community": 15,
       "norm_label": "ccrunstatus",
       "id": "memory_models_ccrunstatus"
     },
@@ -6530,7 +6584,7 @@
       "file_type": "code",
       "source_file": "backend/src/assistant/infrastructure/memory/models.py",
       "source_location": "L144",
-      "community": 29,
+      "community": 15,
       "norm_label": "ccrun",
       "id": "memory_models_ccrun"
     },
@@ -6557,7 +6611,7 @@
       "file_type": "rationale",
       "source_file": "backend/src/assistant/infrastructure/memory/models.py",
       "source_location": "L1",
-      "community": 42,
+      "community": 2,
       "norm_label": "unified memory: workspace registry, decisions, sessions, approvals, cc runs.  ev",
       "id": "memory_models_rationale_1"
     },
@@ -6566,7 +6620,7 @@
       "file_type": "rationale",
       "source_file": "backend/src/assistant/infrastructure/memory/models.py",
       "source_location": "L44",
-      "community": 42,
+      "community": 2,
       "norm_label": "tasks in the architect's work registry (not agent-internal todos).",
       "id": "memory_models_rationale_44"
     },
@@ -6575,7 +6629,7 @@
       "file_type": "rationale",
       "source_file": "backend/src/assistant/infrastructure/memory/models.py",
       "source_location": "L58",
-      "community": 29,
+      "community": 2,
       "norm_label": "adr-style decision log entry, linkable to the session that produced it.",
       "id": "memory_models_rationale_58"
     },
@@ -6602,7 +6656,7 @@
       "file_type": "rationale",
       "source_file": "backend/src/assistant/infrastructure/memory/models.py",
       "source_location": "L119",
-      "community": 29,
+      "community": 2,
       "norm_label": "milestone gate raised by a langgraph interrupt; answered from ui or cli.",
       "id": "memory_models_rationale_119"
     },
@@ -6611,7 +6665,7 @@
       "file_type": "rationale",
       "source_file": "backend/src/assistant/infrastructure/memory/models.py",
       "source_location": "L145",
-      "community": 29,
+      "community": 15,
       "norm_label": "one delegated claude code job (may internally use agent teams).",
       "id": "memory_models_rationale_145"
     },
@@ -6764,7 +6818,7 @@
       "file_type": "code",
       "source_file": "backend/src/assistant/infrastructure/rag/store.py",
       "source_location": "L1",
-      "community": 21,
+      "community": 29,
       "norm_label": "store.py",
       "id": "backend_src_assistant_infrastructure_rag_store_py"
     },
@@ -6773,7 +6827,7 @@
       "file_type": "code",
       "source_file": "backend/src/assistant/infrastructure/rag/store.py",
       "source_location": "L24",
-      "community": 21,
+      "community": 29,
       "norm_label": "get_client()",
       "id": "rag_store_get_client"
     },
@@ -6782,7 +6836,7 @@
       "file_type": "code",
       "source_file": "backend/src/assistant/infrastructure/rag/store.py",
       "source_location": "L24",
-      "community": 21,
+      "community": 29,
       "norm_label": "qdrantclient",
       "id": "qdrantclient"
     },
@@ -6791,7 +6845,7 @@
       "file_type": "code",
       "source_file": "backend/src/assistant/infrastructure/rag/store.py",
       "source_location": "L31",
-      "community": 21,
+      "community": 29,
       "norm_label": "_sparse()",
       "id": "rag_store_sparse"
     },
@@ -6800,7 +6854,7 @@
       "file_type": "code",
       "source_file": "backend/src/assistant/infrastructure/rag/store.py",
       "source_location": "L31",
-      "community": 21,
+      "community": 29,
       "norm_label": "sparsetextembedding",
       "id": "sparsetextembedding"
     },
@@ -6809,7 +6863,7 @@
       "file_type": "code",
       "source_file": "backend/src/assistant/infrastructure/rag/store.py",
       "source_location": "L38",
-      "community": 21,
+      "community": 29,
       "norm_label": "collection_name()",
       "id": "rag_store_collection_name"
     },
@@ -6818,7 +6872,7 @@
       "file_type": "code",
       "source_file": "backend/src/assistant/infrastructure/rag/store.py",
       "source_location": "L38",
-      "community": 21,
+      "community": 29,
       "norm_label": "str",
       "id": "backend_src_assistant_infrastructure_rag_store_py_str"
     },
@@ -6827,7 +6881,7 @@
       "file_type": "code",
       "source_file": "backend/src/assistant/infrastructure/rag/store.py",
       "source_location": "L42",
-      "community": 21,
+      "community": 29,
       "norm_label": "ensure_collection()",
       "id": "rag_store_ensure_collection"
     },
@@ -6836,7 +6890,7 @@
       "file_type": "code",
       "source_file": "backend/src/assistant/infrastructure/rag/store.py",
       "source_location": "L54",
-      "community": 21,
+      "community": 29,
       "norm_label": "embed_dense()",
       "id": "rag_store_embed_dense"
     },
@@ -6845,7 +6899,7 @@
       "file_type": "code",
       "source_file": "backend/src/assistant/infrastructure/rag/store.py",
       "source_location": "L54",
-      "community": 21,
+      "community": 29,
       "norm_label": "float",
       "id": "backend_src_assistant_infrastructure_rag_store_py_float"
     },
@@ -6854,7 +6908,7 @@
       "file_type": "code",
       "source_file": "backend/src/assistant/infrastructure/rag/store.py",
       "source_location": "L62",
-      "community": 21,
+      "community": 29,
       "norm_label": "upsert_chunks()",
       "id": "rag_store_upsert_chunks"
     },
@@ -6863,7 +6917,7 @@
       "file_type": "code",
       "source_file": "backend/src/assistant/infrastructure/rag/store.py",
       "source_location": "L62",
-      "community": 21,
+      "community": 29,
       "norm_label": "int",
       "id": "backend_src_assistant_infrastructure_rag_store_py_int"
     },
@@ -6872,7 +6926,7 @@
       "file_type": "code",
       "source_file": "backend/src/assistant/infrastructure/rag/store.py",
       "source_location": "L86",
-      "community": 21,
+      "community": 29,
       "norm_label": "hybrid_search()",
       "id": "rag_store_hybrid_search"
     },
@@ -6881,7 +6935,7 @@
       "file_type": "code",
       "source_file": "backend/src/assistant/infrastructure/rag/store.py",
       "source_location": "L107",
-      "community": 21,
+      "community": 29,
       "norm_label": "list_collections()",
       "id": "rag_store_list_collections"
     },
@@ -6890,7 +6944,7 @@
       "file_type": "code",
       "source_file": "backend/src/assistant/infrastructure/rag/store.py",
       "source_location": "L114",
-      "community": 21,
+      "community": 29,
       "norm_label": "collection_stats()",
       "id": "rag_store_collection_stats"
     },
@@ -6899,7 +6953,7 @@
       "file_type": "rationale",
       "source_file": "backend/src/assistant/infrastructure/rag/store.py",
       "source_location": "L1",
-      "community": 21,
+      "community": 29,
       "norm_label": "qdrant hybrid store: bge-m3 dense (via ollama) + bm25 sparse (fastembed).  one c",
       "id": "rag_store_rationale_1"
     },
@@ -6908,7 +6962,7 @@
       "file_type": "rationale",
       "source_file": "backend/src/assistant/infrastructure/rag/store.py",
       "source_location": "L63",
-      "community": 21,
+      "community": 29,
       "norm_label": "chunks: [{\"text\": ..., \"source\": ..., \"kind\": doc|research|conversation}]",
       "id": "rag_store_rationale_63"
     },
@@ -6917,7 +6971,7 @@
       "file_type": "rationale",
       "source_file": "backend/src/assistant/infrastructure/rag/store.py",
       "source_location": "L108",
-      "community": 21,
+      "community": 29,
       "norm_label": "all knowledge-base collections (kb_*), sorted.",
       "id": "rag_store_rationale_108"
     },
@@ -6926,7 +6980,7 @@
       "file_type": "rationale",
       "source_file": "backend/src/assistant/infrastructure/rag/store.py",
       "source_location": "L115",
-      "community": 21,
+      "community": 29,
       "norm_label": "{points, sources} for a collection. points via count; distinct sources     via a",
       "id": "rag_store_rationale_115"
     },
@@ -6935,7 +6989,7 @@
       "file_type": "code",
       "source_file": "backend/src/assistant/interface/api/research.py",
       "source_location": "L1",
-      "community": 9,
+      "community": 37,
       "norm_label": "research.py",
       "id": "backend_src_assistant_interface_api_research_py"
     },
@@ -6944,7 +6998,7 @@
       "file_type": "code",
       "source_file": "backend/src/assistant/interface/api/research.py",
       "source_location": "L24",
-      "community": 9,
+      "community": 37,
       "norm_label": "deepresearchin",
       "id": "api_research_deepresearchin"
     },
@@ -6953,7 +7007,7 @@
       "file_type": "code",
       "source_file": "backend/src/assistant/interface/api/research.py",
       "source_location": "L30",
-      "community": 9,
+      "community": 37,
       "norm_label": "deep_research_stream()",
       "id": "api_research_deep_research_stream"
     },
@@ -6962,7 +7016,7 @@
       "file_type": "code",
       "source_file": "backend/src/assistant/interface/api/research.py",
       "source_location": "L30",
-      "community": 9,
+      "community": 37,
       "norm_label": "eventsourceresponse",
       "id": "backend_src_assistant_interface_api_research_py_eventsourceresponse"
     },
@@ -6971,7 +7025,7 @@
       "file_type": "rationale",
       "source_file": "backend/src/assistant/interface/api/research.py",
       "source_location": "L1",
-      "community": 9,
+      "community": 37,
       "norm_label": "deep research endpoints: a direct claude code /deep-research one-shot.  unlike t",
       "id": "api_research_rationale_1"
     },
@@ -6980,7 +7034,7 @@
       "file_type": "rationale",
       "source_file": "backend/src/assistant/interface/api/research.py",
       "source_location": "L31",
-      "community": 9,
+      "community": 37,
       "norm_label": "run /deep-research via claude code and stream the outcome as sse.      the cc wo",
       "id": "api_research_rationale_31"
     },
@@ -7115,7 +7169,7 @@
       "file_type": "code",
       "source_file": "backend/tests/test_persistence.py",
       "source_location": "L1",
-      "community": 21,
+      "community": 2,
       "norm_label": "test_persistence.py",
       "id": "backend_tests_test_persistence_py"
     },
@@ -7124,7 +7178,7 @@
       "file_type": "code",
       "source_file": "backend/tests/test_persistence.py",
       "source_location": "L13",
-      "community": 29,
+      "community": 2,
       "norm_label": "test_project_roundtrip()",
       "id": "tests_test_persistence_test_project_roundtrip"
     },
@@ -7133,7 +7187,7 @@
       "file_type": "code",
       "source_file": "backend/tests/test_persistence.py",
       "source_location": "L27",
-      "community": 21,
+      "community": 2,
       "norm_label": "test_checkpointer_setup()",
       "id": "tests_test_persistence_test_checkpointer_setup"
     },
@@ -7142,7 +7196,7 @@
       "file_type": "rationale",
       "source_file": "backend/tests/test_persistence.py",
       "source_location": "L1",
-      "community": 21,
+      "community": 2,
       "norm_label": "integration tests against the dockerized postgres (docker/ stack must be up).",
       "id": "tests_test_persistence_rationale_1"
     },
@@ -7151,7 +7205,7 @@
       "file_type": "code",
       "source_file": "backend/tests/test_rag.py",
       "source_location": "L1",
-      "community": 21,
+      "community": 29,
       "norm_label": "test_rag.py",
       "id": "backend_tests_test_rag_py"
     },
@@ -7160,7 +7214,7 @@
       "file_type": "code",
       "source_file": "backend/tests/test_rag.py",
       "source_location": "L7",
-      "community": 21,
+      "community": 29,
       "norm_label": "test_ingest_and_hybrid_search()",
       "id": "tests_test_rag_test_ingest_and_hybrid_search"
     },
@@ -7169,7 +7223,7 @@
       "file_type": "rationale",
       "source_file": "backend/tests/test_rag.py",
       "source_location": "L1",
-      "community": 21,
+      "community": 29,
       "norm_label": "integration test: requires dockerized qdrant + host ollama with bge-m3.",
       "id": "tests_test_rag_rationale_1"
     },
@@ -7808,7 +7862,7 @@
       "file_type": "code",
       "source_file": "frontend/src/pages/Knowledge.tsx",
       "source_location": "L11",
-      "community": 124,
+      "community": 13,
       "norm_label": "collection",
       "id": "pages_knowledge_collection"
     },
@@ -7817,7 +7871,7 @@
       "file_type": "code",
       "source_file": "frontend/src/pages/Knowledge.tsx",
       "source_location": "L12",
-      "community": 124,
+      "community": 13,
       "norm_label": "hit",
       "id": "pages_knowledge_hit"
     },
@@ -7826,7 +7880,7 @@
       "file_type": "code",
       "source_file": "frontend/src/pages/Knowledge.tsx",
       "source_location": "L13",
-      "community": 124,
+      "community": 13,
       "norm_label": "project",
       "id": "pages_knowledge_project"
     },
@@ -7835,7 +7889,7 @@
       "file_type": "code",
       "source_file": "frontend/src/pages/Knowledge.tsx",
       "source_location": "L17",
-      "community": 124,
+      "community": 13,
       "norm_label": "knowledge()",
       "id": "pages_knowledge_knowledge"
     },
@@ -7871,7 +7925,7 @@
       "file_type": "code",
       "source_file": "frontend/src/pages/Diagrams.tsx",
       "source_location": "L18",
-      "community": 13,
+      "community": 18,
       "norm_label": "diagrams()",
       "id": "pages_diagrams_diagrams"
     },
@@ -13485,45 +13539,6 @@
       "id": "claude_plugin_plugin_author"
     },
     {
-      "label": "Personal AI Project Assistant \u2014 top-level README overview",
-      "file_type": "document",
-      "source_file": "README.md",
-      "source_location": null,
-      "source_url": null,
-      "captured_at": null,
-      "author": null,
-      "contributor": null,
-      "community": 6,
-      "norm_label": "personal ai project assistant \u2014 top-level readme overview",
-      "id": "readme_project_overview"
-    },
-    {
-      "label": "Repo layout: backend/frontend/docker/cc-skills",
-      "file_type": "concept",
-      "source_file": "README.md",
-      "source_location": null,
-      "source_url": null,
-      "captured_at": null,
-      "author": null,
-      "contributor": null,
-      "community": 6,
-      "norm_label": "repo layout: backend/frontend/docker/cc-skills",
-      "id": "readme_layout"
-    },
-    {
-      "label": "Default model config: glm-5.2:cloud via Ollama, ASSISTANT_DEFAULT_MODEL/ASSISTANT_CC_MODEL, bge-m3 embeddings",
-      "file_type": "concept",
-      "source_file": "README.md",
-      "source_location": null,
-      "source_url": null,
-      "captured_at": null,
-      "author": null,
-      "contributor": null,
-      "community": 58,
-      "norm_label": "default model config: glm-5.2:cloud via ollama, assistant_default_model/assistant_cc_model, bge-m3 embeddings",
-      "id": "readme_model_configuration"
-    },
-    {
       "label": "Personal AI Project Assistant orchestration layer (LangChain+LangGraph+Deep Agents over FastAPI)",
       "file_type": "concept",
       "source_file": "PLAN.md",
@@ -13532,7 +13547,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 6,
+      "community": 128,
       "norm_label": "personal ai project assistant orchestration layer (langchain+langgraph+deep agents over fastapi)",
       "id": "plan_orchestration_layer"
     },
@@ -13727,7 +13742,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 6,
+      "community": 128,
       "norm_label": "two sibling repos: backend/ (api/orchestrator/agents/cc_bridge/memory/rag/jobs/diagrams/docs_gen/cli) + frontend/",
       "id": "plan_repositories_layout"
     },
@@ -13740,7 +13755,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 6,
+      "community": 129,
       "norm_label": "git workflow rule: never push directly to main",
       "id": "rules_git_workflow"
     },
@@ -13805,7 +13820,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 6,
+      "community": 129,
       "norm_label": "krisiserver remote vps operations skill",
       "id": "krisiserver_skill"
     },
@@ -13844,7 +13859,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 6,
+      "community": 128,
       "norm_label": "assistant backend readme",
       "id": "backend_readme"
     },
@@ -14130,7 +14145,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 11,
+      "community": 20,
       "norm_label": "ccworker.delegate",
       "id": "cc_bridge_worker_delegate"
     },
@@ -14182,7 +14197,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 11,
+      "community": 20,
       "norm_label": "delegationrunner._stage_skills",
       "id": "cc_bridge_runner_stage_skills"
     },
@@ -14260,7 +14275,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 11,
+      "community": 20,
       "norm_label": "delegationrunner.run",
       "id": "cc_bridge_runner_run"
     },
@@ -14273,7 +14288,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 11,
+      "community": 20,
       "norm_label": "delegationrunner._parse_result",
       "id": "cc_bridge_runner_parse_result"
     },
@@ -14677,12 +14692,62 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 124,
+      "community": 13,
       "norm_label": "markdown vault auto-ingest readme",
       "id": "vault_readme_vault"
     }
   ],
   "links": [
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "README.md",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "readme_md",
+      "target": "bitch_stewie_readme_personal_ai_project_assistant",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "README.md",
+      "source_location": "L10",
+      "weight": 1.0,
+      "source": "bitch_stewie_readme_personal_ai_project_assistant",
+      "target": "bitch_stewie_readme_layout",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "README.md",
+      "source_location": "L51",
+      "weight": 1.0,
+      "source": "bitch_stewie_readme_personal_ai_project_assistant",
+      "target": "bitch_stewie_readme_model_configuration",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "README.md",
+      "source_location": "L44",
+      "weight": 1.0,
+      "source": "bitch_stewie_readme_personal_ai_project_assistant",
+      "target": "bitch_stewie_readme_remote_server_krisiserver",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "README.md",
+      "source_location": "L20",
+      "weight": 1.0,
+      "source": "bitch_stewie_readme_personal_ai_project_assistant",
+      "target": "bitch_stewie_readme_running",
+      "confidence_score": 1.0
+    },
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
@@ -39497,56 +39562,6 @@
       "target": "claude_plugin_plugin_name"
     },
     {
-      "relation": "semantically_similar_to",
-      "confidence": "INFERRED",
-      "confidence_score": 0.85,
-      "source_file": "README.md",
-      "source_location": null,
-      "weight": 1.0,
-      "source": "readme_project_overview",
-      "target": "krisiserver_skill"
-    },
-    {
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "README.md",
-      "source_location": null,
-      "weight": 1.0,
-      "source": "readme_project_overview",
-      "target": "plan_orchestration_layer"
-    },
-    {
-      "relation": "conceptually_related_to",
-      "confidence": "INFERRED",
-      "confidence_score": 0.85,
-      "source_file": "backend/README.md",
-      "source_location": null,
-      "weight": 1.0,
-      "source": "backend_readme",
-      "target": "readme_layout"
-    },
-    {
-      "relation": "conceptually_related_to",
-      "confidence": "INFERRED",
-      "confidence_score": 0.95,
-      "source_file": "README.md",
-      "source_location": null,
-      "weight": 1.0,
-      "source": "readme_layout",
-      "target": "plan_skills_two_sets_rule"
-    },
-    {
-      "relation": "semantically_similar_to",
-      "confidence": "INFERRED",
-      "confidence_score": 0.95,
-      "source_file": "PLAN.md",
-      "source_location": null,
-      "weight": 1.0,
-      "source": "plan_model_access",
-      "target": "readme_model_configuration"
-    },
-    {
       "relation": "references",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
@@ -40561,5 +40576,5 @@
       "source_file": "research_subjects/CLAUDE.md"
     }
   ],
-  "built_at_commit": "4b486c019b010d322f257606f8776887b0583d55"
+  "built_at_commit": "90b72173e213dc219305b49864382f292be003e2"
 }
