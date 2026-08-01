@@ -1,16 +1,16 @@
 # Graph Report - bitch-stewie  (2026-08-01)
 
 ## Corpus Check
-- 186 files · ~76,767 words
+- 186 files · ~76,772 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 1557 nodes · 2491 edges · 124 communities (91 shown, 33 thin omitted)
+- 1557 nodes · 2491 edges · 124 communities (90 shown, 34 thin omitted)
 - Extraction: 81% EXTRACTED · 19% INFERRED · 0% AMBIGUOUS · INFERRED: 477 edges (avg confidence: 0.64)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `fefbde08`
+- Built from commit: `fa6e895c`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -154,7 +154,7 @@
 - **Poll-based live refresh via usePoll** — pages_dashboard_dashboard, pages_runs_runs, hooks_usepoll_usepoll [EXTRACTED 1.00]
 - **Netherbrain cross-referenced planning document hierarchy** — research_subjects_architecture_architecture, research_subjects_master_plan_master_plan, research_subjects_plan_plan, research_subjects_claude_claude [EXTRACTED 1.00]
 
-## Communities (124 total, 33 thin omitted)
+## Communities (124 total, 34 thin omitted)
 
 ### Community 0 - "ECC Skills Catalog"
 Cohesion: 0.01
@@ -222,7 +222,7 @@ Nodes (13): Run telemetry for Claude Code's statusLine / subagentStatusLine scri
 
 ### Community 16 - "TS Compiler Config (App)"
 Cohesion: 0.10
-Nodes (19): compilerOptions, allowArbitraryExtensions, allowImportingTsExtensions, erasableSyntaxOnly, jsx, lib, module, moduleDetection (+11 more)
+Nodes (20): compilerOptions, allowArbitraryExtensions, allowImportingTsExtensions, erasableSyntaxOnly, jsx, lib, module, moduleDetection (+12 more)
 
 ### Community 17 - "CC Worker Bridge"
 Cohesion: 0.22
@@ -291,10 +291,6 @@ Nodes (7): kindDefs, MAP_SCHEMA, maps, mapsBlob, mapThunks, meta, wantedBlocks
 ### Community 35 - "Frontend App Shell & Theme"
 Cohesion: 0.46
 Nodes (5): App(), Health, NAV, getTheme(), Mode
-
-### Community 36 - "Frontend Lint/Build Config"
-Cohesion: 0.67
-Nodes (3): tsconfig.json — root TS project references (app + node configs), tsconfig.app.json — TS config for app source (bundler resolution, react-jsx), tsconfig.node.json — TS config for Vite config file (ES2023, nodenext)
 
 ### Community 37 - "CC Subagent Registry"
 Cohesion: 0.19
@@ -389,21 +385,21 @@ Cohesion: 0.50
 Nodes (3): Planner SSE endpoint returns text/event-stream and terminates (Story 3)., test_plan_sessions_and_messages(), test_plan_stream_returns_done()
 
 ## Knowledge Gaps
-- **723 isolated node(s):** `FileResponse`, `Story 1 — Ask the orchestrator anything (chat)`, `Story 2 — Delegate a coding task (milestone gate)`, `Story 3 — Refine a plan, then hand off`, `Story 4 — Search and grow the knowledge base` (+718 more)
+- **724 isolated node(s):** `tsBuildInfoFile`, `target`, `lib`, `module`, `types` (+719 more)
   These have ≤1 connection - possible missing edges or undocumented components.
-- **33 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
+- **34 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
 - **Why does `skills` connect `ECC Skills Catalog` to `ECC Commands Catalog A`, `ECC Commands Catalog B`, `ECC Agents Catalog A`?**
-  _High betweenness centrality (0.066) - this node is a cross-community bridge._
+  _High betweenness centrality (0.067) - this node is a cross-community bridge._
 - **Why does `FastAPI` connect `FastAPI App Factory & Dashboard Stats` to `Native Folder Picker Helpers`, `Chat API & Session Persistence`, `CC Subagent Registry`, `Knowledge Base & Deep Research API`, `Knowledge/Diagram/Example API & UI`, `Statusline & Lifecycle Hooks`, `Diagram Serving API`?**
-  _High betweenness centrality (0.047) - this node is a cross-community bridge._
-- **Why does `Knowledge()` connect `Knowledge/Diagram/Example API & UI` to `Frontend API Client & Research Page`, `FastAPI App Factory & Dashboard Stats`, `Frontend App Shell & Theme`, `Knowledge Base & Deep Research API`?**
   _High betweenness centrality (0.039) - this node is a cross-community bridge._
-- **What connects `FileResponse`, `Reference examples library (diagrams + docs).  The architect/doc-writer subagent`, `Upload a reference example (.drawio/.xml/.png for diagrams; .md/.docx/.pdf for d` to the rest of the system?**
-  _859 weakly-connected nodes found - possible documentation gaps or missing edges._
+- **Why does `commands` connect `ECC Commands Catalog A` to `ECC Agents Catalog B`, `ECC Commands Catalog B`, `ECC Agents Catalog A`?**
+  _High betweenness centrality (0.038) - this node is a cross-community bridge._
+- **What connects `tsBuildInfoFile`, `target`, `lib` to the rest of the system?**
+  _860 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `ECC Skills Catalog` be split into smaller, more focused modules?**
   _Cohesion score 0.00749063670411985 - nodes in this community are weakly interconnected._
 - **Should `Examples Library API` be split into smaller, more focused modules?**
