@@ -3,9 +3,9 @@ from logging.config import fileConfig
 from alembic import context
 from sqlalchemy import engine_from_config, pool
 
-from assistant.config import get_settings
-from assistant.memory.db import Base
-from assistant.memory import models  # noqa: F401  (register tables on Base.metadata)
+from assistant.infrastructure.memory import models  # noqa: F401  (register tables on Base.metadata)
+from assistant.infrastructure.memory.db import Base
+from assistant.shared.config import get_settings
 
 config = context.config
 if config.config_file_name is not None:
