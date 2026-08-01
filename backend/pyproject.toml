@@ -48,6 +48,7 @@ dev = [
     "ruff",
     "mypy",
     "import-linter",
+    "aiosqlite>=0.22.1",
 ]
 
 [build-system]

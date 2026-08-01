@@ -74,7 +74,7 @@ async def upload(
     pid = _parse_project_id(project_id)
     project_name = "global"
     if pid is not None:
-        async with get_session_factory() as s:
+        async with get_session_factory()() as s:
             proj = (await s.execute(select(Project).where(Project.id == pid))).scalar_one_or_none()
         if proj is None:
             raise HTTPException(404, "project not found")
