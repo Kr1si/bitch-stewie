@@ -29,6 +29,42 @@ def delegate_brief(goal: str, repo_path: str, constraints: list[str] | None = No
             "result": outcome.result}
 
 
+@app.periodic(cron="0 7 * * *")
+@app.task(name="daily_report", queue="ingestion")
+def daily_report(timestamp: int) -> dict:
+    """Daily: run the research pipeline for every active ``research`` goal.
+
+    Long-running (tens of minutes) -- the conductor fans out to researcher
+    subagents and the composer writes the digest + market-ideas wiki, then both
+    are ingested into the KB. Delegates to ``run_daily_report`` so the prompt
+    logic lives alongside its module.
+    """
+    from datetime import datetime
+
+    from sqlalchemy import select
+
+    from assistant.application.orchestrator.daily_report import run_daily_report
+    from assistant.application.services.memory_service import (
+        Goal,
+        GoalKind,
+        GoalStatus,
+        get_sync_session_factory,
+    )
+
+    results: list[dict] = []
+    with get_sync_session_factory()() as s:
+        goals = s.execute(
+            select(Goal).where(Goal.status == GoalStatus.active,
+                               Goal.kind == GoalKind.research)
+        ).scalars().all()
+        for goal in goals:
+            result = run_daily_report(goal)
+            goal.last_run_at = datetime.now(UTC)
+            results.append({"goal_id": str(goal.id), "title": goal.title, **result})
+        s.commit()
+    return {"ran": len(results), "results": results}
+
+
 @app.task(name="ingest_path_job", retry=2, queue="ingestion")
 def ingest_path_job(path: str, project: str | None = None) -> dict:
     from assistant.infrastructure.rag.ingest import ingest_path

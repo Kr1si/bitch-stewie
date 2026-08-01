@@ -126,6 +126,61 @@ export async function streamChat(
   if (buffer.trim()) dispatch();
 }
 
+export async function apiPatch<T>(path: string, body: unknown): Promise<T> {
+  const resp = await fetch(`${API_BASE}${path}`, {
+    method: "PATCH",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(body),
+  });
+  if (!resp.ok) throw await parseErr(resp, "PATCH", path);
+  return resp.json() as Promise<T>;
+}
+
+// --- Goals -------------------------------------------------------------------
+export type Goal = {
+  id: string;
+  project_id: string | null;
+  title: string;
+  description: string;
+  kind: "research" | "coding" | "testing";
+  status: "active" | "paused" | "completed";
+  cadence: string;
+  config: Record<string, unknown>;
+  last_run_at: string | null;
+  next_run_at: string | null;
+  created_at: string | null;
+  updated_at: string | null;
+};
+
+export async function listGoals(): Promise<Goal[]> {
+  return apiGet<Goal[]>("/api/goals");
+}
+
+export async function createGoal(body: Partial<Goal>): Promise<Goal> {
+  return apiPost<Goal>("/api/goals", body);
+}
+
+export async function patchGoal(id: string, body: Partial<Goal>): Promise<Goal> {
+  return apiPatch<Goal>(`/api/goals/${id}`, body);
+}
+
+// --- Reports -----------------------------------------------------------------
+export type ReportFinding = { category: string; markdown: string };
+export type Report = {
+  date: string;
+  digest: string;
+  findings: ReportFinding[];
+  market_ideas: string;
+};
+
+export async function listReports(): Promise<string[]> {
+  return apiGet<string[]>("/api/goals/reports");
+}
+
+export async function readReport(date: string): Promise<Report> {
+  return apiGet<Report>(`/api/goals/reports/${date}`);
+}
+
 export type ResearchHandlers = {
   onStart?: (goal: string) => void;
   onDone?: (report: string) => void;
