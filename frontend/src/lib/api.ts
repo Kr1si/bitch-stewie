@@ -181,6 +181,71 @@ export async function readReport(date: string): Promise<Report> {
   return apiGet<Report>(`/api/goals/reports/${date}`);
 }
 
+export async function deleteGoal(id: string): Promise<void> {
+  const resp = await fetch(`${API_BASE}/api/goals/${id}`, { method: "DELETE" });
+  if (!resp.ok) throw await parseErr(resp, "DELETE", `/api/goals/${id}`);
+}
+
+// --- Goal-creation interview stream -------------------------------------------
+export type GoalChatHandlers = {
+  onToken?: (text: string) => void;
+  onDone?: (reply: string) => void;
+  onError?: (error: string) => void;
+};
+
+/**
+ * POST one turn of the goal-creator interview to /api/goals/chat/stream.
+ * The FE keeps a thread_id across turns so the checkpointer accumulates the
+ * interview; pass the same thread_id on every call for a given goal.
+ */
+export async function streamGoalChat(
+  body: { message: string; thread_id?: string; project_id?: string },
+  handlers: GoalChatHandlers,
+  signal?: AbortSignal,
+): Promise<void> {
+  const resp = await fetch(`${API_BASE}/api/goals/chat/stream`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json", Accept: "text/event-stream" },
+    body: JSON.stringify(body),
+    signal,
+  });
+  if (!resp.ok || !resp.body) throw await parseErr(resp, "POST", "/api/goals/chat/stream");
+
+  const reader = resp.body.getReader();
+  const decoder = new TextDecoder();
+  let buffer = "";
+  let event = "message";
+
+  const handleEvent = (ev: string, data: string) => {
+    let payload: any = {};
+    try { payload = JSON.parse(data); } catch { payload = { raw: data }; }
+    if (ev === "token" && payload.text != null) handlers.onToken?.(payload.text);
+    else if (ev === "done") handlers.onDone?.(payload.reply ?? "");
+    else if (ev === "error") handlers.onError?.(payload.error ?? "goal chat failed");
+  };
+
+  const dispatch = () => {
+    const lines = buffer.split("\n");
+    buffer = "";
+    let dataLines: string[] = [];
+    for (const line of lines) {
+      if (line.startsWith("event:")) event = line.slice(6).trim();
+      else if (line.startsWith("data:")) dataLines.push(line.slice(5).trim());
+      else if (line === "") {
+        if (dataLines.length) { handleEvent(event, dataLines.join("\n")); dataLines = []; event = "message"; }
+      }
+    }
+  };
+
+  while (true) {
+    const { done, value } = await reader.read();
+    if (done) break;
+    buffer += decoder.decode(value, { stream: true });
+    if (buffer.includes("\n\n")) dispatch();
+  }
+  if (buffer.trim()) dispatch();
+}
+
 export type ResearchHandlers = {
   onStart?: (goal: string) => void;
   onDone?: (report: string) => void;

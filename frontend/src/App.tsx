@@ -6,6 +6,7 @@ import {
 import DarkModeIcon from "@mui/icons-material/DarkMode";
 import LightModeIcon from "@mui/icons-material/LightMode";
 import InsightsIcon from "@mui/icons-material/Insights";
+import AutoAwesomeMotionIcon from "@mui/icons-material/AutoAwesomeMotion";
 import ChatIcon from "@mui/icons-material/Chat";
 import DashboardIcon from "@mui/icons-material/Dashboard";
 import PlayCircleIcon from "@mui/icons-material/PlayCircle";
@@ -24,6 +25,7 @@ import Runs from "./pages/Runs";
 import Knowledge from "./pages/Knowledge";
 import Diagrams from "./pages/Diagrams";
 import Examples from "./pages/Examples";
+import Goals from "./pages/Goals";
 import Research from "./pages/Research";
 import Reports from "./pages/Reports";
 import { apiGet } from "./lib/api";
@@ -40,6 +42,7 @@ const NAV = [
   { path: "/knowledge", label: "Knowledge", icon: <LibraryBooksIcon /> },
   { path: "/research", label: "Deep Research", icon: <TravelExploreIcon /> },
   { path: "/reports", label: "Daily Intelligence", icon: <InsightsIcon /> },
+  { path: "/goals", label: "Goals", icon: <AutoAwesomeMotionIcon /> },
   { path: "/examples", label: "Examples", icon: <ExtensionIcon /> },
   { path: "/runs", label: "CC Runs", icon: <PlayCircleIcon /> },
 ];
@@ -148,6 +151,7 @@ export default function App({ initialMode = "dark" as Mode }) {
               <Route path="/knowledge" element={<Knowledge />} />
               <Route path="/research" element={<Research />} />
               <Route path="/reports" element={<Reports />} />
+              <Route path="/goals" element={<Goals />} />
               <Route path="/diagrams" element={<Diagrams />} />
               <Route path="/examples" element={<Examples />} />
             </Routes>
