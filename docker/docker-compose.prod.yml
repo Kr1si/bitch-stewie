@@ -80,6 +80,14 @@ services:
       ASSISTANT_API_HOST: 0.0.0.0
     ports:
       - "127.0.0.1:8000:8000"   # direct API access for debugging; UI goes via nginx
+    healthcheck:
+      # uvicorn is ready once /health responds 200. Used by the deploy's rebuild
+      # step to wait out container recreation before the Verify step polls.
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 5s
+      timeout: 3s
+      retries: 6
+      start_period: 10s
     volumes:
       - ${PROJECTS_PATH:-/home/deploy/projects}:/projects   # repos CC works on
       - model_cache:/home/assistant/.cache                            # fastembed bge-m3 download

@@ -59,43 +59,33 @@ jobs:
             # own CMD already runs it (idempotent) on every start, including
             # this recreate. A redundant second exec here OOM-killed deploys
             # (exit 137) by piling onto the highest memory-pressure moment
-            # right after a 3-image rebuild.'
+            # right after a 3-image rebuild.
+
+            # Wait out container recreation BEFORE returning. `compose up`
+            # returns once containers are created, but the host port mapping
+            # (127.0.0.1:3000->80) lags behind — polling the API during that
+            # window gets connection-refused. The healthchecks only pass once
+            # each service is actually ready, so waiting here absorbs the race
+            # and the subsequent Verify step starts from a stable base.
+            # 30 attempts x 10s = 5min grace period for image build + startup.
+            for i in $(seq 1 30); do
+              b=$(sudo docker inspect --format="{{.State.Health.Status}}" assistant-prod-backend-1 2>/dev/null || echo "unknown")
+              f=$(sudo docker inspect --format="{{.State.Health.Status}}" assistant-prod-frontend-1 2>/dev/null || echo "unknown")
+              if [ "$b" = "healthy" ] && [ "$f" = "healthy" ]; then
+                echo "stack healthy: backend=$b frontend=$f (after ${i}0s)"
+                break
+              fi
+              echo "waiting: backend=$b frontend=$f"
+              sleep 10
+            done'
 
       - name: Verify
         run: |
           ssh deploy@194.182.86.101 '
-            cd /home/deploy/bitch-stewie/docker
-
-            # The rebuild step recreates containers. During that window the host
-            # port mapping (127.0.0.1:3000->80) is briefly gone: the old container
-            # is stopped, the new one starts, nginx binds INSIDE the container
-            # (healthcheck passes), and only THEN does docker-proxy bind port 3000
-            # on the host. Container health != host port mapping, so we must wait
-            # for the HOST PORT to actually accept connections before polling the
-            # API. Test this directly: curl until it gets any HTTP response.
-            # --connect-timeout bounds each probe; 30 attempts x (5s + 8s sleep) ≈ 7min.
-            for i in $(seq 1 30); do
-              if curl -sS --connect-timeout 5 -o /dev/null http://127.0.0.1:3000/ 2>/dev/null; then
-                echo "host port 3000: accepting connections (after ~$((i * 8))s)"
-                break
-              fi
-              sleep 8
-            done
-
-            # backend runs alembic migrations before starting uvicorn (~25s on
-            # a fresh boot), so poll until the API actually responds 200. The
-            # port-ready wait above absorbed the container-recreate window, so
-            # this poll starts from a stable base.
-            # --max-time bounds each probe so a hung backend can't stall the step
-            # past the job timeout; 30 attempts x (15s timeout + 10s sleep) ≈ 12min max.
-            elapsed=0
-            for i in $(seq 1 30); do
-              code=$(curl -sS --max-time 15 -o /dev/null -w "%{http_code}" http://127.0.0.1:3000/api/projects || echo 000)
-              if [ "$code" = "200" ]; then echo "API through nginx: HTTP $code (after ${elapsed}s)"; exit 0; fi
-              sleep 10
-              elapsed=$((elapsed + 25))
-            done
-            echo "API through nginx: HTTP $code (never came up)"
-            sudo docker compose -f docker-compose.prod.yml ps
-            sudo docker logs --tail 20 assistant-prod-backend-1
+            # Simple confirmation that the rebuilt stack serves requests.
+            # The rebuild step already waited for healthy containers, so this
+            # is a final smoke check, not a race-prone poll.
+            code=$(curl -sS --max-time 15 -o /dev/null -w "%{http_code}" http://127.0.0.1:3000/api/projects || echo 000)
+            if [ "$code" = "200" ]; then echo "API through nginx: HTTP $code"; exit 0; fi
+            echo "API through nginx: HTTP $code (unexpected)"
             exit 1'
