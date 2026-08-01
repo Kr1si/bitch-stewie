@@ -25,6 +25,7 @@ import Knowledge from "./pages/Knowledge";
 import Diagrams from "./pages/Diagrams";
 import Examples from "./pages/Examples";
 import Research from "./pages/Research";
+import Reports from "./pages/Reports";
 import { apiGet } from "./lib/api";
 
 type Health = { status: string; default_model: string; langsmith: {
@@ -38,6 +39,7 @@ const NAV = [
   { path: "/diagrams", label: "Diagrams", icon: <AccountTreeIcon /> },
   { path: "/knowledge", label: "Knowledge", icon: <LibraryBooksIcon /> },
   { path: "/research", label: "Deep Research", icon: <TravelExploreIcon /> },
+  { path: "/reports", label: "Daily Intelligence", icon: <InsightsIcon /> },
   { path: "/examples", label: "Examples", icon: <ExtensionIcon /> },
   { path: "/runs", label: "CC Runs", icon: <PlayCircleIcon /> },
 ];
@@ -145,6 +147,7 @@ export default function App({ initialMode = "dark" as Mode }) {
               <Route path="/runs" element={<Runs />} />
               <Route path="/knowledge" element={<Knowledge />} />
               <Route path="/research" element={<Research />} />
+              <Route path="/reports" element={<Reports />} />
               <Route path="/diagrams" element={<Diagrams />} />
               <Route path="/examples" element={<Examples />} />
             </Routes>

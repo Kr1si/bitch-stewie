@@ -46,6 +46,11 @@ class Settings(BaseSettings):
     # --- Paths ---
     vault_path: str = ""  # markdown vault to watch/ingest; empty = disabled
     examples_path: str = ""  # where uploaded reference examples are stored; "" = disabled
+    # Root the daily-report pipeline writes dated reports + market-ideas wiki to.
+    # Must live on a mounted volume so reports survive container restarts — the
+    # worker mounts ${PROJECTS_PATH:-/home/deploy/projects}, so /projects/reports
+    # persists at ~/projects/reports on krisiserver.
+    reports_path: str = "/projects/reports"
 
     # --- API ---
     api_host: str = "127.0.0.1"

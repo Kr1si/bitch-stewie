@@ -43,13 +43,89 @@ SEED_PROJECTS = [
     },
 ]
 
+# Default autonomous goals seeded on every backend boot (idempotent). These are
+# the data the scheduler dispatches on: kind determines the handler, cadence is
+# a cron expr, config is whatever that kind needs. Add a row here when a goal
+# should always exist (e.g. the daily AI-intelligence report). Title is the
+# natural key the upsert matches on.
+SEED_GOALS = [
+    {
+        "title": "Daily AI Intelligence Report",
+        "description": (
+            "Autonomous daily research: fan out to researcher subagents per category, "
+            "write findings to dated dirs, compose a daily digest + market-ideas wiki."
+        ),
+        "kind": "research",
+        "status": "active",
+        "cadence": "0 7 * * *",
+        "config": {
+            "categories": [
+                {
+                    "id": "claude-code",
+                    "name": "Everything Claude Code",
+                    "sources": [
+                        "https://docs.claude.com/en/docs/claude-code/overview",
+                        "https://anthropic.com/news",
+                        "https://github.com/anthropics/claude-code",
+                    ],
+                    "notes": "#1 priority — use CC maximally as the research tool.",
+                },
+                {
+                    "id": "ai-security",
+                    "name": "AI Security",
+                    "themes": ["prompt injection", "guardrails", "AI safety", "red teaming",
+                               "alignment", "OWASP for LLM"],
+                },
+                {
+                    "id": "protocols",
+                    "name": "Protocols & Standards",
+                    "themes": ["MCP", "A2A", "open agent protocols", "agent communication standards"],
+                },
+                {
+                    "id": "langchain",
+                    "name": "LangChain & LLM Frameworks",
+                    "sources": ["https://blog.langchain.dev", "https://youtube.com/@LangChain"],
+                    "themes": ["LangChain", "LangGraph", "deepagents", "LangSmith"],
+                },
+                {
+                    "id": "news-media",
+                    "name": "AI News & Media",
+                    "sources": ["https://youtube.com/@aiherchephko",
+                               "https://youtube.com/@EverydayAI"],
+                    "themes": ["YouTube", "podcasts", "major AI news"],
+                },
+                {
+                    "id": "research-blogs",
+                    "name": "Research & Blogs",
+                    "sources": ["https://karpathy.blog", "https://medium.com (public)",
+                               "https://news.ycombinator.com"],
+                    "themes": ["Karpathy", "Medium", "Hacker News", "academic papers",
+                               "AI blogs/forums"],
+                },
+            ],
+            "output": {
+                "findings_dir": "reports/{date}/findings",
+                "digest_file": "reports/{date}/digest.md",
+                "market_ideas_index": "reports/market-ideas.md",
+                "market_ideas_dir": "reports/ideas",
+            },
+        },
+    },
+]
+
 
 @app.command()
 def seed() -> None:
-    """Idempotently seed built-in project presets (run by the backend on boot)."""
+    """Idempotently seed built-in project + goal presets (run by the backend on boot)."""
+    import json
+
     from sqlalchemy import select
 
-    from assistant.application.services.memory_service import Project, get_sync_session_factory
+    from assistant.application.services.memory_service import (
+        Goal,
+        Project,
+        get_sync_session_factory,
+    )
 
     created, updated = 0, 0
     with get_sync_session_factory()() as s:
@@ -66,6 +142,30 @@ def seed() -> None:
                 updated += 1
         s.commit()
     console.print(f"[green]Seeded[/green] project presets: {created} new, {updated} updated.")
+
+    gc, gu = 0, 0
+    with get_sync_session_factory()() as s:
+        for goal in SEED_GOALS:
+            row = s.execute(
+                select(Goal).where(Goal.title == goal["title"])
+            ).scalar_one_or_none()
+            if row is None:
+                s.add(Goal(**goal))
+                gc += 1
+            else:
+                # Re-sync mutable fields if a preset changed (categories, cadence, ...).
+                changed = False
+                for field in ("description", "kind", "status", "cadence"):
+                    if getattr(row, field) != goal[field]:
+                        setattr(row, field, goal[field])
+                        changed = True
+                if json.dumps(row.config, sort_keys=True) != json.dumps(goal["config"], sort_keys=True):
+                    row.config = goal["config"]
+                    changed = True
+                if changed:
+                    gu += 1
+        s.commit()
+    console.print(f"[green]Seeded[/green] goal presets: {gc} new, {gu} updated.")
 
 
 @app.command()

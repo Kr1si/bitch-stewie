@@ -176,6 +176,57 @@ class CCRunEvent(Base):
     run: Mapped[CCRun] = relationship(back_populates="events")
 
 
+class GoalKind(enum.StrEnum):
+    """What a goal means determines which handler the scheduler dispatches it to.
+
+    ``research`` -> fan-out web/repo research, write findings (daily report, RAG design).
+    ``coding`` -> delegate a coding task to Claude Code on the goal's project repo.
+    ``testing`` -> run a test/quality suite against the goal's project.
+    """
+
+    research = "research"
+    coding = "coding"
+    testing = "testing"
+
+
+class GoalStatus(enum.StrEnum):
+    active = "active"
+    paused = "paused"
+    completed = "completed"
+
+
+class Goal(TimestampMixin, Base):
+    """A scheduled, data-driven objective the autonomous agent works toward.
+
+    Goals are project-scoped and multi-kind: the same Goal table drives the
+    daily AI-intelligence report (research), Netherbrain test runs (testing),
+    self-improvement coding (coding), etc. The scheduler dispatches a goal to
+    the handler registered for its ``kind``; ``config`` holds whatever that
+    kind needs (categories for research, repo/branch for coding, ...).
+
+    Unlike the transient ``goal`` string on a delegation brief, a Goal is a
+    first-class, persisted, scheduleable object so goals can be added/paused
+    across projects without code changes.
+    """
+
+    __tablename__ = "goals"
+
+    id: Mapped[uuid.UUID] = _uuid_pk()
+    project_id: Mapped[uuid.UUID | None] = mapped_column(ForeignKey("projects.id"))
+    title: Mapped[str]
+    description: Mapped[str] = mapped_column(Text, default="")
+    kind: Mapped[GoalKind] = mapped_column(
+        Enum(GoalKind, native_enum=False), default=GoalKind.research
+    )
+    status: Mapped[GoalStatus] = mapped_column(
+        Enum(GoalStatus, native_enum=False), default=GoalStatus.active
+    )
+    cadence: Mapped[str] = mapped_column(default="0 7 * * *")  # cron: daily 07:00 UTC default
+    config: Mapped[dict] = mapped_column(JSON, default=dict)  # shape depends on kind
+    last_run_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), default=None)
+    next_run_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), default=None)
+
+
 class Example(TimestampMixin, Base):
     """A reference example the architect/doc-writer load when creating a new
     diagram or doc. Stored on the host filesystem so delegated Claude Code
