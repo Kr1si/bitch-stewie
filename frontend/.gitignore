@@ -12,9 +12,18 @@ dist
 dist-ssr
 *.local
 
+# Test coverage
+coverage/
+
 # local env (keep .env.example tracked)
 .env
 .env.*.local
+
+# Playwright
+/test-results/
+/playwright-report/
+/blob-report/
+/.cache/
 
 # Editor directories and files
 .vscode/*

@@ -10,7 +10,10 @@ class Settings(BaseSettings):
     model_config = SettingsConfigDict(env_file=".env", env_prefix="ASSISTANT_", extra="ignore")
 
     # --- LLM (model-agnostic via LangChain provider strings) ---
-    default_model: str = "ollama:glm-5.2:cloud"
+    # Default planner/orchestrator model. Provider-prefixed string resolved by
+    # deepagents via init_chat_model(); "anthropic:LongCat-2.0" routes through
+    # ANTHROPIC_BASE_URL + ANTHROPIC_API_KEY (set in docker-compose.prod.yml).
+    default_model: str = "anthropic:LongCat-2.0"
     ollama_base_url: str = "http://localhost:11434"
     embedding_model: str = "bge-m3"
 
