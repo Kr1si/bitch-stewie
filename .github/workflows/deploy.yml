@@ -64,8 +64,25 @@ jobs:
       - name: Verify
         run: |
           ssh deploy@194.182.86.101 '
+            cd /home/deploy/bitch-stewie/docker
+
+            # Wait for containers to report healthy BEFORE polling the API. The
+            # rebuild step recreates containers; polling port 3000 during that
+            # window races nginx binding and gets connection-refused until the step
+            # gives up. The frontend healthcheck (curl http://localhost/) only
+            # passes once nginx is actually listening, so waiting here makes the
+            # subsequent API poll reliable. 30 attempts x 10s = 5min grace period.
+            for i in $(seq 1 30); do
+              status=$(sudo docker inspect --format="{{.State.Health.Status}}" assistant-prod-frontend-1 2>/dev/null || echo "unknown")
+              if [ "$status" = "healthy" ]; then echo "frontend: healthy (after ${i}0s)"; break; fi
+              if [ "$status" = "unknown" ]; then echo "frontend: no healthcheck yet (container recreating)"; fi
+              sleep 10
+            done
+
             # backend runs alembic migrations before starting uvicorn (~25s on
-            # a fresh boot), so poll until the API is up instead of a fixed sleep.
+            # a fresh boot), so poll until the API actually responds 200. The
+            # healthy-frontend wait above already absorbed the container-recreate
+            # window, so this poll starts from a stable base.
             # --max-time bounds each probe so a hung backend can't stall the step
             # past the job timeout; 30 attempts x (15s timeout + 10s sleep) ≈ 12min max.
             elapsed=0
@@ -76,6 +93,6 @@ jobs:
               elapsed=$((elapsed + 25))
             done
             echo "API through nginx: HTTP $code (never came up)"
-            sudo docker compose -f bitch-stewie/docker/docker-compose.prod.yml ps
+            sudo docker compose -f docker-compose.prod.yml ps
             sudo docker logs --tail 20 assistant-prod-backend-1
             exit 1'
