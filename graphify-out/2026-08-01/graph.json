@@ -289,1687 +289,1876 @@
   },
   "nodes": [
     {
+      "label": "tsconfig.app.json",
+      "file_type": "code",
+      "source_file": "frontend/tsconfig.app.json",
+      "source_location": "L1",
+      "id": "frontend_tsconfig_app_json",
+      "community": 16,
+      "norm_label": "tsconfig.app.json"
+    },
+    {
+      "label": "compilerOptions",
+      "file_type": "code",
+      "source_file": "frontend/tsconfig.app.json",
+      "source_location": "L2",
+      "id": "frontend_tsconfig_app_compileroptions",
+      "community": 16,
+      "norm_label": "compileroptions"
+    },
+    {
+      "label": "tsBuildInfoFile",
+      "file_type": "code",
+      "source_file": "frontend/tsconfig.app.json",
+      "source_location": "L3",
+      "id": "frontend_tsconfig_app_compileroptions_tsbuildinfofile",
+      "community": 16,
+      "norm_label": "tsbuildinfofile"
+    },
+    {
+      "label": "target",
+      "file_type": "code",
+      "source_file": "frontend/tsconfig.app.json",
+      "source_location": "L4",
+      "id": "frontend_tsconfig_app_compileroptions_target",
+      "community": 16,
+      "norm_label": "target"
+    },
+    {
+      "label": "lib",
+      "file_type": "code",
+      "source_file": "frontend/tsconfig.app.json",
+      "source_location": "L5",
+      "id": "frontend_tsconfig_app_compileroptions_lib",
+      "community": 16,
+      "norm_label": "lib"
+    },
+    {
+      "label": "module",
+      "file_type": "code",
+      "source_file": "frontend/tsconfig.app.json",
+      "source_location": "L6",
+      "id": "frontend_tsconfig_app_compileroptions_module",
+      "community": 16,
+      "norm_label": "module"
+    },
+    {
+      "label": "types",
+      "file_type": "code",
+      "source_file": "frontend/tsconfig.app.json",
+      "source_location": "L7",
+      "id": "frontend_tsconfig_app_compileroptions_types",
+      "community": 16,
+      "norm_label": "types"
+    },
+    {
+      "label": "allowArbitraryExtensions",
+      "file_type": "code",
+      "source_file": "frontend/tsconfig.app.json",
+      "source_location": "L8",
+      "id": "frontend_tsconfig_app_compileroptions_allowarbitraryextensions",
+      "community": 16,
+      "norm_label": "allowarbitraryextensions"
+    },
+    {
+      "label": "skipLibCheck",
+      "file_type": "code",
+      "source_file": "frontend/tsconfig.app.json",
+      "source_location": "L9",
+      "id": "frontend_tsconfig_app_compileroptions_skiplibcheck",
+      "community": 16,
+      "norm_label": "skiplibcheck"
+    },
+    {
+      "label": "moduleResolution",
+      "file_type": "code",
+      "source_file": "frontend/tsconfig.app.json",
+      "source_location": "L12",
+      "id": "frontend_tsconfig_app_compileroptions_moduleresolution",
+      "community": 16,
+      "norm_label": "moduleresolution"
+    },
+    {
+      "label": "allowImportingTsExtensions",
+      "file_type": "code",
+      "source_file": "frontend/tsconfig.app.json",
+      "source_location": "L13",
+      "id": "frontend_tsconfig_app_compileroptions_allowimportingtsextensions",
+      "community": 16,
+      "norm_label": "allowimportingtsextensions"
+    },
+    {
+      "label": "verbatimModuleSyntax",
+      "file_type": "code",
+      "source_file": "frontend/tsconfig.app.json",
+      "source_location": "L14",
+      "id": "frontend_tsconfig_app_compileroptions_verbatimmodulesyntax",
+      "community": 16,
+      "norm_label": "verbatimmodulesyntax"
+    },
+    {
+      "label": "moduleDetection",
+      "file_type": "code",
+      "source_file": "frontend/tsconfig.app.json",
+      "source_location": "L15",
+      "id": "frontend_tsconfig_app_compileroptions_moduledetection",
+      "community": 16,
+      "norm_label": "moduledetection"
+    },
+    {
+      "label": "noEmit",
+      "file_type": "code",
+      "source_file": "frontend/tsconfig.app.json",
+      "source_location": "L16",
+      "id": "frontend_tsconfig_app_compileroptions_noemit",
+      "community": 16,
+      "norm_label": "noemit"
+    },
+    {
+      "label": "jsx",
+      "file_type": "code",
+      "source_file": "frontend/tsconfig.app.json",
+      "source_location": "L17",
+      "id": "frontend_tsconfig_app_compileroptions_jsx",
+      "community": 16,
+      "norm_label": "jsx"
+    },
+    {
+      "label": "noUnusedLocals",
+      "file_type": "code",
+      "source_file": "frontend/tsconfig.app.json",
+      "source_location": "L20",
+      "id": "frontend_tsconfig_app_compileroptions_nounusedlocals",
+      "community": 16,
+      "norm_label": "nounusedlocals"
+    },
+    {
+      "label": "noUnusedParameters",
+      "file_type": "code",
+      "source_file": "frontend/tsconfig.app.json",
+      "source_location": "L21",
+      "id": "frontend_tsconfig_app_compileroptions_nounusedparameters",
+      "community": 16,
+      "norm_label": "nounusedparameters"
+    },
+    {
+      "label": "erasableSyntaxOnly",
+      "file_type": "code",
+      "source_file": "frontend/tsconfig.app.json",
+      "source_location": "L22",
+      "id": "frontend_tsconfig_app_compileroptions_erasablesyntaxonly",
+      "community": 16,
+      "norm_label": "erasablesyntaxonly"
+    },
+    {
+      "label": "noFallthroughCasesInSwitch",
+      "file_type": "code",
+      "source_file": "frontend/tsconfig.app.json",
+      "source_location": "L23",
+      "id": "frontend_tsconfig_app_compileroptions_nofallthroughcasesinswitch",
+      "community": 16,
+      "norm_label": "nofallthroughcasesinswitch"
+    },
+    {
+      "label": "include",
+      "file_type": "code",
+      "source_file": "frontend/tsconfig.app.json",
+      "source_location": "L25",
+      "id": "frontend_tsconfig_app_include",
+      "community": 16,
+      "norm_label": "include"
+    },
+    {
+      "label": "exclude",
+      "file_type": "code",
+      "source_file": "frontend/tsconfig.app.json",
+      "source_location": "L26",
+      "id": "frontend_tsconfig_app_exclude",
+      "community": 16,
+      "norm_label": "exclude"
+    },
+    {
       "label": "examples.py",
       "file_type": "code",
       "source_file": "backend/src/assistant/interface/api/examples.py",
       "source_location": "L1",
-      "id": "backend_src_assistant_interface_api_examples_py",
       "community": 28,
-      "norm_label": "examples.py"
+      "norm_label": "examples.py",
+      "id": "backend_src_assistant_interface_api_examples_py"
     },
     {
       "label": "_slug()",
       "file_type": "code",
       "source_file": "backend/src/assistant/interface/api/examples.py",
       "source_location": "L28",
-      "id": "api_examples_slug",
       "community": 28,
-      "norm_label": "_slug()"
+      "norm_label": "_slug()",
+      "id": "api_examples_slug"
     },
     {
       "label": "str",
       "file_type": "code",
       "source_file": "backend/src/assistant/interface/api/examples.py",
       "source_location": "L28",
-      "id": "str",
       "community": 28,
-      "norm_label": "str"
+      "norm_label": "str",
+      "id": "str"
     },
     {
       "label": "_examples_root()",
       "file_type": "code",
       "source_file": "backend/src/assistant/interface/api/examples.py",
       "source_location": "L32",
-      "id": "api_examples_examples_root",
       "community": 28,
-      "norm_label": "_examples_root()"
+      "norm_label": "_examples_root()",
+      "id": "api_examples_examples_root"
     },
     {
       "label": "_storage_dir()",
       "file_type": "code",
       "source_file": "backend/src/assistant/interface/api/examples.py",
       "source_location": "L39",
-      "id": "api_examples_storage_dir",
       "community": 28,
-      "norm_label": "_storage_dir()"
+      "norm_label": "_storage_dir()",
+      "id": "api_examples_storage_dir"
     },
     {
       "label": "_to_dict()",
       "file_type": "code",
       "source_file": "backend/src/assistant/interface/api/examples.py",
       "source_location": "L47",
-      "id": "api_examples_to_dict",
       "community": 28,
-      "norm_label": "_to_dict()"
+      "norm_label": "_to_dict()",
+      "id": "api_examples_to_dict"
     },
     {
       "label": "Example",
       "file_type": "code",
       "source_file": "backend/src/assistant/interface/api/examples.py",
       "source_location": "L47",
-      "id": "example",
       "community": 28,
-      "norm_label": "example"
+      "norm_label": "example",
+      "id": "example"
     },
     {
       "label": "_resolve_project_id()",
       "file_type": "code",
       "source_file": "backend/src/assistant/interface/api/examples.py",
       "source_location": "L53",
-      "id": "api_examples_resolve_project_id",
       "community": 28,
-      "norm_label": "_resolve_project_id()"
+      "norm_label": "_resolve_project_id()",
+      "id": "api_examples_resolve_project_id"
     },
     {
       "label": "UUID",
       "file_type": "code",
       "source_file": "backend/src/assistant/interface/api/examples.py",
       "source_location": "L53",
-      "id": "uuid",
       "community": 91,
-      "norm_label": "uuid"
+      "norm_label": "uuid",
+      "id": "uuid"
     },
     {
       "label": "upload()",
       "file_type": "code",
       "source_file": "backend/src/assistant/interface/api/examples.py",
       "source_location": "L64",
-      "id": "api_examples_upload",
       "community": 28,
-      "norm_label": "upload()"
+      "norm_label": "upload()",
+      "id": "api_examples_upload"
     },
     {
       "label": "UploadFile",
       "file_type": "code",
       "source_file": "backend/src/assistant/interface/api/examples.py",
       "source_location": "L64",
-      "id": "uploadfile",
       "community": 78,
-      "norm_label": "uploadfile"
+      "norm_label": "uploadfile",
+      "id": "uploadfile"
     },
     {
       "label": "Any",
       "file_type": "code",
       "source_file": "backend/src/assistant/interface/api/examples.py",
       "source_location": "L64",
-      "id": "any",
       "community": 28,
-      "norm_label": "any"
+      "norm_label": "any",
+      "id": "any"
     },
     {
       "label": "_parse_project_id()",
       "file_type": "code",
       "source_file": "backend/src/assistant/interface/api/examples.py",
       "source_location": "L96",
-      "id": "api_examples_parse_project_id",
       "community": 28,
-      "norm_label": "_parse_project_id()"
+      "norm_label": "_parse_project_id()",
+      "id": "api_examples_parse_project_id"
     },
     {
       "label": "list_examples()",
       "file_type": "code",
       "source_file": "backend/src/assistant/interface/api/examples.py",
       "source_location": "L106",
-      "id": "api_examples_list_examples",
       "community": 28,
-      "norm_label": "list_examples()"
+      "norm_label": "list_examples()",
+      "id": "api_examples_list_examples"
     },
     {
       "label": "example_content()",
       "file_type": "code",
       "source_file": "backend/src/assistant/interface/api/examples.py",
       "source_location": "L121",
-      "id": "api_examples_example_content",
       "community": 91,
-      "norm_label": "example_content()"
+      "norm_label": "example_content()",
+      "id": "api_examples_example_content"
     },
     {
       "label": "FileResponse",
       "file_type": "code",
       "source_file": "backend/src/assistant/interface/api/examples.py",
       "source_location": "L121",
-      "id": "fileresponse",
       "community": 91,
-      "norm_label": "fileresponse"
+      "norm_label": "fileresponse",
+      "id": "fileresponse"
     },
     {
       "label": "delete_example()",
       "file_type": "code",
       "source_file": "backend/src/assistant/interface/api/examples.py",
       "source_location": "L137",
-      "id": "api_examples_delete_example",
       "community": 28,
-      "norm_label": "delete_example()"
+      "norm_label": "delete_example()",
+      "id": "api_examples_delete_example"
     },
     {
       "label": "Reference examples library (diagrams + docs).  The architect/doc-writer subagent",
       "file_type": "rationale",
       "source_file": "backend/src/assistant/interface/api/examples.py",
       "source_location": "L1",
-      "id": "api_examples_rationale_1",
       "community": 28,
-      "norm_label": "reference examples library (diagrams + docs).  the architect/doc-writer subagent"
+      "norm_label": "reference examples library (diagrams + docs).  the architect/doc-writer subagent",
+      "id": "api_examples_rationale_1"
     },
     {
       "label": "Upload a reference example (.drawio/.xml/.png for diagrams; .md/.docx/.pdf for d",
       "file_type": "rationale",
       "source_file": "backend/src/assistant/interface/api/examples.py",
       "source_location": "L70",
-      "id": "api_examples_rationale_70",
       "community": 28,
-      "norm_label": "upload a reference example (.drawio/.xml/.png for diagrams; .md/.docx/.pdf for d"
+      "norm_label": "upload a reference example (.drawio/.xml/.png for diagrams; .md/.docx/.pdf for d",
+      "id": "api_examples_rationale_70"
     },
     {
       "label": "config.py",
       "file_type": "code",
       "source_file": "backend/src/assistant/shared/config.py",
       "source_location": "L1",
-      "id": "backend_src_assistant_shared_config_py",
       "community": 21,
-      "norm_label": "config.py"
+      "norm_label": "config.py",
+      "id": "backend_src_assistant_shared_config_py"
     },
     {
       "label": "Settings",
       "file_type": "code",
       "source_file": "backend/src/assistant/shared/config.py",
       "source_location": "L9",
-      "id": "shared_config_settings",
       "community": 21,
-      "norm_label": "settings"
+      "norm_label": "settings",
+      "id": "shared_config_settings"
     },
     {
       "label": "BaseSettings",
       "file_type": "code",
       "source_file": "",
       "source_location": "",
-      "id": "basesettings",
       "community": 21,
-      "norm_label": "basesettings"
+      "norm_label": "basesettings",
+      "id": "basesettings"
     },
     {
       "label": "get_settings()",
       "file_type": "code",
       "source_file": "backend/src/assistant/shared/config.py",
       "source_location": "L76",
-      "id": "shared_config_get_settings",
       "community": 21,
-      "norm_label": "get_settings()"
+      "norm_label": "get_settings()",
+      "id": "shared_config_get_settings"
     },
     {
       "label": "langsmith_enabled()",
       "file_type": "code",
       "source_file": "backend/src/assistant/shared/config.py",
       "source_location": "L80",
-      "id": "shared_config_langsmith_enabled",
       "community": 21,
-      "norm_label": "langsmith_enabled()"
+      "norm_label": "langsmith_enabled()",
+      "id": "shared_config_langsmith_enabled"
     },
     {
       "label": "bool",
       "file_type": "code",
       "source_file": "backend/src/assistant/shared/config.py",
       "source_location": "L80",
-      "id": "bool",
       "community": 21,
-      "norm_label": "bool"
+      "norm_label": "bool",
+      "id": "bool"
     },
     {
       "label": "apply_langsmith_env()",
       "file_type": "code",
       "source_file": "backend/src/assistant/shared/config.py",
       "source_location": "L85",
-      "id": "shared_config_apply_langsmith_env",
       "community": 21,
-      "norm_label": "apply_langsmith_env()"
+      "norm_label": "apply_langsmith_env()",
+      "id": "shared_config_apply_langsmith_env"
     },
     {
       "label": "Central configuration. All values overridable via environment / .env.",
       "file_type": "rationale",
       "source_file": "backend/src/assistant/shared/config.py",
       "source_location": "L1",
-      "id": "shared_config_rationale_1",
       "community": 21,
-      "norm_label": "central configuration. all values overridable via environment / .env."
+      "norm_label": "central configuration. all values overridable via environment / .env.",
+      "id": "shared_config_rationale_1"
     },
     {
       "label": "Push LANGSMITH_* into os.environ before langchain/langgraph import tracing.",
       "file_type": "rationale",
       "source_file": "backend/src/assistant/shared/config.py",
       "source_location": "L86",
-      "id": "shared_config_rationale_86",
       "community": 21,
-      "norm_label": "push langsmith_* into os.environ before langchain/langgraph import tracing."
+      "norm_label": "push langsmith_* into os.environ before langchain/langgraph import tracing.",
+      "id": "shared_config_rationale_86"
     },
     {
       "label": "app.py",
       "file_type": "code",
       "source_file": "backend/tests/app.py",
       "source_location": "L1",
-      "id": "backend_tests_app_py",
       "community": 26,
-      "norm_label": "app.py"
+      "norm_label": "app.py",
+      "id": "backend_tests_app_py"
     },
     {
       "label": "_fake_graph()",
       "file_type": "code",
       "source_file": "backend/tests/app.py",
       "source_location": "L33",
-      "id": "tests_app_fake_graph",
       "community": 26,
-      "norm_label": "_fake_graph()"
+      "norm_label": "_fake_graph()",
+      "id": "tests_app_fake_graph"
     },
     {
       "label": "make_test_app()",
       "file_type": "code",
       "source_file": "backend/tests/app.py",
       "source_location": "L60",
-      "id": "tests_app_make_test_app",
       "community": 32,
-      "norm_label": "make_test_app()"
+      "norm_label": "make_test_app()",
+      "id": "tests_app_make_test_app"
     },
     {
       "label": "FastAPI",
       "file_type": "code",
       "source_file": "backend/tests/app.py",
       "source_location": "L60",
-      "id": "fastapi",
       "community": 26,
-      "norm_label": "fastapi"
+      "norm_label": "fastapi",
+      "id": "fastapi"
     },
     {
       "label": "Offline test application factory.  `create_app()` in production wires up a real",
       "file_type": "rationale",
       "source_file": "backend/tests/app.py",
       "source_location": "L1",
-      "id": "tests_app_rationale_1",
       "community": 26,
-      "norm_label": "offline test application factory.  `create_app()` in production wires up a real"
+      "norm_label": "offline test application factory.  `create_app()` in production wires up a real",
+      "id": "tests_app_rationale_1"
     },
     {
       "label": "Fake deepagents graph: streams nothing, reports a clean non-gated state.      Th",
       "file_type": "rationale",
       "source_file": "backend/tests/app.py",
       "source_location": "L34",
-      "id": "tests_app_rationale_34",
       "community": 26,
-      "norm_label": "fake deepagents graph: streams nothing, reports a clean non-gated state.      th"
+      "norm_label": "fake deepagents graph: streams nothing, reports a clean non-gated state.      th",
+      "id": "tests_app_rationale_34"
     },
     {
       "label": "Build an app with in-memory SQLite + fake graphs, mirroring production.",
       "file_type": "rationale",
       "source_file": "backend/tests/app.py",
       "source_location": "L61",
-      "id": "tests_app_rationale_61",
       "community": 32,
-      "norm_label": "build an app with in-memory sqlite + fake graphs, mirroring production."
+      "norm_label": "build an app with in-memory sqlite + fake graphs, mirroring production.",
+      "id": "tests_app_rationale_61"
     },
     {
       "label": "test_chat.py",
       "file_type": "code",
       "source_file": "backend/tests/test_chat.py",
       "source_location": "L1",
-      "id": "backend_tests_test_chat_py",
       "community": 91,
-      "norm_label": "test_chat.py"
+      "norm_label": "test_chat.py",
+      "id": "backend_tests_test_chat_py"
     },
     {
       "label": "test_chat_stream_returns_done()",
       "file_type": "code",
       "source_file": "backend/tests/test_chat.py",
       "source_location": "L8",
-      "id": "tests_test_chat_test_chat_stream_returns_done",
       "community": 91,
-      "norm_label": "test_chat_stream_returns_done()"
+      "norm_label": "test_chat_stream_returns_done()",
+      "id": "tests_test_chat_test_chat_stream_returns_done"
     },
     {
       "label": "test_chat_sessions_and_messages()",
       "file_type": "code",
       "source_file": "backend/tests/test_chat.py",
       "source_location": "L27",
-      "id": "tests_test_chat_test_chat_sessions_and_messages",
       "community": 91,
-      "norm_label": "test_chat_sessions_and_messages()"
+      "norm_label": "test_chat_sessions_and_messages()",
+      "id": "tests_test_chat_test_chat_sessions_and_messages"
     },
     {
       "label": "Chat SSE endpoint returns text/event-stream and terminates with 'done'.      The",
       "file_type": "rationale",
       "source_file": "backend/tests/test_chat.py",
       "source_location": "L9",
-      "id": "tests_test_chat_rationale_9",
       "community": 91,
-      "norm_label": "chat sse endpoint returns text/event-stream and terminates with 'done'.      the"
+      "norm_label": "chat sse endpoint returns text/event-stream and terminates with 'done'.      the",
+      "id": "tests_test_chat_rationale_9"
     },
     {
       "label": "test_config.py",
       "file_type": "code",
       "source_file": "backend/tests/test_config.py",
       "source_location": "L1",
-      "id": "backend_tests_test_config_py",
       "community": 21,
-      "norm_label": "test_config.py"
+      "norm_label": "test_config.py",
+      "id": "backend_tests_test_config_py"
     },
     {
       "label": "test_default_model_is_longcat()",
       "file_type": "code",
       "source_file": "backend/tests/test_config.py",
       "source_location": "L8",
-      "id": "tests_test_config_test_default_model_is_longcat",
       "community": 21,
-      "norm_label": "test_default_model_is_longcat()"
+      "norm_label": "test_default_model_is_longcat()",
+      "id": "tests_test_config_test_default_model_is_longcat"
     },
     {
       "label": "test_longcat_default_does_not_require_env()",
       "file_type": "code",
       "source_file": "backend/tests/test_config.py",
       "source_location": "L18",
-      "id": "tests_test_config_test_longcat_default_does_not_require_env",
       "community": 21,
-      "norm_label": "test_longcat_default_does_not_require_env()"
+      "norm_label": "test_longcat_default_does_not_require_env()",
+      "id": "tests_test_config_test_longcat_default_does_not_require_env"
     },
     {
       "label": "test_cc_provider_code_defaults_to_ollama_local()",
       "file_type": "code",
       "source_file": "backend/tests/test_config.py",
       "source_location": "L30",
-      "id": "tests_test_config_test_cc_provider_code_defaults_to_ollama_local",
       "community": 21,
-      "norm_label": "test_cc_provider_code_defaults_to_ollama_local()"
+      "norm_label": "test_cc_provider_code_defaults_to_ollama_local()",
+      "id": "tests_test_config_test_cc_provider_code_defaults_to_ollama_local"
     },
     {
       "label": "test_langsmith_disabled_without_key()",
       "file_type": "code",
       "source_file": "backend/tests/test_config.py",
       "source_location": "L45",
-      "id": "tests_test_config_test_langsmith_disabled_without_key",
       "community": 21,
-      "norm_label": "test_langsmith_disabled_without_key()"
+      "norm_label": "test_langsmith_disabled_without_key()",
+      "id": "tests_test_config_test_langsmith_disabled_without_key"
     },
     {
       "label": "test_langsmith_disabled_without_tracing()",
       "file_type": "code",
       "source_file": "backend/tests/test_config.py",
       "source_location": "L55",
-      "id": "tests_test_config_test_langsmith_disabled_without_tracing",
       "community": 21,
-      "norm_label": "test_langsmith_disabled_without_tracing()"
+      "norm_label": "test_langsmith_disabled_without_tracing()",
+      "id": "tests_test_config_test_langsmith_disabled_without_tracing"
     },
     {
       "label": "test_langsmith_enabled_requires_both()",
       "file_type": "code",
       "source_file": "backend/tests/test_config.py",
       "source_location": "L65",
-      "id": "tests_test_config_test_langsmith_enabled_requires_both",
       "community": 21,
-      "norm_label": "test_langsmith_enabled_requires_both()"
+      "norm_label": "test_langsmith_enabled_requires_both()",
+      "id": "tests_test_config_test_langsmith_enabled_requires_both"
     },
     {
       "label": "test_apply_langsmith_env_pushes_to_environ()",
       "file_type": "code",
       "source_file": "backend/tests/test_config.py",
       "source_location": "L75",
-      "id": "tests_test_config_test_apply_langsmith_env_pushes_to_environ",
       "community": 21,
-      "norm_label": "test_apply_langsmith_env_pushes_to_environ()"
+      "norm_label": "test_apply_langsmith_env_pushes_to_environ()",
+      "id": "tests_test_config_test_apply_langsmith_env_pushes_to_environ"
     },
     {
       "label": "test_apply_langsmith_env_is_idempotent()",
       "file_type": "code",
       "source_file": "backend/tests/test_config.py",
       "source_location": "L89",
-      "id": "tests_test_config_test_apply_langsmith_env_is_idempotent",
       "community": 21,
-      "norm_label": "test_apply_langsmith_env_is_idempotent()"
+      "norm_label": "test_apply_langsmith_env_is_idempotent()",
+      "id": "tests_test_config_test_apply_langsmith_env_is_idempotent"
     },
     {
       "label": "test_review_iterations_default()",
       "file_type": "code",
       "source_file": "backend/tests/test_config.py",
       "source_location": "L101",
-      "id": "tests_test_config_test_review_iterations_default",
       "community": 21,
-      "norm_label": "test_review_iterations_default()"
+      "norm_label": "test_review_iterations_default()",
+      "id": "tests_test_config_test_review_iterations_default"
     },
     {
       "label": "The orchestrator/planner default LLM is LongCat (Story 10).      Resolved by dee",
       "file_type": "rationale",
       "source_file": "backend/tests/test_config.py",
       "source_location": "L9",
-      "id": "tests_test_config_rationale_9",
       "community": 21,
-      "norm_label": "the orchestrator/planner default llm is longcat (story 10).      resolved by dee"
+      "norm_label": "the orchestrator/planner default llm is longcat (story 10).      resolved by dee",
+      "id": "tests_test_config_rationale_9"
     },
     {
       "label": "A fresh Settings() with no env exposes LongCat without reading ANTHROPIC_*.",
       "file_type": "rationale",
       "source_file": "backend/tests/test_config.py",
       "source_location": "L19",
-      "id": "tests_test_config_rationale_19",
       "community": 21,
-      "norm_label": "a fresh settings() with no env exposes longcat without reading anthropic_*."
+      "norm_label": "a fresh settings() with no env exposes longcat without reading anthropic_*.",
+      "id": "tests_test_config_rationale_19"
     },
     {
       "label": "CC provider CODE-defaults to local Ollama; compose overrides to LongCat.      Th",
       "file_type": "rationale",
       "source_file": "backend/tests/test_config.py",
       "source_location": "L31",
-      "id": "tests_test_config_rationale_31",
       "community": 21,
-      "norm_label": "cc provider code-defaults to local ollama; compose overrides to longcat.      th"
+      "norm_label": "cc provider code-defaults to local ollama; compose overrides to longcat.      th",
+      "id": "tests_test_config_rationale_31"
     },
     {
       "label": "test_deep_research.py",
       "file_type": "code",
       "source_file": "backend/tests/test_deep_research.py",
       "source_location": "L1",
-      "id": "backend_tests_test_deep_research_py",
       "community": 32,
-      "norm_label": "test_deep_research.py"
+      "norm_label": "test_deep_research.py",
+      "id": "backend_tests_test_deep_research_py"
     },
     {
       "label": "test_deep_research_stream()",
       "file_type": "code",
       "source_file": "backend/tests/test_deep_research.py",
       "source_location": "L9",
-      "id": "tests_test_deep_research_test_deep_research_stream",
       "community": 32,
-      "norm_label": "test_deep_research_stream()"
+      "norm_label": "test_deep_research_stream()",
+      "id": "tests_test_deep_research_test_deep_research_stream"
     },
     {
       "label": "The /api/research/deep/stream SSE endpoint drives a CC /deep-research run.",
       "file_type": "rationale",
       "source_file": "backend/tests/test_deep_research.py",
       "source_location": "L10",
-      "id": "tests_test_deep_research_rationale_10",
       "community": 32,
-      "norm_label": "the /api/research/deep/stream sse endpoint drives a cc /deep-research run."
+      "norm_label": "the /api/research/deep/stream sse endpoint drives a cc /deep-research run.",
+      "id": "tests_test_deep_research_rationale_10"
     },
     {
       "label": "test_delegate.py",
       "file_type": "code",
       "source_file": "backend/tests/test_delegate.py",
       "source_location": "L1",
-      "id": "backend_tests_test_delegate_py",
       "community": 109,
-      "norm_label": "test_delegate.py"
+      "norm_label": "test_delegate.py",
+      "id": "backend_tests_test_delegate_py"
     },
     {
       "label": "test_brief_to_prompt_includes_goal_and_criteria()",
       "file_type": "code",
       "source_file": "backend/tests/test_delegate.py",
       "source_location": "L14",
-      "id": "tests_test_delegate_test_brief_to_prompt_includes_goal_and_criteria",
       "community": 109,
-      "norm_label": "test_brief_to_prompt_includes_goal_and_criteria()"
+      "norm_label": "test_brief_to_prompt_includes_goal_and_criteria()",
+      "id": "tests_test_delegate_test_brief_to_prompt_includes_goal_and_criteria"
     },
     {
       "label": "test_brief_to_prompt_skills_and_examples()",
       "file_type": "code",
       "source_file": "backend/tests/test_delegate.py",
       "source_location": "L29",
-      "id": "tests_test_delegate_test_brief_to_prompt_skills_and_examples",
       "community": 109,
-      "norm_label": "test_brief_to_prompt_skills_and_examples()"
+      "norm_label": "test_brief_to_prompt_skills_and_examples()",
+      "id": "tests_test_delegate_test_brief_to_prompt_skills_and_examples"
     },
     {
       "label": "test_fallback_working_agreement_contains_result_marker()",
       "file_type": "code",
       "source_file": "backend/tests/test_delegate.py",
       "source_location": "L38",
-      "id": "tests_test_delegate_test_fallback_working_agreement_contains_result_marker",
       "community": 109,
-      "norm_label": "test_fallback_working_agreement_contains_result_marker()"
+      "norm_label": "test_fallback_working_agreement_contains_result_marker()",
+      "id": "tests_test_delegate_test_fallback_working_agreement_contains_result_marker"
     },
     {
       "label": "test_start_run_enqueues_and_returns_202()",
       "file_type": "code",
       "source_file": "backend/tests/test_delegate.py",
       "source_location": "L45",
-      "id": "tests_test_delegate_test_start_run_enqueues_and_returns_202",
       "community": 109,
-      "norm_label": "test_start_run_enqueues_and_returns_202()"
+      "norm_label": "test_start_run_enqueues_and_returns_202()",
+      "id": "tests_test_delegate_test_start_run_enqueues_and_returns_202"
     },
     {
       "label": "The inline fallback preserves the delivery contract (Story 2).",
       "file_type": "rationale",
       "source_file": "backend/tests/test_delegate.py",
       "source_location": "L39",
-      "id": "tests_test_delegate_rationale_39",
       "community": 109,
-      "norm_label": "the inline fallback preserves the delivery contract (story 2)."
+      "norm_label": "the inline fallback preserves the delivery contract (story 2).",
+      "id": "tests_test_delegate_rationale_39"
     },
     {
       "label": "POST /api/cc-runs enqueues via Procrastinate and returns 202 + job_id.      dele",
       "file_type": "rationale",
       "source_file": "backend/tests/test_delegate.py",
       "source_location": "L46",
-      "id": "tests_test_delegate_rationale_46",
       "community": 109,
-      "norm_label": "post /api/cc-runs enqueues via procrastinate and returns 202 + job_id.      dele"
+      "norm_label": "post /api/cc-runs enqueues via procrastinate and returns 202 + job_id.      dele",
+      "id": "tests_test_delegate_rationale_46"
     },
     {
       "label": "test_diagrams.py",
       "file_type": "code",
       "source_file": "backend/tests/test_diagrams.py",
       "source_location": "L1",
-      "id": "backend_tests_test_diagrams_py",
       "community": 112,
-      "norm_label": "test_diagrams.py"
+      "norm_label": "test_diagrams.py",
+      "id": "backend_tests_test_diagrams_py"
     },
     {
       "label": "test_list_diagrams_empty()",
       "file_type": "code",
       "source_file": "backend/tests/test_diagrams.py",
       "source_location": "L8",
-      "id": "tests_test_diagrams_test_list_diagrams_empty",
       "community": 112,
-      "norm_label": "test_list_diagrams_empty()"
+      "norm_label": "test_list_diagrams_empty()",
+      "id": "tests_test_diagrams_test_list_diagrams_empty"
     },
     {
       "label": "test_diagram_path_traversal_is_rejected()",
       "file_type": "code",
       "source_file": "backend/tests/test_diagrams.py",
       "source_location": "L18",
-      "id": "tests_test_diagrams_test_diagram_path_traversal_is_rejected",
       "community": 112,
-      "norm_label": "test_diagram_path_traversal_is_rejected()"
+      "norm_label": "test_diagram_path_traversal_is_rejected()",
+      "id": "tests_test_diagrams_test_diagram_path_traversal_is_rejected"
     },
     {
       "label": "A traversal attempt must never escape the diagrams dir (Story 6).",
       "file_type": "rationale",
       "source_file": "backend/tests/test_diagrams.py",
       "source_location": "L19",
-      "id": "tests_test_diagrams_rationale_19",
       "community": 112,
-      "norm_label": "a traversal attempt must never escape the diagrams dir (story 6)."
+      "norm_label": "a traversal attempt must never escape the diagrams dir (story 6).",
+      "id": "tests_test_diagrams_rationale_19"
     },
     {
       "label": "test_examples.py",
       "file_type": "code",
       "source_file": "backend/tests/test_examples.py",
       "source_location": "L1",
-      "id": "backend_tests_test_examples_py",
       "community": 110,
-      "norm_label": "test_examples.py"
+      "norm_label": "test_examples.py",
+      "id": "backend_tests_test_examples_py"
     },
     {
       "label": "_examples_enabled()",
       "file_type": "code",
       "source_file": "backend/tests/test_examples.py",
       "source_location": "L9",
-      "id": "tests_test_examples_examples_enabled",
       "community": 110,
-      "norm_label": "_examples_enabled()"
+      "norm_label": "_examples_enabled()",
+      "id": "tests_test_examples_examples_enabled"
     },
     {
       "label": "test_examples_list_empty()",
       "file_type": "code",
       "source_file": "backend/tests/test_examples.py",
       "source_location": "L15",
-      "id": "tests_test_examples_test_examples_list_empty",
       "community": 110,
-      "norm_label": "test_examples_list_empty()"
+      "norm_label": "test_examples_list_empty()",
+      "id": "tests_test_examples_test_examples_list_empty"
     },
     {
       "label": "test_example_upload_download_delete_roundtrip()",
       "file_type": "code",
       "source_file": "backend/tests/test_examples.py",
       "source_location": "L21",
-      "id": "tests_test_examples_test_example_upload_download_delete_roundtrip",
       "community": 110,
-      "norm_label": "test_example_upload_download_delete_roundtrip()"
+      "norm_label": "test_example_upload_download_delete_roundtrip()",
+      "id": "tests_test_examples_test_example_upload_download_delete_roundtrip"
     },
     {
       "label": "test_example_missing_on_disk_returns_410()",
       "file_type": "code",
       "source_file": "backend/tests/test_examples.py",
       "source_location": "L45",
-      "id": "tests_test_examples_test_example_missing_on_disk_returns_410",
       "community": 110,
-      "norm_label": "test_example_missing_on_disk_returns_410()"
+      "norm_label": "test_example_missing_on_disk_returns_410()",
+      "id": "tests_test_examples_test_example_missing_on_disk_returns_410"
     },
     {
       "label": "Point the examples store at a temp dir (router 500s without it).",
       "file_type": "rationale",
       "source_file": "backend/tests/test_examples.py",
       "source_location": "L10",
-      "id": "tests_test_examples_rationale_10",
       "community": 110,
-      "norm_label": "point the examples store at a temp dir (router 500s without it)."
+      "norm_label": "point the examples store at a temp dir (router 500s without it).",
+      "id": "tests_test_examples_rationale_10"
     },
     {
       "label": "A DB row whose file was removed from disk returns 410, not 500 (Story 7).",
       "file_type": "rationale",
       "source_file": "backend/tests/test_examples.py",
       "source_location": "L46",
-      "id": "tests_test_examples_rationale_46",
       "community": 110,
-      "norm_label": "a db row whose file was removed from disk returns 410, not 500 (story 7)."
+      "norm_label": "a db row whose file was removed from disk returns 410, not 500 (story 7).",
+      "id": "tests_test_examples_rationale_46"
     },
     {
       "label": "test_knowledge.py",
       "file_type": "code",
       "source_file": "backend/tests/test_knowledge.py",
       "source_location": "L1",
-      "id": "backend_tests_test_knowledge_py",
       "community": 32,
-      "norm_label": "test_knowledge.py"
+      "norm_label": "test_knowledge.py",
+      "id": "backend_tests_test_knowledge_py"
     },
     {
       "label": "test_list_collections_shape()",
       "file_type": "code",
       "source_file": "backend/tests/test_knowledge.py",
       "source_location": "L8",
-      "id": "tests_test_knowledge_test_list_collections_shape",
       "community": 32,
-      "norm_label": "test_list_collections_shape()"
+      "norm_label": "test_list_collections_shape()",
+      "id": "tests_test_knowledge_test_list_collections_shape"
     },
     {
       "label": "test_search_returns_results()",
       "file_type": "code",
       "source_file": "backend/tests/test_knowledge.py",
       "source_location": "L15",
-      "id": "tests_test_knowledge_test_search_returns_results",
       "community": 32,
-      "norm_label": "test_search_returns_results()"
+      "norm_label": "test_search_returns_results()",
+      "id": "tests_test_knowledge_test_search_returns_results"
     },
     {
       "label": "test_ingest_text_returns_summary()",
       "file_type": "code",
       "source_file": "backend/tests/test_knowledge.py",
       "source_location": "L28",
-      "id": "tests_test_knowledge_test_ingest_text_returns_summary",
       "community": 32,
-      "norm_label": "test_ingest_text_returns_summary()"
+      "norm_label": "test_ingest_text_returns_summary()",
+      "id": "tests_test_knowledge_test_ingest_text_returns_summary"
     },
     {
       "label": "test_models.py",
       "file_type": "code",
       "source_file": "backend/tests/test_models.py",
       "source_location": "L1",
-      "id": "backend_tests_test_models_py",
       "community": 111,
-      "norm_label": "test_models.py"
+      "norm_label": "test_models.py",
+      "id": "backend_tests_test_models_py"
     },
     {
       "label": "test_cc_run_status_values()",
       "file_type": "code",
       "source_file": "backend/tests/test_models.py",
       "source_location": "L6",
-      "id": "tests_test_models_test_cc_run_status_values",
       "community": 111,
-      "norm_label": "test_cc_run_status_values()"
+      "norm_label": "test_cc_run_status_values()",
+      "id": "tests_test_models_test_cc_run_status_values"
     },
     {
       "label": "test_cc_run_status_members()",
       "file_type": "code",
       "source_file": "backend/tests/test_models.py",
       "source_location": "L15",
-      "id": "tests_test_models_test_cc_run_status_members",
       "community": 111,
-      "norm_label": "test_cc_run_status_members()"
+      "norm_label": "test_cc_run_status_members()",
+      "id": "tests_test_models_test_cc_run_status_members"
     },
     {
       "label": "test_approval_status_values()",
       "file_type": "code",
       "source_file": "backend/tests/test_models.py",
       "source_location": "L20",
-      "id": "tests_test_models_test_approval_status_values",
       "community": 111,
-      "norm_label": "test_approval_status_values()"
+      "norm_label": "test_approval_status_values()",
+      "id": "tests_test_models_test_approval_status_values"
     },
     {
       "label": "test_approval_status_members()",
       "file_type": "code",
       "source_file": "backend/tests/test_models.py",
       "source_location": "L26",
-      "id": "tests_test_models_test_approval_status_members",
       "community": 111,
-      "norm_label": "test_approval_status_members()"
+      "norm_label": "test_approval_status_members()",
+      "id": "tests_test_models_test_approval_status_members"
     },
     {
       "label": "Pure unit tests for the persistence enums/models (no DB, no app).",
       "file_type": "rationale",
       "source_file": "backend/tests/test_models.py",
       "source_location": "L1",
-      "id": "tests_test_models_rationale_1",
       "community": 111,
-      "norm_label": "pure unit tests for the persistence enums/models (no db, no app)."
+      "norm_label": "pure unit tests for the persistence enums/models (no db, no app).",
+      "id": "tests_test_models_rationale_1"
     },
     {
       "label": "test_plan.py",
       "file_type": "code",
       "source_file": "backend/tests/test_plan.py",
       "source_location": "L1",
-      "id": "backend_tests_test_plan_py",
       "community": 113,
-      "norm_label": "test_plan.py"
+      "norm_label": "test_plan.py",
+      "id": "backend_tests_test_plan_py"
     },
     {
       "label": "test_plan_stream_returns_done()",
       "file_type": "code",
       "source_file": "backend/tests/test_plan.py",
       "source_location": "L8",
-      "id": "tests_test_plan_test_plan_stream_returns_done",
       "community": 113,
-      "norm_label": "test_plan_stream_returns_done()"
+      "norm_label": "test_plan_stream_returns_done()",
+      "id": "tests_test_plan_test_plan_stream_returns_done"
     },
     {
       "label": "test_plan_sessions_and_messages()",
       "file_type": "code",
       "source_file": "backend/tests/test_plan.py",
       "source_location": "L20",
-      "id": "tests_test_plan_test_plan_sessions_and_messages",
       "community": 113,
-      "norm_label": "test_plan_sessions_and_messages()"
+      "norm_label": "test_plan_sessions_and_messages()",
+      "id": "tests_test_plan_test_plan_sessions_and_messages"
     },
     {
       "label": "Planner SSE endpoint returns text/event-stream and terminates (Story 3).",
       "file_type": "rationale",
       "source_file": "backend/tests/test_plan.py",
       "source_location": "L9",
-      "id": "tests_test_plan_rationale_9",
       "community": 113,
-      "norm_label": "planner sse endpoint returns text/event-stream and terminates (story 3)."
+      "norm_label": "planner sse endpoint returns text/event-stream and terminates (story 3).",
+      "id": "tests_test_plan_rationale_9"
     },
     {
       "label": "test_projects.py",
       "file_type": "code",
       "source_file": "backend/tests/test_projects.py",
       "source_location": "L1",
-      "id": "backend_tests_test_projects_py",
       "community": 32,
-      "norm_label": "test_projects.py"
+      "norm_label": "test_projects.py",
+      "id": "backend_tests_test_projects_py"
     },
     {
       "label": "test_project_create_list_roundtrip()",
       "file_type": "code",
       "source_file": "backend/tests/test_projects.py",
       "source_location": "L8",
-      "id": "tests_test_projects_test_project_create_list_roundtrip",
       "community": 32,
-      "norm_label": "test_project_create_list_roundtrip()"
+      "norm_label": "test_project_create_list_roundtrip()",
+      "id": "tests_test_projects_test_project_create_list_roundtrip"
     },
     {
       "label": "test_project_duplicate_returns_409()",
       "file_type": "code",
       "source_file": "backend/tests/test_projects.py",
       "source_location": "L24",
-      "id": "tests_test_projects_test_project_duplicate_returns_409",
       "community": 32,
-      "norm_label": "test_project_duplicate_returns_409()"
+      "norm_label": "test_project_duplicate_returns_409()",
+      "id": "tests_test_projects_test_project_duplicate_returns_409"
     },
     {
       "label": "test_list_decisions_empty()",
       "file_type": "code",
       "source_file": "backend/tests/test_projects.py",
       "source_location": "L32",
-      "id": "tests_test_projects_test_list_decisions_empty",
       "community": 32,
-      "norm_label": "test_list_decisions_empty()"
+      "norm_label": "test_list_decisions_empty()",
+      "id": "tests_test_projects_test_list_decisions_empty"
     },
     {
       "label": "test_list_approvals_and_status_filter()",
       "file_type": "code",
       "source_file": "backend/tests/test_projects.py",
       "source_location": "L40",
-      "id": "tests_test_projects_test_list_approvals_and_status_filter",
       "community": 32,
-      "norm_label": "test_list_approvals_and_status_filter()"
+      "norm_label": "test_list_approvals_and_status_filter()",
+      "id": "tests_test_projects_test_list_approvals_and_status_filter"
     },
     {
       "label": "test_runs.py",
       "file_type": "code",
       "source_file": "backend/tests/test_runs.py",
       "source_location": "L1",
-      "id": "backend_tests_test_runs_py",
       "community": 32,
-      "norm_label": "test_runs.py"
+      "norm_label": "test_runs.py",
+      "id": "backend_tests_test_runs_py"
     },
     {
       "label": "test_list_runs_empty()",
       "file_type": "code",
       "source_file": "backend/tests/test_runs.py",
       "source_location": "L8",
-      "id": "tests_test_runs_test_list_runs_empty",
       "community": 32,
-      "norm_label": "test_list_runs_empty()"
+      "norm_label": "test_list_runs_empty()",
+      "id": "tests_test_runs_test_list_runs_empty"
     },
     {
       "label": "test_run_events_empty()",
       "file_type": "code",
       "source_file": "backend/tests/test_runs.py",
       "source_location": "L15",
-      "id": "tests_test_runs_test_run_events_empty",
       "community": 32,
-      "norm_label": "test_run_events_empty()"
+      "norm_label": "test_run_events_empty()",
+      "id": "tests_test_runs_test_run_events_empty"
     },
     {
       "label": "test_statusline_missing_run_returns_404()",
       "file_type": "code",
       "source_file": "backend/tests/test_runs.py",
       "source_location": "L22",
-      "id": "tests_test_runs_test_statusline_missing_run_returns_404",
       "community": 32,
-      "norm_label": "test_statusline_missing_run_returns_404()"
+      "norm_label": "test_statusline_missing_run_returns_404()",
+      "id": "tests_test_runs_test_statusline_missing_run_returns_404"
     },
     {
       "label": "test_stats.py",
       "file_type": "code",
       "source_file": "backend/tests/test_stats.py",
       "source_location": "L1",
-      "id": "backend_tests_test_stats_py",
       "community": 32,
-      "norm_label": "test_stats.py"
+      "norm_label": "test_stats.py",
+      "id": "backend_tests_test_stats_py"
     },
     {
       "label": "test_stats_shape()",
       "file_type": "code",
       "source_file": "backend/tests/test_stats.py",
       "source_location": "L6",
-      "id": "tests_test_stats_test_stats_shape",
       "community": 32,
-      "norm_label": "test_stats_shape()"
+      "norm_label": "test_stats_shape()",
+      "id": "tests_test_stats_test_stats_shape"
     },
     {
       "label": "test_statusline.py",
       "file_type": "code",
       "source_file": "backend/tests/test_statusline.py",
       "source_location": "L1",
-      "id": "backend_tests_test_statusline_py",
       "community": 91,
-      "norm_label": "test_statusline.py"
+      "norm_label": "test_statusline.py",
+      "id": "backend_tests_test_statusline_py"
     },
     {
       "label": "test_statusline_missing_run_returns_404()",
       "file_type": "code",
       "source_file": "backend/tests/test_statusline.py",
       "source_location": "L8",
-      "id": "tests_test_statusline_test_statusline_missing_run_returns_404",
       "community": 91,
-      "norm_label": "test_statusline_missing_run_returns_404()"
+      "norm_label": "test_statusline_missing_run_returns_404()",
+      "id": "tests_test_statusline_test_statusline_missing_run_returns_404"
     },
     {
       "label": "user-stories.md",
       "file_type": "document",
       "source_file": "docs/user-stories.md",
       "source_location": "L1",
-      "id": "docs_user_stories_md",
       "community": 80,
-      "norm_label": "user-stories.md"
+      "norm_label": "user-stories.md",
+      "id": "docs_user_stories_md"
     },
     {
       "label": "bitch-stewie \u2014 User Stories",
       "file_type": "document",
       "source_file": "docs/user-stories.md",
       "source_location": "L1",
-      "id": "docs_user_stories_bitch_stewie_user_stories",
       "community": 80,
-      "norm_label": "bitch-stewie \u2014 user stories"
+      "norm_label": "bitch-stewie \u2014 user stories",
+      "id": "docs_user_stories_bitch_stewie_user_stories"
     },
     {
       "label": "Story 1 \u2014 Ask the orchestrator anything (chat)",
       "file_type": "document",
       "source_file": "docs/user-stories.md",
       "source_location": "L16",
-      "id": "docs_user_stories_story_1_ask_the_orchestrator_anything_chat",
       "community": 80,
-      "norm_label": "story 1 \u2014 ask the orchestrator anything (chat)"
+      "norm_label": "story 1 \u2014 ask the orchestrator anything (chat)",
+      "id": "docs_user_stories_story_1_ask_the_orchestrator_anything_chat"
     },
     {
       "label": "Story 2 \u2014 Delegate a coding task (milestone gate)",
       "file_type": "document",
       "source_file": "docs/user-stories.md",
       "source_location": "L30",
-      "id": "docs_user_stories_story_2_delegate_a_coding_task_milestone_gate",
       "community": 80,
-      "norm_label": "story 2 \u2014 delegate a coding task (milestone gate)"
+      "norm_label": "story 2 \u2014 delegate a coding task (milestone gate)",
+      "id": "docs_user_stories_story_2_delegate_a_coding_task_milestone_gate"
     },
     {
       "label": "Story 3 \u2014 Refine a plan, then hand off",
       "file_type": "document",
       "source_file": "docs/user-stories.md",
       "source_location": "L45",
-      "id": "docs_user_stories_story_3_refine_a_plan_then_hand_off",
       "community": 80,
-      "norm_label": "story 3 \u2014 refine a plan, then hand off"
+      "norm_label": "story 3 \u2014 refine a plan, then hand off",
+      "id": "docs_user_stories_story_3_refine_a_plan_then_hand_off"
     },
     {
       "label": "Story 4 \u2014 Search and grow the knowledge base",
       "file_type": "document",
       "source_file": "docs/user-stories.md",
       "source_location": "L58",
-      "id": "docs_user_stories_story_4_search_and_grow_the_knowledge_base",
       "community": 80,
-      "norm_label": "story 4 \u2014 search and grow the knowledge base"
+      "norm_label": "story 4 \u2014 search and grow the knowledge base",
+      "id": "docs_user_stories_story_4_search_and_grow_the_knowledge_base"
     },
     {
       "label": "Story 5 \u2014 Deep research",
       "file_type": "document",
       "source_file": "docs/user-stories.md",
       "source_location": "L70",
-      "id": "docs_user_stories_story_5_deep_research",
       "community": 80,
-      "norm_label": "story 5 \u2014 deep research"
+      "norm_label": "story 5 \u2014 deep research",
+      "id": "docs_user_stories_story_5_deep_research"
     },
     {
       "label": "Story 6 \u2014 View and evolve diagrams",
       "file_type": "document",
       "source_file": "docs/user-stories.md",
       "source_location": "L81",
-      "id": "docs_user_stories_story_6_view_and_evolve_diagrams",
       "community": 80,
-      "norm_label": "story 6 \u2014 view and evolve diagrams"
+      "norm_label": "story 6 \u2014 view and evolve diagrams",
+      "id": "docs_user_stories_story_6_view_and_evolve_diagrams"
     },
     {
       "label": "Story 7 \u2014 Upload reference examples",
       "file_type": "document",
       "source_file": "docs/user-stories.md",
       "source_location": "L92",
-      "id": "docs_user_stories_story_7_upload_reference_examples",
       "community": 80,
-      "norm_label": "story 7 \u2014 upload reference examples"
+      "norm_label": "story 7 \u2014 upload reference examples",
+      "id": "docs_user_stories_story_7_upload_reference_examples"
     },
     {
       "label": "Story 8 \u2014 Monitor delegated runs",
       "file_type": "document",
       "source_file": "docs/user-stories.md",
       "source_location": "L102",
-      "id": "docs_user_stories_story_8_monitor_delegated_runs",
       "community": 80,
-      "norm_label": "story 8 \u2014 monitor delegated runs"
+      "norm_label": "story 8 \u2014 monitor delegated runs",
+      "id": "docs_user_stories_story_8_monitor_delegated_runs"
     },
     {
       "label": "Story 9 \u2014 Projects, decisions, preferences",
       "file_type": "document",
       "source_file": "docs/user-stories.md",
       "source_location": "L114",
-      "id": "docs_user_stories_story_9_projects_decisions_preferences",
       "community": 80,
-      "norm_label": "story 9 \u2014 projects, decisions, preferences"
+      "norm_label": "story 9 \u2014 projects, decisions, preferences",
+      "id": "docs_user_stories_story_9_projects_decisions_preferences"
     },
     {
       "label": "Story 10 \u2014 Config & observability",
       "file_type": "document",
       "source_file": "docs/user-stories.md",
       "source_location": "L127",
-      "id": "docs_user_stories_story_10_config_observability",
       "community": 80,
-      "norm_label": "story 10 \u2014 config & observability"
+      "norm_label": "story 10 \u2014 config & observability",
+      "id": "docs_user_stories_story_10_config_observability"
     },
     {
       "label": "Out of scope (documented gaps, not under test)",
       "file_type": "document",
       "source_file": "docs/user-stories.md",
       "source_location": "L143",
-      "id": "docs_user_stories_out_of_scope_documented_gaps_not_under_test",
       "community": 80,
-      "norm_label": "out of scope (documented gaps, not under test)"
+      "norm_label": "out of scope (documented gaps, not under test)",
+      "id": "docs_user_stories_out_of_scope_documented_gaps_not_under_test"
     },
     {
       "label": "README.md",
       "file_type": "document",
       "source_file": "frontend/e2e/README.md",
       "source_location": "L1",
-      "id": "frontend_e2e_readme_md",
       "community": 92,
-      "norm_label": "readme.md"
+      "norm_label": "readme.md",
+      "id": "frontend_e2e_readme_md"
     },
     {
       "label": "E2E Tests (Playwright)",
       "file_type": "document",
       "source_file": "frontend/e2e/README.md",
       "source_location": "L1",
-      "id": "e2e_readme_e2e_tests_playwright",
       "community": 92,
-      "norm_label": "e2e tests (playwright)"
+      "norm_label": "e2e tests (playwright)",
+      "id": "e2e_readme_e2e_tests_playwright"
     },
     {
       "label": "Prerequisites",
       "file_type": "document",
       "source_file": "frontend/e2e/README.md",
       "source_location": "L8",
-      "id": "e2e_readme_prerequisites",
       "community": 92,
-      "norm_label": "prerequisites"
+      "norm_label": "prerequisites",
+      "id": "e2e_readme_prerequisites"
     },
     {
       "label": "Install browsers",
       "file_type": "document",
       "source_file": "frontend/e2e/README.md",
       "source_location": "L29",
-      "id": "e2e_readme_install_browsers",
       "community": 92,
-      "norm_label": "install browsers"
+      "norm_label": "install browsers",
+      "id": "e2e_readme_install_browsers"
     },
     {
       "label": "Run",
       "file_type": "document",
       "source_file": "frontend/e2e/README.md",
       "source_location": "L38",
-      "id": "e2e_readme_run",
       "community": 92,
-      "norm_label": "run"
+      "norm_label": "run",
+      "id": "e2e_readme_run"
     },
     {
       "label": "Environment variables",
       "file_type": "document",
       "source_file": "frontend/e2e/README.md",
       "source_location": "L57",
-      "id": "e2e_readme_environment_variables",
       "community": 92,
-      "norm_label": "environment variables"
+      "norm_label": "environment variables",
+      "id": "e2e_readme_environment_variables"
     },
     {
       "label": "What each spec covers",
       "file_type": "document",
       "source_file": "frontend/e2e/README.md",
       "source_location": "L64",
-      "id": "e2e_readme_what_each_spec_covers",
       "community": 92,
-      "norm_label": "what each spec covers"
+      "norm_label": "what each spec covers",
+      "id": "e2e_readme_what_each_spec_covers"
     },
     {
       "label": "On robustness",
       "file_type": "document",
       "source_file": "frontend/e2e/README.md",
       "source_location": "L75",
-      "id": "e2e_readme_on_robustness",
       "community": 92,
-      "norm_label": "on robustness"
+      "norm_label": "on robustness",
+      "id": "e2e_readme_on_robustness"
     },
     {
       "label": "chat.spec.ts",
       "file_type": "code",
       "source_file": "frontend/e2e/chat.spec.ts",
       "source_location": "L1",
-      "id": "frontend_e2e_chat_spec_ts",
       "community": 87,
-      "norm_label": "chat.spec.ts"
+      "norm_label": "chat.spec.ts",
+      "id": "frontend_e2e_chat_spec_ts"
     },
     {
       "label": "diagrams.spec.ts",
       "file_type": "code",
       "source_file": "frontend/e2e/diagrams.spec.ts",
       "source_location": "L1",
-      "id": "frontend_e2e_diagrams_spec_ts",
       "community": 117,
-      "norm_label": "diagrams.spec.ts"
+      "norm_label": "diagrams.spec.ts",
+      "id": "frontend_e2e_diagrams_spec_ts"
     },
     {
       "label": "helpers.ts",
       "file_type": "code",
       "source_file": "frontend/e2e/helpers.ts",
       "source_location": "L1",
-      "id": "frontend_e2e_helpers_ts",
       "community": 87,
-      "norm_label": "helpers.ts"
+      "norm_label": "helpers.ts",
+      "id": "frontend_e2e_helpers_ts"
     },
     {
       "label": "uniqueProjectName()",
       "file_type": "code",
       "source_file": "frontend/e2e/helpers.ts",
       "source_location": "L14",
-      "id": "e2e_helpers_uniqueprojectname",
       "community": 87,
-      "norm_label": "uniqueprojectname()"
+      "norm_label": "uniqueprojectname()",
+      "id": "e2e_helpers_uniqueprojectname"
     },
     {
       "label": "ensureProject()",
       "file_type": "code",
       "source_file": "frontend/e2e/helpers.ts",
       "source_location": "L23",
-      "id": "e2e_helpers_ensureproject",
       "community": 87,
-      "norm_label": "ensureproject()"
+      "norm_label": "ensureproject()",
+      "id": "e2e_helpers_ensureproject"
     },
     {
       "label": "expectEventually()",
       "file_type": "code",
       "source_file": "frontend/e2e/helpers.ts",
       "source_location": "L47",
-      "id": "e2e_helpers_expecteventually",
       "community": 87,
-      "norm_label": "expecteventually()"
+      "norm_label": "expecteventually()",
+      "id": "e2e_helpers_expecteventually"
     },
     {
       "label": "backendHealthy()",
       "file_type": "code",
       "source_file": "frontend/e2e/helpers.ts",
       "source_location": "L55",
-      "id": "e2e_helpers_backendhealthy",
       "community": 87,
-      "norm_label": "backendhealthy()"
+      "norm_label": "backendhealthy()",
+      "id": "e2e_helpers_backendhealthy"
     },
     {
       "label": "expectAssistantTurn()",
       "file_type": "code",
       "source_file": "frontend/e2e/helpers.ts",
       "source_location": "L72",
-      "id": "e2e_helpers_expectassistantturn",
       "community": 87,
-      "norm_label": "expectassistantturn()"
+      "norm_label": "expectassistantturn()",
+      "id": "e2e_helpers_expectassistantturn"
     },
     {
       "label": "knowledge.spec.ts",
       "file_type": "code",
       "source_file": "frontend/e2e/knowledge.spec.ts",
       "source_location": "L1",
-      "id": "frontend_e2e_knowledge_spec_ts",
       "community": 87,
-      "norm_label": "knowledge.spec.ts"
+      "norm_label": "knowledge.spec.ts",
+      "id": "frontend_e2e_knowledge_spec_ts"
     },
     {
       "label": "projects.spec.ts",
       "file_type": "code",
       "source_file": "frontend/e2e/projects.spec.ts",
       "source_location": "L1",
-      "id": "frontend_e2e_projects_spec_ts",
       "community": 87,
-      "norm_label": "projects.spec.ts"
+      "norm_label": "projects.spec.ts",
+      "id": "frontend_e2e_projects_spec_ts"
     },
     {
       "label": "research.spec.ts",
       "file_type": "code",
       "source_file": "frontend/e2e/research.spec.ts",
       "source_location": "L1",
-      "id": "frontend_e2e_research_spec_ts",
       "community": 118,
-      "norm_label": "research.spec.ts"
+      "norm_label": "research.spec.ts",
+      "id": "frontend_e2e_research_spec_ts"
     },
     {
       "label": "smoke.spec.ts",
       "file_type": "code",
       "source_file": "frontend/e2e/smoke.spec.ts",
       "source_location": "L1",
-      "id": "frontend_e2e_smoke_spec_ts",
       "community": 87,
-      "norm_label": "smoke.spec.ts"
+      "norm_label": "smoke.spec.ts",
+      "id": "frontend_e2e_smoke_spec_ts"
     },
     {
       "label": "package.json",
       "file_type": "code",
       "source_file": "frontend/package.json",
       "source_location": "L1",
-      "id": "frontend_package_json",
       "community": 10,
-      "norm_label": "package.json"
+      "norm_label": "package.json",
+      "id": "frontend_package_json"
     },
     {
       "label": "name",
       "file_type": "code",
       "source_file": "frontend/package.json",
       "source_location": "L2",
-      "id": "frontend_package_name",
       "community": 10,
-      "norm_label": "name"
+      "norm_label": "name",
+      "id": "frontend_package_name"
     },
     {
       "label": "private",
       "file_type": "code",
       "source_file": "frontend/package.json",
       "source_location": "L3",
-      "id": "frontend_package_private",
       "community": 10,
-      "norm_label": "private"
+      "norm_label": "private",
+      "id": "frontend_package_private"
     },
     {
       "label": "version",
       "file_type": "code",
       "source_file": "frontend/package.json",
       "source_location": "L4",
-      "id": "frontend_package_version",
       "community": 10,
-      "norm_label": "version"
+      "norm_label": "version",
+      "id": "frontend_package_version"
     },
     {
       "label": "type",
       "file_type": "code",
       "source_file": "frontend/package.json",
       "source_location": "L5",
-      "id": "frontend_package_type",
       "community": 10,
-      "norm_label": "type"
+      "norm_label": "type",
+      "id": "frontend_package_type"
     },
     {
       "label": "scripts",
       "file_type": "code",
       "source_file": "frontend/package.json",
       "source_location": "L6",
-      "id": "frontend_package_scripts",
       "community": 10,
-      "norm_label": "scripts"
+      "norm_label": "scripts",
+      "id": "frontend_package_scripts"
     },
     {
       "label": "dev",
       "file_type": "code",
       "source_file": "frontend/package.json",
       "source_location": "L7",
-      "id": "frontend_package_scripts_dev",
       "community": 10,
-      "norm_label": "dev"
+      "norm_label": "dev",
+      "id": "frontend_package_scripts_dev"
     },
     {
       "label": "build",
       "file_type": "code",
       "source_file": "frontend/package.json",
       "source_location": "L8",
-      "id": "frontend_package_scripts_build",
       "community": 10,
-      "norm_label": "build"
+      "norm_label": "build",
+      "id": "frontend_package_scripts_build"
     },
     {
       "label": "lint",
       "file_type": "code",
       "source_file": "frontend/package.json",
       "source_location": "L9",
-      "id": "frontend_package_scripts_lint",
       "community": 10,
-      "norm_label": "lint"
+      "norm_label": "lint",
+      "id": "frontend_package_scripts_lint"
     },
     {
       "label": "preview",
       "file_type": "code",
       "source_file": "frontend/package.json",
       "source_location": "L10",
-      "id": "frontend_package_scripts_preview",
       "community": 10,
-      "norm_label": "preview"
+      "norm_label": "preview",
+      "id": "frontend_package_scripts_preview"
     },
     {
       "label": "test:e2e",
       "file_type": "code",
       "source_file": "frontend/package.json",
       "source_location": "L11",
-      "id": "frontend_package_scripts_test_e2e",
       "community": 10,
-      "norm_label": "test:e2e"
+      "norm_label": "test:e2e",
+      "id": "frontend_package_scripts_test_e2e"
     },
     {
       "label": "test:e2e:install",
       "file_type": "code",
       "source_file": "frontend/package.json",
       "source_location": "L12",
-      "id": "frontend_package_scripts_test_e2e_install",
       "community": 10,
-      "norm_label": "test:e2e:install"
+      "norm_label": "test:e2e:install",
+      "id": "frontend_package_scripts_test_e2e_install"
     },
     {
       "label": "test",
       "file_type": "code",
       "source_file": "frontend/package.json",
       "source_location": "L13",
-      "id": "frontend_package_scripts_test",
       "community": 10,
-      "norm_label": "test"
+      "norm_label": "test",
+      "id": "frontend_package_scripts_test"
     },
     {
       "label": "test:watch",
       "file_type": "code",
       "source_file": "frontend/package.json",
       "source_location": "L14",
-      "id": "frontend_package_scripts_test_watch",
       "community": 10,
-      "norm_label": "test:watch"
+      "norm_label": "test:watch",
+      "id": "frontend_package_scripts_test_watch"
     },
     {
       "label": "coverage",
       "file_type": "code",
       "source_file": "frontend/package.json",
       "source_location": "L15",
-      "id": "frontend_package_scripts_coverage",
       "community": 10,
-      "norm_label": "coverage"
+      "norm_label": "coverage",
+      "id": "frontend_package_scripts_coverage"
     },
     {
       "label": "dependencies",
       "file_type": "code",
       "source_file": "frontend/package.json",
       "source_location": "L17",
-      "id": "frontend_package_dependencies",
       "community": 10,
-      "norm_label": "dependencies"
+      "norm_label": "dependencies",
+      "id": "frontend_package_dependencies"
     },
     {
       "label": "@emotion/react",
       "file_type": "code",
       "source_file": "frontend/package.json",
       "source_location": "L18",
-      "id": "frontend_package_dependencies_emotion_react",
       "community": 10,
-      "norm_label": "@emotion/react"
+      "norm_label": "@emotion/react",
+      "id": "frontend_package_dependencies_emotion_react"
     },
     {
       "label": "@emotion/styled",
       "file_type": "code",
       "source_file": "frontend/package.json",
       "source_location": "L19",
-      "id": "frontend_package_dependencies_emotion_styled",
       "community": 10,
-      "norm_label": "@emotion/styled"
+      "norm_label": "@emotion/styled",
+      "id": "frontend_package_dependencies_emotion_styled"
     },
     {
       "label": "@mui/icons-material",
       "file_type": "code",
       "source_file": "frontend/package.json",
       "source_location": "L20",
-      "id": "frontend_package_dependencies_mui_icons_material",
       "community": 10,
-      "norm_label": "@mui/icons-material"
+      "norm_label": "@mui/icons-material",
+      "id": "frontend_package_dependencies_mui_icons_material"
     },
     {
       "label": "@mui/material",
       "file_type": "code",
       "source_file": "frontend/package.json",
       "source_location": "L21",
-      "id": "frontend_package_dependencies_mui_material",
       "community": 10,
-      "norm_label": "@mui/material"
+      "norm_label": "@mui/material",
+      "id": "frontend_package_dependencies_mui_material"
     },
     {
       "label": "@mui/x-data-grid",
       "file_type": "code",
       "source_file": "frontend/package.json",
       "source_location": "L22",
-      "id": "frontend_package_dependencies_mui_x_data_grid",
       "community": 10,
-      "norm_label": "@mui/x-data-grid"
+      "norm_label": "@mui/x-data-grid",
+      "id": "frontend_package_dependencies_mui_x_data_grid"
     },
     {
       "label": "react",
       "file_type": "code",
       "source_file": "frontend/package.json",
       "source_location": "L23",
-      "id": "frontend_package_dependencies_react",
       "community": 10,
-      "norm_label": "react"
+      "norm_label": "react",
+      "id": "frontend_package_dependencies_react"
     },
     {
       "label": "react-dom",
       "file_type": "code",
       "source_file": "frontend/package.json",
       "source_location": "L24",
-      "id": "frontend_package_dependencies_react_dom",
       "community": 10,
-      "norm_label": "react-dom"
+      "norm_label": "react-dom",
+      "id": "frontend_package_dependencies_react_dom"
     },
     {
       "label": "react-drawio",
       "file_type": "code",
       "source_file": "frontend/package.json",
       "source_location": "L25",
-      "id": "frontend_package_dependencies_react_drawio",
       "community": 10,
-      "norm_label": "react-drawio"
+      "norm_label": "react-drawio",
+      "id": "frontend_package_dependencies_react_drawio"
     },
     {
       "label": "react-router-dom",
       "file_type": "code",
       "source_file": "frontend/package.json",
       "source_location": "L26",
-      "id": "frontend_package_dependencies_react_router_dom",
       "community": 10,
-      "norm_label": "react-router-dom"
+      "norm_label": "react-router-dom",
+      "id": "frontend_package_dependencies_react_router_dom"
     },
     {
       "label": "recharts",
       "file_type": "code",
       "source_file": "frontend/package.json",
       "source_location": "L27",
-      "id": "frontend_package_dependencies_recharts",
       "community": 10,
-      "norm_label": "recharts"
+      "norm_label": "recharts",
+      "id": "frontend_package_dependencies_recharts"
     },
     {
       "label": "devDependencies",
       "file_type": "code",
       "source_file": "frontend/package.json",
       "source_location": "L29",
-      "id": "frontend_package_devdependencies",
       "community": 10,
-      "norm_label": "devdependencies"
+      "norm_label": "devdependencies",
+      "id": "frontend_package_devdependencies"
     },
     {
       "label": "@playwright/test",
       "file_type": "code",
       "source_file": "frontend/package.json",
       "source_location": "L30",
-      "id": "frontend_package_devdependencies_playwright_test",
       "community": 10,
-      "norm_label": "@playwright/test"
+      "norm_label": "@playwright/test",
+      "id": "frontend_package_devdependencies_playwright_test"
     },
     {
       "label": "@testing-library/jest-dom",
       "file_type": "code",
       "source_file": "frontend/package.json",
       "source_location": "L31",
-      "id": "frontend_package_devdependencies_testing_library_jest_dom",
       "community": 10,
-      "norm_label": "@testing-library/jest-dom"
+      "norm_label": "@testing-library/jest-dom",
+      "id": "frontend_package_devdependencies_testing_library_jest_dom"
     },
     {
       "label": "@testing-library/react",
       "file_type": "code",
       "source_file": "frontend/package.json",
       "source_location": "L32",
-      "id": "frontend_package_devdependencies_testing_library_react",
       "community": 10,
-      "norm_label": "@testing-library/react"
+      "norm_label": "@testing-library/react",
+      "id": "frontend_package_devdependencies_testing_library_react"
     },
     {
       "label": "@testing-library/user-event",
       "file_type": "code",
       "source_file": "frontend/package.json",
       "source_location": "L33",
-      "id": "frontend_package_devdependencies_testing_library_user_event",
       "community": 10,
-      "norm_label": "@testing-library/user-event"
+      "norm_label": "@testing-library/user-event",
+      "id": "frontend_package_devdependencies_testing_library_user_event"
     },
     {
       "label": "@types/node",
       "file_type": "code",
       "source_file": "frontend/package.json",
       "source_location": "L34",
-      "id": "frontend_package_devdependencies_types_node",
       "community": 10,
-      "norm_label": "@types/node"
+      "norm_label": "@types/node",
+      "id": "frontend_package_devdependencies_types_node"
     },
     {
       "label": "@types/react",
       "file_type": "code",
       "source_file": "frontend/package.json",
       "source_location": "L35",
-      "id": "frontend_package_devdependencies_types_react",
       "community": 10,
-      "norm_label": "@types/react"
+      "norm_label": "@types/react",
+      "id": "frontend_package_devdependencies_types_react"
     },
     {
       "label": "@types/react-dom",
       "file_type": "code",
       "source_file": "frontend/package.json",
       "source_location": "L36",
-      "id": "frontend_package_devdependencies_types_react_dom",
       "community": 10,
-      "norm_label": "@types/react-dom"
+      "norm_label": "@types/react-dom",
+      "id": "frontend_package_devdependencies_types_react_dom"
     },
     {
       "label": "@vitejs/plugin-react",
       "file_type": "code",
       "source_file": "frontend/package.json",
       "source_location": "L37",
-      "id": "frontend_package_devdependencies_vitejs_plugin_react",
       "community": 10,
-      "norm_label": "@vitejs/plugin-react"
+      "norm_label": "@vitejs/plugin-react",
+      "id": "frontend_package_devdependencies_vitejs_plugin_react"
     },
     {
       "label": "@vitest/coverage-v8",
       "file_type": "code",
       "source_file": "frontend/package.json",
       "source_location": "L38",
-      "id": "frontend_package_devdependencies_vitest_coverage_v8",
       "community": 10,
-      "norm_label": "@vitest/coverage-v8"
+      "norm_label": "@vitest/coverage-v8",
+      "id": "frontend_package_devdependencies_vitest_coverage_v8"
     },
     {
       "label": "jsdom",
       "file_type": "code",
       "source_file": "frontend/package.json",
       "source_location": "L39",
-      "id": "frontend_package_devdependencies_jsdom",
       "community": 10,
-      "norm_label": "jsdom"
+      "norm_label": "jsdom",
+      "id": "frontend_package_devdependencies_jsdom"
     },
     {
       "label": "oxlint",
       "file_type": "code",
       "source_file": "frontend/package.json",
       "source_location": "L40",
-      "id": "frontend_package_devdependencies_oxlint",
       "community": 10,
-      "norm_label": "oxlint"
+      "norm_label": "oxlint",
+      "id": "frontend_package_devdependencies_oxlint"
     },
     {
       "label": "typescript",
       "file_type": "code",
       "source_file": "frontend/package.json",
       "source_location": "L41",
-      "id": "frontend_package_devdependencies_typescript",
       "community": 10,
-      "norm_label": "typescript"
+      "norm_label": "typescript",
+      "id": "frontend_package_devdependencies_typescript"
     },
     {
       "label": "vite",
       "file_type": "code",
       "source_file": "frontend/package.json",
       "source_location": "L42",
-      "id": "frontend_package_devdependencies_vite",
       "community": 10,
-      "norm_label": "vite"
+      "norm_label": "vite",
+      "id": "frontend_package_devdependencies_vite"
     },
     {
       "label": "vitest",
       "file_type": "code",
       "source_file": "frontend/package.json",
       "source_location": "L43",
-      "id": "frontend_package_devdependencies_vitest",
       "community": 10,
-      "norm_label": "vitest"
+      "norm_label": "vitest",
+      "id": "frontend_package_devdependencies_vitest"
     },
     {
       "label": "playwright.config.ts",
       "file_type": "code",
       "source_file": "frontend/playwright.config.ts",
       "source_location": "L1",
-      "id": "frontend_playwright_config_ts",
       "community": 119,
-      "norm_label": "playwright.config.ts"
+      "norm_label": "playwright.config.ts",
+      "id": "frontend_playwright_config_ts"
     },
     {
       "label": "StatCard.test.tsx",
       "file_type": "code",
       "source_file": "frontend/src/components/__tests__/StatCard.test.tsx",
       "source_location": "L1",
-      "id": "frontend_src_components_tests_statcard_test_tsx",
       "community": 120,
-      "norm_label": "statcard.test.tsx"
+      "norm_label": "statcard.test.tsx",
+      "id": "frontend_src_components_tests_statcard_test_tsx"
     },
     {
       "label": "api.test.ts",
       "file_type": "code",
       "source_file": "frontend/src/lib/__tests__/api.test.ts",
       "source_location": "L1",
-      "id": "frontend_src_lib_tests_api_test_ts",
       "community": 27,
-      "norm_label": "api.test.ts"
+      "norm_label": "api.test.ts",
+      "id": "frontend_src_lib_tests_api_test_ts"
     },
     {
       "label": "sseResponse()",
       "file_type": "code",
       "source_file": "frontend/src/lib/__tests__/api.test.ts",
       "source_location": "L8",
-      "id": "tests_api_test_sseresponse",
       "community": 27,
-      "norm_label": "sseresponse()"
+      "norm_label": "sseresponse()",
+      "id": "tests_api_test_sseresponse"
     },
     {
       "label": "chatSse",
       "file_type": "code",
       "source_file": "frontend/src/lib/__tests__/api.test.ts",
       "source_location": "L21",
-      "id": "tests_api_test_chatsse",
       "community": 27,
-      "norm_label": "chatsse"
+      "norm_label": "chatsse",
+      "id": "tests_api_test_chatsse"
     },
     {
       "label": "researchSse",
       "file_type": "code",
       "source_file": "frontend/src/lib/__tests__/api.test.ts",
       "source_location": "L36",
-      "id": "tests_api_test_researchsse",
       "community": 27,
-      "norm_label": "researchsse"
+      "norm_label": "researchsse",
+      "id": "tests_api_test_researchsse"
     },
     {
       "label": "apiClient.test.ts",
       "file_type": "code",
       "source_file": "frontend/src/lib/__tests__/apiClient.test.ts",
       "source_location": "L1",
-      "id": "frontend_src_lib_tests_apiclient_test_ts",
       "community": 27,
-      "norm_label": "apiclient.test.ts"
+      "norm_label": "apiclient.test.ts",
+      "id": "frontend_src_lib_tests_apiclient_test_ts"
     },
     {
       "label": "jsonFetch()",
       "file_type": "code",
       "source_file": "frontend/src/lib/__tests__/apiClient.test.ts",
       "source_location": "L10",
-      "id": "tests_apiclient_test_jsonfetch",
       "community": 27,
-      "norm_label": "jsonfetch()"
+      "norm_label": "jsonfetch()",
+      "id": "tests_apiclient_test_jsonfetch"
     },
     {
       "label": "eventsGrouping.test.ts",
       "file_type": "code",
       "source_file": "frontend/src/lib/__tests__/eventsGrouping.test.ts",
       "source_location": "L1",
-      "id": "frontend_src_lib_tests_eventsgrouping_test_ts",
       "community": 12,
-      "norm_label": "eventsgrouping.test.ts"
+      "norm_label": "eventsgrouping.test.ts",
+      "id": "frontend_src_lib_tests_eventsgrouping_test_ts"
     },
     {
       "label": "ev()",
       "file_type": "code",
       "source_file": "frontend/src/lib/__tests__/eventsGrouping.test.ts",
       "source_location": "L10",
-      "id": "tests_eventsgrouping_test_ev",
       "community": 12,
-      "norm_label": "ev()"
+      "norm_label": "ev()",
+      "id": "tests_eventsgrouping_test_ev"
     },
     {
       "label": "itemsOf()",
       "file_type": "code",
       "source_file": "frontend/src/lib/__tests__/eventsGrouping.test.ts",
       "source_location": "L17",
-      "id": "tests_eventsgrouping_test_itemsof",
       "community": 12,
-      "norm_label": "itemsof()"
+      "norm_label": "itemsof()",
+      "id": "tests_eventsgrouping_test_itemsof"
     },
     {
       "label": "vitest.config.ts",
       "file_type": "code",
       "source_file": "frontend/vitest.config.ts",
       "source_location": "L1",
-      "id": "frontend_vitest_config_ts",
       "community": 122,
-      "norm_label": "vitest.config.ts"
+      "norm_label": "vitest.config.ts",
+      "id": "frontend_vitest_config_ts"
     },
     {
       "label": "vitest.setup.ts",
       "file_type": "code",
       "source_file": "frontend/vitest.setup.ts",
       "source_location": "L1",
-      "id": "frontend_vitest_setup_ts",
       "community": 123,
-      "norm_label": "vitest.setup.ts"
+      "norm_label": "vitest.setup.ts",
+      "id": "frontend_vitest_setup_ts"
     },
     {
       "label": "settings.json",
@@ -7136,186 +7325,6 @@
       "community": 19,
       "norm_label": "include",
       "id": "frontend_tsconfig_node_include"
-    },
-    {
-      "label": "tsconfig.app.json",
-      "file_type": "code",
-      "source_file": "frontend/tsconfig.app.json",
-      "source_location": "L1",
-      "community": 16,
-      "norm_label": "tsconfig.app.json",
-      "id": "frontend_tsconfig_app_json"
-    },
-    {
-      "label": "compilerOptions",
-      "file_type": "code",
-      "source_file": "frontend/tsconfig.app.json",
-      "source_location": "L2",
-      "community": 16,
-      "norm_label": "compileroptions",
-      "id": "frontend_tsconfig_app_compileroptions"
-    },
-    {
-      "label": "tsBuildInfoFile",
-      "file_type": "code",
-      "source_file": "frontend/tsconfig.app.json",
-      "source_location": "L3",
-      "community": 16,
-      "norm_label": "tsbuildinfofile",
-      "id": "frontend_tsconfig_app_compileroptions_tsbuildinfofile"
-    },
-    {
-      "label": "target",
-      "file_type": "code",
-      "source_file": "frontend/tsconfig.app.json",
-      "source_location": "L4",
-      "community": 16,
-      "norm_label": "target",
-      "id": "frontend_tsconfig_app_compileroptions_target"
-    },
-    {
-      "label": "lib",
-      "file_type": "code",
-      "source_file": "frontend/tsconfig.app.json",
-      "source_location": "L5",
-      "community": 16,
-      "norm_label": "lib",
-      "id": "frontend_tsconfig_app_compileroptions_lib"
-    },
-    {
-      "label": "module",
-      "file_type": "code",
-      "source_file": "frontend/tsconfig.app.json",
-      "source_location": "L6",
-      "community": 16,
-      "norm_label": "module",
-      "id": "frontend_tsconfig_app_compileroptions_module"
-    },
-    {
-      "label": "types",
-      "file_type": "code",
-      "source_file": "frontend/tsconfig.app.json",
-      "source_location": "L7",
-      "community": 16,
-      "norm_label": "types",
-      "id": "frontend_tsconfig_app_compileroptions_types"
-    },
-    {
-      "label": "allowArbitraryExtensions",
-      "file_type": "code",
-      "source_file": "frontend/tsconfig.app.json",
-      "source_location": "L8",
-      "community": 16,
-      "norm_label": "allowarbitraryextensions",
-      "id": "frontend_tsconfig_app_compileroptions_allowarbitraryextensions"
-    },
-    {
-      "label": "skipLibCheck",
-      "file_type": "code",
-      "source_file": "frontend/tsconfig.app.json",
-      "source_location": "L9",
-      "community": 16,
-      "norm_label": "skiplibcheck",
-      "id": "frontend_tsconfig_app_compileroptions_skiplibcheck"
-    },
-    {
-      "label": "moduleResolution",
-      "file_type": "code",
-      "source_file": "frontend/tsconfig.app.json",
-      "source_location": "L12",
-      "community": 16,
-      "norm_label": "moduleresolution",
-      "id": "frontend_tsconfig_app_compileroptions_moduleresolution"
-    },
-    {
-      "label": "allowImportingTsExtensions",
-      "file_type": "code",
-      "source_file": "frontend/tsconfig.app.json",
-      "source_location": "L13",
-      "community": 16,
-      "norm_label": "allowimportingtsextensions",
-      "id": "frontend_tsconfig_app_compileroptions_allowimportingtsextensions"
-    },
-    {
-      "label": "verbatimModuleSyntax",
-      "file_type": "code",
-      "source_file": "frontend/tsconfig.app.json",
-      "source_location": "L14",
-      "community": 16,
-      "norm_label": "verbatimmodulesyntax",
-      "id": "frontend_tsconfig_app_compileroptions_verbatimmodulesyntax"
-    },
-    {
-      "label": "moduleDetection",
-      "file_type": "code",
-      "source_file": "frontend/tsconfig.app.json",
-      "source_location": "L15",
-      "community": 16,
-      "norm_label": "moduledetection",
-      "id": "frontend_tsconfig_app_compileroptions_moduledetection"
-    },
-    {
-      "label": "noEmit",
-      "file_type": "code",
-      "source_file": "frontend/tsconfig.app.json",
-      "source_location": "L16",
-      "community": 16,
-      "norm_label": "noemit",
-      "id": "frontend_tsconfig_app_compileroptions_noemit"
-    },
-    {
-      "label": "jsx",
-      "file_type": "code",
-      "source_file": "frontend/tsconfig.app.json",
-      "source_location": "L17",
-      "community": 16,
-      "norm_label": "jsx",
-      "id": "frontend_tsconfig_app_compileroptions_jsx"
-    },
-    {
-      "label": "noUnusedLocals",
-      "file_type": "code",
-      "source_file": "frontend/tsconfig.app.json",
-      "source_location": "L20",
-      "community": 16,
-      "norm_label": "nounusedlocals",
-      "id": "frontend_tsconfig_app_compileroptions_nounusedlocals"
-    },
-    {
-      "label": "noUnusedParameters",
-      "file_type": "code",
-      "source_file": "frontend/tsconfig.app.json",
-      "source_location": "L21",
-      "community": 16,
-      "norm_label": "nounusedparameters",
-      "id": "frontend_tsconfig_app_compileroptions_nounusedparameters"
-    },
-    {
-      "label": "erasableSyntaxOnly",
-      "file_type": "code",
-      "source_file": "frontend/tsconfig.app.json",
-      "source_location": "L22",
-      "community": 16,
-      "norm_label": "erasablesyntaxonly",
-      "id": "frontend_tsconfig_app_compileroptions_erasablesyntaxonly"
-    },
-    {
-      "label": "noFallthroughCasesInSwitch",
-      "file_type": "code",
-      "source_file": "frontend/tsconfig.app.json",
-      "source_location": "L23",
-      "community": 16,
-      "norm_label": "nofallthroughcasesinswitch",
-      "id": "frontend_tsconfig_app_compileroptions_nofallthroughcasesinswitch"
-    },
-    {
-      "label": "include",
-      "file_type": "code",
-      "source_file": "frontend/tsconfig.app.json",
-      "source_location": "L25",
-      "community": 16,
-      "norm_label": "include",
-      "id": "frontend_tsconfig_app_include"
     },
     {
       "label": ".oxlintrc.json",
@@ -14491,19 +14500,6 @@
       "id": "frontend_tsconfig_node"
     },
     {
-      "label": "tsconfig.app.json \u2014 TS config for app source (bundler resolution, react-jsx)",
-      "file_type": "code",
-      "source_file": "frontend/tsconfig.app.json",
-      "source_location": null,
-      "source_url": null,
-      "captured_at": null,
-      "author": null,
-      "contributor": null,
-      "community": 36,
-      "norm_label": "tsconfig.app.json \u2014 ts config for app source (bundler resolution, react-jsx)",
-      "id": "frontend_tsconfig_app"
-    },
-    {
       "label": ".oxlintrc.json \u2014 Oxlint config (react, typescript, oxc plugins; rules-of-hooks error)",
       "file_type": "code",
       "source_file": "frontend/.oxlintrc.json",
@@ -14701,6 +14697,206 @@
   ],
   "links": [
     {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/tsconfig.app.json",
+      "source_location": "L2",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "frontend_tsconfig_app_json",
+      "target": "frontend_tsconfig_app_compileroptions"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/tsconfig.app.json",
+      "source_location": "L26",
+      "weight": 1.0,
+      "source": "frontend_tsconfig_app_json",
+      "target": "frontend_tsconfig_app_exclude",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/tsconfig.app.json",
+      "source_location": "L25",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "frontend_tsconfig_app_json",
+      "target": "frontend_tsconfig_app_include"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/tsconfig.app.json",
+      "source_location": "L8",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "frontend_tsconfig_app_compileroptions",
+      "target": "frontend_tsconfig_app_compileroptions_allowarbitraryextensions"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/tsconfig.app.json",
+      "source_location": "L13",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "frontend_tsconfig_app_compileroptions",
+      "target": "frontend_tsconfig_app_compileroptions_allowimportingtsextensions"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/tsconfig.app.json",
+      "source_location": "L22",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "frontend_tsconfig_app_compileroptions",
+      "target": "frontend_tsconfig_app_compileroptions_erasablesyntaxonly"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/tsconfig.app.json",
+      "source_location": "L17",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "frontend_tsconfig_app_compileroptions",
+      "target": "frontend_tsconfig_app_compileroptions_jsx"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/tsconfig.app.json",
+      "source_location": "L5",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "frontend_tsconfig_app_compileroptions",
+      "target": "frontend_tsconfig_app_compileroptions_lib"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/tsconfig.app.json",
+      "source_location": "L6",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "frontend_tsconfig_app_compileroptions",
+      "target": "frontend_tsconfig_app_compileroptions_module"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/tsconfig.app.json",
+      "source_location": "L15",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "frontend_tsconfig_app_compileroptions",
+      "target": "frontend_tsconfig_app_compileroptions_moduledetection"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/tsconfig.app.json",
+      "source_location": "L12",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "frontend_tsconfig_app_compileroptions",
+      "target": "frontend_tsconfig_app_compileroptions_moduleresolution"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/tsconfig.app.json",
+      "source_location": "L16",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "frontend_tsconfig_app_compileroptions",
+      "target": "frontend_tsconfig_app_compileroptions_noemit"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/tsconfig.app.json",
+      "source_location": "L23",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "frontend_tsconfig_app_compileroptions",
+      "target": "frontend_tsconfig_app_compileroptions_nofallthroughcasesinswitch"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/tsconfig.app.json",
+      "source_location": "L20",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "frontend_tsconfig_app_compileroptions",
+      "target": "frontend_tsconfig_app_compileroptions_nounusedlocals"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/tsconfig.app.json",
+      "source_location": "L21",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "frontend_tsconfig_app_compileroptions",
+      "target": "frontend_tsconfig_app_compileroptions_nounusedparameters"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/tsconfig.app.json",
+      "source_location": "L9",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "frontend_tsconfig_app_compileroptions",
+      "target": "frontend_tsconfig_app_compileroptions_skiplibcheck"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/tsconfig.app.json",
+      "source_location": "L4",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "frontend_tsconfig_app_compileroptions",
+      "target": "frontend_tsconfig_app_compileroptions_target"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/tsconfig.app.json",
+      "source_location": "L3",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "frontend_tsconfig_app_compileroptions",
+      "target": "frontend_tsconfig_app_compileroptions_tsbuildinfofile"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/tsconfig.app.json",
+      "source_location": "L7",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "frontend_tsconfig_app_compileroptions",
+      "target": "frontend_tsconfig_app_compileroptions_types"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/tsconfig.app.json",
+      "source_location": "L14",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "frontend_tsconfig_app_compileroptions",
+      "target": "frontend_tsconfig_app_compileroptions_verbatimmodulesyntax"
+    },
+    {
       "relation": "rationale_for",
       "confidence": "EXTRACTED",
       "source_file": "backend/src/assistant/interface/api/examples.py",
@@ -14828,9 +15024,9 @@
       "source_file": "backend/src/assistant/interface/api/examples.py",
       "source_location": "L12",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "backend_src_assistant_interface_api_examples_py",
-      "target": "uuid",
-      "confidence_score": 1.0
+      "target": "uuid"
     },
     {
       "relation": "references",
@@ -14839,9 +15035,9 @@
       "source_file": "backend/src/assistant/interface/api/examples.py",
       "source_location": "L28",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "api_examples_slug",
-      "target": "str",
-      "confidence_score": 1.0
+      "target": "str"
     },
     {
       "relation": "calls",
@@ -14861,9 +15057,9 @@
       "source_file": "backend/src/assistant/interface/api/examples.py",
       "source_location": "L137",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "api_examples_delete_example",
-      "target": "str",
-      "confidence_score": 1.0
+      "target": "str"
     },
     {
       "relation": "references",
@@ -14872,9 +15068,9 @@
       "source_file": "backend/src/assistant/interface/api/examples.py",
       "source_location": "L32",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "api_examples_examples_root",
-      "target": "str",
-      "confidence_score": 1.0
+      "target": "str"
     },
     {
       "relation": "references",
@@ -14883,9 +15079,9 @@
       "source_file": "backend/src/assistant/interface/api/examples.py",
       "source_location": "L106",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "api_examples_list_examples",
-      "target": "str",
-      "confidence_score": 1.0
+      "target": "str"
     },
     {
       "relation": "references",
@@ -14894,9 +15090,9 @@
       "source_file": "backend/src/assistant/interface/api/examples.py",
       "source_location": "L96",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "api_examples_parse_project_id",
-      "target": "str",
-      "confidence_score": 1.0
+      "target": "str"
     },
     {
       "relation": "references",
@@ -14905,9 +15101,9 @@
       "source_file": "backend/src/assistant/interface/api/examples.py",
       "source_location": "L53",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "api_examples_resolve_project_id",
-      "target": "str",
-      "confidence_score": 1.0
+      "target": "str"
     },
     {
       "relation": "references",
@@ -14916,9 +15112,9 @@
       "source_file": "backend/src/assistant/interface/api/examples.py",
       "source_location": "L39",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "api_examples_storage_dir",
-      "target": "str",
-      "confidence_score": 1.0
+      "target": "str"
     },
     {
       "relation": "references",
@@ -14927,9 +15123,9 @@
       "source_file": "backend/src/assistant/interface/api/examples.py",
       "source_location": "L64",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "api_examples_upload",
-      "target": "str",
-      "confidence_score": 1.0
+      "target": "str"
     },
     {
       "relation": "calls",
@@ -14982,9 +15178,9 @@
       "source_file": "backend/src/assistant/interface/api/examples.py",
       "source_location": "L47",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "api_examples_to_dict",
-      "target": "example",
-      "confidence_score": 1.0
+      "target": "example"
     },
     {
       "relation": "calls",
@@ -15004,9 +15200,9 @@
       "source_file": "backend/src/assistant/interface/api/examples.py",
       "source_location": "L89",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "api_examples_upload",
-      "target": "example",
-      "confidence_score": 1.0
+      "target": "example"
     },
     {
       "relation": "calls",
@@ -15026,9 +15222,9 @@
       "source_file": "backend/src/assistant/interface/api/examples.py",
       "source_location": "L53",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "api_examples_resolve_project_id",
-      "target": "uuid",
-      "confidence_score": 1.0
+      "target": "uuid"
     },
     {
       "relation": "references",
@@ -15037,9 +15233,9 @@
       "source_file": "backend/src/assistant/interface/api/examples.py",
       "source_location": "L137",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "api_examples_delete_example",
-      "target": "uuid",
-      "confidence_score": 1.0
+      "target": "uuid"
     },
     {
       "relation": "references",
@@ -15048,9 +15244,9 @@
       "source_file": "backend/src/assistant/interface/api/examples.py",
       "source_location": "L121",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "api_examples_example_content",
-      "target": "uuid",
-      "confidence_score": 1.0
+      "target": "uuid"
     },
     {
       "relation": "references",
@@ -15059,9 +15255,9 @@
       "source_file": "backend/src/assistant/interface/api/examples.py",
       "source_location": "L96",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "api_examples_parse_project_id",
-      "target": "uuid",
-      "confidence_score": 1.0
+      "target": "uuid"
     },
     {
       "relation": "imports",
@@ -15070,9 +15266,9 @@
       "source_file": "backend/tests/test_chat.py",
       "source_location": "L1",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "backend_tests_test_chat_py",
-      "target": "uuid",
-      "confidence_score": 1.0
+      "target": "uuid"
     },
     {
       "relation": "imports",
@@ -15081,9 +15277,9 @@
       "source_file": "backend/tests/test_delegate.py",
       "source_location": "L1",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "backend_tests_test_delegate_py",
-      "target": "uuid",
-      "confidence_score": 1.0
+      "target": "uuid"
     },
     {
       "relation": "imports",
@@ -15092,9 +15288,9 @@
       "source_file": "backend/tests/test_diagrams.py",
       "source_location": "L1",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "backend_tests_test_diagrams_py",
-      "target": "uuid",
-      "confidence_score": 1.0
+      "target": "uuid"
     },
     {
       "relation": "imports",
@@ -15103,9 +15299,9 @@
       "source_file": "backend/tests/test_examples.py",
       "source_location": "L1",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "backend_tests_test_examples_py",
-      "target": "uuid",
-      "confidence_score": 1.0
+      "target": "uuid"
     },
     {
       "relation": "imports",
@@ -15114,9 +15310,9 @@
       "source_file": "backend/tests/test_plan.py",
       "source_location": "L1",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "backend_tests_test_plan_py",
-      "target": "uuid",
-      "confidence_score": 1.0
+      "target": "uuid"
     },
     {
       "relation": "imports",
@@ -15125,9 +15321,9 @@
       "source_file": "backend/tests/test_projects.py",
       "source_location": "L1",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "backend_tests_test_projects_py",
-      "target": "uuid",
-      "confidence_score": 1.0
+      "target": "uuid"
     },
     {
       "relation": "imports",
@@ -15136,9 +15332,9 @@
       "source_file": "backend/tests/test_runs.py",
       "source_location": "L1",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "backend_tests_test_runs_py",
-      "target": "uuid",
-      "confidence_score": 1.0
+      "target": "uuid"
     },
     {
       "relation": "imports",
@@ -15147,9 +15343,9 @@
       "source_file": "backend/tests/test_statusline.py",
       "source_location": "L1",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "backend_tests_test_statusline_py",
-      "target": "uuid",
-      "confidence_score": 1.0
+      "target": "uuid"
     },
     {
       "relation": "rationale_for",
@@ -15168,9 +15364,9 @@
       "source_file": "backend/src/assistant/interface/api/examples.py",
       "source_location": "L64",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "api_examples_upload",
-      "target": "any",
-      "confidence_score": 1.0
+      "target": "any"
     },
     {
       "relation": "calls",
@@ -15252,9 +15448,9 @@
       "source_file": "backend/src/assistant/interface/api/examples.py",
       "source_location": "L137",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "api_examples_delete_example",
-      "target": "any",
-      "confidence_score": 1.0
+      "target": "any"
     },
     {
       "relation": "references",
@@ -15263,9 +15459,9 @@
       "source_file": "backend/src/assistant/interface/api/examples.py",
       "source_location": "L106",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "api_examples_list_examples",
-      "target": "any",
-      "confidence_score": 1.0
+      "target": "any"
     },
     {
       "relation": "calls",
@@ -15306,9 +15502,9 @@
       "source_file": "backend/src/assistant/interface/api/examples.py",
       "source_location": "L121",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "api_examples_example_content",
-      "target": "fileresponse",
-      "confidence_score": 1.0
+      "target": "fileresponse"
     },
     {
       "relation": "calls",
@@ -15661,9 +15857,9 @@
       "source_file": "backend/src/assistant/shared/config.py",
       "source_location": "L80",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "shared_config_langsmith_enabled",
-      "target": "bool",
-      "confidence_score": 1.0
+      "target": "bool"
     },
     {
       "relation": "calls",
@@ -15705,9 +15901,9 @@
       "source_file": "backend/src/assistant/shared/config.py",
       "source_location": "L85",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "shared_config_apply_langsmith_env",
-      "target": "bool",
-      "confidence_score": 1.0
+      "target": "bool"
     },
     {
       "relation": "rationale_for",
@@ -15715,9 +15911,9 @@
       "source_file": "backend/src/assistant/shared/config.py",
       "source_location": "L86",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "shared_config_rationale_86",
-      "target": "shared_config_apply_langsmith_env",
-      "confidence_score": 1.0
+      "target": "shared_config_apply_langsmith_env"
     },
     {
       "relation": "calls",
@@ -15748,9 +15944,9 @@
       "source_file": "backend/tests/app.py",
       "source_location": "L26",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "backend_tests_app_py",
-      "target": "fastapi",
-      "confidence_score": 1.0
+      "target": "fastapi"
     },
     {
       "relation": "contains",
@@ -15758,9 +15954,9 @@
       "source_file": "backend/tests/app.py",
       "source_location": "L33",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "backend_tests_app_py",
-      "target": "tests_app_fake_graph",
-      "confidence_score": 1.0
+      "target": "tests_app_fake_graph"
     },
     {
       "relation": "contains",
@@ -15768,9 +15964,9 @@
       "source_file": "backend/tests/app.py",
       "source_location": "L60",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "backend_tests_app_py",
-      "target": "tests_app_make_test_app",
-      "confidence_score": 1.0
+      "target": "tests_app_make_test_app"
     },
     {
       "relation": "rationale_for",
@@ -15778,9 +15974,9 @@
       "source_file": "backend/tests/app.py",
       "source_location": "L1",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "tests_app_rationale_1",
-      "target": "backend_tests_app_py",
-      "confidence_score": 1.0
+      "target": "backend_tests_app_py"
     },
     {
       "relation": "rationale_for",
@@ -15788,9 +15984,9 @@
       "source_file": "backend/tests/app.py",
       "source_location": "L34",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "tests_app_rationale_34",
-      "target": "tests_app_fake_graph",
-      "confidence_score": 1.0
+      "target": "tests_app_fake_graph"
     },
     {
       "relation": "references",
@@ -15799,9 +15995,9 @@
       "source_file": "backend/tests/app.py",
       "source_location": "L60",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "tests_app_make_test_app",
-      "target": "fastapi",
-      "confidence_score": 1.0
+      "target": "fastapi"
     },
     {
       "relation": "rationale_for",
@@ -15809,9 +16005,9 @@
       "source_file": "backend/tests/app.py",
       "source_location": "L61",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "tests_app_rationale_61",
-      "target": "tests_app_make_test_app",
-      "confidence_score": 1.0
+      "target": "tests_app_make_test_app"
     },
     {
       "relation": "calls",
@@ -16215,9 +16411,9 @@
       "source_file": "backend/tests/test_chat.py",
       "source_location": "L27",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "backend_tests_test_chat_py",
-      "target": "tests_test_chat_test_chat_sessions_and_messages",
-      "confidence_score": 1.0
+      "target": "tests_test_chat_test_chat_sessions_and_messages"
     },
     {
       "relation": "contains",
@@ -16225,9 +16421,9 @@
       "source_file": "backend/tests/test_chat.py",
       "source_location": "L8",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "backend_tests_test_chat_py",
-      "target": "tests_test_chat_test_chat_stream_returns_done",
-      "confidence_score": 1.0
+      "target": "tests_test_chat_test_chat_stream_returns_done"
     },
     {
       "relation": "rationale_for",
@@ -16235,9 +16431,9 @@
       "source_file": "backend/tests/test_chat.py",
       "source_location": "L9",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "tests_test_chat_rationale_9",
-      "target": "tests_test_chat_test_chat_stream_returns_done",
-      "confidence_score": 1.0
+      "target": "tests_test_chat_test_chat_stream_returns_done"
     },
     {
       "relation": "contains",
@@ -16245,9 +16441,9 @@
       "source_file": "backend/tests/test_config.py",
       "source_location": "L89",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "backend_tests_test_config_py",
-      "target": "tests_test_config_test_apply_langsmith_env_is_idempotent",
-      "confidence_score": 1.0
+      "target": "tests_test_config_test_apply_langsmith_env_is_idempotent"
     },
     {
       "relation": "contains",
@@ -16255,9 +16451,9 @@
       "source_file": "backend/tests/test_config.py",
       "source_location": "L75",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "backend_tests_test_config_py",
-      "target": "tests_test_config_test_apply_langsmith_env_pushes_to_environ",
-      "confidence_score": 1.0
+      "target": "tests_test_config_test_apply_langsmith_env_pushes_to_environ"
     },
     {
       "relation": "contains",
@@ -16265,9 +16461,9 @@
       "source_file": "backend/tests/test_config.py",
       "source_location": "L30",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "backend_tests_test_config_py",
-      "target": "tests_test_config_test_cc_provider_code_defaults_to_ollama_local",
-      "confidence_score": 1.0
+      "target": "tests_test_config_test_cc_provider_code_defaults_to_ollama_local"
     },
     {
       "relation": "contains",
@@ -16275,9 +16471,9 @@
       "source_file": "backend/tests/test_config.py",
       "source_location": "L8",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "backend_tests_test_config_py",
-      "target": "tests_test_config_test_default_model_is_longcat",
-      "confidence_score": 1.0
+      "target": "tests_test_config_test_default_model_is_longcat"
     },
     {
       "relation": "contains",
@@ -16285,9 +16481,9 @@
       "source_file": "backend/tests/test_config.py",
       "source_location": "L45",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "backend_tests_test_config_py",
-      "target": "tests_test_config_test_langsmith_disabled_without_key",
-      "confidence_score": 1.0
+      "target": "tests_test_config_test_langsmith_disabled_without_key"
     },
     {
       "relation": "contains",
@@ -16295,9 +16491,9 @@
       "source_file": "backend/tests/test_config.py",
       "source_location": "L55",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "backend_tests_test_config_py",
-      "target": "tests_test_config_test_langsmith_disabled_without_tracing",
-      "confidence_score": 1.0
+      "target": "tests_test_config_test_langsmith_disabled_without_tracing"
     },
     {
       "relation": "contains",
@@ -16305,9 +16501,9 @@
       "source_file": "backend/tests/test_config.py",
       "source_location": "L65",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "backend_tests_test_config_py",
-      "target": "tests_test_config_test_langsmith_enabled_requires_both",
-      "confidence_score": 1.0
+      "target": "tests_test_config_test_langsmith_enabled_requires_both"
     },
     {
       "relation": "contains",
@@ -16315,9 +16511,9 @@
       "source_file": "backend/tests/test_config.py",
       "source_location": "L18",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "backend_tests_test_config_py",
-      "target": "tests_test_config_test_longcat_default_does_not_require_env",
-      "confidence_score": 1.0
+      "target": "tests_test_config_test_longcat_default_does_not_require_env"
     },
     {
       "relation": "contains",
@@ -16325,9 +16521,9 @@
       "source_file": "backend/tests/test_config.py",
       "source_location": "L101",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "backend_tests_test_config_py",
-      "target": "tests_test_config_test_review_iterations_default",
-      "confidence_score": 1.0
+      "target": "tests_test_config_test_review_iterations_default"
     },
     {
       "relation": "rationale_for",
@@ -16335,9 +16531,9 @@
       "source_file": "backend/tests/test_config.py",
       "source_location": "L9",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "tests_test_config_rationale_9",
-      "target": "tests_test_config_test_default_model_is_longcat",
-      "confidence_score": 1.0
+      "target": "tests_test_config_test_default_model_is_longcat"
     },
     {
       "relation": "rationale_for",
@@ -16345,9 +16541,9 @@
       "source_file": "backend/tests/test_config.py",
       "source_location": "L19",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "tests_test_config_rationale_19",
-      "target": "tests_test_config_test_longcat_default_does_not_require_env",
-      "confidence_score": 1.0
+      "target": "tests_test_config_test_longcat_default_does_not_require_env"
     },
     {
       "relation": "rationale_for",
@@ -16355,9 +16551,9 @@
       "source_file": "backend/tests/test_config.py",
       "source_location": "L31",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "tests_test_config_rationale_31",
-      "target": "tests_test_config_test_cc_provider_code_defaults_to_ollama_local",
-      "confidence_score": 1.0
+      "target": "tests_test_config_test_cc_provider_code_defaults_to_ollama_local"
     },
     {
       "relation": "contains",
@@ -16365,9 +16561,9 @@
       "source_file": "backend/tests/test_deep_research.py",
       "source_location": "L9",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "backend_tests_test_deep_research_py",
-      "target": "tests_test_deep_research_test_deep_research_stream",
-      "confidence_score": 1.0
+      "target": "tests_test_deep_research_test_deep_research_stream"
     },
     {
       "relation": "rationale_for",
@@ -16375,9 +16571,9 @@
       "source_file": "backend/tests/test_deep_research.py",
       "source_location": "L10",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "tests_test_deep_research_rationale_10",
-      "target": "tests_test_deep_research_test_deep_research_stream",
-      "confidence_score": 1.0
+      "target": "tests_test_deep_research_test_deep_research_stream"
     },
     {
       "relation": "contains",
@@ -16385,9 +16581,9 @@
       "source_file": "backend/tests/test_delegate.py",
       "source_location": "L14",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "backend_tests_test_delegate_py",
-      "target": "tests_test_delegate_test_brief_to_prompt_includes_goal_and_criteria",
-      "confidence_score": 1.0
+      "target": "tests_test_delegate_test_brief_to_prompt_includes_goal_and_criteria"
     },
     {
       "relation": "contains",
@@ -16395,9 +16591,9 @@
       "source_file": "backend/tests/test_delegate.py",
       "source_location": "L29",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "backend_tests_test_delegate_py",
-      "target": "tests_test_delegate_test_brief_to_prompt_skills_and_examples",
-      "confidence_score": 1.0
+      "target": "tests_test_delegate_test_brief_to_prompt_skills_and_examples"
     },
     {
       "relation": "contains",
@@ -16405,9 +16601,9 @@
       "source_file": "backend/tests/test_delegate.py",
       "source_location": "L38",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "backend_tests_test_delegate_py",
-      "target": "tests_test_delegate_test_fallback_working_agreement_contains_result_marker",
-      "confidence_score": 1.0
+      "target": "tests_test_delegate_test_fallback_working_agreement_contains_result_marker"
     },
     {
       "relation": "contains",
@@ -16415,9 +16611,9 @@
       "source_file": "backend/tests/test_delegate.py",
       "source_location": "L45",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "backend_tests_test_delegate_py",
-      "target": "tests_test_delegate_test_start_run_enqueues_and_returns_202",
-      "confidence_score": 1.0
+      "target": "tests_test_delegate_test_start_run_enqueues_and_returns_202"
     },
     {
       "relation": "rationale_for",
@@ -16425,9 +16621,9 @@
       "source_file": "backend/tests/test_delegate.py",
       "source_location": "L39",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "tests_test_delegate_rationale_39",
-      "target": "tests_test_delegate_test_fallback_working_agreement_contains_result_marker",
-      "confidence_score": 1.0
+      "target": "tests_test_delegate_test_fallback_working_agreement_contains_result_marker"
     },
     {
       "relation": "rationale_for",
@@ -16435,9 +16631,9 @@
       "source_file": "backend/tests/test_delegate.py",
       "source_location": "L46",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "tests_test_delegate_rationale_46",
-      "target": "tests_test_delegate_test_start_run_enqueues_and_returns_202",
-      "confidence_score": 1.0
+      "target": "tests_test_delegate_test_start_run_enqueues_and_returns_202"
     },
     {
       "relation": "contains",
@@ -16445,9 +16641,9 @@
       "source_file": "backend/tests/test_diagrams.py",
       "source_location": "L18",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "backend_tests_test_diagrams_py",
-      "target": "tests_test_diagrams_test_diagram_path_traversal_is_rejected",
-      "confidence_score": 1.0
+      "target": "tests_test_diagrams_test_diagram_path_traversal_is_rejected"
     },
     {
       "relation": "contains",
@@ -16455,9 +16651,9 @@
       "source_file": "backend/tests/test_diagrams.py",
       "source_location": "L8",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "backend_tests_test_diagrams_py",
-      "target": "tests_test_diagrams_test_list_diagrams_empty",
-      "confidence_score": 1.0
+      "target": "tests_test_diagrams_test_list_diagrams_empty"
     },
     {
       "relation": "rationale_for",
@@ -16465,9 +16661,9 @@
       "source_file": "backend/tests/test_diagrams.py",
       "source_location": "L19",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "tests_test_diagrams_rationale_19",
-      "target": "tests_test_diagrams_test_diagram_path_traversal_is_rejected",
-      "confidence_score": 1.0
+      "target": "tests_test_diagrams_test_diagram_path_traversal_is_rejected"
     },
     {
       "relation": "contains",
@@ -16475,9 +16671,9 @@
       "source_file": "backend/tests/test_examples.py",
       "source_location": "L9",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "backend_tests_test_examples_py",
-      "target": "tests_test_examples_examples_enabled",
-      "confidence_score": 1.0
+      "target": "tests_test_examples_examples_enabled"
     },
     {
       "relation": "contains",
@@ -16485,9 +16681,9 @@
       "source_file": "backend/tests/test_examples.py",
       "source_location": "L45",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "backend_tests_test_examples_py",
-      "target": "tests_test_examples_test_example_missing_on_disk_returns_410",
-      "confidence_score": 1.0
+      "target": "tests_test_examples_test_example_missing_on_disk_returns_410"
     },
     {
       "relation": "contains",
@@ -16495,9 +16691,9 @@
       "source_file": "backend/tests/test_examples.py",
       "source_location": "L21",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "backend_tests_test_examples_py",
-      "target": "tests_test_examples_test_example_upload_download_delete_roundtrip",
-      "confidence_score": 1.0
+      "target": "tests_test_examples_test_example_upload_download_delete_roundtrip"
     },
     {
       "relation": "contains",
@@ -16505,9 +16701,9 @@
       "source_file": "backend/tests/test_examples.py",
       "source_location": "L15",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "backend_tests_test_examples_py",
-      "target": "tests_test_examples_test_examples_list_empty",
-      "confidence_score": 1.0
+      "target": "tests_test_examples_test_examples_list_empty"
     },
     {
       "relation": "rationale_for",
@@ -16515,9 +16711,9 @@
       "source_file": "backend/tests/test_examples.py",
       "source_location": "L10",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "tests_test_examples_rationale_10",
-      "target": "tests_test_examples_examples_enabled",
-      "confidence_score": 1.0
+      "target": "tests_test_examples_examples_enabled"
     },
     {
       "relation": "calls",
@@ -16526,9 +16722,9 @@
       "source_file": "backend/tests/test_examples.py",
       "source_location": "L47",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "tests_test_examples_test_example_missing_on_disk_returns_410",
-      "target": "tests_test_examples_examples_enabled",
-      "confidence_score": 1.0
+      "target": "tests_test_examples_examples_enabled"
     },
     {
       "relation": "calls",
@@ -16537,9 +16733,9 @@
       "source_file": "backend/tests/test_examples.py",
       "source_location": "L22",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "tests_test_examples_test_example_upload_download_delete_roundtrip",
-      "target": "tests_test_examples_examples_enabled",
-      "confidence_score": 1.0
+      "target": "tests_test_examples_examples_enabled"
     },
     {
       "relation": "calls",
@@ -16548,9 +16744,9 @@
       "source_file": "backend/tests/test_examples.py",
       "source_location": "L16",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "tests_test_examples_test_examples_list_empty",
-      "target": "tests_test_examples_examples_enabled",
-      "confidence_score": 1.0
+      "target": "tests_test_examples_examples_enabled"
     },
     {
       "relation": "rationale_for",
@@ -16558,9 +16754,9 @@
       "source_file": "backend/tests/test_examples.py",
       "source_location": "L46",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "tests_test_examples_rationale_46",
-      "target": "tests_test_examples_test_example_missing_on_disk_returns_410",
-      "confidence_score": 1.0
+      "target": "tests_test_examples_test_example_missing_on_disk_returns_410"
     },
     {
       "relation": "contains",
@@ -16568,9 +16764,9 @@
       "source_file": "backend/tests/test_knowledge.py",
       "source_location": "L28",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "backend_tests_test_knowledge_py",
-      "target": "tests_test_knowledge_test_ingest_text_returns_summary",
-      "confidence_score": 1.0
+      "target": "tests_test_knowledge_test_ingest_text_returns_summary"
     },
     {
       "relation": "contains",
@@ -16578,9 +16774,9 @@
       "source_file": "backend/tests/test_knowledge.py",
       "source_location": "L8",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "backend_tests_test_knowledge_py",
-      "target": "tests_test_knowledge_test_list_collections_shape",
-      "confidence_score": 1.0
+      "target": "tests_test_knowledge_test_list_collections_shape"
     },
     {
       "relation": "contains",
@@ -16588,9 +16784,9 @@
       "source_file": "backend/tests/test_knowledge.py",
       "source_location": "L15",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "backend_tests_test_knowledge_py",
-      "target": "tests_test_knowledge_test_search_returns_results",
-      "confidence_score": 1.0
+      "target": "tests_test_knowledge_test_search_returns_results"
     },
     {
       "relation": "contains",
@@ -16598,9 +16794,9 @@
       "source_file": "backend/tests/test_models.py",
       "source_location": "L26",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "backend_tests_test_models_py",
-      "target": "tests_test_models_test_approval_status_members",
-      "confidence_score": 1.0
+      "target": "tests_test_models_test_approval_status_members"
     },
     {
       "relation": "contains",
@@ -16608,9 +16804,9 @@
       "source_file": "backend/tests/test_models.py",
       "source_location": "L20",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "backend_tests_test_models_py",
-      "target": "tests_test_models_test_approval_status_values",
-      "confidence_score": 1.0
+      "target": "tests_test_models_test_approval_status_values"
     },
     {
       "relation": "contains",
@@ -16618,9 +16814,9 @@
       "source_file": "backend/tests/test_models.py",
       "source_location": "L15",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "backend_tests_test_models_py",
-      "target": "tests_test_models_test_cc_run_status_members",
-      "confidence_score": 1.0
+      "target": "tests_test_models_test_cc_run_status_members"
     },
     {
       "relation": "contains",
@@ -16628,9 +16824,9 @@
       "source_file": "backend/tests/test_models.py",
       "source_location": "L6",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "backend_tests_test_models_py",
-      "target": "tests_test_models_test_cc_run_status_values",
-      "confidence_score": 1.0
+      "target": "tests_test_models_test_cc_run_status_values"
     },
     {
       "relation": "rationale_for",
@@ -16638,9 +16834,9 @@
       "source_file": "backend/tests/test_models.py",
       "source_location": "L1",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "tests_test_models_rationale_1",
-      "target": "backend_tests_test_models_py",
-      "confidence_score": 1.0
+      "target": "backend_tests_test_models_py"
     },
     {
       "relation": "contains",
@@ -16648,9 +16844,9 @@
       "source_file": "backend/tests/test_plan.py",
       "source_location": "L20",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "backend_tests_test_plan_py",
-      "target": "tests_test_plan_test_plan_sessions_and_messages",
-      "confidence_score": 1.0
+      "target": "tests_test_plan_test_plan_sessions_and_messages"
     },
     {
       "relation": "contains",
@@ -16658,9 +16854,9 @@
       "source_file": "backend/tests/test_plan.py",
       "source_location": "L8",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "backend_tests_test_plan_py",
-      "target": "tests_test_plan_test_plan_stream_returns_done",
-      "confidence_score": 1.0
+      "target": "tests_test_plan_test_plan_stream_returns_done"
     },
     {
       "relation": "rationale_for",
@@ -16668,9 +16864,9 @@
       "source_file": "backend/tests/test_plan.py",
       "source_location": "L9",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "tests_test_plan_rationale_9",
-      "target": "tests_test_plan_test_plan_stream_returns_done",
-      "confidence_score": 1.0
+      "target": "tests_test_plan_test_plan_stream_returns_done"
     },
     {
       "relation": "contains",
@@ -16678,9 +16874,9 @@
       "source_file": "backend/tests/test_projects.py",
       "source_location": "L40",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "backend_tests_test_projects_py",
-      "target": "tests_test_projects_test_list_approvals_and_status_filter",
-      "confidence_score": 1.0
+      "target": "tests_test_projects_test_list_approvals_and_status_filter"
     },
     {
       "relation": "contains",
@@ -16688,9 +16884,9 @@
       "source_file": "backend/tests/test_projects.py",
       "source_location": "L32",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "backend_tests_test_projects_py",
-      "target": "tests_test_projects_test_list_decisions_empty",
-      "confidence_score": 1.0
+      "target": "tests_test_projects_test_list_decisions_empty"
     },
     {
       "relation": "contains",
@@ -16698,9 +16894,9 @@
       "source_file": "backend/tests/test_projects.py",
       "source_location": "L8",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "backend_tests_test_projects_py",
-      "target": "tests_test_projects_test_project_create_list_roundtrip",
-      "confidence_score": 1.0
+      "target": "tests_test_projects_test_project_create_list_roundtrip"
     },
     {
       "relation": "contains",
@@ -16708,9 +16904,9 @@
       "source_file": "backend/tests/test_projects.py",
       "source_location": "L24",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "backend_tests_test_projects_py",
-      "target": "tests_test_projects_test_project_duplicate_returns_409",
-      "confidence_score": 1.0
+      "target": "tests_test_projects_test_project_duplicate_returns_409"
     },
     {
       "relation": "contains",
@@ -16718,9 +16914,9 @@
       "source_file": "backend/tests/test_runs.py",
       "source_location": "L8",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "backend_tests_test_runs_py",
-      "target": "tests_test_runs_test_list_runs_empty",
-      "confidence_score": 1.0
+      "target": "tests_test_runs_test_list_runs_empty"
     },
     {
       "relation": "contains",
@@ -16728,9 +16924,9 @@
       "source_file": "backend/tests/test_runs.py",
       "source_location": "L15",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "backend_tests_test_runs_py",
-      "target": "tests_test_runs_test_run_events_empty",
-      "confidence_score": 1.0
+      "target": "tests_test_runs_test_run_events_empty"
     },
     {
       "relation": "contains",
@@ -16738,9 +16934,9 @@
       "source_file": "backend/tests/test_runs.py",
       "source_location": "L22",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "backend_tests_test_runs_py",
-      "target": "tests_test_runs_test_statusline_missing_run_returns_404",
-      "confidence_score": 1.0
+      "target": "tests_test_runs_test_statusline_missing_run_returns_404"
     },
     {
       "relation": "contains",
@@ -16748,9 +16944,9 @@
       "source_file": "backend/tests/test_stats.py",
       "source_location": "L6",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "backend_tests_test_stats_py",
-      "target": "tests_test_stats_test_stats_shape",
-      "confidence_score": 1.0
+      "target": "tests_test_stats_test_stats_shape"
     },
     {
       "relation": "contains",
@@ -16758,9 +16954,9 @@
       "source_file": "backend/tests/test_statusline.py",
       "source_location": "L8",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "backend_tests_test_statusline_py",
-      "target": "tests_test_statusline_test_statusline_missing_run_returns_404",
-      "confidence_score": 1.0
+      "target": "tests_test_statusline_test_statusline_missing_run_returns_404"
     },
     {
       "relation": "contains",
@@ -16768,9 +16964,9 @@
       "source_file": "docs/user-stories.md",
       "source_location": "L1",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_user_stories_md",
-      "target": "docs_user_stories_bitch_stewie_user_stories",
-      "confidence_score": 1.0
+      "target": "docs_user_stories_bitch_stewie_user_stories"
     },
     {
       "relation": "contains",
@@ -16778,9 +16974,9 @@
       "source_file": "docs/user-stories.md",
       "source_location": "L143",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_user_stories_bitch_stewie_user_stories",
-      "target": "docs_user_stories_out_of_scope_documented_gaps_not_under_test",
-      "confidence_score": 1.0
+      "target": "docs_user_stories_out_of_scope_documented_gaps_not_under_test"
     },
     {
       "relation": "contains",
@@ -16788,9 +16984,9 @@
       "source_file": "docs/user-stories.md",
       "source_location": "L127",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_user_stories_bitch_stewie_user_stories",
-      "target": "docs_user_stories_story_10_config_observability",
-      "confidence_score": 1.0
+      "target": "docs_user_stories_story_10_config_observability"
     },
     {
       "relation": "contains",
@@ -16798,9 +16994,9 @@
       "source_file": "docs/user-stories.md",
       "source_location": "L16",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_user_stories_bitch_stewie_user_stories",
-      "target": "docs_user_stories_story_1_ask_the_orchestrator_anything_chat",
-      "confidence_score": 1.0
+      "target": "docs_user_stories_story_1_ask_the_orchestrator_anything_chat"
     },
     {
       "relation": "contains",
@@ -16808,9 +17004,9 @@
       "source_file": "docs/user-stories.md",
       "source_location": "L30",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_user_stories_bitch_stewie_user_stories",
-      "target": "docs_user_stories_story_2_delegate_a_coding_task_milestone_gate",
-      "confidence_score": 1.0
+      "target": "docs_user_stories_story_2_delegate_a_coding_task_milestone_gate"
     },
     {
       "relation": "contains",
@@ -16818,9 +17014,9 @@
       "source_file": "docs/user-stories.md",
       "source_location": "L45",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_user_stories_bitch_stewie_user_stories",
-      "target": "docs_user_stories_story_3_refine_a_plan_then_hand_off",
-      "confidence_score": 1.0
+      "target": "docs_user_stories_story_3_refine_a_plan_then_hand_off"
     },
     {
       "relation": "contains",
@@ -16828,9 +17024,9 @@
       "source_file": "docs/user-stories.md",
       "source_location": "L58",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_user_stories_bitch_stewie_user_stories",
-      "target": "docs_user_stories_story_4_search_and_grow_the_knowledge_base",
-      "confidence_score": 1.0
+      "target": "docs_user_stories_story_4_search_and_grow_the_knowledge_base"
     },
     {
       "relation": "contains",
@@ -16838,9 +17034,9 @@
       "source_file": "docs/user-stories.md",
       "source_location": "L70",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_user_stories_bitch_stewie_user_stories",
-      "target": "docs_user_stories_story_5_deep_research",
-      "confidence_score": 1.0
+      "target": "docs_user_stories_story_5_deep_research"
     },
     {
       "relation": "contains",
@@ -16848,9 +17044,9 @@
       "source_file": "docs/user-stories.md",
       "source_location": "L81",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_user_stories_bitch_stewie_user_stories",
-      "target": "docs_user_stories_story_6_view_and_evolve_diagrams",
-      "confidence_score": 1.0
+      "target": "docs_user_stories_story_6_view_and_evolve_diagrams"
     },
     {
       "relation": "contains",
@@ -16858,9 +17054,9 @@
       "source_file": "docs/user-stories.md",
       "source_location": "L92",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_user_stories_bitch_stewie_user_stories",
-      "target": "docs_user_stories_story_7_upload_reference_examples",
-      "confidence_score": 1.0
+      "target": "docs_user_stories_story_7_upload_reference_examples"
     },
     {
       "relation": "contains",
@@ -16868,9 +17064,9 @@
       "source_file": "docs/user-stories.md",
       "source_location": "L102",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_user_stories_bitch_stewie_user_stories",
-      "target": "docs_user_stories_story_8_monitor_delegated_runs",
-      "confidence_score": 1.0
+      "target": "docs_user_stories_story_8_monitor_delegated_runs"
     },
     {
       "relation": "contains",
@@ -16878,9 +17074,9 @@
       "source_file": "docs/user-stories.md",
       "source_location": "L114",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_user_stories_bitch_stewie_user_stories",
-      "target": "docs_user_stories_story_9_projects_decisions_preferences",
-      "confidence_score": 1.0
+      "target": "docs_user_stories_story_9_projects_decisions_preferences"
     },
     {
       "relation": "contains",
@@ -16888,9 +17084,9 @@
       "source_file": "frontend/e2e/README.md",
       "source_location": "L1",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "frontend_e2e_readme_md",
-      "target": "e2e_readme_e2e_tests_playwright",
-      "confidence_score": 1.0
+      "target": "e2e_readme_e2e_tests_playwright"
     },
     {
       "relation": "contains",
@@ -16898,9 +17094,9 @@
       "source_file": "frontend/e2e/README.md",
       "source_location": "L29",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "e2e_readme_e2e_tests_playwright",
-      "target": "e2e_readme_install_browsers",
-      "confidence_score": 1.0
+      "target": "e2e_readme_install_browsers"
     },
     {
       "relation": "contains",
@@ -16908,9 +17104,9 @@
       "source_file": "frontend/e2e/README.md",
       "source_location": "L75",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "e2e_readme_e2e_tests_playwright",
-      "target": "e2e_readme_on_robustness",
-      "confidence_score": 1.0
+      "target": "e2e_readme_on_robustness"
     },
     {
       "relation": "contains",
@@ -16918,9 +17114,9 @@
       "source_file": "frontend/e2e/README.md",
       "source_location": "L8",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "e2e_readme_e2e_tests_playwright",
-      "target": "e2e_readme_prerequisites",
-      "confidence_score": 1.0
+      "target": "e2e_readme_prerequisites"
     },
     {
       "relation": "contains",
@@ -16928,9 +17124,9 @@
       "source_file": "frontend/e2e/README.md",
       "source_location": "L38",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "e2e_readme_e2e_tests_playwright",
-      "target": "e2e_readme_run",
-      "confidence_score": 1.0
+      "target": "e2e_readme_run"
     },
     {
       "relation": "contains",
@@ -16938,9 +17134,9 @@
       "source_file": "frontend/e2e/README.md",
       "source_location": "L64",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "e2e_readme_e2e_tests_playwright",
-      "target": "e2e_readme_what_each_spec_covers",
-      "confidence_score": 1.0
+      "target": "e2e_readme_what_each_spec_covers"
     },
     {
       "relation": "contains",
@@ -16948,9 +17144,9 @@
       "source_file": "frontend/e2e/README.md",
       "source_location": "L57",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "e2e_readme_run",
-      "target": "e2e_readme_environment_variables",
-      "confidence_score": 1.0
+      "target": "e2e_readme_environment_variables"
     },
     {
       "relation": "imports",
@@ -16959,9 +17155,9 @@
       "source_file": "frontend/e2e/chat.spec.ts",
       "source_location": "L2",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "frontend_e2e_chat_spec_ts",
-      "target": "e2e_helpers_ensureproject",
-      "confidence_score": 1.0
+      "target": "e2e_helpers_ensureproject"
     },
     {
       "relation": "imports",
@@ -16970,9 +17166,9 @@
       "source_file": "frontend/e2e/chat.spec.ts",
       "source_location": "L2",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "frontend_e2e_chat_spec_ts",
-      "target": "e2e_helpers_expectassistantturn",
-      "confidence_score": 1.0
+      "target": "e2e_helpers_expectassistantturn"
     },
     {
       "relation": "imports",
@@ -16981,9 +17177,9 @@
       "source_file": "frontend/e2e/chat.spec.ts",
       "source_location": "L2",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "frontend_e2e_chat_spec_ts",
-      "target": "e2e_helpers_uniqueprojectname",
-      "confidence_score": 1.0
+      "target": "e2e_helpers_uniqueprojectname"
     },
     {
       "relation": "imports_from",
@@ -16992,9 +17188,9 @@
       "source_file": "frontend/e2e/chat.spec.ts",
       "source_location": "L2",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "frontend_e2e_chat_spec_ts",
-      "target": "frontend_e2e_helpers_ts",
-      "confidence_score": 1.0
+      "target": "frontend_e2e_helpers_ts"
     },
     {
       "relation": "contains",
@@ -17002,9 +17198,9 @@
       "source_file": "frontend/e2e/helpers.ts",
       "source_location": "L55",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "frontend_e2e_helpers_ts",
-      "target": "e2e_helpers_backendhealthy",
-      "confidence_score": 1.0
+      "target": "e2e_helpers_backendhealthy"
     },
     {
       "relation": "contains",
@@ -17012,9 +17208,9 @@
       "source_file": "frontend/e2e/helpers.ts",
       "source_location": "L23",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "frontend_e2e_helpers_ts",
-      "target": "e2e_helpers_ensureproject",
-      "confidence_score": 1.0
+      "target": "e2e_helpers_ensureproject"
     },
     {
       "relation": "contains",
@@ -17022,9 +17218,9 @@
       "source_file": "frontend/e2e/helpers.ts",
       "source_location": "L72",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "frontend_e2e_helpers_ts",
-      "target": "e2e_helpers_expectassistantturn",
-      "confidence_score": 1.0
+      "target": "e2e_helpers_expectassistantturn"
     },
     {
       "relation": "contains",
@@ -17032,9 +17228,9 @@
       "source_file": "frontend/e2e/helpers.ts",
       "source_location": "L47",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "frontend_e2e_helpers_ts",
-      "target": "e2e_helpers_expecteventually",
-      "confidence_score": 1.0
+      "target": "e2e_helpers_expecteventually"
     },
     {
       "relation": "contains",
@@ -17042,9 +17238,9 @@
       "source_file": "frontend/e2e/helpers.ts",
       "source_location": "L14",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "frontend_e2e_helpers_ts",
-      "target": "e2e_helpers_uniqueprojectname",
-      "confidence_score": 1.0
+      "target": "e2e_helpers_uniqueprojectname"
     },
     {
       "relation": "imports_from",
@@ -17053,9 +17249,9 @@
       "source_file": "frontend/e2e/knowledge.spec.ts",
       "source_location": "L2",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "frontend_e2e_knowledge_spec_ts",
-      "target": "frontend_e2e_helpers_ts",
-      "confidence_score": 1.0
+      "target": "frontend_e2e_helpers_ts"
     },
     {
       "relation": "imports_from",
@@ -17064,9 +17260,9 @@
       "source_file": "frontend/e2e/projects.spec.ts",
       "source_location": "L2",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "frontend_e2e_projects_spec_ts",
-      "target": "frontend_e2e_helpers_ts",
-      "confidence_score": 1.0
+      "target": "frontend_e2e_helpers_ts"
     },
     {
       "relation": "imports_from",
@@ -17075,9 +17271,9 @@
       "source_file": "frontend/e2e/smoke.spec.ts",
       "source_location": "L2",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "frontend_e2e_smoke_spec_ts",
-      "target": "frontend_e2e_helpers_ts",
-      "confidence_score": 1.0
+      "target": "frontend_e2e_helpers_ts"
     },
     {
       "relation": "imports",
@@ -17086,9 +17282,9 @@
       "source_file": "frontend/e2e/projects.spec.ts",
       "source_location": "L2",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "frontend_e2e_projects_spec_ts",
-      "target": "e2e_helpers_uniqueprojectname",
-      "confidence_score": 1.0
+      "target": "e2e_helpers_uniqueprojectname"
     },
     {
       "relation": "imports",
@@ -17097,9 +17293,9 @@
       "source_file": "frontend/e2e/smoke.spec.ts",
       "source_location": "L2",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "frontend_e2e_smoke_spec_ts",
-      "target": "e2e_helpers_backendhealthy",
-      "confidence_score": 1.0
+      "target": "e2e_helpers_backendhealthy"
     },
     {
       "relation": "contains",
@@ -17187,9 +17383,9 @@
       "source_file": "frontend/package.json",
       "source_location": "L15",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "frontend_package_scripts",
-      "target": "frontend_package_scripts_coverage",
-      "confidence_score": 1.0
+      "target": "frontend_package_scripts_coverage"
     },
     {
       "relation": "contains",
@@ -17227,9 +17423,9 @@
       "source_file": "frontend/package.json",
       "source_location": "L13",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "frontend_package_scripts",
-      "target": "frontend_package_scripts_test",
-      "confidence_score": 1.0
+      "target": "frontend_package_scripts_test"
     },
     {
       "relation": "contains",
@@ -17237,9 +17433,9 @@
       "source_file": "frontend/package.json",
       "source_location": "L11",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "frontend_package_scripts",
-      "target": "frontend_package_scripts_test_e2e",
-      "confidence_score": 1.0
+      "target": "frontend_package_scripts_test_e2e"
     },
     {
       "relation": "contains",
@@ -17247,9 +17443,9 @@
       "source_file": "frontend/package.json",
       "source_location": "L12",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "frontend_package_scripts",
-      "target": "frontend_package_scripts_test_e2e_install",
-      "confidence_score": 1.0
+      "target": "frontend_package_scripts_test_e2e_install"
     },
     {
       "relation": "contains",
@@ -17257,9 +17453,9 @@
       "source_file": "frontend/package.json",
       "source_location": "L14",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "frontend_package_scripts",
-      "target": "frontend_package_scripts_test_watch",
-      "confidence_score": 1.0
+      "target": "frontend_package_scripts_test_watch"
     },
     {
       "relation": "contains",
@@ -17367,9 +17563,9 @@
       "source_file": "frontend/package.json",
       "source_location": "L39",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "frontend_package_devdependencies",
-      "target": "frontend_package_devdependencies_jsdom",
-      "confidence_score": 1.0
+      "target": "frontend_package_devdependencies_jsdom"
     },
     {
       "relation": "contains",
@@ -17387,9 +17583,9 @@
       "source_file": "frontend/package.json",
       "source_location": "L30",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "frontend_package_devdependencies",
-      "target": "frontend_package_devdependencies_playwright_test",
-      "confidence_score": 1.0
+      "target": "frontend_package_devdependencies_playwright_test"
     },
     {
       "relation": "contains",
@@ -17397,9 +17593,9 @@
       "source_file": "frontend/package.json",
       "source_location": "L31",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "frontend_package_devdependencies",
-      "target": "frontend_package_devdependencies_testing_library_jest_dom",
-      "confidence_score": 1.0
+      "target": "frontend_package_devdependencies_testing_library_jest_dom"
     },
     {
       "relation": "contains",
@@ -17407,9 +17603,9 @@
       "source_file": "frontend/package.json",
       "source_location": "L32",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "frontend_package_devdependencies",
-      "target": "frontend_package_devdependencies_testing_library_react",
-      "confidence_score": 1.0
+      "target": "frontend_package_devdependencies_testing_library_react"
     },
     {
       "relation": "contains",
@@ -17417,9 +17613,9 @@
       "source_file": "frontend/package.json",
       "source_location": "L33",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "frontend_package_devdependencies",
-      "target": "frontend_package_devdependencies_testing_library_user_event",
-      "confidence_score": 1.0
+      "target": "frontend_package_devdependencies_testing_library_user_event"
     },
     {
       "relation": "contains",
@@ -17447,9 +17643,9 @@
       "source_file": "frontend/package.json",
       "source_location": "L36",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "frontend_package_devdependencies",
-      "target": "frontend_package_devdependencies_types_react_dom",
-      "confidence_score": 1.0
+      "target": "frontend_package_devdependencies_types_react_dom"
     },
     {
       "relation": "contains",
@@ -17487,9 +17683,9 @@
       "source_file": "frontend/package.json",
       "source_location": "L43",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "frontend_package_devdependencies",
-      "target": "frontend_package_devdependencies_vitest",
-      "confidence_score": 1.0
+      "target": "frontend_package_devdependencies_vitest"
     },
     {
       "relation": "contains",
@@ -17497,9 +17693,9 @@
       "source_file": "frontend/package.json",
       "source_location": "L38",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "frontend_package_devdependencies",
-      "target": "frontend_package_devdependencies_vitest_coverage_v8",
-      "confidence_score": 1.0
+      "target": "frontend_package_devdependencies_vitest_coverage_v8"
     },
     {
       "relation": "imports",
@@ -17508,9 +17704,9 @@
       "source_file": "frontend/src/lib/__tests__/api.test.ts",
       "source_location": "L5",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "frontend_src_lib_tests_api_test_ts",
-      "target": "lib_api_researchhandlers",
-      "confidence_score": 1.0
+      "target": "lib_api_researchhandlers"
     },
     {
       "relation": "imports",
@@ -17519,9 +17715,9 @@
       "source_file": "frontend/src/lib/__tests__/api.test.ts",
       "source_location": "L5",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "frontend_src_lib_tests_api_test_ts",
-      "target": "lib_api_streamchat",
-      "confidence_score": 1.0
+      "target": "lib_api_streamchat"
     },
     {
       "relation": "imports",
@@ -17530,9 +17726,9 @@
       "source_file": "frontend/src/lib/__tests__/api.test.ts",
       "source_location": "L5",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "frontend_src_lib_tests_api_test_ts",
-      "target": "lib_api_streamhandlers",
-      "confidence_score": 1.0
+      "target": "lib_api_streamhandlers"
     },
     {
       "relation": "imports",
@@ -17541,9 +17737,9 @@
       "source_file": "frontend/src/lib/__tests__/api.test.ts",
       "source_location": "L5",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "frontend_src_lib_tests_api_test_ts",
-      "target": "lib_api_streamresearch",
-      "confidence_score": 1.0
+      "target": "lib_api_streamresearch"
     },
     {
       "relation": "contains",
@@ -17551,9 +17747,9 @@
       "source_file": "frontend/src/lib/__tests__/api.test.ts",
       "source_location": "L21",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "frontend_src_lib_tests_api_test_ts",
-      "target": "tests_api_test_chatsse",
-      "confidence_score": 1.0
+      "target": "tests_api_test_chatsse"
     },
     {
       "relation": "contains",
@@ -17561,9 +17757,9 @@
       "source_file": "frontend/src/lib/__tests__/api.test.ts",
       "source_location": "L36",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "frontend_src_lib_tests_api_test_ts",
-      "target": "tests_api_test_researchsse",
-      "confidence_score": 1.0
+      "target": "tests_api_test_researchsse"
     },
     {
       "relation": "contains",
@@ -17571,9 +17767,9 @@
       "source_file": "frontend/src/lib/__tests__/api.test.ts",
       "source_location": "L8",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "frontend_src_lib_tests_api_test_ts",
-      "target": "tests_api_test_sseresponse",
-      "confidence_score": 1.0
+      "target": "tests_api_test_sseresponse"
     },
     {
       "relation": "imports",
@@ -17582,9 +17778,9 @@
       "source_file": "frontend/src/lib/__tests__/apiClient.test.ts",
       "source_location": "L3",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "frontend_src_lib_tests_apiclient_test_ts",
-      "target": "lib_api_apidelete",
-      "confidence_score": 1.0
+      "target": "lib_api_apidelete"
     },
     {
       "relation": "imports",
@@ -17593,9 +17789,9 @@
       "source_file": "frontend/src/lib/__tests__/apiClient.test.ts",
       "source_location": "L3",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "frontend_src_lib_tests_apiclient_test_ts",
-      "target": "lib_api_apiget",
-      "confidence_score": 1.0
+      "target": "lib_api_apiget"
     },
     {
       "relation": "imports",
@@ -17604,9 +17800,9 @@
       "source_file": "frontend/src/lib/__tests__/apiClient.test.ts",
       "source_location": "L3",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "frontend_src_lib_tests_apiclient_test_ts",
-      "target": "lib_api_apipost",
-      "confidence_score": 1.0
+      "target": "lib_api_apipost"
     },
     {
       "relation": "imports",
@@ -17615,9 +17811,9 @@
       "source_file": "frontend/src/lib/__tests__/apiClient.test.ts",
       "source_location": "L3",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "frontend_src_lib_tests_apiclient_test_ts",
-      "target": "lib_api_apiput",
-      "confidence_score": 1.0
+      "target": "lib_api_apiput"
     },
     {
       "relation": "contains",
@@ -17625,9 +17821,9 @@
       "source_file": "frontend/src/lib/__tests__/apiClient.test.ts",
       "source_location": "L10",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "frontend_src_lib_tests_apiclient_test_ts",
-      "target": "tests_apiclient_test_jsonfetch",
-      "confidence_score": 1.0
+      "target": "tests_apiclient_test_jsonfetch"
     },
     {
       "relation": "imports",
@@ -17636,9 +17832,9 @@
       "source_file": "frontend/src/lib/__tests__/eventsGrouping.test.ts",
       "source_location": "L2",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "frontend_src_lib_tests_eventsgrouping_test_ts",
-      "target": "lib_eventsgrouping_groupevents",
-      "confidence_score": 1.0
+      "target": "lib_eventsgrouping_groupevents"
     },
     {
       "relation": "imports",
@@ -17647,9 +17843,9 @@
       "source_file": "frontend/src/lib/__tests__/eventsGrouping.test.ts",
       "source_location": "L2",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "frontend_src_lib_tests_eventsgrouping_test_ts",
-      "target": "lib_eventsgrouping_lane",
-      "confidence_score": 1.0
+      "target": "lib_eventsgrouping_lane"
     },
     {
       "relation": "imports",
@@ -17658,9 +17854,9 @@
       "source_file": "frontend/src/lib/__tests__/eventsGrouping.test.ts",
       "source_location": "L2",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "frontend_src_lib_tests_eventsgrouping_test_ts",
-      "target": "lib_eventsgrouping_laneduration",
-      "confidence_score": 1.0
+      "target": "lib_eventsgrouping_laneduration"
     },
     {
       "relation": "imports",
@@ -17669,9 +17865,9 @@
       "source_file": "frontend/src/lib/__tests__/eventsGrouping.test.ts",
       "source_location": "L2",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "frontend_src_lib_tests_eventsgrouping_test_ts",
-      "target": "lib_eventsgrouping_runevent",
-      "confidence_score": 1.0
+      "target": "lib_eventsgrouping_runevent"
     },
     {
       "relation": "imports",
@@ -17680,9 +17876,9 @@
       "source_file": "frontend/src/lib/__tests__/eventsGrouping.test.ts",
       "source_location": "L2",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "frontend_src_lib_tests_eventsgrouping_test_ts",
-      "target": "lib_eventsgrouping_timelabel",
-      "confidence_score": 1.0
+      "target": "lib_eventsgrouping_timelabel"
     },
     {
       "relation": "contains",
@@ -17690,9 +17886,9 @@
       "source_file": "frontend/src/lib/__tests__/eventsGrouping.test.ts",
       "source_location": "L10",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "frontend_src_lib_tests_eventsgrouping_test_ts",
-      "target": "tests_eventsgrouping_test_ev",
-      "confidence_score": 1.0
+      "target": "tests_eventsgrouping_test_ev"
     },
     {
       "relation": "contains",
@@ -17700,9 +17896,9 @@
       "source_file": "frontend/src/lib/__tests__/eventsGrouping.test.ts",
       "source_location": "L17",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "frontend_src_lib_tests_eventsgrouping_test_ts",
-      "target": "tests_eventsgrouping_test_itemsof",
-      "confidence_score": 1.0
+      "target": "tests_eventsgrouping_test_itemsof"
     },
     {
       "relation": "contains",
@@ -30772,196 +30968,6 @@
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
-      "source_file": "frontend/tsconfig.app.json",
-      "source_location": "L2",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "frontend_tsconfig_app_json",
-      "target": "frontend_tsconfig_app_compileroptions"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "frontend/tsconfig.app.json",
-      "source_location": "L25",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "frontend_tsconfig_app_json",
-      "target": "frontend_tsconfig_app_include"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "frontend/tsconfig.app.json",
-      "source_location": "L8",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "frontend_tsconfig_app_compileroptions",
-      "target": "frontend_tsconfig_app_compileroptions_allowarbitraryextensions"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "frontend/tsconfig.app.json",
-      "source_location": "L13",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "frontend_tsconfig_app_compileroptions",
-      "target": "frontend_tsconfig_app_compileroptions_allowimportingtsextensions"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "frontend/tsconfig.app.json",
-      "source_location": "L22",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "frontend_tsconfig_app_compileroptions",
-      "target": "frontend_tsconfig_app_compileroptions_erasablesyntaxonly"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "frontend/tsconfig.app.json",
-      "source_location": "L17",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "frontend_tsconfig_app_compileroptions",
-      "target": "frontend_tsconfig_app_compileroptions_jsx"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "frontend/tsconfig.app.json",
-      "source_location": "L5",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "frontend_tsconfig_app_compileroptions",
-      "target": "frontend_tsconfig_app_compileroptions_lib"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "frontend/tsconfig.app.json",
-      "source_location": "L6",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "frontend_tsconfig_app_compileroptions",
-      "target": "frontend_tsconfig_app_compileroptions_module"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "frontend/tsconfig.app.json",
-      "source_location": "L15",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "frontend_tsconfig_app_compileroptions",
-      "target": "frontend_tsconfig_app_compileroptions_moduledetection"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "frontend/tsconfig.app.json",
-      "source_location": "L12",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "frontend_tsconfig_app_compileroptions",
-      "target": "frontend_tsconfig_app_compileroptions_moduleresolution"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "frontend/tsconfig.app.json",
-      "source_location": "L16",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "frontend_tsconfig_app_compileroptions",
-      "target": "frontend_tsconfig_app_compileroptions_noemit"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "frontend/tsconfig.app.json",
-      "source_location": "L23",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "frontend_tsconfig_app_compileroptions",
-      "target": "frontend_tsconfig_app_compileroptions_nofallthroughcasesinswitch"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "frontend/tsconfig.app.json",
-      "source_location": "L20",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "frontend_tsconfig_app_compileroptions",
-      "target": "frontend_tsconfig_app_compileroptions_nounusedlocals"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "frontend/tsconfig.app.json",
-      "source_location": "L21",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "frontend_tsconfig_app_compileroptions",
-      "target": "frontend_tsconfig_app_compileroptions_nounusedparameters"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "frontend/tsconfig.app.json",
-      "source_location": "L9",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "frontend_tsconfig_app_compileroptions",
-      "target": "frontend_tsconfig_app_compileroptions_skiplibcheck"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "frontend/tsconfig.app.json",
-      "source_location": "L4",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "frontend_tsconfig_app_compileroptions",
-      "target": "frontend_tsconfig_app_compileroptions_target"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "frontend/tsconfig.app.json",
-      "source_location": "L3",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "frontend_tsconfig_app_compileroptions",
-      "target": "frontend_tsconfig_app_compileroptions_tsbuildinfofile"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "frontend/tsconfig.app.json",
-      "source_location": "L7",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "frontend_tsconfig_app_compileroptions",
-      "target": "frontend_tsconfig_app_compileroptions_types"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "frontend/tsconfig.app.json",
-      "source_location": "L14",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "frontend_tsconfig_app_compileroptions",
-      "target": "frontend_tsconfig_app_compileroptions_verbatimmodulesyntax"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
       "source_file": "frontend/.oxlintrc.json",
       "source_location": "L3",
       "weight": 1.0,
@@ -40237,16 +40243,6 @@
       "relation": "references",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
-      "source_file": "frontend/tsconfig.json",
-      "source_location": "L3-6",
-      "weight": 1.0,
-      "source": "frontend_tsconfig",
-      "target": "frontend_tsconfig_app"
-    },
-    {
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
       "source_file": "frontend/README.md",
       "source_location": "L14-32",
       "weight": 1.0,
@@ -40608,5 +40604,5 @@
       "source_file": "research_subjects/CLAUDE.md"
     }
   ],
-  "built_at_commit": "fefbde088705eb35854b6474f9dd4e3140b782e7"
+  "built_at_commit": "fa6e895ce79d8296d18ec1c5a68e035fef4a17a0"
 }
