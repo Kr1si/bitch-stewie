@@ -1,16 +1,16 @@
 # Graph Report - bitch-stewie  (2026-08-01)
 
 ## Corpus Check
-- 153 files · ~68,658 words
+- 186 files · ~76,767 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 1433 nodes · 2345 edges · 109 communities (80 shown, 29 thin omitted)
-- Extraction: 80% EXTRACTED · 20% INFERRED · 0% AMBIGUOUS · INFERRED: 459 edges (avg confidence: 0.63)
+- 1557 nodes · 2491 edges · 124 communities (91 shown, 33 thin omitted)
+- Extraction: 81% EXTRACTED · 19% INFERRED · 0% AMBIGUOUS · INFERRED: 477 edges (avg confidence: 0.64)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `462123b7`
+- Built from commit: `fefbde08`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -97,6 +97,15 @@
 - [[_COMMUNITY_Ollama Prod Service|Ollama Prod Service]]
 - [[_COMMUNITY_Community 107|Community 107]]
 - [[_COMMUNITY_Community 108|Community 108]]
+- [[_COMMUNITY_Community 109|Community 109]]
+- [[_COMMUNITY_Community 110|Community 110]]
+- [[_COMMUNITY_Community 111|Community 111]]
+- [[_COMMUNITY_Community 112|Community 112]]
+- [[_COMMUNITY_Community 113|Community 113]]
+- [[_COMMUNITY_Community 114|Community 114]]
+- [[_COMMUNITY_Community 115|Community 115]]
+- [[_COMMUNITY_Community 116|Community 116]]
+- [[_COMMUNITY_Community 121|Community 121]]
 
 ## God Nodes (most connected - your core abstractions)
 1. `skills` - 276 edges
@@ -104,7 +113,7 @@
 3. `commands` - 92 edges
 4. `agents` - 67 edges
 5. `agents` - 67 edges
-6. `Project` - 53 edges
+6. `Project` - 48 edges
 7. `DelegationRunner.run` - 39 edges
 8. `Brief` - 34 edges
 9. `Approval` - 33 edges
@@ -117,10 +126,10 @@
   PLAN.md → .claude/workflows/diagram-generation.mjs
 - `Command Library Router skill` --semantically_similar_to--> `cc-setup.sh: build-time provisioning of delegated Claude Code runtime`  [INFERRED] [semantically similar]
   .claude/skills/command-library/SKILL.md → backend/cc-setup.sh
-- `worker service (prod, procrastinate)` --shares_data_with--> `Settings`  [INFERRED]
-  docker/docker-compose.prod.yml → backend/src/assistant/shared/config.py
 - `delegate()` --shares_data_with--> `implement-from-brief SKILL`  [INFERRED]
   backend/src/assistant/interface/cli/main.py → cc-skills/skills/implement-from-brief/SKILL.md
+- `Personal AI Project Assistant — top-level README overview` --semantically_similar_to--> `krisiserver remote VPS operations skill`  [INFERRED] [semantically similar]
+  README.md → .claude/skills/krisiserver/SKILL.md
 
 ## Hyperedges (group relationships)
 - **krisiserver deployment pipeline (branch → merge → CI deploy → VPS)** — rules_git_workflow, workflows_deploy, krisiserver_skill, readme_project_overview [EXTRACTED 0.90]
@@ -145,19 +154,19 @@
 - **Poll-based live refresh via usePoll** — pages_dashboard_dashboard, pages_runs_runs, hooks_usepoll_usepoll [EXTRACTED 1.00]
 - **Netherbrain cross-referenced planning document hierarchy** — research_subjects_architecture_architecture, research_subjects_master_plan_master_plan, research_subjects_plan_plan, research_subjects_claude_claude [EXTRACTED 1.00]
 
-## Communities (109 total, 29 thin omitted)
+## Communities (124 total, 33 thin omitted)
 
 ### Community 0 - "ECC Skills Catalog"
 Cohesion: 0.01
 Nodes (267): skills, accessibility, agent-architecture-audit, agent-eval, agent-harness-construction, agent-introspection-debugging, agent-payment-x402, agent-self-evaluation (+259 more)
 
 ### Community 1 - "Examples Library API"
-Cohesion: 0.09
-Nodes (49): Project, RunnableConfig, RunnableConfig, str, object, Session, Any, str (+41 more)
+Cohesion: 0.08
+Nodes (55): Project, RunnableConfig, bool, RunnableConfig, str, object, Session, Any (+47 more)
 
 ### Community 2 - "Chat API & Session Persistence"
-Cohesion: 0.09
-Nodes (67): chat(), chat_stream(), ChatIn, _chunk_text(), _ensure_session(), _extract_text(), _interrupt_payload(), list_sessions() (+59 more)
+Cohesion: 0.06
+Nodes (109): chat(), chat_stream(), ChatIn, _chunk_text(), _ensure_session(), _extract_text(), _interrupt_payload(), list_sessions() (+101 more)
 
 ### Community 3 - "ECC Commands Catalog A"
 Cohesion: 0.03
@@ -168,8 +177,8 @@ Cohesion: 0.03
 Nodes (78): epic-publi, gradle-bui, instinct-expo, instinct-stat, kotlin-te, multi-execu, quality-ga, react-testing (+70 more)
 
 ### Community 5 - "Knowledge Base & Deep Research API"
-Cohesion: 0.06
-Nodes (60): collection_sources(), collections(), ingest_path_ep(), ingest_text_ep(), IngestPathIn, IngestTextIn, Knowledge base endpoints: search and ingestion for the web UI., All kb_* collections with point + source counts for the Knowledge overview. (+52 more)
+Cohesion: 0.17
+Nodes (19): collection_sources(), collections(), ingest_path_ep(), ingest_text_ep(), IngestPathIn, IngestTextIn, Knowledge base endpoints: search and ingestion for the web UI., All kb_* collections with point + source counts for the Knowledge overview. (+11 more)
 
 ### Community 6 - "CC Subagent Definitions & Memory MCP"
 Cohesion: 0.07
@@ -188,28 +197,28 @@ Cohesion: 0.11
 Nodes (31): Path, RunnableConfig, str, bool, Path, str, Path, str (+23 more)
 
 ### Community 10 - "Frontend NPM Dependencies"
-Cohesion: 0.07
-Nodes (27): dependencies, @emotion/react, @emotion/styled, @mui/icons-material, @mui/material, @mui/x-data-grid, react, react-dom (+19 more)
+Cohesion: 0.05
+Nodes (40): dependencies, @emotion/react, @emotion/styled, @mui/icons-material, @mui/material, @mui/x-data-grid, react, react-dom (+32 more)
 
 ### Community 11 - "Delegation Run Lifecycle"
-Cohesion: 0.21
-Nodes (10): bool, Brief, str, UUID, Copy delegate skills into the target repo's .claude/skills; return staged names., Stage the output style into the target repo; return the settings path., Brief prompt; appends the inline working agreement only when the         delegat, Send one prompt and collect the response text, persisting events.          Tool/ (+2 more)
+Cohesion: 0.18
+Nodes (14): bool, Brief, int, str, UUID, Copy delegate skills into the target repo's .claude/skills; return staged names., Stage the output style into the target repo; return the settings path., Brief prompt; appends the inline working agreement only when the         delegat (+6 more)
 
 ### Community 12 - "Runs Timeline UI"
 Cohesion: 0.12
 Nodes (19): groupEvents(), Lane, laneDuration(), NoteItem, RunEvent, TextItem, timeLabel(), ToolItem (+11 more)
 
 ### Community 13 - "Knowledge/Diagram/Example API & UI"
-Cohesion: 0.24
-Nodes (12): Example, ExampleGallery(), fetchExamples(), ExampleUploader(), Project, SectionPanel(), apiGet(), Diagram (+4 more)
+Cohesion: 0.19
+Nodes (16): Example, ExampleGallery(), fetchExamples(), ExampleUploader(), Project, SectionPanel(), apiGet(), Diagram (+8 more)
 
 ### Community 14 - "CLI Entry Commands"
-Cohesion: 0.11
-Nodes (21): bool, int, str, approvals(), chat(), delegate(), ingest(), assistant CLI - Phase 1 drives delegation directly; later phases go through the (+13 more)
+Cohesion: 0.10
+Nodes (25): bool, int, str, cc_bridge (Claude Code subprocess bridge subsystem), approvals(), chat(), delegate(), ingest() (+17 more)
 
 ### Community 15 - "Statusline & Lifecycle Hooks"
-Cohesion: 0.25
-Nodes (14): Run telemetry for Claude Code's statusLine / subagentStatusLine scripts.  CC's s, run_statusline(), int, Any, str, UUID, CCRunStatus, ClaudeAgentOptions (+6 more)
+Cohesion: 0.23
+Nodes (13): Run telemetry for Claude Code's statusLine / subagentStatusLine scripts.  CC's s, run_statusline(), str, UUID, Any, str, UUID, build_lifecycle_hooks() (+5 more)
 
 ### Community 16 - "TS Compiler Config (App)"
 Cohesion: 0.10
@@ -221,19 +230,19 @@ Nodes (13): bool, Brief, float, str, UUID, Brief, DelegationOutcome, CCWorker (+
 
 ### Community 18 - "Chat/Plan Streaming UI"
 Cohesion: 0.12
-Nodes (14): Interrupt, ToolCall, useStreamChat(), StreamHandlers, Chat(), Msg, Project, Session (+6 more)
+Nodes (14): Interrupt, ToolCall, useStreamChat(), Chat(), Msg, Project, Session, Diagrams() (+6 more)
 
 ### Community 19 - "TS Compiler Config (Node)"
 Cohesion: 0.12
 Nodes (16): compilerOptions, allowImportingTsExtensions, erasableSyntaxOnly, lib, module, moduleDetection, noEmit, noFallthroughCasesInSwitch (+8 more)
 
 ### Community 20 - "Delegation Runner Internals"
-Cohesion: 0.15
-Nodes (15): Brief.to_prompt, DelegationRunner._add_event, DelegationRunner._create_run, DelegationRunner._drive, DelegationRunner._options, DelegationRunner._parse_result, DelegationRunner._plugins, DelegationRunner._prompt_for (+7 more)
+Cohesion: 0.17
+Nodes (14): Brief.to_prompt, DelegationRunner._add_event, DelegationRunner._create_run, DelegationRunner._drive, DelegationRunner._options, DelegationRunner._parse_result, DelegationRunner._plugins, DelegationRunner._prompt_for (+6 more)
 
 ### Community 21 - "Settings & Job Worker Config"
-Cohesion: 0.31
-Nodes (9): bool, BaseSettings, backend service (prod), apply_langsmith_env(), get_settings(), langsmith_enabled(), Central configuration. All values overridable via environment / .env., Push LANGSMITH_* into os.environ before langchain/langgraph import tracing. (+1 more)
+Cohesion: 0.12
+Nodes (22): BaseSettings, bool, apply_langsmith_env(), get_settings(), langsmith_enabled(), Central configuration. All values overridable via environment / .env., Push LANGSMITH_* into os.environ before langchain/langgraph import tracing., Settings (+14 more)
 
 ### Community 23 - "Import-Linter Cache (assistant meta)"
 Cohesion: 0.17
@@ -244,24 +253,24 @@ Cohesion: 0.17
 Nodes (11): assistant, assistant.agents, assistant.api, assistant.cc_bridge, assistant.cli, assistant.diagrams, assistant.docs_gen, assistant.jobs (+3 more)
 
 ### Community 25 - "Alembic Migrations & DDD Reorg Script"
-Cohesion: 0.43
-Nodes (6): str, Mechanical DDD re-layering rationale (git mv + import rewrite, one-shot, idempotent-ish), main(), move_files(), rewrite_imports(), run()
+Cohesion: 0.24
+Nodes (10): str, str, run_migrations_offline(), run_migrations_online(), _sync_url(), Mechanical DDD re-layering rationale (git mv + import rewrite, one-shot, idempotent-ish), main(), move_files() (+2 more)
 
 ### Community 26 - "FastAPI App Factory & Dashboard Stats"
-Cohesion: 0.24
-Nodes (8): create_app(), lifespan(), FastAPI application factory., app (Procrastinate App), The /api/research/deep/stream SSE endpoint drives a CC /deep-research run., test_deep_research_stream(), test_projects_api_roundtrip(), test_runs_and_approvals_endpoints()
+Cohesion: 0.05
+Nodes (41): AgentDefinition, create_app(), lifespan(), FastAPI application factory., get_diagram(), list_diagrams(), _project_repo(), Serve generated .drawio diagrams for a project's repo (Phase 5+ UI). (+33 more)
 
 ### Community 27 - "Frontend API Client & Research Page"
-Cohesion: 0.26
-Nodes (11): apiDelete(), apiPost(), apiPostForm(), apiPut(), parseErr(), ResearchHandlers, streamChat(), streamResearch() (+3 more)
+Cohesion: 0.17
+Nodes (14): apiDelete(), apiPost(), apiPostForm(), apiPut(), parseErr(), ResearchHandlers, streamChat(), StreamHandlers (+6 more)
 
 ### Community 28 - "Diagram Serving API"
-Cohesion: 0.06
-Nodes (77): get_diagram(), list_diagrams(), _project_repo(), Serve generated .drawio diagrams for a project's repo (Phase 5+ UI)., List generated .drawio files (basename + modified time) under <repo>/diagrams., Return the raw .drawio XML for the embed's `xml` prop., delete_example(), example_content() (+69 more)
+Cohesion: 0.30
+Nodes (14): Any, delete_example(), _examples_root(), list_examples(), _parse_project_id(), Reference examples library (diagrams + docs).  The architect/doc-writer subagent, Upload a reference example (.drawio/.xml/.png for diagrams; .md/.docx/.pdf for d, _resolve_project_id() (+6 more)
 
 ### Community 29 - "Orchestrator Factory & Planner"
-Cohesion: 0.25
-Nodes (6): Any, Any, build_orchestrator(), Build the orchestrator deep agent with its four subagents., build_planner(), Build the planning agent: an iterative conversation that produces a plan file.
+Cohesion: 0.21
+Nodes (19): float, int, str, QdrantClient, collection_name(), collection_stats(), embed_dense(), ensure_collection() (+11 more)
 
 ### Community 30 - "SQLAlchemy Engines (async/sync)"
 Cohesion: 0.09
@@ -272,12 +281,8 @@ Cohesion: 0.32
 Nodes (5): usePoll(), Dashboard(), PIE_COLORS, Project, Stats
 
 ### Community 32 - "Native Folder Picker Helpers"
-Cohesion: 0.32
-Nodes (7): pick_folder(), _pick_folder_sync(), Host-side helpers. The backend runs on the user's machine, so it can pop a real, Open the native folder picker and block until the user chooses (or cancels)., Return the chosen absolute path, or null if the user cancelled., Any, str
-
-### Community 33 - "Deployment & Docker Stack"
-Cohesion: 0.38
-Nodes (7): cc_bridge (Claude Code subprocess bridge subsystem), docker-compose.yml (dev stack: postgres, qdrant, drawio), docker-compose.prod.yml (krisiserver prod stack), krisiserver.md (remote VPS deployment target doc), deploy.yml CI/CD (GitHub Actions auto-deploy), OpenHands trial and removal, conftest.py (Windows event loop policy)
+Cohesion: 0.14
+Nodes (15): make_test_app(), Build an app with in-memory SQLite + fake graphs, mirroring production., The /api/research/deep/stream SSE endpoint drives a CC /deep-research run., test_deep_research_stream(), test_ingest_text_returns_summary(), test_list_collections_shape(), test_search_returns_results(), test_list_approvals_and_status_filter() (+7 more)
 
 ### Community 34 - "Diagram Generation Workflow Script"
 Cohesion: 0.25
@@ -288,12 +293,12 @@ Cohesion: 0.46
 Nodes (5): App(), Health, NAV, getTheme(), Mode
 
 ### Community 36 - "Frontend Lint/Build Config"
-Cohesion: 0.29
-Nodes (7): .oxlintrc.json — Oxlint config (react, typescript, oxc plugins; rules-of-hooks error), frontend package.json manifest (React 19.2, MUI v7, react-router-dom v7, recharts, Vite 8, oxlint), frontend README — React+TS+Vite template notes, Oxlint expansion guide, tsconfig.json — root TS project references (app + node configs), tsconfig.app.json — TS config for app source (bundler resolution, react-jsx), tsconfig.node.json — TS config for Vite config file (ES2023, nodenext), vite.config.ts — Vite config with @vitejs/plugin-react
+Cohesion: 0.67
+Nodes (3): tsconfig.json — root TS project references (app + node configs), tsconfig.app.json — TS config for app source (bundler resolution, react-jsx), tsconfig.node.json — TS config for Vite config file (ES2023, nodenext)
 
 ### Community 37 - "CC Subagent Registry"
-Cohesion: 0.33
-Nodes (5): AgentDefinition, str, build_subagents(), Native Claude Code subagents handed to every delegated CC session.  These are *C, Return the CC subagent registry passed as `agents=` to ClaudeAgentOptions.
+Cohesion: 0.19
+Nodes (13): deep_research_stream(), DeepResearchIn, Deep research endpoints: a direct Claude Code /deep-research one-shot.  Unlike t, Run /deep-research via Claude Code and stream the outcome as SSE.      The CC wo, RunnableConfig, str, EventSourceResponse, Researcher tools: local knowledge base + native /deep-research via Claude Code. (+5 more)
 
 ### Community 38 - "Oxlint Rule Config"
 Cohesion: 0.33
@@ -332,16 +337,16 @@ Cohesion: 0.18
 Nodes (10): Cross-reference index (phase → primary folder plans), Netherbrain — Master Implementation Plan, Phase 0 — Foundation, Phase 1 — Skill capture loop (headless MVP), Phase 2 — Review console + admin, Phase 3 — Chat, Phase 4 — File ingestion, Phase 5 — Specialist agents (+2 more)
 
 ### Community 78 - "Ruff Lint Rules"
-Cohesion: 0.33
-Nodes (9): Example, RunnableConfig, str, list_examples(), Tools that expose the reference examples library to the architect and doc-writer, List reference examples for the current project (kind: 'diagram', 'doc', or '' f, Read one reference example into context.      Text examples (.md/.txt/.drawio/.x, read_example() (+1 more)
+Cohesion: 0.26
+Nodes (12): Example, RunnableConfig, str, Example, A reference example the architect/doc-writer load when creating a new     diagra, list_examples(), Tools that expose the reference examples library to the architect and doc-writer, List reference examples for the current project (kind: 'diagram', 'doc', or '' f (+4 more)
 
 ### Community 79 - "Mypy Strict Typing Rule"
 Cohesion: 0.20
 Nodes (9): Contents, Contracts, Dependencies, Dev workflow, Phase, / — Plan (repository root), Purpose, Scope & boundaries (+1 more)
 
 ### Community 80 - "Pydantic Boundary Models Rule"
-Cohesion: 0.48
-Nodes (6): str, UUID, build_lifecycle_hooks(), _persist_event(), Native CC lifecycle hooks -> CCRunEvent rows (+ PermissionRequest -> Approval)., Hooks dict for ClaudeAgentOptions; closures bind this run's id.
+Cohesion: 0.15
+Nodes (12): bitch-stewie — User Stories, Out of scope (documented gaps, not under test), Story 10 — Config & observability, Story 1 — Ask the orchestrator anything (chat), Story 2 — Delegate a coding task (milestone gate), Story 3 — Refine a plan, then hand off, Story 4 — Search and grow the knowledge base, Story 5 — Deep research (+4 more)
 
 ### Community 81 - "LangChain Tool Convention Rule"
 Cohesion: 0.29
@@ -352,32 +357,56 @@ Cohesion: 0.33
 Nodes (5): Watch the vault folder and auto-ingest changed markdown files., watch(), Vault watcher: auto-ingest markdown files when they change., Blocking loop: watch the configured vault and ingest changed files., watch_vault()
 
 ### Community 87 - "Application Layer Import Boundary Rule"
-Cohesion: 0.60
-Nodes (4): str, run_migrations_offline(), run_migrations_online(), _sync_url()
+Cohesion: 0.31
+Nodes (4): backendHealthy(), ensureProject(), expectAssistantTurn(), uniqueProjectName()
 
 ### Community 88 - "Health Check Concept"
 Cohesion: 0.50
 Nodes (3): bitch-stewie — project rules, graphify, Working style — fan out & deep research
 
+### Community 91 - "Frontend Prod Service (nginx)"
+Cohesion: 0.22
+Nodes (7): example_content(), FileResponse, Chat SSE endpoint returns text/event-stream and terminates with 'done'.      The, test_chat_sessions_and_messages(), test_chat_stream_returns_done(), test_statusline_missing_run_returns_404(), UUID
+
+### Community 92 - "Ollama Prod Service"
+Cohesion: 0.25
+Nodes (7): E2E Tests (Playwright), Environment variables, Install browsers, On robustness, Prerequisites, Run, What each spec covers
+
+### Community 109 - "Community 109"
+Cohesion: 0.29
+Nodes (4): The inline fallback preserves the delivery contract (Story 2)., POST /api/cc-runs enqueues via Procrastinate and returns 202 + job_id.      dele, test_fallback_working_agreement_contains_result_marker(), test_start_run_enqueues_and_returns_202()
+
+### Community 110 - "Community 110"
+Cohesion: 0.43
+Nodes (6): _examples_enabled(), Point the examples store at a temp dir (router 500s without it)., A DB row whose file was removed from disk returns 410, not 500 (Story 7)., test_example_missing_on_disk_returns_410(), test_example_upload_download_delete_roundtrip(), test_examples_list_empty()
+
+### Community 112 - "Community 112"
+Cohesion: 0.50
+Nodes (3): A traversal attempt must never escape the diagrams dir (Story 6)., test_diagram_path_traversal_is_rejected(), test_list_diagrams_empty()
+
+### Community 113 - "Community 113"
+Cohesion: 0.50
+Nodes (3): Planner SSE endpoint returns text/event-stream and terminates (Story 3)., test_plan_sessions_and_messages(), test_plan_stream_returns_done()
+
 ## Knowledge Gaps
-- **693 isolated node(s):** `PreToolUse`, `graphify`, `Working style — fan out & deep research`, `1. Linting & formatting — ruff`, `2. Typing — mypy strict` (+688 more)
+- **723 isolated node(s):** `FileResponse`, `Story 1 — Ask the orchestrator anything (chat)`, `Story 2 — Delegate a coding task (milestone gate)`, `Story 3 — Refine a plan, then hand off`, `Story 4 — Search and grow the knowledge base` (+718 more)
   These have ≤1 connection - possible missing edges or undocumented components.
-- **29 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
+- **33 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
 - **Why does `skills` connect `ECC Skills Catalog` to `ECC Commands Catalog A`, `ECC Commands Catalog B`, `ECC Agents Catalog A`?**
-  _High betweenness centrality (0.069) - this node is a cross-community bridge._
-- **Why does `Knowledge()` connect `Knowledge Base & Deep Research API` to `Frontend API Client & Research Page`, `Frontend App Shell & Theme`, `Knowledge/Diagram/Example API & UI`?**
-  _High betweenness centrality (0.060) - this node is a cross-community bridge._
-- **Why does `Project` connect `Diagram Serving API` to `Artifact & Diagram Tool Helpers`, `Chat API & Session Persistence`, `Examples Library API`, `CLI Entry Commands`?**
-  _High betweenness centrality (0.044) - this node is a cross-community bridge._
-- **What connects `PreToolUse`, `graphify`, `Working style — fan out & deep research` to the rest of the system?**
-  _814 weakly-connected nodes found - possible documentation gaps or missing edges._
+  _High betweenness centrality (0.066) - this node is a cross-community bridge._
+- **Why does `FastAPI` connect `FastAPI App Factory & Dashboard Stats` to `Native Folder Picker Helpers`, `Chat API & Session Persistence`, `CC Subagent Registry`, `Knowledge Base & Deep Research API`, `Knowledge/Diagram/Example API & UI`, `Statusline & Lifecycle Hooks`, `Diagram Serving API`?**
+  _High betweenness centrality (0.047) - this node is a cross-community bridge._
+- **Why does `Knowledge()` connect `Knowledge/Diagram/Example API & UI` to `Frontend API Client & Research Page`, `FastAPI App Factory & Dashboard Stats`, `Frontend App Shell & Theme`, `Knowledge Base & Deep Research API`?**
+  _High betweenness centrality (0.039) - this node is a cross-community bridge._
+- **What connects `FileResponse`, `Reference examples library (diagrams + docs).  The architect/doc-writer subagent`, `Upload a reference example (.drawio/.xml/.png for diagrams; .md/.docx/.pdf for d` to the rest of the system?**
+  _859 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `ECC Skills Catalog` be split into smaller, more focused modules?**
   _Cohesion score 0.00749063670411985 - nodes in this community are weakly interconnected._
 - **Should `Examples Library API` be split into smaller, more focused modules?**
-  _Cohesion score 0.08780841799709724 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.07948568088836938 - nodes in this community are weakly interconnected._
 - **Should `Chat API & Session Persistence` be split into smaller, more focused modules?**
-  _Cohesion score 0.08571428571428572 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.05577211394302849 - nodes in this community are weakly interconnected._
