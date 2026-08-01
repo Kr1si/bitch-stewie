@@ -2,8 +2,8 @@
 
 Orchestration layer over Claude Code for System Architect work: diagrams
 (LikeC4 → draw.io), documentation (Markdown → docx/pdf), research (native
-/deep-research + Qdrant knowledge base), and delegated coding — everything on
-GLM 5.2 via Ollama.
+/deep-research + Qdrant knowledge base), and delegated coding — default LLM
+is LongCat-2.0 (Anthropic-Messages-native).
 
 See `PLAN.md` for the approved architecture and phases.
 
@@ -20,7 +20,7 @@ See `PLAN.md` for the approved architecture and phases.
 ## Running
 
 ```bash
-# 1. infrastructure (Postgres/Qdrant/drawio) — Ollama + Claude Code run on the host
+# 1. infrastructure (Postgres/Qdrant/drawio) — Claude Code runs on the host
 cd docker && docker compose up -d
 
 # 2. backend setup (corporate proxy: unset SSL_CERT_FILE REQUESTS_CA_BUNDLE; UV_NATIVE_TLS=true)
@@ -50,6 +50,9 @@ Server setup, hardening, deployment plan, and gotchas:
 
 ## Model configuration
 
-Default model is `ollama:glm-5.2:cloud` everywhere (orchestrator via LangChain,
-Claude Code instances via `ANTHROPIC_BASE_URL` → Ollama). Override with
-`ASSISTANT_DEFAULT_MODEL` / `ASSISTANT_CC_MODEL`. Embeddings: `bge-m3` local.
+Default model is LongCat-2.0 (`anthropic:LongCat-2.0`) everywhere — orchestrator
+via LangChain, Claude Code instances via `ANTHROPIC_BASE_URL` → LongCat — set in
+`docker-compose.prod.yml` and `docker/.env.example`. LongCat speaks the
+Anthropic Messages API natively (no model-name mapping). Ollama is still in the
+stack for `bge-m3` embeddings; to use it for inference instead, switch the
+`ASSISTANT_CC_*` / `ANTHROPIC_*` vars (see `docker/.env.example`).

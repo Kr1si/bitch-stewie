@@ -39,7 +39,7 @@ dependencies = [
 ]
 
 [project.scripts]
-assistant = "assistant.cli.main:app"
+assistant = "assistant.interface.cli.main:app"
 
 [dependency-groups]
 dev = [
