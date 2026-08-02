@@ -22,6 +22,7 @@ researcher subagents are read-only, so they RETURN their cited report and the
 conductor writes it to disk.
 """
 
+import asyncio
 from datetime import UTC, datetime
 from pathlib import Path
 
@@ -113,11 +114,13 @@ def _project_name_for(goal: Goal) -> str | None:
         return project.name if project else None
 
 
-def run_research_pipeline(goal: Goal) -> dict:
+async def run_research_pipeline(goal: Goal) -> dict:
     """Run conductor -> composer for one research goal and ingest the outputs.
 
-    Long-running (tens of minutes): call only from the Procrastinate worker.
-    Returns a summary dict. Raises on stage failure so the job can retry.
+    Long-running (tens of minutes): the CC worker blocks its calling thread, so
+    the blocking ``run_prompt`` calls are dispatched to a threadpool via
+    ``asyncio.to_thread`` — callers (the test, the queue job) can ``await`` this
+    without stalling the event loop. Raises on stage failure so the job can retry.
     """
     settings = get_settings()
     root = Path(settings.reports_path)
@@ -136,11 +139,11 @@ def run_research_pipeline(goal: Goal) -> dict:
 
     # --- stage 1: conductor -------------------------------------------------
     conductor_prompt = _build_conductor_prompt(date, root, categories)
-    get_worker().run_prompt(conductor_prompt, cwd=str(root), timeout=3600)
+    await asyncio.to_thread(get_worker().run_prompt, conductor_prompt, str(root), 3600)
 
     # --- stage 2: composer --------------------------------------------------
     composer_prompt = _build_composer_prompt(date, root)
-    get_worker().run_prompt(composer_prompt, cwd=str(root), timeout=1800)
+    await asyncio.to_thread(get_worker().run_prompt, composer_prompt, str(root), 1800)
 
     # --- stage 3: ingest ----------------------------------------------------
     ingested = {"digest_chunks": 0, "market_ideas_chunks": 0}
