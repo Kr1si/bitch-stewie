@@ -82,6 +82,23 @@ def get_settings() -> Settings:
     return Settings()
 
 
+def apply_anthropic_env() -> None:
+    """Make the LongCat base URL visible to LangChain's chat model.
+
+    ``ChatAnthropic`` reads ``ANTHROPIC_API_URL`` (not ``ANTHROPIC_BASE_URL``)
+    for the base URL, so mirror the platform's ``ANTHROPIC_BASE_URL`` across.
+    Auth itself is handled by explicit Bearer ``default_headers`` when the model
+    is constructed (factory.py) — do NOT mirror ``ANTHROPIC_AUTH_TOKEN`` to
+    ``ANTHROPIC_API_KEY`` here, because that would make ``ChatAnthropic`` send
+    the ``x-api-key`` header, which LongCat rejects with a 401.
+    """
+    import os
+    if not os.environ.get("ANTHROPIC_API_URL"):
+        base_url = os.environ.get("ANTHROPIC_BASE_URL")
+        if base_url:
+            os.environ["ANTHROPIC_API_URL"] = base_url
+
+
 def langsmith_enabled() -> bool:
     s = get_settings()
     return bool(s.langsmith_api_key) and s.langsmith_tracing.lower() == "true"

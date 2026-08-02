@@ -10,7 +10,7 @@
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `c166198a`
+- Built from commit: `06a93aba`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -564,7 +564,7 @@ Cohesion: 0.50
 Nodes (4): Idempotently seed built-in project + goal presets (run by the backend on boot)., Idempotently seed built-in project presets (run by the backend on boot)., seed(), Project
 
 ## Knowledge Gaps
-- **1043 isolated node(s):** `str`, `AgentDefinition`, `The rule`, `When local testing is genuinely blocked`, `Why` (+1038 more)
+- **1043 isolated node(s):** `graphify`, `Skills`, `Working style — fan out & deep research`, `str`, `AgentDefinition` (+1038 more)
   These have ≤1 connection - possible missing edges or undocumented components.
 - **48 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
@@ -577,7 +577,7 @@ _Questions this graph is uniquely positioned to answer:_
   _High betweenness centrality (0.045) - this node is a cross-community bridge._
 - **Why does `FastAPI` connect `FastAPI App Factory & Dashboard Stats` to `Native Folder Picker Helpers`, `Chat API & Session Persistence`, `Knowledge Base & Deep Research API`, `Community 170`, `Diagram Serving API`, `Knowledge/Diagram/Example API & UI`, `Statusline & Lifecycle Hooks`, `Community 114`, `Import-Linter Cache (module graph)`, `Community 124`?**
   _High betweenness centrality (0.032) - this node is a cross-community bridge._
-- **What connects `Daily AI-intelligence report pipeline: conductor -> researchers -> composer.  Sp`, `Resolve the KB collection name for a goal's project, if any.`, `Run conductor -> composer for one research goal and ingest the outputs.      Lon` to the rest of the system?**
+- **What connects `graphify`, `Skills`, `Working style — fan out & deep research` to the rest of the system?**
   _1215 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `ECC Skills Catalog` be split into smaller, more focused modules?**
   _Cohesion score 0.007407407407407408 - nodes in this community are weakly interconnected._

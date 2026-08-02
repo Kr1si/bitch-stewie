@@ -8,7 +8,12 @@ from contextlib import asynccontextmanager
 from fastapi import FastAPI
 from langgraph.checkpoint.postgres.aio import AsyncPostgresSaver
 
-from assistant.shared.config import apply_langsmith_env, get_settings, langsmith_enabled
+from assistant.shared.config import (
+    apply_anthropic_env,
+    apply_langsmith_env,
+    get_settings,
+    langsmith_enabled,
+)
 
 # psycopg async cannot run on Windows' default ProactorEventLoop; the cc_bridge
 # runs claude-agent-sdk sessions on its own Proactor loop thread instead.
@@ -18,6 +23,8 @@ if sys.platform == "win32":
 # Push LANGSMITH_* into os.environ so the LangSmith tracer picks up tracing
 # + the API key at configure time. Idempotent; safe at module load.
 LS_TRACING = apply_langsmith_env()
+# Mirror ANTHROPIC_AUTH_TOKEN -> ANTHROPIC_API_KEY if needed (chat model).
+apply_anthropic_env()
 
 
 @asynccontextmanager

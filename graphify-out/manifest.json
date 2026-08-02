@@ -225,8 +225,8 @@
     "semantic_hash": "7a7cdbb0557ac8ba31fb5cc712f90686"
   },
   "/Users/martinkrisko/Documents/Projects/bitch-stewie/backend/src/assistant/interface/cli/main.py": {
-    "mtime": 1785583733.849224,
-    "ast_hash": "17f3508c258de23b24e5088f136ad2f4",
+    "mtime": 1785665014.6401694,
+    "ast_hash": "653940c73d08457958532bca7135bec1",
     "semantic_hash": ""
   },
   "/Users/martinkrisko/Documents/Projects/bitch-stewie/backend/src/assistant/interface/api/plan.py": {
@@ -265,8 +265,8 @@
     "semantic_hash": "02cb7a716797915eb3fe00c011498fe1"
   },
   "/Users/martinkrisko/Documents/Projects/bitch-stewie/backend/src/assistant/interface/api/app.py": {
-    "mtime": 1785583812.608591,
-    "ast_hash": "ad29ac7be06b56a4a65d8f580d6358ef",
+    "mtime": 1785665168.1789036,
+    "ast_hash": "28ea94e56e344c078384f160ed0a3d97",
     "semantic_hash": ""
   },
   "/Users/martinkrisko/Documents/Projects/bitch-stewie/backend/src/assistant/interface/api/diagrams.py": {
@@ -305,8 +305,8 @@
     "semantic_hash": "d41d8cd98f00b204e9800998ecf8427e"
   },
   "/Users/martinkrisko/Documents/Projects/bitch-stewie/backend/src/assistant/shared/config.py": {
-    "mtime": 1785583928.164556,
-    "ast_hash": "ea5d8634762c7286e5555f9abc114100",
+    "mtime": 1785668013.3924801,
+    "ast_hash": "bd118d8879e08535c452d08030d27705",
     "semantic_hash": ""
   },
   "/Users/martinkrisko/Documents/Projects/bitch-stewie/backend/src/assistant/cli/__init__.py": {
@@ -340,9 +340,9 @@
     "semantic_hash": "0e73bdea6ce5eb589e7ac3400111298a"
   },
   "/Users/martinkrisko/Documents/Projects/bitch-stewie/backend/src/assistant/application/orchestrator/factory.py": {
-    "mtime": 1785539375.3528879,
-    "ast_hash": "d1e2ecba360896bdaadc407190f2d1ef",
-    "semantic_hash": "d1e2ecba360896bdaadc407190f2d1ef"
+    "mtime": 1785668291.4576387,
+    "ast_hash": "ddc83435660efa4f984d404a870e6404",
+    "semantic_hash": ""
   },
   "/Users/martinkrisko/Documents/Projects/bitch-stewie/backend/src/assistant/application/orchestrator/context.py": {
     "mtime": 1785539290.9275067,

@@ -13,6 +13,11 @@ import typer
 from rich.console import Console
 from rich.table import Table
 
+from assistant.shared.config import apply_anthropic_env
+
+# Mirror ANTHROPIC_AUTH_TOKEN -> ANTHROPIC_API_KEY if needed (chat model).
+apply_anthropic_env()
+
 app = typer.Typer(help="Personal AI project assistant CLI")
 runs_app = typer.Typer(help="Inspect delegated Claude Code runs")
 app.add_typer(runs_app, name="runs")
