@@ -5,6 +5,7 @@ in this repo. Currently:
 
 - [`git-workflow.md`](.claude/rules/git-workflow.md) — never push directly
   to `main`; always work on a feature branch and let the user merge.
+- [`testing.md`](.claude/rules/testing.md) - always test locally with running docker your feature if they work
 
 ## graphify
 

@@ -289,12 +289,39 @@
   },
   "nodes": [
     {
+      "label": "test_daily_report_e2e.py",
+      "file_type": "code",
+      "source_file": "backend/scripts/test_daily_report_e2e.py",
+      "source_location": "L1",
+      "id": "backend_scripts_test_daily_report_e2e_py",
+      "community": 120,
+      "norm_label": "test_daily_report_e2e.py"
+    },
+    {
+      "label": "main()",
+      "file_type": "code",
+      "source_file": "backend/scripts/test_daily_report_e2e.py",
+      "source_location": "L23",
+      "id": "scripts_test_daily_report_e2e_main",
+      "community": 120,
+      "norm_label": "main()"
+    },
+    {
+      "label": "One-shot e2e: run the daily-report pipeline for the seeded goal.  Needs local Po",
+      "file_type": "rationale",
+      "source_file": "backend/scripts/test_daily_report_e2e.py",
+      "source_location": "L1",
+      "id": "scripts_test_daily_report_e2e_rationale_1",
+      "community": 120,
+      "norm_label": "one-shot e2e: run the daily-report pipeline for the seeded goal.  needs local po"
+    },
+    {
       "label": "daily_report.py",
       "file_type": "code",
       "source_file": "backend/src/assistant/application/orchestrator/daily_report.py",
       "source_location": "L1",
       "id": "backend_src_assistant_application_orchestrator_daily_report_py",
-      "community": 114,
+      "community": 130,
       "norm_label": "daily_report.py"
     },
     {
@@ -303,7 +330,7 @@
       "source_file": "backend/src/assistant/application/orchestrator/daily_report.py",
       "source_location": "L53",
       "id": "orchestrator_daily_report_today_str",
-      "community": 114,
+      "community": 130,
       "norm_label": "_today_str()"
     },
     {
@@ -311,8 +338,8 @@
       "file_type": "code",
       "source_file": "backend/src/assistant/application/orchestrator/daily_report.py",
       "source_location": "L53",
-      "id": "backend_src_assistant_application_orchestrator_daily_report_py_str",
-      "community": 114,
+      "id": "str",
+      "community": 28,
       "norm_label": "str"
     },
     {
@@ -321,7 +348,7 @@
       "source_file": "backend/src/assistant/application/orchestrator/daily_report.py",
       "source_location": "L57",
       "id": "orchestrator_daily_report_build_conductor_prompt",
-      "community": 114,
+      "community": 130,
       "norm_label": "_build_conductor_prompt()"
     },
     {
@@ -330,7 +357,7 @@
       "source_file": "backend/src/assistant/application/orchestrator/daily_report.py",
       "source_location": "L57",
       "id": "path",
-      "community": 114,
+      "community": 130,
       "norm_label": "path"
     },
     {
@@ -339,7 +366,7 @@
       "source_file": "backend/src/assistant/application/orchestrator/daily_report.py",
       "source_location": "L87",
       "id": "orchestrator_daily_report_build_composer_prompt",
-      "community": 114,
+      "community": 130,
       "norm_label": "_build_composer_prompt()"
     },
     {
@@ -348,7 +375,7 @@
       "source_file": "backend/src/assistant/application/orchestrator/daily_report.py",
       "source_location": "L104",
       "id": "orchestrator_daily_report_project_name_for",
-      "community": 114,
+      "community": 130,
       "norm_label": "_project_name_for()"
     },
     {
@@ -357,7 +384,7 @@
       "source_file": "backend/src/assistant/application/orchestrator/daily_report.py",
       "source_location": "L104",
       "id": "goal",
-      "community": 114,
+      "community": 130,
       "norm_label": "goal"
     },
     {
@@ -366,7 +393,7 @@
       "source_file": "backend/src/assistant/application/orchestrator/daily_report.py",
       "source_location": "L117",
       "id": "orchestrator_daily_report_run_research_pipeline",
-      "community": 114,
+      "community": 130,
       "norm_label": "run_research_pipeline()"
     },
     {
@@ -375,7 +402,7 @@
       "source_file": "backend/src/assistant/application/orchestrator/daily_report.py",
       "source_location": "L1",
       "id": "orchestrator_daily_report_rationale_1",
-      "community": 114,
+      "community": 130,
       "norm_label": "daily ai-intelligence report pipeline: conductor -> researchers -> composer.  sp"
     },
     {
@@ -384,7 +411,7 @@
       "source_file": "backend/src/assistant/application/orchestrator/daily_report.py",
       "source_location": "L105",
       "id": "orchestrator_daily_report_rationale_105",
-      "community": 114,
+      "community": 130,
       "norm_label": "resolve the kb collection name for a goal's project, if any."
     },
     {
@@ -393,89 +420,8 @@
       "source_file": "backend/src/assistant/application/orchestrator/daily_report.py",
       "source_location": "L118",
       "id": "orchestrator_daily_report_rationale_118",
-      "community": 114,
+      "community": 130,
       "norm_label": "run conductor -> composer for one research goal and ingest the outputs.      lon"
-    },
-    {
-      "label": "subagents.py",
-      "file_type": "code",
-      "source_file": "backend/src/assistant/infrastructure/cc_bridge/subagents.py",
-      "source_location": "L1",
-      "id": "backend_src_assistant_infrastructure_cc_bridge_subagents_py",
-      "community": 130,
-      "norm_label": "subagents.py"
-    },
-    {
-      "label": "build_subagents()",
-      "file_type": "code",
-      "source_file": "backend/src/assistant/infrastructure/cc_bridge/subagents.py",
-      "source_location": "L62",
-      "id": "cc_bridge_subagents_build_subagents",
-      "community": 130,
-      "norm_label": "build_subagents()"
-    },
-    {
-      "label": "str",
-      "file_type": "code",
-      "source_file": "backend/src/assistant/infrastructure/cc_bridge/subagents.py",
-      "source_location": "L62",
-      "id": "backend_src_assistant_infrastructure_cc_bridge_subagents_py_str",
-      "community": 130,
-      "norm_label": "str"
-    },
-    {
-      "label": "AgentDefinition",
-      "file_type": "code",
-      "source_file": "backend/src/assistant/infrastructure/cc_bridge/subagents.py",
-      "source_location": "L62",
-      "id": "agentdefinition",
-      "community": 130,
-      "norm_label": "agentdefinition"
-    },
-    {
-      "label": "Native Claude Code subagents handed to every delegated CC session.  These are *C",
-      "file_type": "rationale",
-      "source_file": "backend/src/assistant/infrastructure/cc_bridge/subagents.py",
-      "source_location": "L1",
-      "id": "cc_bridge_subagents_rationale_1",
-      "community": 130,
-      "norm_label": "native claude code subagents handed to every delegated cc session.  these are *c"
-    },
-    {
-      "label": "Return the CC subagent registry passed as `agents=` to ClaudeAgentOptions.",
-      "file_type": "rationale",
-      "source_file": "backend/src/assistant/infrastructure/cc_bridge/subagents.py",
-      "source_location": "L63",
-      "id": "cc_bridge_subagents_rationale_63",
-      "community": 130,
-      "norm_label": "return the cc subagent registry passed as `agents=` to claudeagentoptions."
-    },
-    {
-      "label": "test_daily_report_e2e.py",
-      "file_type": "code",
-      "source_file": "backend/scripts/test_daily_report_e2e.py",
-      "source_location": "L1",
-      "community": 120,
-      "norm_label": "test_daily_report_e2e.py",
-      "id": "backend_scripts_test_daily_report_e2e_py"
-    },
-    {
-      "label": "main()",
-      "file_type": "code",
-      "source_file": "backend/scripts/test_daily_report_e2e.py",
-      "source_location": "L23",
-      "community": 120,
-      "norm_label": "main()",
-      "id": "scripts_test_daily_report_e2e_main"
-    },
-    {
-      "label": "One-shot e2e: run the daily-report pipeline for the seeded goal.  Needs local Po",
-      "file_type": "rationale",
-      "source_file": "backend/scripts/test_daily_report_e2e.py",
-      "source_location": "L1",
-      "community": 120,
-      "norm_label": "one-shot e2e: run the daily-report pipeline for the seeded goal.  needs local po",
-      "id": "scripts_test_daily_report_e2e_rationale_1"
     },
     {
       "label": "testing.md",
@@ -1193,7 +1139,7 @@
       "file_type": "code",
       "source_file": "",
       "source_location": "",
-      "community": 2,
+      "community": 5,
       "norm_label": "basemodel",
       "id": "basemodel"
     },
@@ -5039,7 +4985,7 @@
       "file_type": "code",
       "source_file": "backend/tests/test_plan.py",
       "source_location": "L1",
-      "community": 169,
+      "community": 32,
       "norm_label": "test_plan.py",
       "id": "backend_tests_test_plan_py"
     },
@@ -5048,7 +4994,7 @@
       "file_type": "code",
       "source_file": "backend/tests/test_plan.py",
       "source_location": "L8",
-      "community": 169,
+      "community": 32,
       "norm_label": "test_plan_stream_returns_done()",
       "id": "tests_test_plan_test_plan_stream_returns_done"
     },
@@ -5057,7 +5003,7 @@
       "file_type": "code",
       "source_file": "backend/tests/test_plan.py",
       "source_location": "L20",
-      "community": 169,
+      "community": 32,
       "norm_label": "test_plan_sessions_and_messages()",
       "id": "tests_test_plan_test_plan_sessions_and_messages"
     },
@@ -5066,7 +5012,7 @@
       "file_type": "rationale",
       "source_file": "backend/tests/test_plan.py",
       "source_location": "L9",
-      "community": 169,
+      "community": 32,
       "norm_label": "planner sse endpoint returns text/event-stream and terminates (story 3).",
       "id": "tests_test_plan_rationale_9"
     },
@@ -5174,7 +5120,7 @@
       "file_type": "code",
       "source_file": "backend/tests/test_persistence.py",
       "source_location": "L1",
-      "community": 174,
+      "community": 91,
       "norm_label": "test_persistence.py",
       "id": "backend_tests_test_persistence_py"
     },
@@ -5192,7 +5138,7 @@
       "file_type": "code",
       "source_file": "backend/tests/test_persistence.py",
       "source_location": "L27",
-      "community": 174,
+      "community": 91,
       "norm_label": "test_checkpointer_setup()",
       "id": "tests_test_persistence_test_checkpointer_setup"
     },
@@ -5201,7 +5147,7 @@
       "file_type": "rationale",
       "source_file": "backend/tests/test_persistence.py",
       "source_location": "L1",
-      "community": 174,
+      "community": 91,
       "norm_label": "integration tests against the dockerized postgres (docker/ stack must be up).",
       "id": "tests_test_persistence_rationale_1"
     },
@@ -5552,7 +5498,7 @@
       "file_type": "code",
       "source_file": "backend/tests/test_deep_research.py",
       "source_location": "L1",
-      "community": 173,
+      "community": 32,
       "norm_label": "test_deep_research.py",
       "id": "backend_tests_test_deep_research_py"
     },
@@ -5561,7 +5507,7 @@
       "file_type": "code",
       "source_file": "backend/tests/test_deep_research.py",
       "source_location": "L9",
-      "community": 173,
+      "community": 32,
       "norm_label": "test_deep_research_stream()",
       "id": "tests_test_deep_research_test_deep_research_stream"
     },
@@ -5570,7 +5516,7 @@
       "file_type": "rationale",
       "source_file": "backend/tests/test_deep_research.py",
       "source_location": "L10",
-      "community": 173,
+      "community": 32,
       "norm_label": "the /api/research/deep/stream sse endpoint drives a cc /deep-research run.",
       "id": "tests_test_deep_research_rationale_10"
     },
@@ -5732,7 +5678,7 @@
       "file_type": "code",
       "source_file": "backend/tests/test_statusline.py",
       "source_location": "L1",
-      "community": 32,
+      "community": 91,
       "norm_label": "test_statusline.py",
       "id": "backend_tests_test_statusline_py"
     },
@@ -5741,7 +5687,7 @@
       "file_type": "code",
       "source_file": "backend/tests/test_statusline.py",
       "source_location": "L8",
-      "community": 32,
+      "community": 91,
       "norm_label": "test_statusline_missing_run_returns_404()",
       "id": "tests_test_statusline_test_statusline_missing_run_returns_404"
     },
@@ -5750,7 +5696,7 @@
       "file_type": "code",
       "source_file": "backend/tests/test_rag.py",
       "source_location": "L1",
-      "community": 175,
+      "community": 29,
       "norm_label": "test_rag.py",
       "id": "backend_tests_test_rag_py"
     },
@@ -5768,7 +5714,7 @@
       "file_type": "rationale",
       "source_file": "backend/tests/test_rag.py",
       "source_location": "L1",
-      "community": 175,
+      "community": 29,
       "norm_label": "integration test: requires dockerized qdrant + host ollama with bge-m3.",
       "id": "tests_test_rag_rationale_1"
     },
@@ -6424,7 +6370,7 @@
       "file_type": "code",
       "source_file": "backend/src/assistant/interface/cli/main.py",
       "source_location": "L118",
-      "community": 172,
+      "community": 14,
       "norm_label": "seed()",
       "id": "cli_main_seed"
     },
@@ -6433,7 +6379,7 @@
       "file_type": "code",
       "source_file": "backend/src/assistant/interface/cli/main.py",
       "source_location": "L172",
-      "community": 14,
+      "community": 112,
       "norm_label": "delegate()",
       "id": "cli_main_delegate"
     },
@@ -6442,7 +6388,7 @@
       "file_type": "code",
       "source_file": "backend/src/assistant/interface/cli/main.py",
       "source_location": "L172",
-      "community": 14,
+      "community": 15,
       "norm_label": "str",
       "id": "backend_src_assistant_interface_cli_main_py_str"
     },
@@ -6451,7 +6397,7 @@
       "file_type": "code",
       "source_file": "backend/src/assistant/interface/cli/main.py",
       "source_location": "L172",
-      "community": 14,
+      "community": 15,
       "norm_label": "bool",
       "id": "backend_src_assistant_interface_cli_main_py_bool"
     },
@@ -6460,7 +6406,7 @@
       "file_type": "code",
       "source_file": "backend/src/assistant/interface/cli/main.py",
       "source_location": "L225",
-      "community": 14,
+      "community": 15,
       "norm_label": "chat()",
       "id": "cli_main_chat"
     },
@@ -6514,7 +6460,7 @@
       "file_type": "code",
       "source_file": "backend/src/assistant/interface/cli/main.py",
       "source_location": "L285",
-      "community": 14,
+      "community": 15,
       "norm_label": "int",
       "id": "backend_src_assistant_interface_cli_main_py_int"
     },
@@ -6532,7 +6478,7 @@
       "file_type": "code",
       "source_file": "backend/src/assistant/interface/cli/main.py",
       "source_location": "L320",
-      "community": 14,
+      "community": 15,
       "norm_label": "runs_events()",
       "id": "cli_main_runs_events"
     },
@@ -6550,7 +6496,7 @@
       "file_type": "rationale",
       "source_file": "backend/src/assistant/interface/cli/main.py",
       "source_location": "L119",
-      "community": 172,
+      "community": 14,
       "norm_label": "idempotently seed built-in project + goal presets (run by the backend on boot).",
       "id": "cli_main_rationale_119"
     },
@@ -6559,7 +6505,7 @@
       "file_type": "rationale",
       "source_file": "backend/src/assistant/interface/cli/main.py",
       "source_location": "L184",
-      "community": 14,
+      "community": 112,
       "norm_label": "delegate a coding task to a claude code instance (glm 5.2 via ollama).",
       "id": "cli_main_rationale_184"
     },
@@ -6568,7 +6514,7 @@
       "file_type": "rationale",
       "source_file": "backend/src/assistant/interface/cli/main.py",
       "source_location": "L231",
-      "community": 14,
+      "community": 15,
       "norm_label": "chat with the orchestrator (deep agent with architect/doc/research/code subagent",
       "id": "cli_main_rationale_231"
     },
@@ -6631,7 +6577,7 @@
       "file_type": "rationale",
       "source_file": "backend/src/assistant/interface/cli/main.py",
       "source_location": "L321",
-      "community": 14,
+      "community": 15,
       "norm_label": "show events for one run.",
       "id": "cli_main_rationale_321"
     },
@@ -6784,7 +6730,7 @@
       "file_type": "code",
       "source_file": "backend/src/assistant/interface/api/research.py",
       "source_location": "L1",
-      "community": 26,
+      "community": 37,
       "norm_label": "research.py",
       "id": "backend_src_assistant_interface_api_research_py"
     },
@@ -6793,7 +6739,7 @@
       "file_type": "code",
       "source_file": "backend/src/assistant/interface/api/research.py",
       "source_location": "L24",
-      "community": 26,
+      "community": 37,
       "norm_label": "deepresearchin",
       "id": "api_research_deepresearchin"
     },
@@ -6802,7 +6748,7 @@
       "file_type": "code",
       "source_file": "backend/src/assistant/interface/api/research.py",
       "source_location": "L30",
-      "community": 26,
+      "community": 37,
       "norm_label": "deep_research_stream()",
       "id": "api_research_deep_research_stream"
     },
@@ -6811,7 +6757,7 @@
       "file_type": "code",
       "source_file": "backend/src/assistant/interface/api/research.py",
       "source_location": "L30",
-      "community": 26,
+      "community": 37,
       "norm_label": "eventsourceresponse",
       "id": "backend_src_assistant_interface_api_research_py_eventsourceresponse"
     },
@@ -6820,7 +6766,7 @@
       "file_type": "rationale",
       "source_file": "backend/src/assistant/interface/api/research.py",
       "source_location": "L1",
-      "community": 26,
+      "community": 37,
       "norm_label": "deep research endpoints: a direct claude code /deep-research one-shot.  unlike t",
       "id": "api_research_rationale_1"
     },
@@ -6829,7 +6775,7 @@
       "file_type": "rationale",
       "source_file": "backend/src/assistant/interface/api/research.py",
       "source_location": "L31",
-      "community": 26,
+      "community": 37,
       "norm_label": "run /deep-research via claude code and stream the outcome as sse.      the cc wo",
       "id": "api_research_rationale_31"
     },
@@ -7315,7 +7261,7 @@
       "file_type": "code",
       "source_file": "backend/src/assistant/interface/api/examples.py",
       "source_location": "L64",
-      "community": 42,
+      "community": 115,
       "norm_label": "uploadfile",
       "id": "uploadfile"
     },
@@ -7351,7 +7297,7 @@
       "file_type": "code",
       "source_file": "backend/src/assistant/interface/api/examples.py",
       "source_location": "L121",
-      "community": 28,
+      "community": 91,
       "norm_label": "example_content()",
       "id": "api_examples_example_content"
     },
@@ -7360,7 +7306,7 @@
       "file_type": "code",
       "source_file": "backend/src/assistant/interface/api/examples.py",
       "source_location": "L121",
-      "community": 28,
+      "community": 91,
       "norm_label": "fileresponse",
       "id": "backend_src_assistant_interface_api_examples_py_fileresponse"
     },
@@ -7486,7 +7432,7 @@
       "file_type": "code",
       "source_file": "backend/src/assistant/interface/api/diagrams.py",
       "source_location": "L1",
-      "community": 124,
+      "community": 26,
       "norm_label": "diagrams.py",
       "id": "backend_src_assistant_interface_api_diagrams_py"
     },
@@ -7495,7 +7441,7 @@
       "file_type": "code",
       "source_file": "backend/src/assistant/interface/api/diagrams.py",
       "source_location": "L16",
-      "community": 124,
+      "community": 26,
       "norm_label": "_project_repo()",
       "id": "api_diagrams_project_repo"
     },
@@ -7504,7 +7450,7 @@
       "file_type": "code",
       "source_file": "backend/src/assistant/interface/api/diagrams.py",
       "source_location": "L16",
-      "community": 124,
+      "community": 26,
       "norm_label": "uuid",
       "id": "backend_src_assistant_interface_api_diagrams_py_uuid"
     },
@@ -7513,7 +7459,7 @@
       "file_type": "code",
       "source_file": "backend/src/assistant/interface/api/diagrams.py",
       "source_location": "L16",
-      "community": 124,
+      "community": 26,
       "norm_label": "str",
       "id": "backend_src_assistant_interface_api_diagrams_py_str"
     },
@@ -7522,7 +7468,7 @@
       "file_type": "code",
       "source_file": "backend/src/assistant/interface/api/diagrams.py",
       "source_location": "L28",
-      "community": 124,
+      "community": 26,
       "norm_label": "list_diagrams()",
       "id": "api_diagrams_list_diagrams"
     },
@@ -7531,7 +7477,7 @@
       "file_type": "code",
       "source_file": "backend/src/assistant/interface/api/diagrams.py",
       "source_location": "L28",
-      "community": 124,
+      "community": 26,
       "norm_label": "any",
       "id": "backend_src_assistant_interface_api_diagrams_py_any"
     },
@@ -7540,7 +7486,7 @@
       "file_type": "code",
       "source_file": "backend/src/assistant/interface/api/diagrams.py",
       "source_location": "L40",
-      "community": 124,
+      "community": 26,
       "norm_label": "get_diagram()",
       "id": "api_diagrams_get_diagram"
     },
@@ -7549,7 +7495,7 @@
       "file_type": "code",
       "source_file": "backend/src/assistant/interface/api/diagrams.py",
       "source_location": "L40",
-      "community": 124,
+      "community": 26,
       "norm_label": "fileresponse",
       "id": "backend_src_assistant_interface_api_diagrams_py_fileresponse"
     },
@@ -7558,7 +7504,7 @@
       "file_type": "rationale",
       "source_file": "backend/src/assistant/interface/api/diagrams.py",
       "source_location": "L1",
-      "community": 124,
+      "community": 26,
       "norm_label": "serve generated .drawio diagrams for a project's repo (phase 5+ ui).",
       "id": "api_diagrams_rationale_1"
     },
@@ -7567,7 +7513,7 @@
       "file_type": "rationale",
       "source_file": "backend/src/assistant/interface/api/diagrams.py",
       "source_location": "L29",
-      "community": 124,
+      "community": 26,
       "norm_label": "list generated .drawio files (basename + modified time) under <repo>/diagrams.",
       "id": "api_diagrams_rationale_29"
     },
@@ -7576,7 +7522,7 @@
       "file_type": "rationale",
       "source_file": "backend/src/assistant/interface/api/diagrams.py",
       "source_location": "L41",
-      "community": 124,
+      "community": 26,
       "norm_label": "return the raw .drawio xml for the embed's `xml` prop.",
       "id": "api_diagrams_rationale_41"
     },
@@ -8143,7 +8089,7 @@
       "file_type": "code",
       "source_file": "backend/src/assistant/application/orchestrator/research_tools.py",
       "source_location": "L1",
-      "community": 26,
+      "community": 37,
       "norm_label": "research_tools.py",
       "id": "backend_src_assistant_application_orchestrator_research_tools_py"
     },
@@ -8152,7 +8098,7 @@
       "file_type": "code",
       "source_file": "backend/src/assistant/application/orchestrator/research_tools.py",
       "source_location": "L16",
-      "community": 26,
+      "community": 37,
       "norm_label": "search_knowledge()",
       "id": "orchestrator_research_tools_search_knowledge"
     },
@@ -8161,7 +8107,7 @@
       "file_type": "code",
       "source_file": "backend/src/assistant/application/orchestrator/research_tools.py",
       "source_location": "L16",
-      "community": 26,
+      "community": 37,
       "norm_label": "str",
       "id": "backend_src_assistant_application_orchestrator_research_tools_py_str"
     },
@@ -8170,7 +8116,7 @@
       "file_type": "code",
       "source_file": "backend/src/assistant/application/orchestrator/research_tools.py",
       "source_location": "L16",
-      "community": 26,
+      "community": 37,
       "norm_label": "runnableconfig",
       "id": "backend_src_assistant_application_orchestrator_research_tools_py_runnableconfig"
     },
@@ -8179,7 +8125,7 @@
       "file_type": "code",
       "source_file": "backend/src/assistant/application/orchestrator/research_tools.py",
       "source_location": "L28",
-      "community": 26,
+      "community": 37,
       "norm_label": "run_deep_research()",
       "id": "orchestrator_research_tools_run_deep_research"
     },
@@ -8188,7 +8134,7 @@
       "file_type": "code",
       "source_file": "backend/src/assistant/application/orchestrator/research_tools.py",
       "source_location": "L56",
-      "community": 26,
+      "community": 37,
       "norm_label": "deep_research()",
       "id": "orchestrator_research_tools_deep_research"
     },
@@ -8197,7 +8143,7 @@
       "file_type": "rationale",
       "source_file": "backend/src/assistant/application/orchestrator/research_tools.py",
       "source_location": "L1",
-      "community": 26,
+      "community": 37,
       "norm_label": "researcher tools: local knowledge base + native /deep-research via claude code.",
       "id": "orchestrator_research_tools_rationale_1"
     },
@@ -8206,7 +8152,7 @@
       "file_type": "rationale",
       "source_file": "backend/src/assistant/application/orchestrator/research_tools.py",
       "source_location": "L17",
-      "community": 26,
+      "community": 37,
       "norm_label": "search the ingested knowledge base (vault docs, standards, past research)     sc",
       "id": "orchestrator_research_tools_rationale_17"
     },
@@ -8215,7 +8161,7 @@
       "file_type": "rationale",
       "source_file": "backend/src/assistant/application/orchestrator/research_tools.py",
       "source_location": "L29",
-      "community": 26,
+      "community": 37,
       "norm_label": "run deep web research via claude code's native /deep-research skill.      synchr",
       "id": "orchestrator_research_tools_rationale_29"
     },
@@ -8224,7 +8170,7 @@
       "file_type": "rationale",
       "source_file": "backend/src/assistant/application/orchestrator/research_tools.py",
       "source_location": "L57",
-      "community": 26,
+      "community": 37,
       "norm_label": "run deep web research with citations via claude code's native /deep-research ski",
       "id": "orchestrator_research_tools_rationale_57"
     },
@@ -8323,7 +8269,7 @@
       "file_type": "code",
       "source_file": "backend/src/assistant/application/orchestrator/tools.py",
       "source_location": "L86",
-      "community": 115,
+      "community": 11,
       "norm_label": "bool",
       "id": "backend_src_assistant_application_orchestrator_tools_py_bool"
     },
@@ -8449,7 +8395,7 @@
       "file_type": "code",
       "source_file": "backend/src/assistant/application/orchestrator/context.py",
       "source_location": "L1",
-      "community": 28,
+      "community": 91,
       "norm_label": "context.py",
       "id": "backend_src_assistant_application_orchestrator_context_py"
     },
@@ -8485,7 +8431,7 @@
       "file_type": "rationale",
       "source_file": "backend/src/assistant/application/orchestrator/context.py",
       "source_location": "L1",
-      "community": 28,
+      "community": 91,
       "norm_label": "shared helper for resolving the session's fixed project from runnableconfig.  th",
       "id": "orchestrator_context_rationale_1"
     },
@@ -8917,7 +8863,7 @@
       "file_type": "code",
       "source_file": "backend/src/assistant/infrastructure/memory/models.py",
       "source_location": "L57",
-      "community": 115,
+      "community": 24,
       "norm_label": "decision",
       "id": "memory_models_decision"
     },
@@ -8971,7 +8917,7 @@
       "file_type": "code",
       "source_file": "backend/src/assistant/infrastructure/memory/models.py",
       "source_location": "L135",
-      "community": 17,
+      "community": 15,
       "norm_label": "ccrunstatus",
       "id": "memory_models_ccrunstatus"
     },
@@ -9025,7 +8971,7 @@
       "file_type": "code",
       "source_file": "backend/src/assistant/infrastructure/memory/models.py",
       "source_location": "L230",
-      "community": 42,
+      "community": 115,
       "norm_label": "example",
       "id": "memory_models_example"
     },
@@ -9052,7 +8998,7 @@
       "file_type": "rationale",
       "source_file": "backend/src/assistant/infrastructure/memory/models.py",
       "source_location": "L58",
-      "community": 115,
+      "community": 24,
       "norm_label": "adr-style decision log entry, linkable to the session that produced it.",
       "id": "memory_models_rationale_58"
     },
@@ -9106,7 +9052,7 @@
       "file_type": "rationale",
       "source_file": "backend/src/assistant/infrastructure/memory/models.py",
       "source_location": "L180",
-      "community": 42,
+      "community": 115,
       "norm_label": "what a goal means determines which handler the scheduler dispatches it to.",
       "id": "memory_models_rationale_180"
     },
@@ -9124,7 +9070,7 @@
       "file_type": "rationale",
       "source_file": "backend/src/assistant/infrastructure/memory/models.py",
       "source_location": "L231",
-      "community": 42,
+      "community": 115,
       "norm_label": "a reference example the architect/doc-writer load when creating a new     diagra",
       "id": "memory_models_rationale_231"
     },
@@ -9664,7 +9610,7 @@
       "file_type": "code",
       "source_file": "backend/src/assistant/infrastructure/cc_bridge/worker.py",
       "source_location": "L1",
-      "community": 37,
+      "community": 17,
       "norm_label": "worker.py",
       "id": "backend_src_assistant_infrastructure_cc_bridge_worker_py"
     },
@@ -9673,7 +9619,7 @@
       "file_type": "code",
       "source_file": "backend/src/assistant/infrastructure/cc_bridge/worker.py",
       "source_location": "L21",
-      "community": 37,
+      "community": 17,
       "norm_label": "ccworker",
       "id": "cc_bridge_worker_ccworker"
     },
@@ -9682,7 +9628,7 @@
       "file_type": "code",
       "source_file": "backend/src/assistant/infrastructure/cc_bridge/worker.py",
       "source_location": "L22",
-      "community": 37,
+      "community": 17,
       "norm_label": ".__init__()",
       "id": "cc_bridge_worker_ccworker_init"
     },
@@ -9691,7 +9637,7 @@
       "file_type": "code",
       "source_file": "backend/src/assistant/infrastructure/cc_bridge/worker.py",
       "source_location": "L30",
-      "community": 37,
+      "community": 17,
       "norm_label": "._run()",
       "id": "cc_bridge_worker_ccworker_run"
     },
@@ -9700,7 +9646,7 @@
       "file_type": "code",
       "source_file": "backend/src/assistant/infrastructure/cc_bridge/worker.py",
       "source_location": "L34",
-      "community": 37,
+      "community": 17,
       "norm_label": ".delegate()",
       "id": "cc_bridge_worker_ccworker_delegate"
     },
@@ -9709,7 +9655,7 @@
       "file_type": "code",
       "source_file": "backend/src/assistant/infrastructure/cc_bridge/worker.py",
       "source_location": "L34",
-      "community": 37,
+      "community": 17,
       "norm_label": "brief",
       "id": "backend_src_assistant_infrastructure_cc_bridge_worker_py_brief"
     },
@@ -9718,7 +9664,7 @@
       "file_type": "code",
       "source_file": "backend/src/assistant/infrastructure/cc_bridge/worker.py",
       "source_location": "L34",
-      "community": 37,
+      "community": 17,
       "norm_label": "uuid",
       "id": "backend_src_assistant_infrastructure_cc_bridge_worker_py_uuid"
     },
@@ -9727,7 +9673,7 @@
       "file_type": "code",
       "source_file": "backend/src/assistant/infrastructure/cc_bridge/worker.py",
       "source_location": "L34",
-      "community": 37,
+      "community": 17,
       "norm_label": "bool",
       "id": "backend_src_assistant_infrastructure_cc_bridge_worker_py_bool"
     },
@@ -9736,7 +9682,7 @@
       "file_type": "code",
       "source_file": "backend/src/assistant/infrastructure/cc_bridge/worker.py",
       "source_location": "L34",
-      "community": 37,
+      "community": 17,
       "norm_label": "float",
       "id": "backend_src_assistant_infrastructure_cc_bridge_worker_py_float"
     },
@@ -9745,7 +9691,7 @@
       "file_type": "code",
       "source_file": "backend/src/assistant/infrastructure/cc_bridge/worker.py",
       "source_location": "L34",
-      "community": 37,
+      "community": 17,
       "norm_label": "delegationoutcome",
       "id": "delegationoutcome"
     },
@@ -9754,7 +9700,7 @@
       "file_type": "code",
       "source_file": "backend/src/assistant/infrastructure/cc_bridge/worker.py",
       "source_location": "L44",
-      "community": 37,
+      "community": 17,
       "norm_label": ".run_prompt()",
       "id": "cc_bridge_worker_ccworker_run_prompt"
     },
@@ -9763,7 +9709,7 @@
       "file_type": "code",
       "source_file": "backend/src/assistant/infrastructure/cc_bridge/worker.py",
       "source_location": "L44",
-      "community": 37,
+      "community": 17,
       "norm_label": "str",
       "id": "backend_src_assistant_infrastructure_cc_bridge_worker_py_str"
     },
@@ -9772,7 +9718,7 @@
       "file_type": "code",
       "source_file": "backend/src/assistant/infrastructure/cc_bridge/worker.py",
       "source_location": "L51",
-      "community": 37,
+      "community": 17,
       "norm_label": "get_worker()",
       "id": "cc_bridge_worker_get_worker"
     },
@@ -9781,7 +9727,7 @@
       "file_type": "rationale",
       "source_file": "backend/src/assistant/infrastructure/cc_bridge/worker.py",
       "source_location": "L1",
-      "community": 37,
+      "community": 17,
       "norm_label": "dedicated worker thread for claude code sessions.  the agent sdk needs asyncio s",
       "id": "cc_bridge_worker_rationale_1"
     },
@@ -9790,7 +9736,7 @@
       "file_type": "rationale",
       "source_file": "backend/src/assistant/infrastructure/cc_bridge/worker.py",
       "source_location": "L36",
-      "community": 37,
+      "community": 17,
       "norm_label": "run a delegation on the worker loop; blocks the calling thread.",
       "id": "cc_bridge_worker_rationale_36"
     },
@@ -9799,7 +9745,7 @@
       "file_type": "rationale",
       "source_file": "backend/src/assistant/infrastructure/cc_bridge/worker.py",
       "source_location": "L45",
-      "community": 37,
+      "community": 17,
       "norm_label": "one-shot cc session (e.g. /deep-research); blocks the calling thread.",
       "id": "cc_bridge_worker_rationale_45"
     },
@@ -9808,7 +9754,7 @@
       "file_type": "code",
       "source_file": "backend/src/assistant/infrastructure/cc_bridge/runner.py",
       "source_location": "L1",
-      "community": 37,
+      "community": 17,
       "norm_label": "runner.py",
       "id": "backend_src_assistant_infrastructure_cc_bridge_runner_py"
     },
@@ -9817,7 +9763,7 @@
       "file_type": "code",
       "source_file": "backend/src/assistant/infrastructure/cc_bridge/runner.py",
       "source_location": "L61",
-      "community": 37,
+      "community": 17,
       "norm_label": "delegationoutcome",
       "id": "cc_bridge_runner_delegationoutcome"
     },
@@ -9826,7 +9772,7 @@
       "file_type": "code",
       "source_file": "backend/src/assistant/infrastructure/cc_bridge/runner.py",
       "source_location": "L69",
-      "community": 37,
+      "community": 17,
       "norm_label": "delegationrunner",
       "id": "cc_bridge_runner_delegationrunner"
     },
@@ -9835,7 +9781,7 @@
       "file_type": "code",
       "source_file": "backend/src/assistant/infrastructure/cc_bridge/runner.py",
       "source_location": "L70",
-      "community": 112,
+      "community": 17,
       "norm_label": ".__init__()",
       "id": "cc_bridge_runner_delegationrunner_init"
     },
@@ -9898,7 +9844,7 @@
       "file_type": "code",
       "source_file": "backend/src/assistant/infrastructure/cc_bridge/runner.py",
       "source_location": "L97",
-      "community": 17,
+      "community": 15,
       "norm_label": "ccrunstatus",
       "id": "ccrunstatus"
     },
@@ -9907,7 +9853,7 @@
       "file_type": "code",
       "source_file": "backend/src/assistant/infrastructure/cc_bridge/runner.py",
       "source_location": "L97",
-      "community": 17,
+      "community": 15,
       "norm_label": "int",
       "id": "backend_src_assistant_infrastructure_cc_bridge_runner_py_int"
     },
@@ -9934,7 +9880,7 @@
       "file_type": "code",
       "source_file": "backend/src/assistant/infrastructure/cc_bridge/runner.py",
       "source_location": "L165",
-      "community": 112,
+      "community": 17,
       "norm_label": "._plugins()",
       "id": "cc_bridge_runner_delegationrunner_plugins"
     },
@@ -10033,7 +9979,7 @@
       "file_type": "rationale",
       "source_file": "backend/src/assistant/infrastructure/cc_bridge/runner.py",
       "source_location": "L1",
-      "community": 37,
+      "community": 17,
       "norm_label": "delegation runner: brief -> claude code session (on glm 5.2 via ollama) -> revie",
       "id": "cc_bridge_runner_rationale_1"
     },
@@ -10060,7 +10006,7 @@
       "file_type": "rationale",
       "source_file": "backend/src/assistant/infrastructure/cc_bridge/runner.py",
       "source_location": "L166",
-      "community": 112,
+      "community": 17,
       "norm_label": "local plugins for delegated sessions (ecc, frontend-design, ...).          setti",
       "id": "cc_bridge_runner_rationale_166"
     },
@@ -10092,11 +10038,65 @@
       "id": "cc_bridge_runner_rationale_292"
     },
     {
+      "label": "subagents.py",
+      "file_type": "code",
+      "source_file": "backend/src/assistant/infrastructure/cc_bridge/subagents.py",
+      "source_location": "L1",
+      "community": 17,
+      "norm_label": "subagents.py",
+      "id": "backend_src_assistant_infrastructure_cc_bridge_subagents_py"
+    },
+    {
+      "label": "build_subagents()",
+      "file_type": "code",
+      "source_file": "backend/src/assistant/infrastructure/cc_bridge/subagents.py",
+      "source_location": "L60",
+      "community": 17,
+      "norm_label": "build_subagents()",
+      "id": "cc_bridge_subagents_build_subagents"
+    },
+    {
+      "label": "str",
+      "file_type": "code",
+      "source_file": "backend/src/assistant/infrastructure/cc_bridge/subagents.py",
+      "source_location": "L60",
+      "community": 17,
+      "norm_label": "str",
+      "id": "backend_src_assistant_infrastructure_cc_bridge_subagents_py_str"
+    },
+    {
+      "label": "AgentDefinition",
+      "file_type": "code",
+      "source_file": "backend/src/assistant/infrastructure/cc_bridge/subagents.py",
+      "source_location": "L60",
+      "community": 17,
+      "norm_label": "agentdefinition",
+      "id": "agentdefinition"
+    },
+    {
+      "label": "Native Claude Code subagents handed to every delegated CC session.  These are *C",
+      "file_type": "rationale",
+      "source_file": "backend/src/assistant/infrastructure/cc_bridge/subagents.py",
+      "source_location": "L1",
+      "community": 17,
+      "norm_label": "native claude code subagents handed to every delegated cc session.  these are *c",
+      "id": "cc_bridge_subagents_rationale_1"
+    },
+    {
+      "label": "Return the CC subagent registry passed as `agents=` to ClaudeAgentOptions.",
+      "file_type": "rationale",
+      "source_file": "backend/src/assistant/infrastructure/cc_bridge/subagents.py",
+      "source_location": "L61",
+      "community": 17,
+      "norm_label": "return the cc subagent registry passed as `agents=` to claudeagentoptions.",
+      "id": "cc_bridge_subagents_rationale_61"
+    },
+    {
       "label": "brief.py",
       "file_type": "code",
       "source_file": "backend/src/assistant/infrastructure/cc_bridge/brief.py",
       "source_location": "L1",
-      "community": 142,
+      "community": 17,
       "norm_label": "brief.py",
       "id": "backend_src_assistant_infrastructure_cc_bridge_brief_py"
     },
@@ -10105,7 +10105,7 @@
       "file_type": "code",
       "source_file": "backend/src/assistant/infrastructure/cc_bridge/brief.py",
       "source_location": "L16",
-      "community": 37,
+      "community": 17,
       "norm_label": "brief",
       "id": "cc_bridge_brief_brief"
     },
@@ -10114,7 +10114,7 @@
       "file_type": "code",
       "source_file": "backend/src/assistant/infrastructure/cc_bridge/brief.py",
       "source_location": "L26",
-      "community": 142,
+      "community": 17,
       "norm_label": ".to_prompt()",
       "id": "cc_bridge_brief_brief_to_prompt"
     },
@@ -10123,7 +10123,7 @@
       "file_type": "code",
       "source_file": "backend/src/assistant/infrastructure/cc_bridge/brief.py",
       "source_location": "L26",
-      "community": 142,
+      "community": 17,
       "norm_label": "str",
       "id": "backend_src_assistant_infrastructure_cc_bridge_brief_py_str"
     },
@@ -10132,7 +10132,7 @@
       "file_type": "code",
       "source_file": "backend/src/assistant/infrastructure/cc_bridge/brief.py",
       "source_location": "L48",
-      "community": 142,
+      "community": 17,
       "norm_label": "fallback_working_agreement()",
       "id": "cc_bridge_brief_fallback_working_agreement"
     },
@@ -10141,7 +10141,7 @@
       "file_type": "rationale",
       "source_file": "backend/src/assistant/infrastructure/cc_bridge/brief.py",
       "source_location": "L1",
-      "community": 142,
+      "community": 17,
       "norm_label": "the brief: the contract between the orchestrator and a claude code instance.  th",
       "id": "cc_bridge_brief_rationale_1"
     },
@@ -10159,7 +10159,7 @@
       "file_type": "code",
       "source_file": "backend/src/assistant/infrastructure/cc_bridge/lifecycle_hooks.py",
       "source_location": "L1",
-      "community": 15,
+      "community": 124,
       "norm_label": "lifecycle_hooks.py",
       "id": "backend_src_assistant_infrastructure_cc_bridge_lifecycle_hooks_py"
     },
@@ -10168,7 +10168,7 @@
       "file_type": "code",
       "source_file": "backend/src/assistant/infrastructure/cc_bridge/lifecycle_hooks.py",
       "source_location": "L28",
-      "community": 15,
+      "community": 124,
       "norm_label": "_persist_event()",
       "id": "cc_bridge_lifecycle_hooks_persist_event"
     },
@@ -10177,7 +10177,7 @@
       "file_type": "code",
       "source_file": "backend/src/assistant/infrastructure/cc_bridge/lifecycle_hooks.py",
       "source_location": "L28",
-      "community": 15,
+      "community": 124,
       "norm_label": "uuid",
       "id": "backend_src_assistant_infrastructure_cc_bridge_lifecycle_hooks_py_uuid"
     },
@@ -10186,7 +10186,7 @@
       "file_type": "code",
       "source_file": "backend/src/assistant/infrastructure/cc_bridge/lifecycle_hooks.py",
       "source_location": "L28",
-      "community": 15,
+      "community": 124,
       "norm_label": "str",
       "id": "backend_src_assistant_infrastructure_cc_bridge_lifecycle_hooks_py_str"
     },
@@ -10195,7 +10195,7 @@
       "file_type": "code",
       "source_file": "backend/src/assistant/infrastructure/cc_bridge/lifecycle_hooks.py",
       "source_location": "L38",
-      "community": 15,
+      "community": 124,
       "norm_label": "build_lifecycle_hooks()",
       "id": "cc_bridge_lifecycle_hooks_build_lifecycle_hooks"
     },
@@ -10204,7 +10204,7 @@
       "file_type": "code",
       "source_file": "backend/src/assistant/infrastructure/cc_bridge/lifecycle_hooks.py",
       "source_location": "L38",
-      "community": 15,
+      "community": 124,
       "norm_label": "hookmatcher",
       "id": "hookmatcher"
     },
@@ -10213,7 +10213,7 @@
       "file_type": "rationale",
       "source_file": "backend/src/assistant/infrastructure/cc_bridge/lifecycle_hooks.py",
       "source_location": "L1",
-      "community": 15,
+      "community": 124,
       "norm_label": "native cc lifecycle hooks -> ccrunevent rows (+ permissionrequest -> approval).",
       "id": "cc_bridge_lifecycle_hooks_rationale_1"
     },
@@ -10222,7 +10222,7 @@
       "file_type": "rationale",
       "source_file": "backend/src/assistant/infrastructure/cc_bridge/lifecycle_hooks.py",
       "source_location": "L41",
-      "community": 15,
+      "community": 124,
       "norm_label": "hooks dict for claudeagentoptions; closures bind this run's id.",
       "id": "cc_bridge_lifecycle_hooks_rationale_41"
     },
@@ -18115,7 +18115,7 @@
       "file_type": "code",
       "source_file": "backend/src/assistant/interface/api/examples.py",
       "source_location": "L53",
-      "community": 28,
+      "community": 91,
       "norm_label": "uuid",
       "id": "uuid"
     },
@@ -18133,7 +18133,7 @@
       "file_type": "code",
       "source_file": "backend/src/assistant/interface/api/examples.py",
       "source_location": "L121",
-      "community": 28,
+      "community": 91,
       "norm_label": "fileresponse",
       "id": "fileresponse"
     },
@@ -18169,7 +18169,7 @@
       "file_type": "rationale",
       "source_file": "backend/src/assistant/interface/cli/main.py",
       "source_location": "L49",
-      "community": 172,
+      "community": 14,
       "norm_label": "idempotently seed built-in project presets (run by the backend on boot).",
       "id": "cli_main_rationale_49"
     },
@@ -18178,7 +18178,7 @@
       "file_type": "rationale",
       "source_file": "backend/src/assistant/interface/cli/main.py",
       "source_location": "L84",
-      "community": 14,
+      "community": 112,
       "norm_label": "delegate a coding task to a claude code instance (glm 5.2 via ollama).",
       "id": "cli_main_rationale_84"
     },
@@ -18187,7 +18187,7 @@
       "file_type": "rationale",
       "source_file": "backend/src/assistant/interface/cli/main.py",
       "source_location": "L131",
-      "community": 14,
+      "community": 15,
       "norm_label": "chat with the orchestrator (deep agent with architect/doc/research/code subagent",
       "id": "cli_main_rationale_131"
     },
@@ -18250,7 +18250,7 @@
       "file_type": "rationale",
       "source_file": "backend/src/assistant/interface/cli/main.py",
       "source_location": "L221",
-      "community": 14,
+      "community": 15,
       "norm_label": "show events for one run.",
       "id": "cli_main_rationale_221"
     },
@@ -18268,7 +18268,7 @@
       "file_type": "code",
       "source_file": "backend/src/assistant/interface/mcp/memory_mcp.py",
       "source_location": "L41",
-      "community": 172,
+      "community": 14,
       "norm_label": "project",
       "id": "project"
     },
@@ -18879,7 +18879,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 112,
+      "community": 17,
       "norm_label": "ccworker.delegate",
       "id": "cc_bridge_worker_delegate"
     },
@@ -18892,7 +18892,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 112,
+      "community": 17,
       "norm_label": "ccworker.run_prompt",
       "id": "cc_bridge_worker_run_prompt"
     },
@@ -18905,7 +18905,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 112,
+      "community": 17,
       "norm_label": "delegationrunner._create_run",
       "id": "cc_bridge_runner_create_run"
     },
@@ -18918,7 +18918,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 112,
+      "community": 17,
       "norm_label": "delegationrunner._add_event",
       "id": "cc_bridge_runner_add_event"
     },
@@ -18931,7 +18931,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 112,
+      "community": 17,
       "norm_label": "delegationrunner._stage_skills",
       "id": "cc_bridge_runner_stage_skills"
     },
@@ -18944,7 +18944,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 112,
+      "community": 17,
       "norm_label": "delegationrunner._stage_output_style",
       "id": "cc_bridge_runner_stage_output_style"
     },
@@ -18957,7 +18957,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 112,
+      "community": 17,
       "norm_label": "delegationrunner._plugins",
       "id": "cc_bridge_runner_plugins"
     },
@@ -18970,7 +18970,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 112,
+      "community": 17,
       "norm_label": "delegationrunner._options",
       "id": "cc_bridge_runner_options"
     },
@@ -18983,7 +18983,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 112,
+      "community": 17,
       "norm_label": "delegationrunner._prompt_for",
       "id": "cc_bridge_runner_prompt_for"
     },
@@ -18996,7 +18996,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 112,
+      "community": 17,
       "norm_label": "delegationrunner._drive",
       "id": "cc_bridge_runner_drive"
     },
@@ -19009,7 +19009,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 112,
+      "community": 17,
       "norm_label": "delegationrunner.run",
       "id": "cc_bridge_runner_run"
     },
@@ -19022,7 +19022,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 112,
+      "community": 17,
       "norm_label": "delegationrunner._parse_result",
       "id": "cc_bridge_runner_parse_result"
     },
@@ -19035,7 +19035,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 112,
+      "community": 17,
       "norm_label": "brief.to_prompt",
       "id": "cc_bridge_brief_to_prompt"
     },
@@ -19048,7 +19048,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 14,
+      "community": 112,
       "norm_label": "conftest.py (windows event loop policy)",
       "id": "tests_conftest"
     },
@@ -19139,7 +19139,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 14,
+      "community": 112,
       "norm_label": "krisiserver.md (remote vps deployment target doc)",
       "id": "docs_krisiserver"
     },
@@ -19152,7 +19152,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 14,
+      "community": 112,
       "norm_label": "deploy.yml ci/cd (github actions auto-deploy)",
       "id": "docs_krisiserver_deploy_workflow"
     },
@@ -19166,7 +19166,7 @@
       "author": null,
       "contributor": null,
       "rationale": "OpenHands was trialled on krisiserver and removed (2026-07-10) because it couldn't act as the Flow Manager: it can't spawn real Claude Code instances, whereas the bitch-stewie orchestrator does this through the CC SDK.",
-      "community": 14,
+      "community": 112,
       "norm_label": "openhands trial and removal",
       "id": "docs_krisiserver_openhands_removal"
     },
@@ -19179,7 +19179,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 14,
+      "community": 112,
       "norm_label": "cc_bridge (claude code subprocess bridge subsystem)",
       "id": "cc_bridge_module"
     },
@@ -19409,6 +19409,26 @@
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
+      "source_file": "backend/scripts/test_daily_report_e2e.py",
+      "source_location": "L23",
+      "weight": 1.0,
+      "source": "backend_scripts_test_daily_report_e2e_py",
+      "target": "scripts_test_daily_report_e2e_main",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/scripts/test_daily_report_e2e.py",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "scripts_test_daily_report_e2e_rationale_1",
+      "target": "backend_scripts_test_daily_report_e2e_py",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
       "source_file": "backend/src/assistant/application/orchestrator/daily_report.py",
       "source_location": "L86",
       "weight": 1.0,
@@ -19485,8 +19505,96 @@
       "source_location": "L53",
       "weight": 1.0,
       "source": "orchestrator_daily_report_today_str",
-      "target": "backend_src_assistant_application_orchestrator_daily_report_py_str",
+      "target": "str",
       "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "context": "generic_arg",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/src/assistant/interface/api/examples.py",
+      "source_location": "L137",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "api_examples_delete_example",
+      "target": "str"
+    },
+    {
+      "relation": "references",
+      "context": "return_type",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/src/assistant/interface/api/examples.py",
+      "source_location": "L32",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "api_examples_examples_root",
+      "target": "str"
+    },
+    {
+      "relation": "references",
+      "context": "generic_arg",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/src/assistant/interface/api/examples.py",
+      "source_location": "L106",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "api_examples_list_examples",
+      "target": "str"
+    },
+    {
+      "relation": "references",
+      "context": "parameter_type",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/src/assistant/interface/api/examples.py",
+      "source_location": "L96",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "api_examples_parse_project_id",
+      "target": "str"
+    },
+    {
+      "relation": "references",
+      "context": "parameter_type",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/src/assistant/interface/api/examples.py",
+      "source_location": "L53",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "api_examples_resolve_project_id",
+      "target": "str"
+    },
+    {
+      "relation": "references",
+      "context": "return_type",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/src/assistant/interface/api/examples.py",
+      "source_location": "L28",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "api_examples_slug",
+      "target": "str"
+    },
+    {
+      "relation": "references",
+      "context": "return_type",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/src/assistant/interface/api/examples.py",
+      "source_location": "L39",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "api_examples_storage_dir",
+      "target": "str"
+    },
+    {
+      "relation": "references",
+      "context": "generic_arg",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/src/assistant/interface/api/examples.py",
+      "source_location": "L64",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "api_examples_upload",
+      "target": "str"
     },
     {
       "relation": "references",
@@ -19496,7 +19604,7 @@
       "source_location": "L87",
       "weight": 1.0,
       "source": "orchestrator_daily_report_build_composer_prompt",
-      "target": "backend_src_assistant_application_orchestrator_daily_report_py_str",
+      "target": "str",
       "confidence_score": 1.0
     },
     {
@@ -19507,7 +19615,7 @@
       "source_location": "L57",
       "weight": 1.0,
       "source": "orchestrator_daily_report_build_conductor_prompt",
-      "target": "backend_src_assistant_application_orchestrator_daily_report_py_str",
+      "target": "str",
       "confidence_score": 1.0
     },
     {
@@ -19518,7 +19626,7 @@
       "source_location": "L104",
       "weight": 1.0,
       "source": "orchestrator_daily_report_project_name_for",
-      "target": "backend_src_assistant_application_orchestrator_daily_report_py_str",
+      "target": "str",
       "confidence_score": 1.0
     },
     {
@@ -19528,9 +19636,9 @@
       "source_file": "backend/src/assistant/application/orchestrator/daily_report.py",
       "source_location": "L57",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "orchestrator_daily_report_build_conductor_prompt",
-      "target": "path"
+      "target": "path",
+      "confidence_score": 1.0
     },
     {
       "relation": "calls",
@@ -19561,9 +19669,9 @@
       "source_file": "backend/src/assistant/application/orchestrator/daily_report.py",
       "source_location": "L87",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "orchestrator_daily_report_build_composer_prompt",
-      "target": "path"
+      "target": "path",
+      "confidence_score": 1.0
     },
     {
       "relation": "calls",
@@ -19572,9 +19680,9 @@
       "source_file": "backend/src/assistant/application/orchestrator/daily_report.py",
       "source_location": "L126",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "orchestrator_daily_report_run_research_pipeline",
-      "target": "path"
+      "target": "path",
+      "confidence_score": 1.0
     },
     {
       "relation": "calls",
@@ -19615,9 +19723,9 @@
       "source_file": "backend/src/assistant/application/orchestrator/daily_report.py",
       "source_location": "L104",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "orchestrator_daily_report_project_name_for",
-      "target": "goal"
+      "target": "goal",
+      "confidence_score": 1.0
     },
     {
       "relation": "calls",
@@ -19636,9 +19744,9 @@
       "source_file": "backend/src/assistant/application/orchestrator/daily_report.py",
       "source_location": "L105",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "orchestrator_daily_report_rationale_105",
-      "target": "orchestrator_daily_report_project_name_for"
+      "target": "orchestrator_daily_report_project_name_for",
+      "confidence_score": 1.0
     },
     {
       "relation": "calls",
@@ -19658,9 +19766,9 @@
       "source_file": "backend/src/assistant/application/orchestrator/daily_report.py",
       "source_location": "L117",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "orchestrator_daily_report_run_research_pipeline",
-      "target": "goal"
+      "target": "goal",
+      "confidence_score": 1.0
     },
     {
       "relation": "rationale_for",
@@ -19668,9 +19776,9 @@
       "source_file": "backend/src/assistant/application/orchestrator/daily_report.py",
       "source_location": "L118",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "orchestrator_daily_report_rationale_118",
-      "target": "orchestrator_daily_report_run_research_pipeline"
+      "target": "orchestrator_daily_report_run_research_pipeline",
+      "confidence_score": 1.0
     },
     {
       "relation": "calls",
@@ -19704,109 +19812,6 @@
       "weight": 1.0,
       "source": "orchestrator_daily_report_run_research_pipeline",
       "target": "shared_config_get_settings"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "backend/src/assistant/infrastructure/cc_bridge/subagents.py",
-      "source_location": "L60",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "backend_src_assistant_infrastructure_cc_bridge_subagents_py",
-      "target": "cc_bridge_subagents_build_subagents"
-    },
-    {
-      "relation": "rationale_for",
-      "confidence": "EXTRACTED",
-      "source_file": "backend/src/assistant/infrastructure/cc_bridge/subagents.py",
-      "source_location": "L1",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "cc_bridge_subagents_rationale_1",
-      "target": "backend_src_assistant_infrastructure_cc_bridge_subagents_py"
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "INFERRED",
-      "confidence_score": 0.8,
-      "source_file": "backend/src/assistant/infrastructure/cc_bridge/runner.py",
-      "source_location": "L216",
-      "weight": 1.0,
-      "source": "cc_bridge_runner_delegationrunner_options",
-      "target": "cc_bridge_subagents_build_subagents"
-    },
-    {
-      "relation": "calls",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "backend/src/assistant/infrastructure/cc_bridge/runner.py",
-      "source_location": null,
-      "weight": 1.0,
-      "source": "cc_bridge_runner_options",
-      "target": "cc_bridge_subagents_build_subagents"
-    },
-    {
-      "relation": "references",
-      "context": "generic_arg",
-      "confidence": "EXTRACTED",
-      "source_file": "backend/src/assistant/infrastructure/cc_bridge/subagents.py",
-      "source_location": "L60",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "cc_bridge_subagents_build_subagents",
-      "target": "agentdefinition"
-    },
-    {
-      "relation": "references",
-      "context": "generic_arg",
-      "confidence": "EXTRACTED",
-      "source_file": "backend/src/assistant/infrastructure/cc_bridge/subagents.py",
-      "source_location": "L60",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "cc_bridge_subagents_build_subagents",
-      "target": "backend_src_assistant_infrastructure_cc_bridge_subagents_py_str"
-    },
-    {
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "backend/src/assistant/infrastructure/cc_bridge/subagents.py",
-      "source_location": null,
-      "weight": 1.0,
-      "source": "cc_bridge_subagents_build_subagents",
-      "target": "orchestrator_factory_build_orchestrator"
-    },
-    {
-      "relation": "rationale_for",
-      "confidence": "EXTRACTED",
-      "source_file": "backend/src/assistant/infrastructure/cc_bridge/subagents.py",
-      "source_location": "L63",
-      "weight": 1.0,
-      "source": "cc_bridge_subagents_rationale_63",
-      "target": "cc_bridge_subagents_build_subagents",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "backend/scripts/test_daily_report_e2e.py",
-      "source_location": "L23",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "backend_scripts_test_daily_report_e2e_py",
-      "target": "scripts_test_daily_report_e2e_main"
-    },
-    {
-      "relation": "rationale_for",
-      "confidence": "EXTRACTED",
-      "source_file": "backend/scripts/test_daily_report_e2e.py",
-      "source_location": "L1",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "scripts_test_daily_report_e2e_rationale_1",
-      "target": "backend_scripts_test_daily_report_e2e_py"
     },
     {
       "relation": "contains",
@@ -37602,6 +37607,16 @@
     },
     {
       "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "backend/src/assistant/infrastructure/cc_bridge/subagents.py",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "cc_bridge_subagents_build_subagents",
+      "target": "orchestrator_factory_build_orchestrator"
+    },
+    {
+      "relation": "references",
       "context": "return_type",
       "confidence": "EXTRACTED",
       "source_file": "backend/src/assistant/application/orchestrator/factory.py",
@@ -41763,6 +41778,17 @@
       "target": "cc_bridge_lifecycle_hooks_build_lifecycle_hooks"
     },
     {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "backend/src/assistant/infrastructure/cc_bridge/runner.py",
+      "source_location": "L216",
+      "weight": 1.0,
+      "source": "cc_bridge_runner_delegationrunner_options",
+      "target": "cc_bridge_subagents_build_subagents"
+    },
+    {
       "relation": "references",
       "context": "return_type",
       "confidence": "EXTRACTED",
@@ -42024,6 +42050,68 @@
       "confidence_score": 1.0,
       "source": "cc_bridge_runner_run",
       "target": "cc_bridge_runner_delegationrunner_parse_result"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/src/assistant/infrastructure/cc_bridge/subagents.py",
+      "source_location": "L60",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "backend_src_assistant_infrastructure_cc_bridge_subagents_py",
+      "target": "cc_bridge_subagents_build_subagents"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/src/assistant/infrastructure/cc_bridge/subagents.py",
+      "source_location": "L1",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "cc_bridge_subagents_rationale_1",
+      "target": "backend_src_assistant_infrastructure_cc_bridge_subagents_py"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "backend/src/assistant/infrastructure/cc_bridge/runner.py",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "cc_bridge_runner_options",
+      "target": "cc_bridge_subagents_build_subagents"
+    },
+    {
+      "relation": "references",
+      "context": "generic_arg",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/src/assistant/infrastructure/cc_bridge/subagents.py",
+      "source_location": "L60",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "cc_bridge_subagents_build_subagents",
+      "target": "agentdefinition"
+    },
+    {
+      "relation": "references",
+      "context": "generic_arg",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/src/assistant/infrastructure/cc_bridge/subagents.py",
+      "source_location": "L60",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "cc_bridge_subagents_build_subagents",
+      "target": "backend_src_assistant_infrastructure_cc_bridge_subagents_py_str"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/src/assistant/infrastructure/cc_bridge/subagents.py",
+      "source_location": "L61",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "cc_bridge_subagents_rationale_61",
+      "target": "cc_bridge_subagents_build_subagents"
     },
     {
       "relation": "contains",
@@ -52448,5 +52536,5 @@
       "source_file": "research_subjects/CLAUDE.md"
     }
   ],
-  "built_at_commit": "c166198a396b87d121ce0dbf0edb099f79c0914e"
+  "built_at_commit": "75c5299cb3abcb9557577dd9cc2500528c3621af"
 }
