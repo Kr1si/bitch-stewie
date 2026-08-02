@@ -18,7 +18,7 @@ from claude_agent_sdk import AgentDefinition
 # delegated session can't accidentally escalate a narrow role into full file
 # mutation. The `code-delegate` keeps the full coding toolset.
 
-_RESEARCHER_TOOLS = ["Read", "Grep", "Glob", "WebFetch", "WebSearch"]
+_RESEARCHER_TOOLS = ["Read", "Grep", "Glob", "Write", "WebFetch", "WebSearch"]
 _ARCHITECT_TOOLS = ["Read", "Grep", "Glob", "Edit", "Write"]
 _DOC_WRITER_TOOLS = ["Read", "Grep", "Glob", "Write", "Edit"]
 _CODE_DELEGATE_TOOLS = [
@@ -30,9 +30,11 @@ _MCP = ["assistant-memory"]
 
 _RESEARCHER_PROMPT = (
     "You are the researcher subagent. Investigate questions by reading code, "
-    "searching the repo, and fetching the web. Return a concise, cited summary "
-    "(file:line references). Do NOT edit files. Record any decision worth "
-    "remembering via the assistant-memory `record_decision` tool."
+    "searching the repo, and fetching the web. Produce a concise, cited report "
+    "(file:line references) and WRITE it to the exact file path given in the "
+    "instruction — do not return it as text. Overwrite if the file exists. "
+    "Record any decision worth remembering via the assistant-memory "
+    "`record_decision` tool."
 )
 
 _ARCHITECT_PROMPT = (
@@ -63,7 +65,7 @@ def build_subagents() -> dict[str, AgentDefinition]:
         "researcher": AgentDefinition(
             description=(
                 "Investigate questions by reading code and the web; "
-                "return cited summaries. No edits."
+                "write a cited report to a given file path."
             ),
             prompt=_RESEARCHER_PROMPT,
             tools=_RESEARCHER_TOOLS,
