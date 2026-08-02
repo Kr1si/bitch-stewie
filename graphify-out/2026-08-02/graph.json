@@ -289,211 +289,166 @@
   },
   "nodes": [
     {
-      "label": "CLAUDE.md",
-      "file_type": "document",
-      "source_file": "CLAUDE.md",
-      "source_location": "L1",
-      "id": "claude_md",
-      "community": 88,
-      "norm_label": "claude.md"
-    },
-    {
-      "label": "bitch-stewie \u2014 project rules",
-      "file_type": "document",
-      "source_file": "CLAUDE.md",
-      "source_location": "L1",
-      "id": "bitch_stewie_claude_bitch_stewie_project_rules",
-      "community": 88,
-      "norm_label": "bitch-stewie \u2014 project rules"
-    },
-    {
-      "label": "graphify",
-      "file_type": "document",
-      "source_file": "CLAUDE.md",
-      "source_location": "L10",
-      "id": "bitch_stewie_claude_graphify",
-      "community": 88,
-      "norm_label": "graphify"
-    },
-    {
-      "label": "Skills",
-      "file_type": "document",
-      "source_file": "CLAUDE.md",
-      "source_location": "L20",
-      "id": "bitch_stewie_claude_skills",
-      "community": 88,
-      "norm_label": "skills"
-    },
-    {
-      "label": "Working style \u2014 fan out & deep research",
-      "file_type": "document",
-      "source_file": "CLAUDE.md",
-      "source_location": "L24",
-      "id": "bitch_stewie_claude_working_style_fan_out_deep_research",
-      "community": 88,
-      "norm_label": "working style \u2014 fan out & deep research"
-    },
-    {
       "label": "daily_report.py",
       "file_type": "code",
       "source_file": "backend/src/assistant/application/orchestrator/daily_report.py",
       "source_location": "L1",
+      "id": "backend_src_assistant_application_orchestrator_daily_report_py",
       "community": 114,
-      "norm_label": "daily_report.py",
-      "id": "backend_src_assistant_application_orchestrator_daily_report_py"
+      "norm_label": "daily_report.py"
     },
     {
       "label": "_today_str()",
       "file_type": "code",
       "source_file": "backend/src/assistant/application/orchestrator/daily_report.py",
       "source_location": "L53",
+      "id": "orchestrator_daily_report_today_str",
       "community": 114,
-      "norm_label": "_today_str()",
-      "id": "orchestrator_daily_report_today_str"
+      "norm_label": "_today_str()"
     },
     {
       "label": "str",
       "file_type": "code",
       "source_file": "backend/src/assistant/application/orchestrator/daily_report.py",
       "source_location": "L53",
+      "id": "backend_src_assistant_application_orchestrator_daily_report_py_str",
       "community": 114,
-      "norm_label": "str",
-      "id": "backend_src_assistant_application_orchestrator_daily_report_py_str"
+      "norm_label": "str"
     },
     {
       "label": "_build_conductor_prompt()",
       "file_type": "code",
       "source_file": "backend/src/assistant/application/orchestrator/daily_report.py",
       "source_location": "L57",
+      "id": "orchestrator_daily_report_build_conductor_prompt",
       "community": 114,
-      "norm_label": "_build_conductor_prompt()",
-      "id": "orchestrator_daily_report_build_conductor_prompt"
+      "norm_label": "_build_conductor_prompt()"
     },
     {
       "label": "Path",
       "file_type": "code",
       "source_file": "backend/src/assistant/application/orchestrator/daily_report.py",
       "source_location": "L57",
+      "id": "path",
       "community": 114,
-      "norm_label": "path",
-      "id": "path"
+      "norm_label": "path"
     },
     {
       "label": "_build_composer_prompt()",
       "file_type": "code",
       "source_file": "backend/src/assistant/application/orchestrator/daily_report.py",
       "source_location": "L87",
+      "id": "orchestrator_daily_report_build_composer_prompt",
       "community": 114,
-      "norm_label": "_build_composer_prompt()",
-      "id": "orchestrator_daily_report_build_composer_prompt"
+      "norm_label": "_build_composer_prompt()"
     },
     {
       "label": "_project_name_for()",
       "file_type": "code",
       "source_file": "backend/src/assistant/application/orchestrator/daily_report.py",
       "source_location": "L104",
+      "id": "orchestrator_daily_report_project_name_for",
       "community": 114,
-      "norm_label": "_project_name_for()",
-      "id": "orchestrator_daily_report_project_name_for"
+      "norm_label": "_project_name_for()"
     },
     {
       "label": "Goal",
       "file_type": "code",
       "source_file": "backend/src/assistant/application/orchestrator/daily_report.py",
       "source_location": "L104",
+      "id": "goal",
       "community": 114,
-      "norm_label": "goal",
-      "id": "goal"
+      "norm_label": "goal"
     },
     {
       "label": "run_research_pipeline()",
       "file_type": "code",
       "source_file": "backend/src/assistant/application/orchestrator/daily_report.py",
       "source_location": "L117",
+      "id": "orchestrator_daily_report_run_research_pipeline",
       "community": 114,
-      "norm_label": "run_research_pipeline()",
-      "id": "orchestrator_daily_report_run_research_pipeline"
+      "norm_label": "run_research_pipeline()"
     },
     {
       "label": "Daily AI-intelligence report pipeline: conductor -> researchers -> composer.  Sp",
       "file_type": "rationale",
       "source_file": "backend/src/assistant/application/orchestrator/daily_report.py",
       "source_location": "L1",
+      "id": "orchestrator_daily_report_rationale_1",
       "community": 114,
-      "norm_label": "daily ai-intelligence report pipeline: conductor -> researchers -> composer.  sp",
-      "id": "orchestrator_daily_report_rationale_1"
+      "norm_label": "daily ai-intelligence report pipeline: conductor -> researchers -> composer.  sp"
     },
     {
       "label": "Resolve the KB collection name for a goal's project, if any.",
       "file_type": "rationale",
       "source_file": "backend/src/assistant/application/orchestrator/daily_report.py",
       "source_location": "L105",
+      "id": "orchestrator_daily_report_rationale_105",
       "community": 114,
-      "norm_label": "resolve the kb collection name for a goal's project, if any.",
-      "id": "orchestrator_daily_report_rationale_105"
+      "norm_label": "resolve the kb collection name for a goal's project, if any."
     },
     {
       "label": "Run conductor -> composer for one research goal and ingest the outputs.      Lon",
       "file_type": "rationale",
       "source_file": "backend/src/assistant/application/orchestrator/daily_report.py",
       "source_location": "L118",
+      "id": "orchestrator_daily_report_rationale_118",
       "community": 114,
-      "norm_label": "run conductor -> composer for one research goal and ingest the outputs.      lon",
-      "id": "orchestrator_daily_report_rationale_118"
+      "norm_label": "run conductor -> composer for one research goal and ingest the outputs.      lon"
     },
     {
       "label": "subagents.py",
       "file_type": "code",
       "source_file": "backend/src/assistant/infrastructure/cc_bridge/subagents.py",
       "source_location": "L1",
+      "id": "backend_src_assistant_infrastructure_cc_bridge_subagents_py",
       "community": 130,
-      "norm_label": "subagents.py",
-      "id": "backend_src_assistant_infrastructure_cc_bridge_subagents_py"
+      "norm_label": "subagents.py"
     },
     {
       "label": "build_subagents()",
       "file_type": "code",
       "source_file": "backend/src/assistant/infrastructure/cc_bridge/subagents.py",
       "source_location": "L62",
+      "id": "cc_bridge_subagents_build_subagents",
       "community": 130,
-      "norm_label": "build_subagents()",
-      "id": "cc_bridge_subagents_build_subagents"
+      "norm_label": "build_subagents()"
     },
     {
       "label": "str",
       "file_type": "code",
       "source_file": "backend/src/assistant/infrastructure/cc_bridge/subagents.py",
       "source_location": "L62",
+      "id": "backend_src_assistant_infrastructure_cc_bridge_subagents_py_str",
       "community": 130,
-      "norm_label": "str",
-      "id": "backend_src_assistant_infrastructure_cc_bridge_subagents_py_str"
+      "norm_label": "str"
     },
     {
       "label": "AgentDefinition",
       "file_type": "code",
       "source_file": "backend/src/assistant/infrastructure/cc_bridge/subagents.py",
       "source_location": "L62",
+      "id": "agentdefinition",
       "community": 130,
-      "norm_label": "agentdefinition",
-      "id": "agentdefinition"
+      "norm_label": "agentdefinition"
     },
     {
       "label": "Native Claude Code subagents handed to every delegated CC session.  These are *C",
       "file_type": "rationale",
       "source_file": "backend/src/assistant/infrastructure/cc_bridge/subagents.py",
       "source_location": "L1",
+      "id": "cc_bridge_subagents_rationale_1",
       "community": 130,
-      "norm_label": "native claude code subagents handed to every delegated cc session.  these are *c",
-      "id": "cc_bridge_subagents_rationale_1"
+      "norm_label": "native claude code subagents handed to every delegated cc session.  these are *c"
     },
     {
       "label": "Return the CC subagent registry passed as `agents=` to ClaudeAgentOptions.",
       "file_type": "rationale",
       "source_file": "backend/src/assistant/infrastructure/cc_bridge/subagents.py",
       "source_location": "L63",
+      "id": "cc_bridge_subagents_rationale_63",
       "community": 130,
-      "norm_label": "return the cc subagent registry passed as `agents=` to claudeagentoptions.",
-      "id": "cc_bridge_subagents_rationale_63"
+      "norm_label": "return the cc subagent registry passed as `agents=` to claudeagentoptions."
     },
     {
       "label": "test_daily_report_e2e.py",
@@ -638,6 +593,51 @@
       "community": 148,
       "norm_label": "emitting the finished goal",
       "id": "goal_creation_skill_emitting_the_finished_goal"
+    },
+    {
+      "label": "CLAUDE.md",
+      "file_type": "document",
+      "source_file": "CLAUDE.md",
+      "source_location": "L1",
+      "community": 88,
+      "norm_label": "claude.md",
+      "id": "claude_md"
+    },
+    {
+      "label": "bitch-stewie \u2014 project rules",
+      "file_type": "document",
+      "source_file": "CLAUDE.md",
+      "source_location": "L1",
+      "community": 88,
+      "norm_label": "bitch-stewie \u2014 project rules",
+      "id": "bitch_stewie_claude_bitch_stewie_project_rules"
+    },
+    {
+      "label": "graphify",
+      "file_type": "document",
+      "source_file": "CLAUDE.md",
+      "source_location": "L9",
+      "community": 88,
+      "norm_label": "graphify",
+      "id": "bitch_stewie_claude_graphify"
+    },
+    {
+      "label": "Skills",
+      "file_type": "document",
+      "source_file": "CLAUDE.md",
+      "source_location": "L19",
+      "community": 88,
+      "norm_label": "skills",
+      "id": "bitch_stewie_claude_skills"
+    },
+    {
+      "label": "Working style \u2014 fan out & deep research",
+      "file_type": "document",
+      "source_file": "CLAUDE.md",
+      "source_location": "L23",
+      "community": 88,
+      "norm_label": "working style \u2014 fan out & deep research",
+      "id": "bitch_stewie_claude_working_style_fan_out_deep_research"
     },
     {
       "label": "goal_creator_graph.py",
@@ -19409,46 +19409,6 @@
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
-      "source_file": "CLAUDE.md",
-      "source_location": "L1",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "claude_md",
-      "target": "bitch_stewie_claude_bitch_stewie_project_rules"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "CLAUDE.md",
-      "source_location": "L19",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "claude_md",
-      "target": "bitch_stewie_claude_working_style_fan_out_deep_research"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "CLAUDE.md",
-      "source_location": "L9",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "bitch_stewie_claude_bitch_stewie_project_rules",
-      "target": "bitch_stewie_claude_graphify"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "CLAUDE.md",
-      "source_location": "L19",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "bitch_stewie_claude_bitch_stewie_project_rules",
-      "target": "bitch_stewie_claude_skills"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
       "source_file": "backend/src/assistant/application/orchestrator/daily_report.py",
       "source_location": "L86",
       "weight": 1.0,
@@ -19524,9 +19484,9 @@
       "source_file": "backend/src/assistant/application/orchestrator/daily_report.py",
       "source_location": "L53",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "orchestrator_daily_report_today_str",
-      "target": "backend_src_assistant_application_orchestrator_daily_report_py_str"
+      "target": "backend_src_assistant_application_orchestrator_daily_report_py_str",
+      "confidence_score": 1.0
     },
     {
       "relation": "references",
@@ -19535,9 +19495,9 @@
       "source_file": "backend/src/assistant/application/orchestrator/daily_report.py",
       "source_location": "L87",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "orchestrator_daily_report_build_composer_prompt",
-      "target": "backend_src_assistant_application_orchestrator_daily_report_py_str"
+      "target": "backend_src_assistant_application_orchestrator_daily_report_py_str",
+      "confidence_score": 1.0
     },
     {
       "relation": "references",
@@ -19546,9 +19506,9 @@
       "source_file": "backend/src/assistant/application/orchestrator/daily_report.py",
       "source_location": "L57",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "orchestrator_daily_report_build_conductor_prompt",
-      "target": "backend_src_assistant_application_orchestrator_daily_report_py_str"
+      "target": "backend_src_assistant_application_orchestrator_daily_report_py_str",
+      "confidence_score": 1.0
     },
     {
       "relation": "references",
@@ -19557,9 +19517,9 @@
       "source_file": "backend/src/assistant/application/orchestrator/daily_report.py",
       "source_location": "L104",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "orchestrator_daily_report_project_name_for",
-      "target": "backend_src_assistant_application_orchestrator_daily_report_py_str"
+      "target": "backend_src_assistant_application_orchestrator_daily_report_py_str",
+      "confidence_score": 1.0
     },
     {
       "relation": "references",
@@ -19824,9 +19784,9 @@
       "source_file": "backend/src/assistant/infrastructure/cc_bridge/subagents.py",
       "source_location": "L63",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "cc_bridge_subagents_rationale_63",
-      "target": "cc_bridge_subagents_build_subagents"
+      "target": "cc_bridge_subagents_build_subagents",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -19957,6 +19917,46 @@
       "confidence_score": 1.0,
       "source": "goal_creation_skill_per_kind_config",
       "target": "goal_creation_skill_testing"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "CLAUDE.md",
+      "source_location": "L1",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "claude_md",
+      "target": "bitch_stewie_claude_bitch_stewie_project_rules"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "CLAUDE.md",
+      "source_location": "L19",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "claude_md",
+      "target": "bitch_stewie_claude_working_style_fan_out_deep_research"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "CLAUDE.md",
+      "source_location": "L9",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "bitch_stewie_claude_bitch_stewie_project_rules",
+      "target": "bitch_stewie_claude_graphify"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "CLAUDE.md",
+      "source_location": "L19",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "bitch_stewie_claude_bitch_stewie_project_rules",
+      "target": "bitch_stewie_claude_skills"
     },
     {
       "relation": "contains",
@@ -52448,5 +52448,5 @@
       "source_file": "research_subjects/CLAUDE.md"
     }
   ],
-  "built_at_commit": "06a93aba2b48854b10a88eb9128eb25effe6d317"
+  "built_at_commit": "c166198a396b87d121ce0dbf0edb099f79c0914e"
 }

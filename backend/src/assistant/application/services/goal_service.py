@@ -82,6 +82,7 @@ async def create_goal_entity(
         s.add(goal)
         await s.flush()
         await s.refresh(goal)
+        await s.commit()
         return goal
 
 
