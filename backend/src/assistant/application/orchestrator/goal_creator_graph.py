@@ -74,7 +74,9 @@ async def clarify_node(state: GoalState, config: RunnableConfig) -> dict:
     """Interview agent: ask questions or signal the goal is ready.
 
     Streams its questions as AIMessage tokens (via the graph-level astream).
-    The router inspects the emitted text for the [[GOAL_JSON]] signal.
+    If the agent's own response carries a [[GOAL_JSON]] signal, parse it and
+    return the goal as a state update so ``persist_node`` receives it (a
+    router's mutations would NOT reach the next node).
     """
     model = _model()
 
@@ -88,28 +90,31 @@ async def clarify_node(state: GoalState, config: RunnableConfig) -> dict:
     response = await model.ainvoke(messages)
     content = getattr(response, "content", "") or ""
 
+    # Parse any goal the agent emitted so it survives as a real state update.
+    goal = dict(state.get("goal", {}))
+    kind = state.get("kind")
+    match = _GOAL_JSON_RE.search(content)
+    if match:
+        try:
+            data = json.loads(match.group(1))
+            goal = {**goal, **data}
+            kind = data.get("kind", kind)
+        except json.JSONDecodeError:
+            pass
+
     return {
         "messages": [AIMessage(content=content)],
+        "goal": goal,
+        "kind": kind,
         "status": "interviewing",
     }
 
 
 def route_after_clarify(state: GoalState) -> Literal["persist", "__end__"]:
-    """If the clarify node emitted a goal, persist it; otherwise wait for user."""
+    """If the last agent message carried a goal, persist it; else wait for user."""
     last = state["messages"][-1] if state["messages"] else None
     content = getattr(last, "content", "") or ""
-    match = _GOAL_JSON_RE.search(content)
-    if not match:
-        return END
-    try:
-        data = json.loads(match.group(1))
-        # Keep any fields the agent already filled on earlier turns.
-        merged = {**state.get("goal", {}), **data}
-        state["goal"] = merged
-        state["kind"] = merged.get("kind", state.get("kind"))
-        return "persist"
-    except json.JSONDecodeError:
-        return END
+    return "persist" if _GOAL_JSON_RE.search(content) else END
 
 
 async def persist_node(state: GoalState, config: RunnableConfig) -> dict:
