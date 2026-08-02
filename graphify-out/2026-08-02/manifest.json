@@ -420,9 +420,9 @@
     "semantic_hash": "bc9da685441bdef24ab99a3d199537b3"
   },
   "/Users/martinkrisko/Documents/Projects/bitch-stewie/backend/src/assistant/infrastructure/cc_bridge/subagents.py": {
-    "mtime": 1785537480.0433905,
-    "ast_hash": "71508806e0321fd145354c129ffb2699",
-    "semantic_hash": "71508806e0321fd145354c129ffb2699"
+    "mtime": 1785660320.401151,
+    "ast_hash": "630c159427add53c99743123366697ec",
+    "semantic_hash": ""
   },
   "/Users/martinkrisko/Documents/Projects/bitch-stewie/backend/src/assistant/infrastructure/cc_bridge/brief.py": {
     "mtime": 1785533889.0681264,
@@ -995,8 +995,8 @@
     "semantic_hash": ""
   },
   "/Users/martinkrisko/Documents/Projects/bitch-stewie/backend/src/assistant/application/orchestrator/daily_report.py": {
-    "mtime": 1785659678.9437814,
-    "ast_hash": "48e1141d8024073c3b7e1400e6bbc73d",
+    "mtime": 1785660311.7379653,
+    "ast_hash": "8f19bba3f09b3646db961f86ed720b07",
     "semantic_hash": ""
   },
   "/Users/martinkrisko/Documents/Projects/bitch-stewie/frontend/src/pages/Goals.tsx": {
