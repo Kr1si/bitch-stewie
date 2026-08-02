@@ -41,10 +41,17 @@ class CCWorker:
         return future.result(timeout=timeout)
 
 
-    def run_prompt(self, prompt: str, cwd: str, timeout: float = 1800) -> str:
-        """One-shot CC session (e.g. /deep-research); blocks the calling thread."""
+    def run_prompt(self, prompt: str, cwd: str, timeout: float = 1800,
+                  skill_names: list[str] | None = None) -> str:
+        """One-shot CC session (e.g. /deep-research); blocks the calling thread.
+
+        skill_names: skill NAMES to make resolvable from the session. With
+        setting_sources=["project"] the SDK resolves names from <cwd>/.claude/skills/,
+        so the caller must stage the skill files there first (see research_tools).
+        """
         runner = DelegationRunner()
-        future = asyncio.run_coroutine_threadsafe(runner.run_prompt(prompt, cwd), self._loop)
+        future = asyncio.run_coroutine_threadsafe(
+            runner.run_prompt(prompt, cwd, skill_names=skill_names or []), self._loop)
         return future.result(timeout=timeout)
 
 

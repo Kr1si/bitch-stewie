@@ -287,15 +287,18 @@ class DelegationRunner:
                                      result={"error": repr(exc)})
 
     async def run_prompt(
-        self, prompt: str, cwd: str, agent_teams: bool = False, output_style: str = ""
+        self, prompt: str, cwd: str, agent_teams: bool = False, output_style: str = "",
+        skill_names: list[str] | None = None,
     ) -> str:
-        """One-shot CC session without the coding review loop (research, analysis)."""
+        """One-shot CC session without the coding review loop (research, analysis).
+
+        skill_names: skill NAMES already staged into <cwd>/.claude/skills/ by the
+        caller, so the SDK (setting_sources=["project"]) can resolve them here.
+        """
         brief = Brief(goal=prompt, repo_path=cwd, output_style=output_style)
         run_id = self._create_run(brief, None)
         try:
-            # no skill staging: research one-shots need no coding contract and
-            # shouldn't write .claude/skills into arbitrary working dirs
-            options = self._options(brief, run_id, [], None, agent_teams)
+            options = self._options(brief, run_id, skill_names or [], None, agent_teams)
             async with ClaudeSDKClient(options=options) as client:
                 text = await self._drive(client, run_id, prompt)
             self._finish(run_id, CCRunStatus.succeeded, {"kind": "prompt"}, 0)
