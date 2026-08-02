@@ -1,6 +1,7 @@
 """Read/manage endpoints for the web UI (Phase 5 consumes these)."""
 
 import uuid
+from pathlib import Path
 from typing import Any
 
 from fastapi import APIRouter, HTTPException
@@ -48,9 +49,10 @@ async def start_run(body: RunIn) -> dict[str, Any]:
 
 
 class ProjectIn(BaseModel):
-    name: str
+    name: str = ""
     description: str = ""
     repo_path: str | None = None
+    git_url: str | None = None  # GitHub URL / owner/repo -> clone into projects_path
 
 
 @router.get("/projects")
@@ -63,13 +65,45 @@ async def list_projects() -> list[dict[str, Any]]:
 
 @router.post("/projects", status_code=201)
 async def create_project(body: ProjectIn) -> dict[str, Any]:
+    """Create a project. Two modes:
+
+    - Local: ``name`` + optional ``repo_path`` (folder on disk).
+    - From GitHub: ``git_url`` (https/ssh/owner/repo). The repo is validated
+      and cloned via the unified ``gh`` client into ``projects_path``; ``name``
+      and ``description`` auto-derive from the repo metadata if not given.
+    """
+    from assistant.infrastructure.github import (
+        clone_repo,
+        parse_git_url,
+        repo_info,
+    )
+    from assistant.shared.config import get_settings
+
+    name = (body.name or "").strip()
+    repo_path: str | None = body.repo_path
+    description = body.description
+
+    if body.git_url:
+        owner, repo = parse_git_url(body.git_url)
+        info = repo_info(f"{owner}/{repo}")  # raises RuntimeError if inaccessible
+        if not name:
+            name = info["name"]
+        if not description:
+            description = (info.get("description") or "")[:500]
+        dest = Path(get_settings().projects_path) / name
+        clone_repo(f"{owner}/{repo}", dest)
+        repo_path = str(dest)
+
+    if not name:
+        raise HTTPException(422, "name is required (or provide a git_url to derive it)")
+
     async with get_session_factory()() as s:
         exists = (
-            await s.execute(select(Project).where(Project.name == body.name))
+            await s.execute(select(Project).where(Project.name == name))
         ).scalar_one_or_none()
         if exists:
-            raise HTTPException(409, f"project '{body.name}' exists")
-        p = Project(name=body.name, description=body.description, repo_path=body.repo_path)
+            raise HTTPException(409, f"project '{name}' exists")
+        p = Project(name=name, description=description, repo_path=repo_path)
         s.add(p)
         await s.commit()
         return {"id": str(p.id), "name": p.name}
