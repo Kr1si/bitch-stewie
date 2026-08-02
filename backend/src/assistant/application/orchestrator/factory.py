@@ -1,9 +1,11 @@
 """Build the orchestrator deep agent with its four subagents."""
 
+import os
 from pathlib import Path
 from typing import Any
 
 from deepagents import create_deep_agent
+from langchain_anthropic import ChatAnthropic
 
 from assistant.application.orchestrator.artifact_tools import (
     ARCHITECT_TOOLS,
@@ -81,9 +83,29 @@ structured outcome faithfully, including failures.
 """
 
 
+def _build_chat_model(settings: Any) -> Any:
+    """Construct the orchestrator's chat model with LongCat Bearer auth.
+
+    LongCat authenticates via ``Authorization: Bearer <key>``, which is NOT what
+    ``ChatAnthropic`` sends by default (it sends ``x-api-key``). Pass the Bearer
+    token explicitly via ``default_headers``. The token comes from the platform's
+    ``ANTHROPIC_AUTH_TOKEN`` env var (fallback to ``ANTHROPIC_API_KEY``).
+    """
+    token = os.environ.get("ANTHROPIC_AUTH_TOKEN") or os.environ.get("ANTHROPIC_API_KEY", "")
+    default_base = "https://api.longcat.chat/anthropic"
+    base_url = os.environ.get("ANTHROPIC_BASE_URL", default_base)
+    # default_model is "anthropic:<name>" — strip the provider prefix.
+    name = settings.default_model.split(":", 1)[-1] if settings.default_model else "LongCat-2.0"
+    return ChatAnthropic(
+        model=name,
+        anthropic_api_url=base_url,
+        default_headers={"Authorization": f"Bearer {token}", "Content-Type": "application/json"},
+    )
+
+
 def build_orchestrator(checkpointer: Any = None) -> Any:
     settings = get_settings()
-    model = settings.default_model
+    model = _build_chat_model(settings)
 
     subagents = [
         {

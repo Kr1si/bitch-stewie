@@ -83,20 +83,16 @@ def get_settings() -> Settings:
 
 
 def apply_anthropic_env() -> None:
-    """Ensure the orchestrator's chat model can authenticate and reach LongCat.
+    """Make the LongCat base URL visible to LangChain's chat model.
 
-    ``ChatAnthropic`` reads ``ANTHROPIC_API_KEY`` for auth and
-    ``ANTHROPIC_API_URL`` for the base URL, but this platform standardises on
-    the CC CLI env vars ``ANTHROPIC_AUTH_TOKEN`` + ``ANTHROPIC_BASE_URL``. Mirror
-    them across so chat works without requiring separate vars in the
-    environment. Without the base URL the key is sent to api.anthropic.com and
-    rejected with a 401.
+    ``ChatAnthropic`` reads ``ANTHROPIC_API_URL`` (not ``ANTHROPIC_BASE_URL``)
+    for the base URL, so mirror the platform's ``ANTHROPIC_BASE_URL`` across.
+    Auth itself is handled by explicit Bearer ``default_headers`` when the model
+    is constructed (factory.py) — do NOT mirror ``ANTHROPIC_AUTH_TOKEN`` to
+    ``ANTHROPIC_API_KEY`` here, because that would make ``ChatAnthropic`` send
+    the ``x-api-key`` header, which LongCat rejects with a 401.
     """
     import os
-    if not os.environ.get("ANTHROPIC_API_KEY"):
-        token = os.environ.get("ANTHROPIC_AUTH_TOKEN")
-        if token:
-            os.environ["ANTHROPIC_API_KEY"] = token
     if not os.environ.get("ANTHROPIC_API_URL"):
         base_url = os.environ.get("ANTHROPIC_BASE_URL")
         if base_url:
