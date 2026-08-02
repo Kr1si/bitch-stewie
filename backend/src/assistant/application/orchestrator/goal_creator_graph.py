@@ -66,8 +66,10 @@ def _skill_system_prompt() -> str:
 
 
 def _model():  # noqa: ANN202 — lazy import; return type is BaseChatModel
-    from langchain_core.language_models.chat_models import init_chat_model
-    return init_chat_model(get_settings().default_model)
+    # LongCat needs Bearer auth — reuse the orchestrator's auth-aware builder
+    # (a bare init_chat_model would send x-api-key, which LongCat rejects).
+    from assistant.application.orchestrator.factory import _build_chat_model
+    return _build_chat_model(get_settings())
 
 
 async def clarify_node(state: GoalState, config: RunnableConfig) -> dict:

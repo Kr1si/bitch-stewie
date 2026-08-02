@@ -47,7 +47,11 @@ Principles:
 
 def build_planner(checkpointer: Any = None) -> Any:
     settings = get_settings()
-    model = settings.default_model
+    # LongCat needs Bearer auth — use the auth-aware builder instead of a raw
+    # model string (a bare string resolves via init_chat_model -> x-api-key,
+    # which LongCat rejects).
+    from assistant.application.orchestrator.factory import _build_chat_model
+    model = _build_chat_model(settings)
 
     return create_deep_agent(
         model=model,
