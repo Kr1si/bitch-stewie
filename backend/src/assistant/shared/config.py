@@ -82,6 +82,27 @@ def get_settings() -> Settings:
     return Settings()
 
 
+def apply_anthropic_env() -> None:
+    """Ensure the orchestrator's chat model can authenticate and reach LongCat.
+
+    ``ChatAnthropic`` reads ``ANTHROPIC_API_KEY`` for auth and
+    ``ANTHROPIC_API_URL`` for the base URL, but this platform standardises on
+    the CC CLI env vars ``ANTHROPIC_AUTH_TOKEN`` + ``ANTHROPIC_BASE_URL``. Mirror
+    them across so chat works without requiring separate vars in the
+    environment. Without the base URL the key is sent to api.anthropic.com and
+    rejected with a 401.
+    """
+    import os
+    if not os.environ.get("ANTHROPIC_API_KEY"):
+        token = os.environ.get("ANTHROPIC_AUTH_TOKEN")
+        if token:
+            os.environ["ANTHROPIC_API_KEY"] = token
+    if not os.environ.get("ANTHROPIC_API_URL"):
+        base_url = os.environ.get("ANTHROPIC_BASE_URL")
+        if base_url:
+            os.environ["ANTHROPIC_API_URL"] = base_url
+
+
 def langsmith_enabled() -> bool:
     s = get_settings()
     return bool(s.langsmith_api_key) and s.langsmith_tracing.lower() == "true"
