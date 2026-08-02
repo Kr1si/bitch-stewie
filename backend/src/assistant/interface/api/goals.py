@@ -143,34 +143,38 @@ async def goal_chat_stream(body: GoalChatIn) -> EventSourceResponse:
 
     from assistant.shared.config import get_settings as _gs
 
-    saver = AsyncPostgresSaver.from_conn_string(_gs().database_url)
-    async with saver as checkpointer:
-        await checkpointer.setup()
-        graph = build_goal_creator_graph(checkpointer=checkpointer)
+    thread_id = body.thread_id or f"goal-{uuid.uuid4().hex[:12]}"
+    config = {"configurable": {"thread_id": thread_id,
+                               "project_id": str(body.project_id) if body.project_id else None}}
 
-        thread_id = body.thread_id or f"goal-{uuid.uuid4().hex[:12]}"
-        config = {"configurable": {"thread_id": thread_id,
-                                   "project_id": str(body.project_id) if body.project_id else None}}
+    async def event_gen() -> AsyncIterator[dict[str, Any]]:
+        try:
+            saver = AsyncPostgresSaver.from_conn_string(_gs().database_url)
+            async with saver as checkpointer:
+                await checkpointer.setup()
+                graph = build_goal_creator_graph(checkpointer=checkpointer)
 
-        # Rebuild state from the checkpointer so prior turns survive.
-        existing = await graph.aget_state(config)
-        if existing and existing.values:
-            prior_messages = list(existing.values.get("messages", []))
-            prior_goal = existing.values.get("goal", {})
-            prior_status = existing.values.get("status", "interviewing")
-            prior_kind = existing.values.get("kind")
-        else:
-            prior_messages, prior_goal, prior_status, prior_kind = [], {}, "interviewing", None
+                # Rebuild state from the checkpointer so prior turns survive.
+                existing = await graph.aget_state(config)
+                if existing and existing.values:
+                    prior_messages = list(existing.values.get("messages", []))
+                    prior_goal = existing.values.get("goal", {})
+                    prior_status = existing.values.get("status", "interviewing")
+                    prior_kind = existing.values.get("kind")
+                else:
+                    prior_messages, prior_goal = [], {}
+                    prior_status, prior_kind = "interviewing", None
 
-        user_msg = {"role": "user", "content": body.message}
-        state = {"messages": [*prior_messages, user_msg], "goal": prior_goal,
-                 "status": prior_status, "kind": prior_kind}
+                user_msg = {"role": "user", "content": body.message}
+                state = {"messages": [*prior_messages, user_msg], "goal": prior_goal,
+                         "status": prior_status, "kind": prior_kind}
 
-        async def event_gen() -> AsyncIterator[dict[str, Any]]:
-            async for ev in _stream_goal_chat(graph, state, config):
-                yield ev
+                async for ev in _stream_goal_chat(graph, state, config):
+                    yield ev
+        except Exception as exc:
+            yield {"event": "error", "data": json.dumps({"error": str(exc) or type(exc).__name__})}
 
-        return EventSourceResponse(event_gen())
+    return EventSourceResponse(event_gen())
 
 
 # --- report reading (raw markdown files the pipeline wrote) --------------------

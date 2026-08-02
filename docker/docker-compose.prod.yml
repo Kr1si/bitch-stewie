@@ -76,6 +76,9 @@ services:
       # provider prefix. Mirrors the CC provider endpoint above by default.
       ANTHROPIC_BASE_URL: ${ASSISTANT_CC_ANTHROPIC_BASE_URL:-https://api.longcat.chat/anthropic}
       ANTHROPIC_API_KEY: ${ASSISTANT_CC_ANTHROPIC_AUTH_TOKEN:-}
+      # Bare `claude` invocations (shell, subagent-spawned) read ANTHROPIC_AUTH_TOKEN
+      # for auth — without it they hit LongCat with no token. Mirrors the key above.
+      ANTHROPIC_AUTH_TOKEN: ${ASSISTANT_CC_ANTHROPIC_AUTH_TOKEN:-}
       ASSISTANT_CC_PLUGINS_DIR: /opt/cc-plugins/enabled
       ASSISTANT_API_HOST: 0.0.0.0
     ports:
@@ -117,6 +120,8 @@ services:
       # Planner LLM env (deepagents/init_chat_model "anthropic:" prefix).
       ANTHROPIC_BASE_URL: ${ASSISTANT_CC_ANTHROPIC_BASE_URL:-https://api.longcat.chat/anthropic}
       ANTHROPIC_API_KEY: ${ASSISTANT_CC_ANTHROPIC_AUTH_TOKEN:-}
+      # Bare `claude` invocations read ANTHROPIC_AUTH_TOKEN for auth (see backend).
+      ANTHROPIC_AUTH_TOKEN: ${ASSISTANT_CC_ANTHROPIC_AUTH_TOKEN:-}
       ASSISTANT_CC_PLUGINS_DIR: /opt/cc-plugins/enabled
       # git push over SSH from delegated CC sessions (see docs/krisiserver.md).
       # -i deploy's own key (already trusted by GitHub); StrictHostKeyChecking
