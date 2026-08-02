@@ -46,6 +46,9 @@ class Settings(BaseSettings):
     # --- Paths ---
     vault_path: str = ""  # markdown vault to watch/ingest; empty = disabled
     examples_path: str = ""  # where uploaded reference examples are stored; "" = disabled
+    # Where git-URL projects are cloned. Mirrors the prod mount at /projects
+    # (${PROJECTS_PATH:-/home/deploy/projects} on krisiserver). Override via env.
+    projects_path: str = "/projects"
     # Root the daily-report pipeline writes dated reports + market-ideas wiki to.
     # Must live on a mounted volume so reports survive container restarts — the
     # worker mounts ${PROJECTS_PATH:-/home/deploy/projects}, so /projects/reports

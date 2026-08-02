@@ -38,6 +38,7 @@ export default function Dashboard() {
   const [projects, setProjects] = useState<Project[]>([]);
   const [name, setName] = useState("");
   const [repo, setRepo] = useState("");
+  const [gitUrl, setGitUrl] = useState("");
 
   const loadStats = () => apiGet<Stats>("/api/stats").then(setStats).catch(() => {});
   const loadProjects = () => apiGet<Project[]>("/api/projects").then(setProjects).catch(() => {});
@@ -50,10 +51,22 @@ export default function Dashboard() {
       if (r.path) setRepo(r.path);
     } catch (e) { console.error(e); }
   };
+  const derivedName = (() => {
+    const u = gitUrl.trim();
+    if (!u) return "";
+    const m = u.match(/\/([A-Za-z0-9_.-]+?)(?:\.git)?$/);
+    return m ? m[1] : "";
+  })();
+
   const create = async () => {
-    if (!name.trim()) return;
-    await apiPost("/api/projects", { name, repo_path: repo || null });
-    setName(""); setRepo(""); loadProjects(); loadStats();
+    const usedGit = gitUrl.trim();
+    if (!name.trim() && !(usedGit && derivedName)) return;
+    await apiPost("/api/projects", {
+      name: name.trim() || undefined,
+      repo_path: usedGit ? null : (repo || null),
+      git_url: usedGit || undefined,
+    });
+    setName(""); setRepo(""); setGitUrl(""); loadProjects(); loadStats();
   };
 
   const runStatusRows = stats ? Object.entries(stats.runs_by_status) : [];
@@ -193,10 +206,18 @@ export default function Dashboard() {
         <Stack direction="row" spacing={1} sx={{ mt: 2, flexWrap: "wrap", gap: 1 }}>
           <input placeholder="project name" value={name} onChange={(e) => setName(e.target.value)}
             style={{ padding: "8px 10px", borderRadius: 8, border: "1px solid #8885", background: "inherit" }} />
-          <input placeholder="repo path (optional)" value={repo} onChange={(e) => setRepo(e.target.value)}
-            style={{ padding: "8px 10px", borderRadius: 8, border: "1px solid #8885", background: "inherit", minWidth: 320 }} />
-          <Button variant="outlined" onClick={browse}>Browse…</Button>
-          <Button variant="contained" onClick={create}>Create</Button>
+          {gitUrl.trim() ? null : (
+            <>
+              <input placeholder="repo path (optional)" value={repo} onChange={(e) => setRepo(e.target.value)}
+                style={{ padding: "8px 10px", borderRadius: 8, border: "1px solid #8885", background: "inherit", minWidth: 280 }} />
+              <Button variant="outlined" onClick={browse}>Browse…</Button>
+            </>
+          )}
+          <input placeholder="or paste git URL (https/ssh/owner/repo)" value={gitUrl} onChange={(e) => setGitUrl(e.target.value)}
+            style={{ padding: "8px 10px", borderRadius: 8, border: "1px solid #8885", background: "inherit", minWidth: 300 }} />
+          <Button variant="contained" onClick={create} disabled={!name.trim() && !(gitUrl.trim() && derivedName)}>
+            {gitUrl.trim() ? "Clone & Create" : "Create"}
+          </Button>
         </Stack>
       </SectionPanel>
     </Box>
