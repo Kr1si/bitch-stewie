@@ -5,7 +5,7 @@ from typing import Any
 
 from fastapi import APIRouter, HTTPException
 from pydantic import BaseModel
-from sqlalchemy import select
+from sqlalchemy import delete, select
 
 from assistant.application.services.memory_service import (
     Approval,
@@ -73,6 +73,23 @@ async def create_project(body: ProjectIn) -> dict[str, Any]:
         s.add(p)
         await s.commit()
         return {"id": str(p.id), "name": p.name}
+
+
+@router.delete("/projects/{project_id}", status_code=204)
+async def delete_project(project_id: uuid.UUID) -> None:
+    """Delete a project and its decisions.
+
+    Runs in a single transaction: decisions are deleted first (no FK on
+    cascade), then the project. CC runs / sessions / messages are left in
+    place as historical records — delete those explicitly if needed.
+    """
+    async with get_session_factory()() as s:
+        project = await s.get(Project, project_id)
+        if project is None:
+            raise HTTPException(404, "project not found")
+        await s.execute(delete(Decision).where(Decision.project_id == project_id))
+        await s.delete(project)
+        await s.commit()
 
 
 @router.get("/projects/{project_id}/decisions")
