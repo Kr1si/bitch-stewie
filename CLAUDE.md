@@ -16,6 +16,10 @@ Rules:
 - Read graphify-out/GRAPH_REPORT.md only for broad architecture review or when query/path/explain do not surface enough context.
 - After modifying code, run `graphify update .` to keep the graph current (AST-only, no API cost).
 
+## Skills
+
+- **goal-creation** (`.claude/skills/goal-creation/SKILL.md`) — interview a user to author a Goal (research/coding/testing). Use when the user wants to create or define a Goal. The skill teaches a 1-2-question-per-turn interview loop and the `[[GOAL_JSON]]` emission format.
+
 # Working style — fan out & deep research
 
 - **Default to fan-out.** For any multi-step task (searching, refactoring, reviewing, building), prefer spawning parallel subagents over doing work sequentially in the main thread. Send concurrent `Agent` tool calls in a single message whenever the sub-tasks are independent.

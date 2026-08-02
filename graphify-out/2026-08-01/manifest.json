@@ -30,9 +30,9 @@
     "semantic_hash": "88439104b3c207f17d33ef3160e3b080"
   },
   "/Users/martinkrisko/Documents/Projects/bitch-stewie/frontend/src/App.tsx": {
-    "mtime": 1785532615.7235808,
-    "ast_hash": "449d3e18ff4b8009c67ff3a41ae29fb4",
-    "semantic_hash": "449d3e18ff4b8009c67ff3a41ae29fb4"
+    "mtime": 1785584351.7611175,
+    "ast_hash": "09a560980fb2fb8c120fb86eb57b9a08",
+    "semantic_hash": ""
   },
   "/Users/martinkrisko/Documents/Projects/bitch-stewie/frontend/src/main.tsx": {
     "mtime": 1785532615.7248635,
@@ -80,9 +80,9 @@
     "semantic_hash": "dedf6fb7a1505477e35f582391f64969"
   },
   "/Users/martinkrisko/Documents/Projects/bitch-stewie/frontend/src/lib/api.ts": {
-    "mtime": 1785532615.7246988,
-    "ast_hash": "3b8d473a58eef497d6ec072fb2c39994",
-    "semantic_hash": "3b8d473a58eef497d6ec072fb2c39994"
+    "mtime": 1785584246.6745636,
+    "ast_hash": "f545fe4726bbf5f330f038611e1de13a",
+    "semantic_hash": ""
   },
   "/Users/martinkrisko/Documents/Projects/bitch-stewie/frontend/src/pages/Knowledge.tsx": {
     "mtime": 1785532615.7254364,
@@ -225,9 +225,9 @@
     "semantic_hash": "7a7cdbb0557ac8ba31fb5cc712f90686"
   },
   "/Users/martinkrisko/Documents/Projects/bitch-stewie/backend/src/assistant/interface/cli/main.py": {
-    "mtime": 1785540077.9985018,
-    "ast_hash": "4e04d18777c4516c1475e236f9f4c15b",
-    "semantic_hash": "4e04d18777c4516c1475e236f9f4c15b"
+    "mtime": 1785583733.849224,
+    "ast_hash": "17f3508c258de23b24e5088f136ad2f4",
+    "semantic_hash": ""
   },
   "/Users/martinkrisko/Documents/Projects/bitch-stewie/backend/src/assistant/interface/api/plan.py": {
     "mtime": 1785540046.9551435,
@@ -265,9 +265,9 @@
     "semantic_hash": "02cb7a716797915eb3fe00c011498fe1"
   },
   "/Users/martinkrisko/Documents/Projects/bitch-stewie/backend/src/assistant/interface/api/app.py": {
-    "mtime": 1785540046.955064,
-    "ast_hash": "672c5d450bcc3294dfad1f245559a49f",
-    "semantic_hash": "672c5d450bcc3294dfad1f245559a49f"
+    "mtime": 1785583812.608591,
+    "ast_hash": "ad29ac7be06b56a4a65d8f580d6358ef",
+    "semantic_hash": ""
   },
   "/Users/martinkrisko/Documents/Projects/bitch-stewie/backend/src/assistant/interface/api/diagrams.py": {
     "mtime": 1785540046.955007,
@@ -305,8 +305,8 @@
     "semantic_hash": "d41d8cd98f00b204e9800998ecf8427e"
   },
   "/Users/martinkrisko/Documents/Projects/bitch-stewie/backend/src/assistant/shared/config.py": {
-    "mtime": 1785543029.6232502,
-    "ast_hash": "1926a58124888ac3d765a1eb10940b3f",
+    "mtime": 1785583928.164556,
+    "ast_hash": "ea5d8634762c7286e5555f9abc114100",
     "semantic_hash": ""
   },
   "/Users/martinkrisko/Documents/Projects/bitch-stewie/backend/src/assistant/cli/__init__.py": {
@@ -370,9 +370,9 @@
     "semantic_hash": "2077132681e07b0a82b200ac8f5f42c5"
   },
   "/Users/martinkrisko/Documents/Projects/bitch-stewie/backend/src/assistant/infrastructure/memory/models.py": {
-    "mtime": 1785539290.9303808,
-    "ast_hash": "46fffdc193484039e8dcc418a465b0bb",
-    "semantic_hash": "46fffdc193484039e8dcc418a465b0bb"
+    "mtime": 1785583575.8939855,
+    "ast_hash": "5fce10d839ae510fd924e3e108bff6a3",
+    "semantic_hash": ""
   },
   "/Users/martinkrisko/Documents/Projects/bitch-stewie/backend/src/assistant/infrastructure/memory/sync_db.py": {
     "mtime": 1785539290.9306066,
@@ -400,9 +400,9 @@
     "semantic_hash": "a6a4898bf55eb4e133136c767572e1a9"
   },
   "/Users/martinkrisko/Documents/Projects/bitch-stewie/backend/src/assistant/infrastructure/jobs/queue.py": {
-    "mtime": 1785539290.9326541,
-    "ast_hash": "794d23b5802cf4e7a044fb22f781eaf4",
-    "semantic_hash": "794d23b5802cf4e7a044fb22f781eaf4"
+    "mtime": 1785584800.966122,
+    "ast_hash": "5cd1b7ee2910ec9b57bcf0ad92e184b1",
+    "semantic_hash": ""
   },
   "/Users/martinkrisko/Documents/Projects/bitch-stewie/backend/src/assistant/infrastructure/jobs/watcher.py": {
     "mtime": 1785539375.3531334,
@@ -720,9 +720,9 @@
     "semantic_hash": "e45047e7b802728ba26d87b968a494c0"
   },
   "/Users/martinkrisko/Documents/Projects/bitch-stewie/backend/src/assistant/application/services/memory_service.py": {
-    "mtime": 1785539894.994124,
-    "ast_hash": "ca45c662efdc4d0323ca86655e2a345b",
-    "semantic_hash": "ca45c662efdc4d0323ca86655e2a345b"
+    "mtime": 1785583596.6378157,
+    "ast_hash": "f2c1561b669f9f0f9504dd4c0e3bdb9a",
+    "semantic_hash": ""
   },
   "/Users/martinkrisko/Documents/Projects/bitch-stewie/backend/.grimp_cache/a5aa539ec9f7cbb423c0cd60570c69bf3afd9dcb.data.json": {
     "mtime": 1785540914.856638,
@@ -972,6 +972,31 @@
   "/Users/martinkrisko/Documents/Projects/bitch-stewie/docs/user-stories.md": {
     "mtime": 1785543411.8836312,
     "ast_hash": "eeba1aa52fa2a182f9b06d27731af7c3",
+    "semantic_hash": ""
+  },
+  "/Users/martinkrisko/Documents/Projects/bitch-stewie/frontend/src/pages/Reports.tsx": {
+    "mtime": 1785584318.634854,
+    "ast_hash": "caf528121e593ea8ccc2e960d36a9e87",
+    "semantic_hash": ""
+  },
+  "/Users/martinkrisko/Documents/Projects/bitch-stewie/backend/migrations/versions/c8f3a2b1e002_add_goals_table.py": {
+    "mtime": 1785583667.4450998,
+    "ast_hash": "ec1a2ba18b1bea6a3818641def5e66ad",
+    "semantic_hash": ""
+  },
+  "/Users/martinkrisko/Documents/Projects/bitch-stewie/backend/tests/test_goals.py": {
+    "mtime": 1785584665.049495,
+    "ast_hash": "997e155b1e7c440e91afe6faa4874ae6",
+    "semantic_hash": ""
+  },
+  "/Users/martinkrisko/Documents/Projects/bitch-stewie/backend/src/assistant/interface/api/goals.py": {
+    "mtime": 1785584213.1078565,
+    "ast_hash": "33a117bc33b91ed61c9b34d3a1dc94cc",
+    "semantic_hash": ""
+  },
+  "/Users/martinkrisko/Documents/Projects/bitch-stewie/backend/src/assistant/application/orchestrator/daily_report.py": {
+    "mtime": 1785584837.8180792,
+    "ast_hash": "82ca2361feb409d2cd884e9a3ad0f108",
     "semantic_hash": ""
   }
 }

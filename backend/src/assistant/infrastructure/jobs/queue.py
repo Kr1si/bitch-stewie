@@ -1,9 +1,17 @@
-"""Procrastinate job queue (Postgres-native) for long-running work with retries."""
+"""Procrastinate job queue (Postgres-native) for long-running work with retries.
+
+Goals are executed by kind via ``_KIND_HANDLERS``. The periodic ``daily_report``
+task does NOT run goals inline — it defers one ``run_one_goal`` sub-job per
+active goal so Procrastinate can run them concurrently (cap the parallelism
+with the worker ``--concurrency`` flag; recommended 5). Adding a new goal kind
+means registering a handler here; the scheduler picks it up automatically.
+"""
 
 from datetime import UTC
 
 from procrastinate import App, PsycopgConnector
 
+from assistant.application.services.memory_service import Goal
 from assistant.shared.config import get_settings
 
 
@@ -29,40 +37,137 @@ def delegate_brief(goal: str, repo_path: str, constraints: list[str] | None = No
             "result": outcome.result}
 
 
+# --------------------------------------------------------------------------- #
+# Goal execution — dispatch by kind
+# --------------------------------------------------------------------------- #
+
+async def _run_research_goal(goal: "Goal") -> dict:
+    """Research: fan-out conductor -> researcher subagents -> composer -> KB."""
+    from assistant.application.orchestrator.daily_report import run_daily_report
+    return run_daily_report(goal)
+
+
+async def _run_coding_goal(goal: "Goal") -> dict:
+    """Coding: delegate the configured task to Claude Code on a branch.
+
+    Stub — dispatches a CC delegation from the goal's config (repo + brief).
+    Milestone-gated; the orchestrator's delegate path does the real work.
+    """
+    from assistant.infrastructure.cc_bridge.brief import Brief
+    from assistant.infrastructure.cc_bridge.worker import get_worker
+
+    cfg = goal.config or {}
+    repo = cfg.get("repo_path", "")
+    if not repo:
+        return {"goal_id": str(goal.id), "status": "failed",
+                "error": "coding goal has no repo_path in config"}
+    brief = Brief(
+        goal=cfg.get("goal", goal.title),
+        repo_path=repo,
+        constraints=cfg.get("constraints", []),
+        acceptance_criteria=cfg.get("acceptance_criteria", []),
+    )
+    outcome = get_worker().delegate(brief)
+    return {"goal_id": str(goal.id), "run_id": str(outcome.run_id),
+            "status": outcome.status.value, "result": outcome.result}
+
+
+async def _run_testing_goal(goal: "Goal") -> dict:
+    """Testing: run the configured test command via Claude Code and report.
+
+    Stub — opens a CC session that runs the goal's test command + scope.
+    """
+    from assistant.infrastructure.cc_bridge.worker import get_worker
+
+    cfg = goal.config or {}
+    command = cfg.get("command", "")
+    if not command:
+        return {"goal_id": str(goal.id), "status": "failed",
+                "error": "testing goal has no command in config"}
+    prompt = (
+        f"Run the test suite for this project and report pass/fail.\n"
+        f"command: {command}\nscope: {cfg.get('scope', '.')}\n"
+        f"green criteria: {cfg.get('green_criteria', 'all tests pass')}\n"
+        "Run the command, report the result, and whether it meets the green criteria."
+    )
+    repo = cfg.get("repo_path", ".")
+    report = get_worker().run_prompt(prompt, cwd=repo, timeout=1800)
+    return {"goal_id": str(goal.id), "status": "succeeded", "report": report[:2000]}
+
+
+# Register a handler here to add a new goal kind.
+_KIND_HANDLERS: dict[str, callable] = {
+    "research": _run_research_goal,
+    "coding": _run_coding_goal,
+    "testing": _run_testing_goal,
+}
+
+
+def _dispatch_goal(goal: "Goal") -> dict:
+    """Route a goal to its kind's handler, or report an unhandled kind."""
+    kind_key = goal.kind.value if hasattr(goal.kind, "value") else goal.kind
+    handler = _KIND_HANDLERS.get(kind_key)
+    if handler is None:
+        return {"goal_id": str(goal.id), "status": "failed",
+                "error": f"no handler for goal kind '{goal.kind}'"}
+    import asyncio
+    return asyncio.run(handler(goal))
+
+
+@app.task(name="run_one_goal", retry=1, queue="ingestion")
+def run_one_goal(goal_id: str) -> dict:
+    """Load one goal by id and run it through its kind's handler.
+
+    Deferred by ``daily_report`` so goals run concurrently across worker
+    threads. Updates last_run_at on success.
+    """
+    import asyncio
+    from datetime import datetime
+    from uuid import UUID
+
+    from assistant.application.services.goal_service import get_goal
+    from assistant.application.services.memory_service import get_sync_session_factory
+
+    goal = asyncio.run(get_goal(UUID(goal_id)))
+    if goal is None:
+        return {"goal_id": goal_id, "status": "failed", "error": "goal not found"}
+
+    result = _dispatch_goal(goal)
+
+    if result.get("status") not in ("failed",):
+        from assistant.application.services.memory_service import Goal as _Goal
+        with get_sync_session_factory()() as s:
+            g = s.get(_Goal, UUID(goal_id))
+            if g is not None:
+                g.last_run_at = datetime.now(UTC)
+                s.commit()
+    return result
+
+
 @app.periodic(cron="0 7 * * *")
 @app.task(name="daily_report", queue="ingestion")
 def daily_report(timestamp: int) -> dict:
-    """Daily: run the research pipeline for every active ``research`` goal.
+    """Daily: schedule every active goal for execution.
 
-    Long-running (tens of minutes) -- the conductor fans out to researcher
-    subagents and the composer writes the digest + market-ideas wiki, then both
-    are ingested into the KB. Delegates to ``run_daily_report`` so the prompt
-    logic lives alongside its module.
+    Defers one ``run_one_goal`` sub-job per active goal (all kinds) so they
+    run concurrently up to the worker concurrency cap, instead of blocking the
+    periodic task sequentially.
     """
-    from datetime import datetime
-
     from sqlalchemy import select
 
-    from assistant.application.orchestrator.daily_report import run_daily_report
     from assistant.application.services.memory_service import (
         Goal,
-        GoalKind,
         GoalStatus,
         get_sync_session_factory,
     )
 
-    results: list[dict] = []
     with get_sync_session_factory()() as s:
         goals = s.execute(
-            select(Goal).where(Goal.status == GoalStatus.active,
-                               Goal.kind == GoalKind.research)
+            select(Goal).where(Goal.status == GoalStatus.active)
         ).scalars().all()
         for goal in goals:
-            result = run_daily_report(goal)
-            goal.last_run_at = datetime.now(UTC)
-            results.append({"goal_id": str(goal.id), "title": goal.title, **result})
-        s.commit()
-    return {"ran": len(results), "results": results}
+            run_one_goal.defer(goal_id=str(goal.id))
+    return {"deferred": len(goals)}
 
 
 @app.task(name="ingest_path_job", retry=2, queue="ingestion")
