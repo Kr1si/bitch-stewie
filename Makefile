@@ -18,7 +18,8 @@ PORT         ?= 8000
 UV           := uv
 COMPOSE      := docker compose
 
-.PHONY: help infra up down logs ps backend-setup migrate backend worker watch \
+.PHONY: help infra up down logs ps backend-setup migrate jobs-schema embedding \
+        bootstrap backend worker watch \
         chat delegate ingest search approvals runs frontend frontend-build \
         test check typecheck lint clean prune
 
@@ -45,6 +46,16 @@ backend-setup:  ## uv sync (backend deps)
 
 migrate:  ## alembic upgrade head (also runs on first setup)
 	cd $(BACKEND_DIR) && $(UV) run alembic upgrade head
+
+jobs-schema:  ## create Procrastinate job tables (idempotent; safe on every boot)
+	cd $(BACKEND_DIR) && $(UV) run python scripts/bootstrap_jobs_schema.py
+
+embedding:  ## pull the bge-m3 embedding model into Ollama (required for RBM/ingest)
+	ollama pull bge-m3
+
+bootstrap: infra migrate jobs-schema embedding  ## full local provision: containers + DB schema + job tables + embedding model
+	@echo ""
+	@echo "Bootstrap complete. Next: make backend (and, in another tab, make worker)"
 
 backend:  ## run the FastAPI API for the web UI (Windows needs the Selector loop)
 	cd $(BACKEND_DIR) && $(UV) run uvicorn assistant.api.app:app \
